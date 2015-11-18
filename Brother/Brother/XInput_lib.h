@@ -1,6 +1,5 @@
 #include <windows.h>
 #include <mmsystem.h>
-#include <dinput.h>
 #include <XInput.h>
 
 

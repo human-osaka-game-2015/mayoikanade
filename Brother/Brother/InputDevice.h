@@ -1,6 +1,10 @@
 #ifndef _INPUTDEVICE_H_
 #define _INPUTDEVICE_H_
+
+
 #define BUFFER_SIZE  64
+#define DIRECTINPUT_VERSION 0x0800
+
 #include <windows.h>
 #include <mmsystem.h>
 #include <d3dx9.h>

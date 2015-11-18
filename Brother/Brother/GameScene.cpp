@@ -17,35 +17,44 @@ GameScene::GameScene(Library* pLibrary) :m_pLibrary(pLibrary),m_NextScene(SCENE_
 	}
 
 	//GameSceneの画像とcsvの読み込み
-	m_pLibrary->m_pUVSetter->FileInfo_Set("file.csv", FILE_INFO);
-	m_pLibrary->m_pUVSetter->VertexInfo_Set("tex.csv", VERTEX_INFO);
-	m_pLibrary->m_pUVSetter->AnimaInfo_Set("animation.csv", ANIMA_INFO);
-	m_pLibrary->m_pTexture->Tex_Load_EX("alpha_main.png", &m_pTexture[0], 255, 0, 255, 0);
+	m_pLibrary->FileInfo_Set("file.csv", FILE_INFO);
+	m_pLibrary->VertexInfo_Set("GameTex.csv", GAME_VERTEXINFO_MAX);
+	m_pLibrary->AnimaInfo_Set("Gameanimation.csv", GAME_ANIMA_INFO);
+	m_pLibrary->Tex_Load_EX("GameScene.png", &m_pTexture, 255, 0, 255, 0);
+
 
 
 	m_pSceneChangeListener = new SceneChangeListener(&m_NextScene);
-	m_pMap = new Map(m_pLibrary, m_pTexture[0]);
+	m_pMap = new Map(m_pLibrary, m_pTexture);
 	m_pCollisionChecker = new CollisionChecker(m_pMap);
-	m_pBrother = new Brother(m_pLibrary, m_pTexture[0], m_PadState, m_PadOldState,m_pCollisionChecker);
-	m_pYoungerBrother = new YoungerBrother(m_pLibrary, m_pTexture[0], m_PadState, m_PadOldState);		//現状使わない
+	m_pBrother = new Brother(m_pLibrary, m_pTexture, m_PadState, m_PadOldState,m_pCollisionChecker);
+	m_pYoungerBrother = new YoungerBrother(m_pLibrary, m_pTexture, m_PadState, m_PadOldState);		//現状使わない
 	m_pModeManager = new ModeManager(m_pSceneChangeListener, m_pBrother, m_pYoungerBrother);
 
 	m_pBrother->ModeManagerSet(m_pModeManager);
 	m_pYoungerBrother->ModeManagerSet(m_pModeManager);
 	
 	//Dxfont
-	D3DXCreateFont(m_pLibrary->m_pD3DManager->pD3Device, 0, 8, FW_REGULAR, NULL, FALSE, SHIFTJIS_CHARSET, OUT_DEFAULT_PRECIS, PROOF_QUALITY, FIXED_PITCH | FF_MODERN, "tahoma", &pFont);
+	D3DXCreateFont(m_pLibrary->GetDevice(), 0, 8, FW_REGULAR, NULL, FALSE, SHIFTJIS_CHARSET, OUT_DEFAULT_PRECIS, PROOF_QUALITY, FIXED_PITCH | FF_MODERN, "tahoma", &pFont);
 	
 }
 
 GameScene::~GameScene()
 {
+	m_pLibrary->FileInfo_Release();
+	m_pLibrary->VertexInfo_Release();
+	m_pLibrary->AnimaInfo_Release();
 	delete m_pModeManager;
 	delete m_pYoungerBrother;
 	delete m_pBrother;
 	delete m_pCollisionChecker;
 	delete m_pMap;
 	delete m_pSceneChangeListener;
+
+	//1つしかないから
+	m_pTexture->Release();
+
+
 }
 
 SCENE_NUM GameScene::Control()
@@ -58,7 +67,6 @@ SCENE_NUM GameScene::Control()
 
 void GameScene::Draw()
 {
-	m_pLibrary->m_pD3DManager->Draw_Ready();
 
 	m_pMap->Draw();
 	m_pBrother->Draw();
@@ -67,10 +75,6 @@ void GameScene::Draw()
 
 	pFont->DrawText(NULL, "入力チェック", -1, &rect, DT_CALCRECT, NULL);
 	pFont->DrawText(NULL, "入力チェック", -1, &rect, DT_LEFT | DT_BOTTOM, 0xffff0000);
-
-
-	m_pLibrary->m_pD3DManager->Draw_End();
-
 
 }
 

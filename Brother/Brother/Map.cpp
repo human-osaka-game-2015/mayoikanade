@@ -1,5 +1,6 @@
 #include "Map.h"
 #include "Library.h"
+#include "GameScene.h"
 #include <stdio.h>
 
 Map::Map(Library* pLibrary, LPDIRECT3DTEXTURE9 pTexture) :m_pLibrary(pLibrary), m_pTexture(pTexture)
@@ -100,19 +101,19 @@ void Map::MapTex_UV_Set(MAP_ID MapId)
 				switch (m_ObjectData[i][j])
 				{
 				case WOOD_01:
-					m_pLibrary->m_pUVSetter->MakeVertex(WOOD_01 - 1, m_MapObject_Tex[i][j]);
+					m_pLibrary->MakeVertex(WOOD_01 , m_MapObject_Tex[i][j]);
 					break;
 
 				case WOOD_02:
-					m_pLibrary->m_pUVSetter->MakeVertex(WOOD_02 - 1, m_MapObject_Tex[i][j]);
+					m_pLibrary->MakeVertex(WOOD_02 , m_MapObject_Tex[i][j]);
 					break;
 
 				case WOOD_03:
-					m_pLibrary->m_pUVSetter->MakeVertex(WOOD_03 - 1, m_MapObject_Tex[i][j]);
+					m_pLibrary->MakeVertex(WOOD_03 , m_MapObject_Tex[i][j]);
 					break;
 
 				case WOOD_04:
-					m_pLibrary->m_pUVSetter->MakeVertex(WOOD_04 - 1, m_MapObject_Tex[i][j]);
+					m_pLibrary->MakeVertex(WOOD_04 , m_MapObject_Tex[i][j]);
 					break;
 
 				}
@@ -128,12 +129,12 @@ void Map::MapTex_UV_Set(MAP_ID MapId)
 			{
 				switch (m_BackGroundData[i][j])
 				{
-				case GRASS_23:
-					m_pLibrary->m_pUVSetter->MakeVertex(GRASS_23 - 1 , m_MapBackGround_Tex[i][j]);
+				case GRASS_01:
+					m_pLibrary->MakeVertex(GRASS_01 , m_MapBackGround_Tex[i][j]);
 					break;
 
-				case GROUND_24:
-					m_pLibrary->m_pUVSetter->MakeVertex(GROUND_24 - 1, m_MapBackGround_Tex[i][j]);
+				case GROUND_01:
+					m_pLibrary->MakeVertex(GROUND_01, m_MapBackGround_Tex[i][j]);
 
 					break;
 				}
@@ -162,14 +163,14 @@ void Map::MapTex_XY_Set()
 			m_MapBackGround_Pos[count_y - 1][count_x - 1].y = (float)(MAPTIP_SIZE * count_y) - MAPTIP_DEFAULT_POSY;
 			m_MapBackGround_Pos[count_y - 1][count_x - 1].w = (float)MAPTIP_SIZE;
 			m_MapBackGround_Pos[count_y - 1][count_x - 1].h = (float)MAPTIP_SIZE;
-			m_pLibrary->m_pVertex->xySet(m_MapBackGround_Pos[count_y - 1][count_x - 1], m_MapBackGround_Tex[count_y - 1][count_x - 1]);
+			m_pLibrary->xySet(m_MapBackGround_Pos[count_y - 1][count_x - 1], m_MapBackGround_Tex[count_y - 1][count_x - 1]);
 
 			//“–‚½‚è”»’è—p‚ÌXY‚ð“ü‚ê‚é
 			m_MapObject_Pos[count_y - 1][count_x - 1].x = (float)(MAPTIP_SIZE * count_x) - MAPTIP_DEFAULT_POSX;
 			m_MapObject_Pos[count_y - 1][count_x - 1].y = (float)(MAPTIP_SIZE * count_y) - MAPTIP_DEFAULT_POSY;
 			m_MapObject_Pos[count_y - 1][count_x - 1].w = (float)MAPTIP_SIZE;
 			m_MapObject_Pos[count_y - 1][count_x - 1].h = (float)MAPTIP_SIZE;
-			m_pLibrary->m_pVertex->xySet(m_MapObject_Pos[count_y - 1][count_x - 1], m_MapObject_Tex[count_y - 1][count_x - 1]);
+			m_pLibrary->xySet(m_MapObject_Pos[count_y - 1][count_x - 1], m_MapObject_Tex[count_y - 1][count_x - 1]);
 		}
 	}
 }
@@ -219,8 +220,8 @@ void Map::Draw()
 	{
 		for (int j = 0; j < MAP_WIDTH; j++)
 		{
-			m_pLibrary->m_pVertex->Set_Draw_Tex(m_pTexture, m_MapBackGround_Tex[i][j]);
-			m_pLibrary->m_pVertex->Set_Draw_Tex(m_pTexture, m_MapObject_Tex[i][j]);
+			m_pLibrary->Set_Draw_Tex(m_pTexture, m_MapBackGround_Tex[i][j]);
+			m_pLibrary->Set_Draw_Tex(m_pTexture, m_MapObject_Tex[i][j]);
 		}
 	}
 }

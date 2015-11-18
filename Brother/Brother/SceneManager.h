@@ -1,8 +1,9 @@
 #ifndef _SCENEMANAGER_H_
 #define _SCENEMANAGER_H_
 #include <d3dx9.h>
-#include "Scene.h"
 class Library;
+class Scene;
+enum SCENE_NUM;
 
 
 
@@ -15,13 +16,9 @@ private:
 public:
 	SceneManager(Library* pLibrary);
 	~SceneManager();
-	void Control();
+	bool Control();
 	void Draw();
-	Scene*		m_pScene;
-	
-
-	
-	
+	Scene*		m_pScene;	
 };
 
 #endif

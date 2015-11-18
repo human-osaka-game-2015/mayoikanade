@@ -1,5 +1,6 @@
 #ifndef _GAMESCENE_H_
 #define _GAMASCENE_H_
+#define GAME_ANIMA_INFO 6
 
 #include "Scene.h"
 #include <d3dx9.h>
@@ -11,6 +12,62 @@ class CollisionChecker;
 class Brother;
 class YoungerBrother;
 
+
+enum GAME_VERTEXINFO_ID
+{
+	BROTHER_WAIT_FRONT_01,
+	BROTHER_WAIT_FRONT_02,
+
+	BROTHER_WAIT_SIDE_01,
+	BROTHER_WAIT_SIDE_02,
+
+	BROTHER_WAIT_BACK_01,
+	BROTHER_WAIT_BACK_02,
+
+	BROTHER_WALK_FRONT_01,
+	BROTHER_WALK_FRONT_02,
+	BROTHER_WALK_FRONT_03,
+	BROTHER_WALK_FRONT_04,
+
+	BROTHER_WALK_SIDE_01,
+	BROTHER_WALK_SIDE_02,
+	BROTHER_WALK_SIDE_03,
+	BROTHER_WALK_SIDE_04,
+
+	BROTHER_WALK_BACK_01,
+	BROTHER_WALK_BACK_02,
+	BROTHER_WALK_BACK_03,
+	BROTHER_WALK_BACK_04,
+
+	WOOD_01,
+	WOOD_02,
+	WOOD_03,
+	WOOD_04,
+
+	GRASS_01,
+	GROUND_01,
+
+	GAME_VERTEXINFO_MAX
+};
+
+enum GAMEANIMA_ID
+{
+	BROTHER_WAIT_FRONT,
+	BROTHER_WAIT_SIDE,
+	BROTHER_WAIT_BACK,
+	BROTHER_WALK_FRONT,
+	BROTHER_WALK_SIDE,
+	BROTHER_WALK_BACK,
+	BROTHERMAX
+};
+
+
+//ç°ÇÕï Ç…ï™ÇØÇƒÇ¢ÇÈ
+enum GIMMICK_ID
+{
+	SWITCH_01,
+	SWITCH_02,
+};
 
 class GameScene : public Scene
 {
@@ -24,7 +81,7 @@ private:
 	CollisionChecker*		m_pCollisionChecker;
 	Brother*				m_pBrother;
 	YoungerBrother*			m_pYoungerBrother;//égÇÌÇ»Ç¢
-	LPDIRECT3DTEXTURE9  	m_pTexture[3];
+	LPDIRECT3DTEXTURE9  	m_pTexture;
 
 
 

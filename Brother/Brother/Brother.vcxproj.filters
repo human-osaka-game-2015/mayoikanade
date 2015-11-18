@@ -1,14 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="ソース ファイル">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="ヘッダー ファイル">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
-    </Filter>
     <Filter Include="リソース ファイル">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
@@ -40,68 +32,89 @@
     <Filter Include="Library\Library">
       <UniqueIdentifier>{9edc2b10-4bbd-4981-a5dd-77d0426d0c8a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\GameMain">
-      <UniqueIdentifier>{0087da9c-6daf-4c8e-ae79-85ecd66a9179}</UniqueIdentifier>
+    <Filter Include="WinMain">
+      <UniqueIdentifier>{87b2d20b-9330-4c6a-a694-904675b5f72f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\GameMain\SceneManager">
-      <UniqueIdentifier>{9d04c3dc-ad45-47de-9e73-f8535309b873}</UniqueIdentifier>
+    <Filter Include="WinMain\GameMain">
+      <UniqueIdentifier>{9c90a14f-f1a3-4fef-b93d-93d27d055e98}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\GameMain\SceneManager\Scene">
-      <UniqueIdentifier>{1bf82a02-e417-4bf4-b364-05c0dd92df62}</UniqueIdentifier>
+    <Filter Include="WinMain\GameMain\SceneManager">
+      <UniqueIdentifier>{6f98b8af-3637-4526-9ec9-e7a701ed71b8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\GameMain\SceneManager\Scene\LogoScene">
-      <UniqueIdentifier>{81e4236f-2f72-4e85-a0cb-4b42717a107c}</UniqueIdentifier>
+    <Filter Include="WinMain\GameMain\SceneManager\Scene">
+      <UniqueIdentifier>{a73b0a80-83f1-4c7b-8b26-29ee465db8c8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\GameMain\SceneManager\Scene\OpeningScene">
-      <UniqueIdentifier>{52bf8238-eb93-40b1-bab8-956cc93faf93}</UniqueIdentifier>
+    <Filter Include="WinMain\GameMain\SceneManager\Scene\LogoScene">
+      <UniqueIdentifier>{a0323456-7091-4010-992b-c1562edec565}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\GameMain\SceneManager\Scene\GameScene">
-      <UniqueIdentifier>{9f0917d3-4f39-4096-b0e0-619f90786582}</UniqueIdentifier>
+    <Filter Include="WinMain\GameMain\SceneManager\Scene\OpeningScene">
+      <UniqueIdentifier>{f0c0e859-5c34-4fb4-9465-c73c486b6824}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\GameMain\SceneManager\Scene\GameScene\SceneChangeListener">
-      <UniqueIdentifier>{d0b2ffae-d9f0-4f17-8d7e-2ec6f3329e0e}</UniqueIdentifier>
+    <Filter Include="WinMain\GameMain\SceneManager\Scene\ConnectingScene">
+      <UniqueIdentifier>{610ef43e-fbe3-40dd-9d10-fa04281b4a3f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\GameMain\SceneManager\Scene\GameScene\Player">
-      <UniqueIdentifier>{ad83895b-a4ac-4f5d-a6cb-1985e17c9a66}</UniqueIdentifier>
+    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene">
+      <UniqueIdentifier>{f35ae513-493e-4c67-b800-6b36a8a7935b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\GameMain\SceneManager\Scene\GameScene\Player\YoungerBrother">
-      <UniqueIdentifier>{d23e7d10-8819-4deb-9aa2-4096d068616b}</UniqueIdentifier>
+    <Filter Include="WinMain\GameMain\SceneManager\Scene\ResultScene">
+      <UniqueIdentifier>{365fe3d1-25d2-42db-9276-f1bd517a71f3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\GameMain\SceneManager\Scene\GameScene\Player\Brother">
-      <UniqueIdentifier>{6856fd8e-f914-4e8a-baf5-bd45f18e8cf5}</UniqueIdentifier>
+    <Filter Include="WinMain\GameMain\SceneManager\Scene\LogoScene\LogoBackGround">
+      <UniqueIdentifier>{a49ce375-20e4-4fe4-9476-8b58a3eb98e2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\GameMain\SceneManager\Scene\GameScene\ModeManager">
-      <UniqueIdentifier>{6bbc9583-602b-40f0-8865-e583ab6b0f34}</UniqueIdentifier>
+    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\Player">
+      <UniqueIdentifier>{06f91837-ca26-44bf-94a7-79215958191a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\GameMain\SceneManager\Scene\GameScene\Map">
-      <UniqueIdentifier>{fff2bf56-f559-4c6d-8988-e01ecbc3994d}</UniqueIdentifier>
+    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\Map">
+      <UniqueIdentifier>{15df8ae9-8213-4d18-8e75-33812e8ca25f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\GameMain\SceneManager\Scene\GameScene\Map\MapObject">
-      <UniqueIdentifier>{ddbba4cb-63a3-41a7-8005-e6edb2c53b91}</UniqueIdentifier>
+    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\CollisionChecker">
+      <UniqueIdentifier>{cdbf8baf-9fb4-4b8e-af01-f07a39e5a720}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\GameMain\SceneManager\Scene\GameScene\Map\MapGimmick">
-      <UniqueIdentifier>{79e23625-3dfe-43ad-90d1-b96792b69cd5}</UniqueIdentifier>
+    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\SceneListener">
+      <UniqueIdentifier>{6205b4d0-2fe0-416f-ad60-3958266e86fa}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\GameMain\SceneManager\Scene\GameScene\Map\MapBackGround">
-      <UniqueIdentifier>{ff9e80d1-6d09-4df3-b044-130ca634460c}</UniqueIdentifier>
+    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\ModeManager">
+      <UniqueIdentifier>{801e77f8-9289-4f70-b66e-2b1880fa2ee1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\GameMain\SceneManager\Scene\GameScene\CollisionChecker">
-      <UniqueIdentifier>{2a1bfa0d-d61c-4d9b-a9e3-e3e99457813b}</UniqueIdentifier>
+    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\Player\YoungerBrother">
+      <UniqueIdentifier>{b2461888-b64e-47b6-a9d4-9a3a84e2caf2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\GameMain\SceneManager\Scene\ResultScene">
-      <UniqueIdentifier>{ee19a9ad-bc86-4a58-bf9f-69293ed81544}</UniqueIdentifier>
+    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\Player\Brother">
+      <UniqueIdentifier>{2cfd6569-fdbe-418e-976b-b174aa768f37}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\GameMain\SceneManager\Scene\TitleScene">
-      <UniqueIdentifier>{2c3a7a96-9b2e-47e2-8a7d-38fb8035ac95}</UniqueIdentifier>
+    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\Map\MapObject">
+      <UniqueIdentifier>{8f263b3f-634f-483e-abf7-0a3ec5475e7d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\GameMain\SceneManager\Scene\ConnectingScene">
-      <UniqueIdentifier>{c841ffe6-8d0b-4f20-80d8-ff9681d7e8a2}</UniqueIdentifier>
+    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\Map\MapGimmick">
+      <UniqueIdentifier>{eb344f23-7538-42e9-9d6c-309e254b32c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\Map\MapBackGround">
+      <UniqueIdentifier>{4b57d8da-f0dc-45ca-a3f2-bc3678467883}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="WinMain\GameMain\SceneManager\Scene\TitleScene">
+      <UniqueIdentifier>{a2fd433d-6263-4d91-9d98-62e5326ce6e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="WinMain\GameMain\SceneManager\Scene\TitleScene\TitleBackGround">
+      <UniqueIdentifier>{7b44002a-de0c-421b-844d-2334cbedc2f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="WinMain\GameMain\SceneManager\Scene\TitleScene\TitleSelectManager">
+      <UniqueIdentifier>{2185a1f5-35fb-4091-a6bb-bf80f7f8b023}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="WinMain\GameMain\SceneManager\Scene\TitleScene\TitleTimeManager">
+      <UniqueIdentifier>{92d4e445-82b0-497a-ab0a-15be96a51800}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="WinMain\GameMain\SceneManager\Scene\TitleScene\TitleName">
+      <UniqueIdentifier>{d8fdc5d6-1472-4431-96f0-d8a619b45da5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="WinMain\GameMain\SceneManager\Scene\StaffScene">
+      <UniqueIdentifier>{28120c17-9514-48f6-b495-557add869868}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="WinMain\GameMain\SceneManager\Scene\StaffScene\StaffBackGround">
+      <UniqueIdentifier>{9169434c-0b0d-4764-8d34-6edf895b2c84}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="WinMain.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="XInput_lib.cpp">
       <Filter>Library\XInput</Filter>
     </ClCompile>
@@ -126,62 +139,86 @@
     <ClCompile Include="Library.cpp">
       <Filter>Library\Library</Filter>
     </ClCompile>
-    <ClCompile Include="GameMain.cpp">
-      <Filter>ソース ファイル\GameMain</Filter>
+    <ClCompile Include="WinMain.cpp">
+      <Filter>WinMain</Filter>
     </ClCompile>
     <ClCompile Include="SceneManager.cpp">
-      <Filter>ソース ファイル\GameMain\SceneManager</Filter>
+      <Filter>WinMain\GameMain\SceneManager</Filter>
+    </ClCompile>
+    <ClCompile Include="GameMain.cpp">
+      <Filter>WinMain\GameMain</Filter>
     </ClCompile>
     <ClCompile Include="Scene.cpp">
-      <Filter>ソース ファイル\GameMain\SceneManager\Scene</Filter>
+      <Filter>WinMain\GameMain\SceneManager\Scene</Filter>
     </ClCompile>
     <ClCompile Include="LogoScene.cpp">
-      <Filter>ソース ファイル\GameMain\SceneManager\Scene\LogoScene</Filter>
-    </ClCompile>
-    <ClCompile Include="OpeningScene.cpp">
-      <Filter>ソース ファイル\GameMain\SceneManager\Scene\OpeningScene</Filter>
-    </ClCompile>
-    <ClCompile Include="GameScene.cpp">
-      <Filter>ソース ファイル\GameMain\SceneManager\Scene\GameScene</Filter>
+      <Filter>WinMain\GameMain\SceneManager\Scene\LogoScene</Filter>
     </ClCompile>
     <ClCompile Include="ConnectingScene.cpp">
-      <Filter>ソース ファイル\GameMain\SceneManager\Scene\ConnectingScene</Filter>
+      <Filter>WinMain\GameMain\SceneManager\Scene\ConnectingScene</Filter>
     </ClCompile>
-    <ClCompile Include="SceneChangeListener.cpp">
-      <Filter>ソース ファイル\GameMain\SceneManager\Scene\GameScene\SceneChangeListener</Filter>
-    </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>ソース ファイル\GameMain\SceneManager\Scene\GameScene\Player</Filter>
-    </ClCompile>
-    <ClCompile Include="YoungerBrother.cpp">
-      <Filter>ソース ファイル\GameMain\SceneManager\Scene\GameScene\Player\YoungerBrother</Filter>
-    </ClCompile>
-    <ClCompile Include="Brother.cpp">
-      <Filter>ソース ファイル\GameMain\SceneManager\Scene\GameScene\Player\Brother</Filter>
-    </ClCompile>
-    <ClCompile Include="TitleScene.cpp">
-      <Filter>ソース ファイル\GameMain\SceneManager\Scene\TitleScene</Filter>
-    </ClCompile>
-    <ClCompile Include="ModeManager.cpp">
-      <Filter>ソース ファイル\GameMain\SceneManager\Scene\GameScene\ModeManager</Filter>
-    </ClCompile>
-    <ClCompile Include="MapGimmick.cpp">
-      <Filter>ソース ファイル\GameMain\SceneManager\Scene\GameScene\Map\MapGimmick</Filter>
-    </ClCompile>
-    <ClCompile Include="MapObject.cpp">
-      <Filter>ソース ファイル\GameMain\SceneManager\Scene\GameScene\Map\MapObject</Filter>
-    </ClCompile>
-    <ClCompile Include="MapBackGround.cpp">
-      <Filter>ソース ファイル\GameMain\SceneManager\Scene\GameScene\Map\MapBackGround</Filter>
-    </ClCompile>
-    <ClCompile Include="Map.cpp">
-      <Filter>ソース ファイル\GameMain\SceneManager\Scene\GameScene\Map</Filter>
-    </ClCompile>
-    <ClCompile Include="CollisionChecker.cpp">
-      <Filter>ソース ファイル\GameMain\SceneManager\Scene\GameScene\CollisionChecker</Filter>
+    <ClCompile Include="GameScene.cpp">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene</Filter>
     </ClCompile>
     <ClCompile Include="ResultScene.cpp">
-      <Filter>ソース ファイル\GameMain\SceneManager\Scene\ResultScene</Filter>
+      <Filter>WinMain\GameMain\SceneManager\Scene\ResultScene</Filter>
+    </ClCompile>
+    <ClCompile Include="OpeningScene.cpp">
+      <Filter>WinMain\GameMain\SceneManager\Scene\OpeningScene</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleScene.cpp">
+      <Filter>WinMain\GameMain\SceneManager\Scene\TitleScene</Filter>
+    </ClCompile>
+    <ClCompile Include="LogoBackGround.cpp">
+      <Filter>WinMain\GameMain\SceneManager\Scene\LogoScene\LogoBackGround</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Brother.cpp">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\Player\Brother</Filter>
+    </ClCompile>
+    <ClCompile Include="YoungerBrother.cpp">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\Player\YoungerBrother</Filter>
+    </ClCompile>
+    <ClCompile Include="MapObject.cpp">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\Map\MapObject</Filter>
+    </ClCompile>
+    <ClCompile Include="MapGimmick.cpp">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\Map\MapGimmick</Filter>
+    </ClCompile>
+    <ClCompile Include="MapBackGround.cpp">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\Map\MapBackGround</Filter>
+    </ClCompile>
+    <ClCompile Include="CollisionChecker.cpp">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\CollisionChecker</Filter>
+    </ClCompile>
+    <ClCompile Include="ModeManager.cpp">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\ModeManager</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneChangeListener.cpp">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\SceneListener</Filter>
+    </ClCompile>
+    <ClCompile Include="Map.cpp">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleBackGround.cpp">
+      <Filter>WinMain\GameMain\SceneManager\Scene\TitleScene\TitleBackGround</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleSelectManager.cpp">
+      <Filter>WinMain\GameMain\SceneManager\Scene\TitleScene\TitleSelectManager</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleTimeManager.cpp">
+      <Filter>WinMain\GameMain\SceneManager\Scene\TitleScene\TitleTimeManager</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleName.cpp">
+      <Filter>WinMain\GameMain\SceneManager\Scene\TitleScene\TitleName</Filter>
+    </ClCompile>
+    <ClCompile Include="StaffScene.cpp">
+      <Filter>WinMain\GameMain\SceneManager\Scene\StaffScene</Filter>
+    </ClCompile>
+    <ClCompile Include="StaffBackGround.cpp">
+      <Filter>WinMain\GameMain\SceneManager\Scene\StaffScene\StaffBackGround</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -209,62 +246,86 @@
     <ClInclude Include="Library.h">
       <Filter>Library\Library</Filter>
     </ClInclude>
-    <ClInclude Include="GameMain.h">
-      <Filter>ソース ファイル\GameMain</Filter>
-    </ClInclude>
     <ClInclude Include="SceneManager.h">
-      <Filter>ソース ファイル\GameMain\SceneManager</Filter>
+      <Filter>WinMain\GameMain\SceneManager</Filter>
+    </ClInclude>
+    <ClInclude Include="GameMain.h">
+      <Filter>WinMain\GameMain</Filter>
     </ClInclude>
     <ClInclude Include="Scene.h">
-      <Filter>ソース ファイル\GameMain\SceneManager\Scene</Filter>
+      <Filter>WinMain\GameMain\SceneManager\Scene</Filter>
     </ClInclude>
     <ClInclude Include="LogoScene.h">
-      <Filter>ソース ファイル\GameMain\SceneManager\Scene\LogoScene</Filter>
-    </ClInclude>
-    <ClInclude Include="OpeningScene.h">
-      <Filter>ソース ファイル\GameMain\SceneManager\Scene\OpeningScene</Filter>
+      <Filter>WinMain\GameMain\SceneManager\Scene\LogoScene</Filter>
     </ClInclude>
     <ClInclude Include="ConnectingScene.h">
-      <Filter>ソース ファイル\GameMain\SceneManager\Scene\ConnectingScene</Filter>
-    </ClInclude>
-    <ClInclude Include="SceneChangeListener.h">
-      <Filter>ソース ファイル\GameMain\SceneManager\Scene\GameScene\SceneChangeListener</Filter>
-    </ClInclude>
-    <ClInclude Include="Player.h">
-      <Filter>ソース ファイル\GameMain\SceneManager\Scene\GameScene\Player</Filter>
-    </ClInclude>
-    <ClInclude Include="YoungerBrother.h">
-      <Filter>ソース ファイル\GameMain\SceneManager\Scene\GameScene\Player\YoungerBrother</Filter>
-    </ClInclude>
-    <ClInclude Include="Brother.h">
-      <Filter>ソース ファイル\GameMain\SceneManager\Scene\GameScene\Player\Brother</Filter>
-    </ClInclude>
-    <ClInclude Include="TitleScene.h">
-      <Filter>ソース ファイル\GameMain\SceneManager\Scene\TitleScene</Filter>
-    </ClInclude>
-    <ClInclude Include="ModeManager.h">
-      <Filter>ソース ファイル\GameMain\SceneManager\Scene\GameScene\ModeManager</Filter>
-    </ClInclude>
-    <ClInclude Include="MapGimmick.h">
-      <Filter>ソース ファイル\GameMain\SceneManager\Scene\GameScene\Map\MapGimmick</Filter>
-    </ClInclude>
-    <ClInclude Include="MapObject.h">
-      <Filter>ソース ファイル\GameMain\SceneManager\Scene\GameScene\Map\MapObject</Filter>
-    </ClInclude>
-    <ClInclude Include="MapBackGround.h">
-      <Filter>ソース ファイル\GameMain\SceneManager\Scene\GameScene\Map\MapBackGround</Filter>
-    </ClInclude>
-    <ClInclude Include="Map.h">
-      <Filter>ソース ファイル\GameMain\SceneManager\Scene\GameScene\Map</Filter>
-    </ClInclude>
-    <ClInclude Include="CollisionChecker.h">
-      <Filter>ソース ファイル\GameMain\SceneManager\Scene\GameScene\CollisionChecker</Filter>
-    </ClInclude>
-    <ClInclude Include="ResultScene.h">
-      <Filter>ソース ファイル\GameMain\SceneManager\Scene\ResultScene</Filter>
+      <Filter>WinMain\GameMain\SceneManager\Scene\ConnectingScene</Filter>
     </ClInclude>
     <ClInclude Include="GameScene.h">
-      <Filter>ソース ファイル\GameMain\SceneManager\Scene\GameScene</Filter>
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene</Filter>
     </ClInclude>
+    <ClInclude Include="ResultScene.h">
+      <Filter>WinMain\GameMain\SceneManager\Scene\ResultScene</Filter>
+    </ClInclude>
+    <ClInclude Include="OpeningScene.h">
+      <Filter>WinMain\GameMain\SceneManager\Scene\OpeningScene</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleScene.h">
+      <Filter>WinMain\GameMain\SceneManager\Scene\TitleScene</Filter>
+    </ClInclude>
+    <ClInclude Include="LogoBackGround.h">
+      <Filter>WinMain\GameMain\SceneManager\Scene\LogoScene\LogoBackGround</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Brother.h">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\Player\Brother</Filter>
+    </ClInclude>
+    <ClInclude Include="YoungerBrother.h">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\Player\YoungerBrother</Filter>
+    </ClInclude>
+    <ClInclude Include="MapObject.h">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\Map\MapObject</Filter>
+    </ClInclude>
+    <ClInclude Include="MapGimmick.h">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\Map\MapGimmick</Filter>
+    </ClInclude>
+    <ClInclude Include="MapBackGround.h">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\Map\MapBackGround</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionChecker.h">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\CollisionChecker</Filter>
+    </ClInclude>
+    <ClInclude Include="ModeManager.h">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\ModeManager</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneChangeListener.h">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\SceneListener</Filter>
+    </ClInclude>
+    <ClInclude Include="Map.h">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleBackGround.h">
+      <Filter>WinMain\GameMain\SceneManager\Scene\TitleScene\TitleBackGround</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleSelectManager.h">
+      <Filter>WinMain\GameMain\SceneManager\Scene\TitleScene\TitleSelectManager</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleTimeManager.h">
+      <Filter>WinMain\GameMain\SceneManager\Scene\TitleScene\TitleTimeManager</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleName.h">
+      <Filter>WinMain\GameMain\SceneManager\Scene\TitleScene\TitleName</Filter>
+    </ClInclude>
+    <ClInclude Include="StaffScene.h">
+      <Filter>WinMain\GameMain\SceneManager\Scene\StaffScene</Filter>
+    </ClInclude>
+    <ClInclude Include="StaffBackGround.h">
+      <Filter>WinMain\GameMain\SceneManager\Scene\StaffScene\StaffBackGround</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Texture順番.txt" />
   </ItemGroup>
 </Project>

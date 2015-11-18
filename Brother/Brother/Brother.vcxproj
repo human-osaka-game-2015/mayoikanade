@@ -20,6 +20,7 @@
     <ClCompile Include="GameScene.cpp" />
     <ClCompile Include="InputDevice.cpp" />
     <ClCompile Include="Library.cpp" />
+    <ClCompile Include="LogoBackGround.cpp" />
     <ClCompile Include="LogoScene.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="MapBackGround.cpp" />
@@ -32,8 +33,14 @@
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneChangeListener.cpp" />
     <ClCompile Include="SceneManager.cpp" />
+    <ClCompile Include="StaffBackGround.cpp" />
+    <ClCompile Include="StaffScene.cpp" />
     <ClCompile Include="Texture.cpp" />
+    <ClCompile Include="TitleBackGround.cpp" />
+    <ClCompile Include="TitleName.cpp" />
     <ClCompile Include="TitleScene.cpp" />
+    <ClCompile Include="TitleSelectManager.cpp" />
+    <ClCompile Include="TitleTimeManager.cpp" />
     <ClCompile Include="UVSetter.cpp" />
     <ClCompile Include="Vertex.cpp" />
     <ClCompile Include="WinMain.cpp" />
@@ -50,6 +57,7 @@
     <ClInclude Include="GameScene.h" />
     <ClInclude Include="InputDevice.h" />
     <ClInclude Include="Library.h" />
+    <ClInclude Include="LogoBackGround.h" />
     <ClInclude Include="LogoScene.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="MapBackGround.h" />
@@ -62,12 +70,21 @@
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneChangeListener.h" />
     <ClInclude Include="SceneManager.h" />
+    <ClInclude Include="StaffBackGround.h" />
+    <ClInclude Include="StaffScene.h" />
     <ClInclude Include="Texture.h" />
+    <ClInclude Include="TitleBackGround.h" />
+    <ClInclude Include="TitleName.h" />
     <ClInclude Include="TitleScene.h" />
+    <ClInclude Include="TitleSelectManager.h" />
+    <ClInclude Include="TitleTimeManager.h" />
     <ClInclude Include="UVSetter.h" />
     <ClInclude Include="Vertex.h" />
     <ClInclude Include="XInput_lib.h" />
     <ClInclude Include="YoungerBrother.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Texture順番.txt" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{4FA31307-45A2-4565-9685-644E45A011D0}</ProjectGuid>

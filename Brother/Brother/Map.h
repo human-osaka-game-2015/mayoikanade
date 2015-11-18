@@ -9,10 +9,15 @@
 #define TOTAL_TEX_NUM 24
 #define MAPTIP_SIZE 64
 
+#define OBJECT_MAX 4
+#define BACKGROUND_MAX 2
+#define GIMMICK_MAX 2
+
 #include"Vertex.h"
 #include "MapObject.h"
 #include "MapGimmick.h"
 #include "MapBackGround.h"
+
 
 class Library;
 class CollisionChecker;
@@ -23,6 +28,11 @@ enum MAP_ID
 	MAP_GIMMICK,
 	MAP_BACKGROUND,
 	MAP_MAX
+};
+
+enum CHIP_ID
+{
+
 };
 
 class Map

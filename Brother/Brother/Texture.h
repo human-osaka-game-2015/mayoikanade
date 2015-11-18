@@ -1,5 +1,6 @@
 #ifndef _TEXTURE_H_
 #define _TEXTURE_H_
+#define COLORMAX 255
 #include <d3dx9.h>
 #include <d3dx9tex.h>
 

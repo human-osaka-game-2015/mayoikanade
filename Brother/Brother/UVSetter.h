@@ -10,9 +10,9 @@
 #define AnimationTypeERROR -1
 #define FILEOPENERROR -1
 
-#define VERTEX_INFO 24
-#define FILE_INFO 1
-#define ANIMA_INFO 6
+
+
+
 
 #include <d3dx9.h>
 #include <d3dx9tex.h>
@@ -24,42 +24,7 @@ enum REVERSAL_NUM
 	LEFT_AND_RIGHT
 };
 
-//
-//enum VERTEXINFO_ID
-//{
-//	BROTHER_WAIT_FRONT_01,
-//	BROTHER_WAIT_FRONT_02,
-//
-//	BROTHER_WAIT_SIDE_01,
-//	BROTHER_WAIT_SIDE_02,
-//
-//	BROTHER_WAIT_BACK_01,
-//	BROTHER_WAIT_BACK_02,
-//
-//	BROTHER_WALK_FRONT_01,
-//	BROTHER_WALK_FRONT_02,
-//	BROTHER_WALK_FRONT_03,
-//	BROTHER_WALK_FRONT_04,
-//
-//	BROTHER_WALK_SIDE_01,
-//	BROTHER_WALK_SIDE_02,
-//	BROTHER_WALK_SIDE_03,
-//	BROTHER_WALK_SIDE_04,
-//
-//	BROTHER_WALK_BACK_01,
-//	BROTHER_WALK_BACK_02,
-//	BROTHER_WALK_BACK_03,
-//	BROTHER_WALK_BACK_04,
-//
-//	WOOD_01,
-//	WOOD_02,
-//	WOOD_03,
-//	WOOD_04,
-//
-//	GRASS_01,
-//	GROUND_01,
-//
-//};
+
 
 typedef struct _InfoFile_
 {
@@ -101,20 +66,20 @@ public:
 	~UVSetter();
 
 	//読み込むcsvファイルのパスとそのファイル内の情報量を渡す
-	int FileInfo_Set(const char* name, int FileNum);
-	int VertexInfo_Set(const char* name, int VertexNum);
-	int AnimaInfo_Set(const char* name, int AnimaNum);
+	int FileInfo_Set(const char* name, int fileNum);
+	int VertexInfo_Set(const char* name, int vertexNum);
+	int AnimaInfo_Set(const char* name, int animaNum);
 
 	void FileInfo_Release();
 	void VertexInfo_Release();
 	void AnimaInfo_Release();
 
-	void MakeVertex(int VertexNum, CustomVertex* vertex);
-	void MakePosition(int VertexNum, Position* pos);
-	void InitAnima(int AnimaNum);
-	int AnimaControl(int AnimaNum);
+	void MakeVertex(int vertexNum, CustomVertex* pVertex);
+	void MakePosition(int vertexNum, Position* pPos);
+	void InitAnima(int animaNum);
+	int AnimaControl(int animaNum);
 
-	void UVReversal(CustomVertex* pvertex, REVERSAL_NUM rev);
+	void UVReversal(CustomVertex* pVertex, REVERSAL_NUM rev);
 
 };
 

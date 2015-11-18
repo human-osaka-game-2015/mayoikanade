@@ -1,4 +1,5 @@
 #include "CollisionChecker.h"
+#include "GameScene.h"
 #include "Map.h"
 
 CollisionChecker::CollisionChecker(Map* pMap)

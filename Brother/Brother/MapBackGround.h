@@ -2,12 +2,7 @@
 #define _MAPBACKGROUND_H_
 class Library;
 
-enum BACKGROUND_ID
-{
-	GRASS_23 = 23,
-	GROUND_24,
-	BACKGROUND_MAX
-};
+
 
 class MapBackGround
 {

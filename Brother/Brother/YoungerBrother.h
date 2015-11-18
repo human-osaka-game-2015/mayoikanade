@@ -2,10 +2,14 @@
 #define _YOUNGERBROTHER_H_
 #include "Player.h"
 #include "Vertex.h"
-#include "ModeManager.h"
-//‘O•ûéŒ¾‚¾‚¯‚Å‚æ‚³‚°
+
 class Library;
+class ModeManager;
+typedef struct IDirect3DTexture9 *LPDIRECT3DTEXTURE9, *PDIRECT3DTEXTURE9;
 class CollisionChecker;
+enum GAMEANIMA_ID;
+enum GAMEMODE_NUM;
+
 
 
 

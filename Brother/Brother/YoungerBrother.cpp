@@ -1,6 +1,8 @@
 #include "YoungerBrother.h"
 #include "CollisionChecker.h"
 #include "Library.h"
+#include "ModeManager.h"
+
 
 YoungerBrother::YoungerBrother(Library* pLibrary, LPDIRECT3DTEXTURE9 pTexture, bool* pPadState, bool* pPadOldState) :m_pLibrary(pLibrary), m_pTexture(pTexture), m_pPadState(pPadState), m_PadOldState(pPadOldState)
 {

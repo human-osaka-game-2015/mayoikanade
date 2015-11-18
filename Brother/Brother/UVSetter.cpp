@@ -42,7 +42,7 @@ int UVSetter::FileInfo_Set(const char* name, int FileNum)
 
 	for (int i = 0; i < FileNum; i++)
 	{
-		fscanf_s(fp, "%d,%f,%f", &m_pFileInfo[i].FileNum, &m_pFileInfo[i].FileHight, &m_pFileInfo[i].FileWidth);
+		fscanf_s(fp, "%d,%f,%f", &m_pFileInfo[i].FileNum, &m_pFileInfo[i].FileWidth, &m_pFileInfo[i].FileHight);
 	}
 
 	fclose(fp);

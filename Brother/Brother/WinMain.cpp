@@ -11,7 +11,7 @@
 
 LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wp, LPARAM lp);
 
-//#define FULLWINDOW//コメントアウト削除するとフルスクかつカーソル削除設定。
+#define FULLWINDOW//コメントアウト削除するとフルスクかつカーソル削除設定。
 
 
 //-------------------------------------------------------------
@@ -42,7 +42,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 
 	int dH = GetSystemMetrics(SM_CYCAPTION) + GetSystemMetrics(SM_CYFRAME) * 2;
 	int dW = GetSystemMetrics(SM_CXFRAME) * 2;
-
 #ifdef FULLWINDOW//フルスク設定
 	hWnd = CreateWindow(
 		WINDOWTITLE,
@@ -75,6 +74,19 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 		NULL
 		);
 #endif
+	
+	//ウィンドウサイズ取得
+	//ウィンドウサイズはオブジェクトに渡すようにすること
+	RECT lprc;
+	GetWindowRect(hWnd, &lprc);
+	lprc.right += dW;
+	lprc.bottom += dH;
+	//画面サイズ
+	//1374
+	//798
+	//中央
+	//687
+	//399
 
 	if (!hWnd) return 0;
 
@@ -100,7 +112,10 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 			SyncNow = timeGetTime();
 			if (SyncNow - SyncOld >= 1000 / 60)
 			{
-				Main.m_pSceneManager->Control();
+				if (Main.m_pSceneManager->Control())
+				{
+					break;
+				}
 				Main.m_pSceneManager->Draw();
 
 				SyncOld = SyncNow;

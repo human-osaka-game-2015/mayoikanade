@@ -1,5 +1,7 @@
 #ifndef _SCENE_H_
 #define _SCENE_H_
+#define FILE_INFO 7
+
 enum SCENE_NUM
 {
 	SCENE_NONE,
@@ -9,6 +11,8 @@ enum SCENE_NUM
 	CONNECTING_SCENE,
 	GAME_SCENE,
 	RESULT_SCENE,
+	END_SCENE,
+	STAFF_SCENE,
 	MAX_SCENE,
 };
 

@@ -3,31 +3,22 @@
 #define BROTHERSPEAD 4
 #include "Player.h"
 #include "Vertex.h"
-#include "ModeManager.h"
-//ëOï˚êÈåæÇæÇØÇ≈
-class Library;
-class CollisionChecker;
 
-enum BROTHER_ANIMAID
-{
-	WAIT_FRONT,
-	WAIT_SIDE ,
-	WAIT_BACK ,
-	WALK_FRONT,
-	WALK_SIDE ,
-	WALK_BACK ,
-	BROTHERMAX
-};
-//FRONTÇ™Ç±Ç¡Çøå¸Ç´
+class Library;
+class ModeManager;
+typedef struct IDirect3DTexture9 *LPDIRECT3DTEXTURE9, *PDIRECT3DTEXTURE9;
+class CollisionChecker;
+enum GAMEANIMA_ID;
+enum GAMEMODE_NUM;
 
 
 class Brother:public Player
 {
 private:
 	int					m_Tex_Id;
-	BROTHER_ANIMAID		m_CurrentAnima;
+	GAMEANIMA_ID		m_CurrentAnima;
 	Library*			m_pLibrary;
-	GAMEMODE_NUM		m_CurrentScene;
+	GAMEMODE_NUM		m_CurrentMode;
 	ModeManager*		m_pModeManager;
 	CollisionChecker*	m_pCollisionChecker;
 	LPDIRECT3DTEXTURE9	m_pTexture;
