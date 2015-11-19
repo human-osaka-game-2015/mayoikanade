@@ -25,7 +25,7 @@ LogoScene::~LogoScene()
 SCENE_NUM LogoScene::Control()
 {
 	PadCheck();
-	if (m_pLibrary->m_pXInput->m_game_pad_state[GAMEPAD_A] == PAD_PUSH)
+	if (m_pLibrary->m_pXInput->GetButtonState(GAMEPAD_A, GAMEPAD1) == PAD_PUSH)
 	{
 		m_NextScene = TITLE_SCENE;
 	}
@@ -45,5 +45,5 @@ void LogoScene::Draw()
 
 void LogoScene::PadCheck()
 {
-	m_pLibrary->m_pXInput->Check(XINPUT_GAMEPAD_A, GAMEPAD_A);
+	m_pLibrary->m_pXInput->Check(GAMEPAD1);
 }

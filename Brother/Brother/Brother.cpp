@@ -5,6 +5,7 @@
 #include "GameScene.h"
 
 
+
 Brother::Brother(Library* pLibrary, LPDIRECT3DTEXTURE9 pTexture, bool* pPadState, bool* pPadOldState, CollisionChecker* pCollisionChecker) :
 m_pLibrary(pLibrary), m_pTexture(pTexture), m_pPadState(pPadState), m_pPadOldState(pPadOldState), m_pCollisionChecker(pCollisionChecker)
 {
@@ -75,7 +76,7 @@ void Brother::Move()
 
 	//アナログパッドの入力がなかったら
 	//移動がなかったら待機のアニメーション
-	if (m_pPadState[PAD_LEFT] == false && m_pPadState[PAD_RIGHT] == false && m_pPadState[PAD_UP] == false && m_pPadState[PAD_DOWN] == false)
+	if (m_pPadState[ANALOG_LEFT] == false && m_pPadState[ANALOG_RIGHT] == false && m_pPadState[ANALOG_UP] == false && m_pPadState[ANALOG_DOWN] == false)
 	{
 		switch (m_Direction)
 		{
@@ -100,7 +101,7 @@ void Brother::Move()
 
 
 	//左移動の処理
-	if (m_pPadState[PAD_LEFT])
+	if (m_pPadState[ANALOG_LEFT])
 	{
 		Ppos.x -= BROTHERSPEAD;
 
@@ -119,7 +120,7 @@ void Brother::Move()
 		
 
 		m_Direction = PLAYER_LEFT;
-		if (m_pPadOldState[PAD_LEFT])
+		if (m_pPadOldState[ANALOG_LEFT])
 		{
 			m_CurrentAnima = BROTHER_WALK_SIDE;
 
@@ -128,7 +129,7 @@ void Brother::Move()
 
 
 	//右の移動処理
-	if (m_pPadState[PAD_RIGHT])
+	if (m_pPadState[ANALOG_RIGHT])
 	{
 		Ppos.x += BROTHERSPEAD;
 		
@@ -147,7 +148,7 @@ void Brother::Move()
 		
 
 		m_Direction = PLAYER_RIGHT;
-		if (m_pPadOldState[PAD_RIGHT])
+		if (m_pPadOldState[ANALOG_RIGHT])
 		{
 			m_CurrentAnima = BROTHER_WALK_SIDE;
 
@@ -156,7 +157,7 @@ void Brother::Move()
 
 
 	//下移動の処理
-	if (m_pPadState[PAD_DOWN])
+	if (m_pPadState[ANALOG_DOWN])
 	{	
 		Ppos.y += BROTHERSPEAD;
 
@@ -174,7 +175,7 @@ void Brother::Move()
 		}
 
 		m_Direction = PLAYER_FRONT;
-		if (m_pPadOldState[PAD_DOWN])
+		if (m_pPadOldState[ANALOG_DOWN])
 		{
 			m_CurrentAnima = BROTHER_WALK_FRONT;
 
@@ -183,7 +184,7 @@ void Brother::Move()
 
 
 	//上移動の処理
-	if (m_pPadState[PAD_UP])
+	if (m_pPadState[ANALOG_UP])
 	{	
 		Ppos.y -= BROTHERSPEAD;
 		
@@ -201,7 +202,7 @@ void Brother::Move()
 		}
 
 		m_Direction = PLAYER_BACK;
-		if (m_pPadOldState[PAD_UP])
+		if (m_pPadOldState[ANALOG_UP])
 		{
 			m_CurrentAnima = BROTHER_WALK_BACK;
 

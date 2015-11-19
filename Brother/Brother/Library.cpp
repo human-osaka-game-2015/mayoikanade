@@ -105,3 +105,18 @@ void Library::UVReversal(CustomVertex* pVertex, REVERSAL_NUM rev)
 {
 	m_pUVSetter->UVReversal(pVertex, rev);
 }
+
+void Library::Check(XINPUTPAD pad)
+{
+	m_pXInput->Check(pad);
+}
+
+PADSTATE Library::GetButtonState(XINPUT_ID id, XINPUTPAD pad)
+{
+	return m_pXInput->GetButtonState(id, pad);
+}
+
+bool Library::GetAnalogState(ANALOGPAD id, XINPUTPAD pad)
+{
+	return m_pXInput->GetAnalogState(id, pad);
+}

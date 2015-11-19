@@ -10,7 +10,7 @@
 
 GameScene::GameScene(Library* pLibrary) :m_pLibrary(pLibrary),m_NextScene(SCENE_NONE)
 {
-	for (int i = 0; i < PAD_MAX; i++)
+	for (int i = 0; i < ANALOG_MAX; i++)
 	{
 		m_PadState[i] = false;
 		m_PadOldState[i] = false;
@@ -28,7 +28,7 @@ GameScene::GameScene(Library* pLibrary) :m_pLibrary(pLibrary),m_NextScene(SCENE_
 	m_pMap = new Map(m_pLibrary, m_pTexture);
 	m_pCollisionChecker = new CollisionChecker(m_pMap);
 	m_pBrother = new Brother(m_pLibrary, m_pTexture, m_PadState, m_PadOldState,m_pCollisionChecker);
-	m_pYoungerBrother = new YoungerBrother(m_pLibrary, m_pTexture, m_PadState, m_PadOldState);		//Œ»óŽg‚í‚È‚¢
+	m_pYoungerBrother = new YoungerBrother(m_pLibrary, m_pTexture, m_PadState, m_PadOldState);
 	m_pModeManager = new ModeManager(m_pSceneChangeListener, m_pBrother, m_pYoungerBrother);
 
 	m_pBrother->ModeManagerSet(m_pModeManager);
@@ -53,8 +53,6 @@ GameScene::~GameScene()
 
 	//1‚Â‚µ‚©‚È‚¢‚©‚ç
 	m_pTexture->Release();
-
-
 }
 
 SCENE_NUM GameScene::Control()
@@ -85,17 +83,15 @@ int GameScene::GetTime()
 
 void GameScene::PadCheck()
 {
-	m_PadOldState[PAD_LEFT] =	m_PadState[PAD_LEFT];
-	m_PadOldState[PAD_RIGHT] =	m_PadState[PAD_RIGHT];
-	m_PadOldState[PAD_DOWN] =	m_PadState[PAD_DOWN];
-	m_PadOldState[PAD_UP] =		m_PadState[PAD_UP];
+	m_pLibrary->m_pXInput->Check(GAMEPAD1);
 
-	m_PadState[PAD_LEFT] =	m_pLibrary->m_pXInput->L_Analog_Left();
-	m_PadState[PAD_RIGHT] = m_pLibrary->m_pXInput->L_Analog_Right();
-	m_PadState[PAD_DOWN] =	m_pLibrary->m_pXInput->L_Analog_Down();
-	m_PadState[PAD_UP] =	m_pLibrary->m_pXInput->L_Analog_Up();
+	m_PadOldState[ANALOG_LEFT] =	m_PadState[ANALOG_LEFT];
+	m_PadOldState[ANALOG_RIGHT] =	m_PadState[ANALOG_RIGHT];
+	m_PadOldState[ANALOG_DOWN] =	m_PadState[ANALOG_DOWN];
+	m_PadOldState[ANALOG_UP] =		m_PadState[ANALOG_UP];
 
-	m_pLibrary->m_pXInput->Check(XINPUT_GAMEPAD_A, GAMEPAD_A);
-	m_pLibrary->m_pXInput->Check(XINPUT_GAMEPAD_B, GAMEPAD_B);
-
+	m_PadState[ANALOG_LEFT] = m_pLibrary->GetAnalogState(ANALOG_LEFT, GAMEPAD1);
+	m_PadState[ANALOG_RIGHT] = m_pLibrary->GetAnalogState(ANALOG_RIGHT, GAMEPAD1);
+	m_PadState[ANALOG_DOWN] = m_pLibrary->GetAnalogState(ANALOG_DOWN, GAMEPAD1);
+	m_PadState[ANALOG_UP] = m_pLibrary->GetAnalogState(ANALOG_UP, GAMEPAD1);
 }

@@ -1,6 +1,7 @@
 #ifndef _SCENE_H_
 #define _SCENE_H_
 #define FILE_INFO 7
+#include "Library.h"
 
 enum SCENE_NUM
 {
@@ -16,14 +17,6 @@ enum SCENE_NUM
 	MAX_SCENE,
 };
 
-enum GAMEPADSTATE
-{
-	PAD_UP,
-	PAD_DOWN,
-	PAD_LEFT,
-	PAD_RIGHT,
-	PAD_MAX
-};
 
 class Scene
 {
@@ -35,8 +28,8 @@ public:
 	virtual SCENE_NUM Control() = 0;
 	virtual void Draw() = 0;
 	virtual void PadCheck() = 0;
-	bool	m_PadState[PAD_MAX];
-	bool	m_PadOldState[PAD_MAX];
+	bool	m_PadState[ANALOG_MAX];
+	bool	m_PadOldState[ANALOG_MAX];
 };
 
 

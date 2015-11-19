@@ -1,6 +1,7 @@
 #ifndef _LOGOSCENE_H_
 #define _LOGOSCENE_H_
 #include"Scene.h"
+
 class Library;
 typedef struct IDirect3DTexture9 *LPDIRECT3DTEXTURE9, *PDIRECT3DTEXTURE9;
 class LogoBackGround;

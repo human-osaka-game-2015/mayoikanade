@@ -54,6 +54,11 @@ public:
 	void InitAnima(int animaNum);
 	int AnimaControl(int animaNum);
 	void UVReversal(CustomVertex* pVertex, REVERSAL_NUM rev);
+
+	// XInput
+	void Check(XINPUTPAD pad);
+	PADSTATE GetButtonState(XINPUT_ID id, XINPUTPAD pad);
+	bool GetAnalogState(ANALOGPAD id, XINPUTPAD pad);
 };
 
 

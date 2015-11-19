@@ -35,24 +35,22 @@ TitleScene::~TitleScene()
 
 void TitleScene::PadCheck()
 {
-	m_PadOldState[PAD_LEFT] = m_PadState[PAD_LEFT];
-	m_PadOldState[PAD_RIGHT] = m_PadState[PAD_RIGHT];
-	m_PadOldState[PAD_DOWN] = m_PadState[PAD_DOWN];
-	m_PadOldState[PAD_UP] = m_PadState[PAD_UP];
+	m_pLibrary->m_pXInput->Check(GAMEPAD1);
+	m_PadOldState[ANALOG_LEFT] = m_PadState[ANALOG_LEFT];
+	m_PadOldState[ANALOG_RIGHT] = m_PadState[ANALOG_RIGHT];
+	m_PadOldState[ANALOG_DOWN] = m_PadState[ANALOG_DOWN];
+	m_PadOldState[ANALOG_UP] = m_PadState[ANALOG_UP];
 
-	m_PadState[PAD_LEFT] = m_pLibrary->m_pXInput->L_Analog_Left();
-	m_PadState[PAD_RIGHT] = m_pLibrary->m_pXInput->L_Analog_Right();
-	m_PadState[PAD_DOWN] = m_pLibrary->m_pXInput->L_Analog_Down();
-	m_PadState[PAD_UP] = m_pLibrary->m_pXInput->L_Analog_Up();
-
-	m_pLibrary->m_pXInput->Check(XINPUT_GAMEPAD_A, GAMEPAD_A);
+	m_PadState[ANALOG_LEFT] = m_pLibrary->GetAnalogState(ANALOG_LEFT,GAMEPAD1);
+	m_PadState[ANALOG_RIGHT] = m_pLibrary->GetAnalogState(ANALOG_RIGHT, GAMEPAD1);
+	m_PadState[ANALOG_DOWN] = m_pLibrary->GetAnalogState(ANALOG_DOWN, GAMEPAD1);
+	m_PadState[ANALOG_UP] = m_pLibrary->GetAnalogState(ANALOG_UP, GAMEPAD1);
 }
 
 
 SCENE_NUM TitleScene::Control()
 {
-	//背景とタイトル名のコントロールは今のところ不要
-
+	PadCheck();
 
 	//TitleManagerのコントロール
 	//一定時間経過でフェードアウトしきったらtrueを返してくる。
@@ -83,7 +81,6 @@ SCENE_NUM TitleScene::Control()
 			break;
 		}
 	}
-	
 
 	return m_NextScene;
 }
