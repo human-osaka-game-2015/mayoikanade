@@ -20,10 +20,9 @@ private:
 	Texture*		m_pTexture;
 	Vertex*			m_pVertex;
 	UVSetter*		m_pUVSetter;
-
-public:
 	XInput*			m_pXInput;
 
+public:
 	Library(HWND hWnd);
 	~Library();
 

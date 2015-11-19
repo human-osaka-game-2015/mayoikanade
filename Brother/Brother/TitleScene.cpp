@@ -35,7 +35,7 @@ TitleScene::~TitleScene()
 
 void TitleScene::PadCheck()
 {
-	m_pLibrary->m_pXInput->Check(GAMEPAD1);
+	m_pLibrary->Check(GAMEPAD1);
 	m_PadOldState[ANALOG_LEFT] = m_PadState[ANALOG_LEFT];
 	m_PadOldState[ANALOG_RIGHT] = m_PadState[ANALOG_RIGHT];
 	m_PadOldState[ANALOG_DOWN] = m_PadState[ANALOG_DOWN];

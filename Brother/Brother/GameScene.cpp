@@ -51,7 +51,6 @@ GameScene::~GameScene()
 	delete m_pMap;
 	delete m_pSceneChangeListener;
 
-	//1‚Â‚µ‚©‚È‚¢‚©‚ç
 	m_pTexture->Release();
 }
 
@@ -83,7 +82,7 @@ int GameScene::GetTime()
 
 void GameScene::PadCheck()
 {
-	m_pLibrary->m_pXInput->Check(GAMEPAD1);
+	m_pLibrary->Check(GAMEPAD1);
 
 	m_PadOldState[ANALOG_LEFT] =	m_PadState[ANALOG_LEFT];
 	m_PadOldState[ANALOG_RIGHT] =	m_PadState[ANALOG_RIGHT];
