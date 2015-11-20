@@ -16,9 +16,9 @@ YoungerBrother::~YoungerBrother()
 
 void YoungerBrother::Control()
 {
-	m_CurrentScene = m_pModeManager->GetMode();
+	m_CurrentMode = m_pModeManager->GetMode();
 
-	switch (m_CurrentScene)
+	switch (m_CurrentMode)
 	{
 	case NORMAL:
 

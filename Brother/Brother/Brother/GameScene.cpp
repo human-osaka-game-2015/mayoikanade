@@ -31,6 +31,7 @@ GameScene::GameScene(Library* pLibrary) :Scene(pLibrary)
 	m_pYoungerBrother = new YoungerBrother(m_pLibrary, m_PadState, m_PadOldState);
 	m_pModeManager = new ModeManager(m_pSceneChangeListener, m_pBrother, m_pYoungerBrother);
 
+	//ModeManagerSetはBrotherなどに対してm_ModeManagerを渡す
 	m_pBrother->ModeManagerSet(m_pModeManager);
 	m_pYoungerBrother->ModeManagerSet(m_pModeManager);
 	
@@ -56,9 +57,12 @@ GameScene::~GameScene()
 
 SCENE_NUM GameScene::Control()
 {
-	PadCheck();
+	PadCheck();		//入力のチェック
+
 	m_pBrother->Control();
+
 	m_pMap->Control();
+	
 	return m_NextScene;
 }
 

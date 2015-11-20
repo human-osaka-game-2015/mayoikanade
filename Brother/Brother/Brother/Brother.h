@@ -11,10 +11,13 @@ class CollisionChecker;
 enum GAMEANIMA_ID;
 enum GAMEMODE_NUM;
 
-
 class Brother:public Player
 {
 private:
+	enum INPUT_ID
+	{
+		
+	};
 	int					m_Tex_Id;
 	GAMEANIMA_ID		m_CurrentAnima;
 	GAMEMODE_NUM		m_CurrentMode;

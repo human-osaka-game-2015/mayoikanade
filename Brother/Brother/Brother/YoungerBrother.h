@@ -16,7 +16,7 @@ enum GAMEMODE_NUM;
 class YoungerBrother:public Player
 {
 private:
-	GAMEMODE_NUM		m_CurrentScene;
+	GAMEMODE_NUM		m_CurrentMode;
 	ModeManager*		m_pModeManager;
 	CollisionChecker*	m_pCollisionChecker;
 

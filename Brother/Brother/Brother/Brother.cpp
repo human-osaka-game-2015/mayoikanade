@@ -30,13 +30,22 @@ Brother::~Brother()
 
 void Brother::Control()
 {
-	m_CurrentMode = m_pModeManager->GetMode();
+	m_CurrentMode = m_pModeManager->GetMode();		//現在のモードの取得
 
-	switch (m_CurrentMode)
+	switch (m_CurrentMode)		//現在のモードから
 	{
-	case NORMAL:
-
+	case NORMAL:				//NormalControl関数でも作ったほうが見やすくなるのかも
 		Move();
+
+		break;
+	case TEXT:
+
+		break;
+	case GAMEOVEREFFECT:
+
+		break;
+	case GAMEOVER:
+
 		break;
 	}
 }
@@ -48,7 +57,7 @@ void Brother::Draw()
 
 	switch (m_CurrentMode)
 	{
-	case NORMAL:
+	case NORMAL:											//NormalDraw関数でも作るべきかも
 		CustomVertex player[4];
 
 		m_Tex_Id = m_pLibrary->AnimaControl(m_CurrentAnima);
@@ -63,20 +72,28 @@ void Brother::Draw()
 
 		m_pLibrary->DrawTexture(TEX_GAME, player);
 		break;
+	case TEXT:
+
+		break;
+	case GAMEOVEREFFECT:
+
+		break;
+	case GAMEOVER:
+
+		break;
 	}
 }
 
 
-void Brother::Move()
+void Brother::Move()		//読みにくいから改善すべき
 {
+	//Pposの計算をして渡しているところとか見づらい
+	//HitCheckに何を渡しているのか一見わからないから直すべき
 
-	//InitAnimaをうまく使うようにする
-	//αはこれでもまあいいかな
-	
 
-	//アナログパッドの入力がなかったら
 	//移動がなかったら待機のアニメーション
-	if (m_pPadState[ANALOG_LEFT] == false && m_pPadState[ANALOG_RIGHT] == false && m_pPadState[ANALOG_UP] == false && m_pPadState[ANALOG_DOWN] == false)
+	if (m_pPadState[ANALOG_LEFT] == false && m_pPadState[ANALOG_RIGHT] == false && 
+		m_pPadState[ANALOG_UP] == false && m_pPadState[ANALOG_DOWN] == false)
 	{
 		switch (m_Direction)
 		{
@@ -215,7 +232,6 @@ void Brother ::ModeManagerSet(ModeManager* Mode)
 {
 	m_pModeManager = Mode;
 }
-
 
 void Brother::Init()
 {

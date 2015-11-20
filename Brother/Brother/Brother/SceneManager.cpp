@@ -11,10 +11,10 @@
 
 SceneManager::SceneManager(Library* pLibrary) :m_pLibrary(pLibrary), m_NextScene(SCENE_NONE)
 {
-	//αは仮でGameSceneをnewするが、ふつうはLogoScene
+	//ゲームの開始時のシーンはロゴに行く
 	m_pScene = new LogoScene(m_pLibrary);
 
-	//SetRenderStateを先にしとく
+	//SetRenderState等の処理
 	m_pLibrary->Render_Init();
 
 }
@@ -29,8 +29,8 @@ bool SceneManager::Control()
 	
 	switch (m_NextScene)
 	{
-	case SCENE_NONE:
-		//そのまま抜ける
+	case SCENE_NONE:	//そのまま抜ける
+
 		break;
 	case LOGO_SCENE:
 		delete m_pScene;
@@ -67,11 +67,10 @@ bool SceneManager::Control()
 		m_pScene = new StaffScene(m_pLibrary);
 
 		break;
-	case END_SCENE:
+	case END_SCENE:		//trueを返してゲームを終了する
 		return true;
 		break;
 	default:
-		//例外
 		MessageBox(0, "m_NextSceneに予期していない数値が入っています。", "", MB_OK);
 		break;
 	}
