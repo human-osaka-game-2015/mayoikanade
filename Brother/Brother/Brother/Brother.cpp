@@ -7,7 +7,7 @@
 
 
 Brother::Brother(Library* pLibrary, bool* pPadState, bool* pPadOldState, CollisionChecker* pCollisionChecker) :
-m_pLibrary(pLibrary), m_pPadState(pPadState), m_pPadOldState(pPadOldState), m_pCollisionChecker(pCollisionChecker)
+Player(pLibrary),m_pPadState(pPadState), m_pPadOldState(pPadOldState), m_pCollisionChecker(pCollisionChecker)
 {
 	m_pLibrary->InitAnima(BROTHER_WAIT_FRONT);
 	m_pLibrary->InitAnima(BROTHER_WAIT_SIDE);

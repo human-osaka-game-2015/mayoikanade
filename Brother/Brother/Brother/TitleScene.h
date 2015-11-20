@@ -34,9 +34,6 @@ enum TITLEANIMA_ID
 class TitleScene:public Scene
 {
 private:
-	SCENE_NUM				m_NextScene;
-	Library*				m_pLibrary;
-
 	//TitleScene内オブジェクト
 	TitleBackGround*	m_pTitleBackGround;
 	TitleSelectManager*	m_pTitleSelectManager;

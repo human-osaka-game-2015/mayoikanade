@@ -2,7 +2,7 @@
 #include "LogoBackGround.h"
 #include "Library.h"
 
-LogoScene::LogoScene(Library* pLibrary) :m_pLibrary(pLibrary), m_NextScene(SCENE_NONE)
+LogoScene::LogoScene(Library* pLibrary) :Scene(pLibrary)
 {
 	//ファイルの情報はいちいち読み込まずにもとで読んだほうがいいと思う
 	m_pLibrary->FileInfo_Set("file.csv", FILE_INFO);

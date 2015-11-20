@@ -16,8 +16,6 @@ enum STAFF_VERTEXINFO_ID
 class StaffScene :public Scene
 {
 private:
-	SCENE_NUM				m_NextScene;
-	Library*				m_pLibrary;
 	StaffBackGround*		m_pStaffBackGround;
 
 public:

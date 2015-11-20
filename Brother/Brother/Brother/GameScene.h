@@ -73,16 +73,12 @@ enum GIMMICK_ID
 class GameScene : public Scene
 {
 private:
-	SCENE_NUM				m_NextScene;
-	
-	Library*				m_pLibrary;
 	SceneChangeListener*	m_pSceneChangeListener;
 	ModeManager*			m_pModeManager;
 	Map*					m_pMap;
 	CollisionChecker*		m_pCollisionChecker;
 	Brother*				m_pBrother;
-	YoungerBrother*			m_pYoungerBrother;//Žg‚í‚È‚¢
-
+	YoungerBrother*			m_pYoungerBrother;
 
 
 public:

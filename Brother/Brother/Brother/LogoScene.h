@@ -15,8 +15,6 @@ enum LOGO_VERTEXINFO_ID
 class LogoScene:public Scene
 {
 private:
-	SCENE_NUM				m_NextScene;
-	Library*				m_pLibrary;
 	LogoBackGround*			m_pLogoBackGround;
 
 public:

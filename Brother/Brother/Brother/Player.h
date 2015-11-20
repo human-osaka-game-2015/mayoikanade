@@ -1,6 +1,8 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
+class Library;
+
 enum PLAYER_DIRECTION
 {
 	PLAYER_BACK,
@@ -14,8 +16,11 @@ class Player
 {
 private:
 
+protected:
+	Library* m_pLibrary;
+
 public:
-	Player();
+	Player(Library* pLibrary);
 	virtual ~Player();
 	virtual void Control() = 0;
 	virtual void Draw() = 0;

@@ -7,8 +7,7 @@ class Library;
 class OpeningScene:public Scene
 {
 private:
-	SCENE_NUM				m_NextScene;
-	Library*				m_pLibrary;
+
 
 
 public:

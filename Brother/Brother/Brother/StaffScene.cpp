@@ -3,7 +3,7 @@
 #include "Library.h"
 
 
-StaffScene::StaffScene(Library* pLibrary) :m_pLibrary(pLibrary), m_NextScene(SCENE_NONE)
+StaffScene::StaffScene(Library* pLibrary) :Scene(pLibrary)
 {
 	m_pLibrary->FileInfo_Set("file.csv", FILE_INFO);
 	m_pLibrary->VertexInfo_Set("StaffTex.csv", STAFF_VERTEXINFO_MAX);

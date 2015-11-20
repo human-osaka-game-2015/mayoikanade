@@ -1,7 +1,7 @@
 #include "OpeningScene.h"
 
 
-OpeningScene::OpeningScene(Library* pLibrary) :m_pLibrary(pLibrary), m_NextScene(SCENE_NONE)
+OpeningScene::OpeningScene(Library* pLibrary) :Scene(pLibrary)
 {
 
 }

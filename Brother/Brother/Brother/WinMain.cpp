@@ -10,7 +10,7 @@
 
 LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wp, LPARAM lp);
 
-#define FULLWINDOW//コメントアウト削除するとフルスクかつカーソル削除設定。
+#define FULLWINDOW
 
 
 //-------------------------------------------------------------
@@ -41,11 +41,11 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 
 	int dH = GetSystemMetrics(SM_CYCAPTION) + GetSystemMetrics(SM_CYFRAME) * 2;
 	int dW = GetSystemMetrics(SM_CXFRAME) * 2;
-#ifdef FULLWINDOW//フルスク設定
+#ifdef FULLWINDOW
 	hWnd = CreateWindow(
 		WINDOWTITLE,
 		WINDOWTITLE,
-		WS_VISIBLE | WS_POPUP,//いらんもの削除
+		WS_VISIBLE | WS_POPUP,
 		CW_USEDEFAULT,
 		CW_USEDEFAULT,
 		1280 + dW,
@@ -56,8 +56,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 		NULL
 		);
 
-	ShowWindow(hWnd, SW_MAXIMIZE); // ウィンドウを表示SW_MAXIMIZEここいじるとフルスクっぽくなりました。
-
+	ShowWindow(hWnd, SW_MAXIMIZE);
 #else
 	hWnd = CreateWindow(
 		WINDOWTITLE,
@@ -139,10 +138,10 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wp, LPARAM lp)
 
 	switch (msg)
 	{
-	case WM_DESTROY:	//	ウインドウが閉じられた時とか
+	case WM_DESTROY:
 		PostQuitMessage(0);
 		return 0;
-	case WM_KEYDOWN://エスケープキーでデバッグ終了
+	case WM_KEYDOWN:
 		if (wp == VK_ESCAPE) 
 		{
 			PostMessage(hWnd, WM_CLOSE, 0, 0);
@@ -150,7 +149,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wp, LPARAM lp)
 		}
 		break;
 #ifdef FULLWINDOW
-	case WM_SETCURSOR://ウィンドウ画面でのカーソル削除
+	case WM_SETCURSOR:
 		SetCursor(NULL);
 		return 0L;
 #endif

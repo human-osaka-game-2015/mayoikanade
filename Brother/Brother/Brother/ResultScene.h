@@ -7,8 +7,7 @@ class Library;
 class ResultScene:public Scene
 {
 private:
-	SCENE_NUM				m_NextScene;
-	Library*				m_pLibrary;
+
 
 public:
 	ResultScene(Library* pLibrary);

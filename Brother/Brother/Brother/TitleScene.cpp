@@ -5,7 +5,7 @@
 #include "TitleTimeManager.h"
 #include "TitleSelectManager.h"
 
-TitleScene::TitleScene(Library* pLibrary) :m_pLibrary(pLibrary), m_NextScene(SCENE_NONE)
+TitleScene::TitleScene(Library* pLibrary) :Scene(pLibrary)
 {
 	m_pLibrary->FileInfo_Set("file.csv", FILE_INFO);
 	m_pLibrary->VertexInfo_Set("TitleTex.csv", TITLE_VERTEXINFO_MAX);

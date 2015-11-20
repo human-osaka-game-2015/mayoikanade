@@ -8,7 +8,7 @@
 #include "CollisionChecker.h"
 
 
-GameScene::GameScene(Library* pLibrary) :m_pLibrary(pLibrary),m_NextScene(SCENE_NONE)
+GameScene::GameScene(Library* pLibrary) :Scene(pLibrary)
 {
 	for (int i = 0; i < ANALOG_MAX; i++)
 	{

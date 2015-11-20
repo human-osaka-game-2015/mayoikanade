@@ -1,7 +1,7 @@
 #include "ResultScene.h"
 
 
-ResultScene::ResultScene(Library* pLibrary) :m_pLibrary(pLibrary), m_NextScene(SCENE_NONE)
+ResultScene::ResultScene(Library* pLibrary) :Scene(pLibrary)
 {
 
 }

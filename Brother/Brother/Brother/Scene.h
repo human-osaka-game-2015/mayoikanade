@@ -30,8 +30,12 @@ class Scene
 {
 private:
 
+protected:
+	SCENE_NUM				m_NextScene;
+	Library*				m_pLibrary;
+
 public:
-	Scene();
+	Scene(Library* pLibrary);
 	virtual ~Scene();
 	virtual SCENE_NUM Control() = 0;
 	virtual void Draw() = 0;

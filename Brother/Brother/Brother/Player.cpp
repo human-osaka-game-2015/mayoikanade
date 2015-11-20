@@ -1,6 +1,6 @@
 #include "Player.h"
 
-Player::Player()
+Player::Player(Library*	pLibrary) :m_pLibrary(pLibrary)
 {
 
 }

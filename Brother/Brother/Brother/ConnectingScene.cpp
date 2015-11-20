@@ -1,7 +1,7 @@
 #include "ConnectingScene.h"
 
 
-ConnectingScene::ConnectingScene(Library* pLibrary) :m_pLibrary(pLibrary), m_NextScene(SCENE_NONE)
+ConnectingScene::ConnectingScene(Library* pLibrary) :Scene(pLibrary)
 {
 
 }

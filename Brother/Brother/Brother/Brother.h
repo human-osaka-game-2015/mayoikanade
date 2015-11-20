@@ -17,7 +17,6 @@ class Brother:public Player
 private:
 	int					m_Tex_Id;
 	GAMEANIMA_ID		m_CurrentAnima;
-	Library*			m_pLibrary;
 	GAMEMODE_NUM		m_CurrentMode;
 	ModeManager*		m_pModeManager;
 	CollisionChecker*	m_pCollisionChecker;
