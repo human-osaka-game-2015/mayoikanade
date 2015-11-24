@@ -2,7 +2,6 @@
 #define YOUNGERBROTHER_H
 
 #include "Player.h"
-#include "Vertex.h"
 
 class Library;
 class ModeManager;
@@ -16,16 +15,9 @@ enum GAMEMODE_NUM;
 class YoungerBrother:public Player
 {
 private:
-	GAMEMODE_NUM		m_CurrentMode;
-	ModeManager*		m_pModeManager;
-	CollisionChecker*	m_pCollisionChecker;
-
-	bool*				m_pPadState;
-	bool*				m_PadOldState;
-
 
 public:
-	YoungerBrother(Library* pLibrary, bool* pPadState, bool* pPadOldState);
+	YoungerBrother(Library* pLibrary, bool* pPadState, bool* pPadOldState,CollisionChecker* pCollisionChecker);
 	virtual ~YoungerBrother();
 	virtual void Control();
 	virtual void Draw();

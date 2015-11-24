@@ -12,7 +12,7 @@ class Map;
 class CollisionChecker;
 class Brother;
 class YoungerBrother;
-
+class DrawPositionSetter;
 
 enum GAME_VERTEXINFO_ID
 {
@@ -79,7 +79,7 @@ private:
 	CollisionChecker*		m_pCollisionChecker;
 	Brother*				m_pBrother;
 	YoungerBrother*			m_pYoungerBrother;
-
+	DrawPositionSetter*		m_pDrawPositionSetter;
 
 public:
 	GameScene(Library* pLibrary);
@@ -90,13 +90,8 @@ public:
 	int GetTime();
 
 
-
-
 	//ƒeƒXƒg
 	LPD3DXFONT pFont;
-
-	
-
 };
 
 #endif

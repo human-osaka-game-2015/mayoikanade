@@ -113,6 +113,12 @@
     <Filter Include="WinMain\GameMain\SceneManager\Scene\StaffScene\StaffBackGround">
       <UniqueIdentifier>{9169434c-0b0d-4764-8d34-6edf895b2c84}</UniqueIdentifier>
     </Filter>
+    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\Player\PlayerUI">
+      <UniqueIdentifier>{02917e0b-7ce9-4882-8c49-f2994ac4230c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\DrawPositionSetter">
+      <UniqueIdentifier>{515d2bf2-4aad-46ce-9d25-08819e26071a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="XInput_lib.cpp">
@@ -220,6 +226,12 @@
     <ClCompile Include="StaffBackGround.cpp">
       <Filter>WinMain\GameMain\SceneManager\Scene\StaffScene\StaffBackGround</Filter>
     </ClCompile>
+    <ClCompile Include="PlayerUI.cpp">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\Player\PlayerUI</Filter>
+    </ClCompile>
+    <ClCompile Include="DrawPositionSetter.cpp">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\DrawPositionSetter</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="XInput_lib.h">
@@ -323,6 +335,12 @@
     </ClInclude>
     <ClInclude Include="StaffBackGround.h">
       <Filter>WinMain\GameMain\SceneManager\Scene\StaffScene\StaffBackGround</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerUI.h">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\Player\PlayerUI</Filter>
+    </ClInclude>
+    <ClInclude Include="DrawPositionSetter.h">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\DrawPositionSetter</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

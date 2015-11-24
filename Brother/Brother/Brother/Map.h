@@ -31,10 +31,6 @@ enum MAP_ID
 	MAP_MAX
 };
 
-enum CHIP_ID
-{
-
-};
 
 class Map
 {
@@ -48,11 +44,11 @@ private:
 	MapGimmick*		m_pMapGimmick[GIMMICK_MAX];
 	MapBackGround*	m_pMapBackGround[BACKGROUND_MAX];
 	
-	Position m_MapBackGround_Pos [MAP_HEIGHT][MAP_WIDTH];
-	Position m_MapObject_Pos[MAP_HEIGHT][MAP_WIDTH];
+	Position		m_MapBackGround_Pos [MAP_HEIGHT][MAP_WIDTH];
+	Position		m_MapObject_Pos[MAP_HEIGHT][MAP_WIDTH];
 	
-	CustomVertex m_MapObject_Tex[MAP_HEIGHT][MAP_WIDTH][4];
-	CustomVertex m_MapBackGround_Tex[MAP_HEIGHT][MAP_WIDTH][4];
+	CustomVertex	m_MapObject_Tex[MAP_HEIGHT][MAP_WIDTH][4];
+	CustomVertex	m_MapBackGround_Tex[MAP_HEIGHT][MAP_WIDTH][4];
 
 	bool CsvRead(const char* filename,MAP_ID MapId);
 	
@@ -70,9 +66,10 @@ public:
 	void Control();
 	void Draw();
 	bool StageInit(const char* Objname, const char* Gimmickname, const char* Backname);
-	//void DrawArea();
-	//Ç±Ç±Ç…éùÇΩÇπÇÈÇ◊Ç´Ç©îYÇÒÇ≈Ç¢ÇÈ
 
+
+	int	m_DrawPositionX;
+	int	m_DrawPositionY;
 };
 
 #endif

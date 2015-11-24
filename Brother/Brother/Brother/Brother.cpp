@@ -2,12 +2,12 @@
 #include "CollisionChecker.h"
 #include "Library.h"
 #include "ModeManager.h"
+#include "PlayerUI.h"
 #include "GameScene.h"
 
 
-
-Brother::Brother(Library* pLibrary, bool* pPadState, bool* pPadOldState, CollisionChecker* pCollisionChecker) :
-Player(pLibrary),m_pPadState(pPadState), m_pPadOldState(pPadOldState), m_pCollisionChecker(pCollisionChecker)
+Brother::Brother(Library* pLibrary, bool* pPadState, bool* pPadOldState, CollisionChecker* pCollisionChecker)
+	:Player(pLibrary, pPadState, pPadOldState, pCollisionChecker)
 {
 	m_pLibrary->InitAnima(BROTHER_WAIT_FRONT);
 	m_pLibrary->InitAnima(BROTHER_WAIT_SIDE);
@@ -21,11 +21,15 @@ Player(pLibrary),m_pPadState(pPadState), m_pPadOldState(pPadOldState), m_pCollis
 
 	Ppos.x = 300;
 	Ppos.y = 300;
+	m_Hp = 100;
+
+	//PlayerUI‚Ì¶¬
+	m_pPlayerUI = new PlayerUI(m_pLibrary,m_Hp);
 }
 
 Brother::~Brother()
 {
-
+	delete m_pPlayerUI;
 }
 
 void Brother::Control()
@@ -48,24 +52,28 @@ void Brother::Control()
 
 		break;
 	}
+
+	m_pPlayerUI->Control();
 }
 
 
 void Brother::Draw()
 {
+	CustomVertex player[4];
+	int Tex_Id;
+
 	m_CurrentMode = m_pModeManager->GetMode();
 
 	switch (m_CurrentMode)
 	{
 	case NORMAL:											//NormalDrawŠÖ”‚Å‚àì‚é‚×‚«‚©‚à
-		CustomVertex player[4];
-
-		m_Tex_Id = m_pLibrary->AnimaControl(m_CurrentAnima);
-		m_pLibrary->MakePosition(m_Tex_Id, &Ppos);
-		m_pLibrary->MakeVertex(m_Tex_Id, player);
+		
+		Tex_Id = m_pLibrary->AnimaControl(m_CurrentAnima);
+		m_pLibrary->MakePosition(Tex_Id, &Ppos);
+		m_pLibrary->MakeVertex(Tex_Id, player);
 		m_pLibrary->xySet(Ppos, player);
 
-		if (m_Direction == PLAYER_RIGHT)//‰æ‘œ‚ÌŒü‚«‚ª‚í‚©‚ç‚È‚¢‚©‚ç‰½‚Æ‚àŒ¾‚¦‚È‚¢
+		if (m_Direction == PLAYER_RIGHT)
 		{
 			m_pLibrary->UVReversal(player, LEFT_AND_RIGHT);
 		}
@@ -82,6 +90,9 @@ void Brother::Draw()
 
 		break;
 	}
+
+	//Žd—l‚ª‚í‚©‚ç‚ñ‚©‚ç‰¼‚Å‚±‚±‚É‚¨‚­
+	m_pPlayerUI->Draw();
 }
 
 

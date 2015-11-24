@@ -4,7 +4,8 @@
 #include "ModeManager.h"
 
 
-YoungerBrother::YoungerBrother(Library* pLibrary, bool* pPadState, bool* pPadOldState) :Player(pLibrary), m_pPadState(pPadState), m_PadOldState(pPadOldState)
+YoungerBrother::YoungerBrother(Library* pLibrary, bool* pPadState, bool* pPadOldState, CollisionChecker* pCollisionChecker) 
+	:Player(pLibrary, pPadState, pPadOldState, pCollisionChecker)
 {
 
 }

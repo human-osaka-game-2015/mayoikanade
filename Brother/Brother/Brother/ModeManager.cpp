@@ -19,7 +19,7 @@ void ModeManager::Control()
 {
 	m_Mode = CheckMode(m_Mode);
 
-	if (m_Mode = GAMEOVER)
+	if (m_Mode == GAMEOVER)
 	{
 		m_Listener->Update(GAMEOVER_UPDATE);
 	}
@@ -27,6 +27,8 @@ void ModeManager::Control()
 
 GAMEMODE_NUM ModeManager::CheckMode(GAMEMODE_NUM GameMode)
 {
+	//ここで他のクラスを見たりして、Modeを変更する
+	
 	return NORMAL;//仮
 }
 

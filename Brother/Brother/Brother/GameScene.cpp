@@ -28,7 +28,7 @@ GameScene::GameScene(Library* pLibrary) :Scene(pLibrary)
 	m_pMap = new Map(m_pLibrary);
 	m_pCollisionChecker = new CollisionChecker(m_pMap);
 	m_pBrother = new Brother(m_pLibrary, m_PadState, m_PadOldState,m_pCollisionChecker);
-	m_pYoungerBrother = new YoungerBrother(m_pLibrary, m_PadState, m_PadOldState);
+	m_pYoungerBrother = new YoungerBrother(m_pLibrary, m_PadState, m_PadOldState, m_pCollisionChecker);
 	m_pModeManager = new ModeManager(m_pSceneChangeListener, m_pBrother, m_pYoungerBrother);
 
 	//ModeManagerSet‚ÍBrother‚È‚Ç‚É‘Î‚µ‚Äm_ModeManager‚ð“n‚·

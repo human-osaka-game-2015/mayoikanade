@@ -15,6 +15,7 @@
     <ClCompile Include="CollisionChecker.cpp" />
     <ClCompile Include="ConnectingScene.cpp" />
     <ClCompile Include="D3DManager.cpp" />
+    <ClCompile Include="DrawPositionSetter.cpp" />
     <ClCompile Include="DSoundManager.cpp" />
     <ClCompile Include="GameMain.cpp" />
     <ClCompile Include="GameScene.cpp" />
@@ -29,6 +30,7 @@
     <ClCompile Include="ModeManager.cpp" />
     <ClCompile Include="OpeningScene.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="PlayerUI.cpp" />
     <ClCompile Include="ResultScene.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneChangeListener.cpp" />
@@ -52,6 +54,7 @@
     <ClInclude Include="CollisionChecker.h" />
     <ClInclude Include="ConnectingScene.h" />
     <ClInclude Include="D3DManager.h" />
+    <ClInclude Include="DrawPositionSetter.h" />
     <ClInclude Include="DSoundManager.h" />
     <ClInclude Include="GameMain.h" />
     <ClInclude Include="GameScene.h" />
@@ -66,6 +69,7 @@
     <ClInclude Include="ModeManager.h" />
     <ClInclude Include="OpeningScene.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="PlayerUI.h" />
     <ClInclude Include="ResultScene.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneChangeListener.h" />
