@@ -5,7 +5,7 @@
 
 ModeManager::ModeManager(SceneChangeListener* Listener, Brother* pBrother, YoungerBrother* pYoungerBrother) :m_Mode(NORMAL)
 {
-	m_Listener = Listener;
+	m_pSceneChangeListener = Listener;
 	m_pBrother = pBrother;
 	m_pYoungerBrother = pYoungerBrother;
 }
@@ -21,7 +21,7 @@ void ModeManager::Control()
 
 	if (m_Mode == GAMEOVER)
 	{
-		m_Listener->Update(GAMEOVER_UPDATE);
+		m_pSceneChangeListener->Update(GAMEOVER_UPDATE);
 	}
 }
 

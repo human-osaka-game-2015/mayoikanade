@@ -119,6 +119,15 @@
     <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\DrawPositionSetter">
       <UniqueIdentifier>{515d2bf2-4aad-46ce-9d25-08819e26071a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\Shadow">
+      <UniqueIdentifier>{6df0e253-ca3a-4863-ad53-98b5590dcea2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\Text">
+      <UniqueIdentifier>{6e246c1f-7c4d-4a4a-9370-03d481f09f91}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\TimeManager">
+      <UniqueIdentifier>{3654a7b0-375e-47d4-871e-971b9dbcbbaa}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="XInput_lib.cpp">
@@ -232,6 +241,15 @@
     <ClCompile Include="DrawPositionSetter.cpp">
       <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\DrawPositionSetter</Filter>
     </ClCompile>
+    <ClCompile Include="Shadow.cpp">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\Shadow</Filter>
+    </ClCompile>
+    <ClCompile Include="Text.cpp">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\Text</Filter>
+    </ClCompile>
+    <ClCompile Include="TimeManager.cpp">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\TimeManager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="XInput_lib.h">
@@ -341,6 +359,15 @@
     </ClInclude>
     <ClInclude Include="DrawPositionSetter.h">
       <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\DrawPositionSetter</Filter>
+    </ClInclude>
+    <ClInclude Include="Shadow.h">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\Shadow</Filter>
+    </ClInclude>
+    <ClInclude Include="Text.h">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\Text</Filter>
+    </ClInclude>
+    <ClInclude Include="TimeManager.h">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\TimeManager</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

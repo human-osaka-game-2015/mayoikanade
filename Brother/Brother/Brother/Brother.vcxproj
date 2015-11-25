@@ -35,9 +35,12 @@
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneChangeListener.cpp" />
     <ClCompile Include="SceneManager.cpp" />
+    <ClCompile Include="Shadow.cpp" />
     <ClCompile Include="StaffBackGround.cpp" />
     <ClCompile Include="StaffScene.cpp" />
+    <ClCompile Include="Text.cpp" />
     <ClCompile Include="Texture.cpp" />
+    <ClCompile Include="TimeManager.cpp" />
     <ClCompile Include="TitleBackGround.cpp" />
     <ClCompile Include="TitleName.cpp" />
     <ClCompile Include="TitleScene.cpp" />
@@ -74,9 +77,12 @@
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneChangeListener.h" />
     <ClInclude Include="SceneManager.h" />
+    <ClInclude Include="Shadow.h" />
     <ClInclude Include="StaffBackGround.h" />
     <ClInclude Include="StaffScene.h" />
+    <ClInclude Include="Text.h" />
     <ClInclude Include="Texture.h" />
+    <ClInclude Include="TimeManager.h" />
     <ClInclude Include="TitleBackGround.h" />
     <ClInclude Include="TitleName.h" />
     <ClInclude Include="TitleScene.h" />
