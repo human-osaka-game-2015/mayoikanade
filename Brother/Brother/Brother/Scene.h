@@ -33,6 +33,7 @@ private:
 protected:
 	SCENE_NUM				m_NextScene;
 	Library*				m_pLibrary;
+	static unsigned int		m_time;
 
 public:
 	Scene(Library* pLibrary);

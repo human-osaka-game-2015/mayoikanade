@@ -2,6 +2,7 @@
 #define BROTHER_H
 
 #define BROTHERSPEAD 4
+#define BROTHERHP 100
 #include "Player.h"
 
 class Library;
@@ -22,7 +23,7 @@ public:
 	virtual void Draw();
 	virtual void Move();
 	virtual void Init();
-	void ModeManagerSet(ModeManager* Mode);
+	void ModeManagerSet(ModeManager* pModeManager);
 
 };
 

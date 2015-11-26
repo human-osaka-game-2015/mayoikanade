@@ -9,7 +9,7 @@ private:
 	Map* m_pMap;
 
 public:
-	DrawPositionSetter();
+	DrawPositionSetter(Map* pMap);
 	~DrawPositionSetter();
 	void DrawPositionXSet(int x);
 	void DrawPositionYSet(int y);

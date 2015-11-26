@@ -7,7 +7,7 @@ class Brother;
 class YoungerBrother;
 class SceneChangeListener;
 class Map;
-class TimeManager;
+class GameTimeManager;
 class Shadow;
 
 enum GAMEMODE_NUM
@@ -26,7 +26,7 @@ private:
 	YoungerBrother*			m_pYoungerBrother;
 	SceneChangeListener*	m_pSceneChangeListener;
 	Map*					m_pMap;
-	TimeManager*			m_pTimeManager;
+	GameTimeManager*			m_pTimeManager;
 	Shadow*					m_pShadow;
 	GAMEMODE_NUM			m_Mode;
 	GAMEMODE_NUM CheckMode(GAMEMODE_NUM GameMode);

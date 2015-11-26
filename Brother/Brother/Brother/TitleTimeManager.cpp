@@ -1,8 +1,10 @@
 #include "TitleTimeManager.h"
 #include "TitleScene.h"
 
-TitleTimeManager::TitleTimeManager(Library* pLibrary) :m_pLibrary(pLibrary)
+TitleTimeManager::TitleTimeManager(Library* pLibrary, unsigned int& GameTime) :m_pLibrary(pLibrary), m_GameTime(GameTime)
 {
+	m_GameTime = 0;
+
 	//初期位置に設定
 	m_Pos.x = TITLEBLACKOUT_X;
 	m_Pos.y = TITLEBLACKOUT_Y;
@@ -19,13 +21,12 @@ TitleTimeManager::~TitleTimeManager()
 
 bool TitleTimeManager::Control()
 {
-	m_TitleSceneTime++;
-
+	m_GameTime++;
+	
 	//フェードアウトじゃなくてポケモンフラッシュのほうが面白い
-
 	//alphaは初期値が255
 	//20秒以下でalphaが0じゃないときはalphaを引いてだんだん明るくする。
-	if (m_TitleSceneTime > 1200)//20秒でフェードアウト(たぶん遅い)
+	if (m_GameTime > 1200)
 	{
 		m_alpha++;
 		if (m_alpha == COLORMAX)

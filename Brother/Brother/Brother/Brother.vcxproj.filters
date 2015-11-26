@@ -74,9 +74,6 @@
     <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\SceneListener">
       <UniqueIdentifier>{6205b4d0-2fe0-416f-ad60-3958266e86fa}</UniqueIdentifier>
     </Filter>
-    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\ModeManager">
-      <UniqueIdentifier>{801e77f8-9289-4f70-b66e-2b1880fa2ee1}</UniqueIdentifier>
-    </Filter>
     <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\Player\YoungerBrother">
       <UniqueIdentifier>{b2461888-b64e-47b6-a9d4-9a3a84e2caf2}</UniqueIdentifier>
     </Filter>
@@ -125,8 +122,11 @@
     <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\Text">
       <UniqueIdentifier>{6e246c1f-7c4d-4a4a-9370-03d481f09f91}</UniqueIdentifier>
     </Filter>
-    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\TimeManager">
+    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\GameTimeManager">
       <UniqueIdentifier>{3654a7b0-375e-47d4-871e-971b9dbcbbaa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\ModeManager">
+      <UniqueIdentifier>{801e77f8-9289-4f70-b66e-2b1880fa2ee1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -247,8 +247,8 @@
     <ClCompile Include="Text.cpp">
       <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\Text</Filter>
     </ClCompile>
-    <ClCompile Include="TimeManager.cpp">
-      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\TimeManager</Filter>
+    <ClCompile Include="GameTimeManager.cpp">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\GameTimeManager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -366,8 +366,8 @@
     <ClInclude Include="Text.h">
       <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\Text</Filter>
     </ClInclude>
-    <ClInclude Include="TimeManager.h">
-      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\TimeManager</Filter>
+    <ClInclude Include="GameTimeManager.h">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\GameTimeManager</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

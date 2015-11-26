@@ -12,11 +12,11 @@ class TitleTimeManager
 private:
 	Library*			m_pLibrary;
 	Position			m_Pos;
-	int					m_TitleSceneTime = 0;
+	unsigned int&				m_GameTime;
 	int					m_alpha = 255;
 
 public:
-	TitleTimeManager(Library* pLibrary);
+	TitleTimeManager(Library* pLibrary, unsigned int& GameTime);
 	~TitleTimeManager();
 	bool Control();
 	void Draw();

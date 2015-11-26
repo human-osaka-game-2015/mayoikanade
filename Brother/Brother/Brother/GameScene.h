@@ -5,6 +5,7 @@
 
 #include "Scene.h"
 #include <d3dx9.h>
+
 class Library;
 class SceneChangeListener;
 class ModeManager;
@@ -13,6 +14,9 @@ class CollisionChecker;
 class Brother;
 class YoungerBrother;
 class DrawPositionSetter;
+class GameTimeManager;
+class Text;
+class Shadow;
 
 enum GAME_VERTEXINFO_ID
 {
@@ -47,9 +51,29 @@ enum GAME_VERTEXINFO_ID
 
 	GRASS_01,
 	GROUND_01,
-
 	
+	YOUNGERBROTHER_WAIT_FRONT_01,
+	YOUNGERBROTHER_WAIT_FRONT_02,
+	
+	YOUNGERBROTHER_WAIT_SIDE_01,
+	YOUNGERBROTHER_WAIT_SIDE_02,
 
+	YOUNGERBROTHER_WAIT_BACK_01,
+	YOUNGERBROTHER_WAIT_BACK_02,
+
+	YOUNGERBROTHER_WALK_FRONT_01,
+	YOUNGERBROTHER_WALK_FRONT_02,
+
+	YOUNGERBROTHER_WALK_SIDE_01,
+	YOUNGERBROTHER_WALK_SIDE_02,
+
+	YOUNGERBROTHER_WALK_BACK_01,
+	YOUNGERBROTHER_WALK_BACK_02,
+
+	BROTHER_LIFEFRAME,
+	BROTHER_LIFEBAR,
+	YOUNGERBROTHER_LIFEFRAME,
+	YOUNGERBROTHER_LIFEBAR,
 
 	GAME_VERTEXINFO_MAX
 };
@@ -73,6 +97,7 @@ enum GIMMICK_ID
 	SWITCH_02,
 };
 
+
 class GameScene : public Scene
 {
 private:
@@ -83,6 +108,9 @@ private:
 	Brother*				m_pBrother;
 	YoungerBrother*			m_pYoungerBrother;
 	DrawPositionSetter*		m_pDrawPositionSetter;
+	GameTimeManager*		m_pGameTimeManager;
+	Text*					m_pText;
+	Shadow*					m_pShadow;
 
 public:
 	GameScene(Library* pLibrary);
@@ -90,8 +118,7 @@ public:
 	virtual SCENE_NUM Control();
 	virtual void Draw();
 	virtual void PadCheck();
-	int GetTime();
-
+	
 
 	//ƒeƒXƒg
 	LPD3DXFONT pFont;

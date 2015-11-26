@@ -3,6 +3,8 @@
 
 OpeningScene::OpeningScene(Library* pLibrary) :Scene(pLibrary)
 {
+	//time‚Ì‰Šú‰»
+	m_time = 0;
 
 }
 

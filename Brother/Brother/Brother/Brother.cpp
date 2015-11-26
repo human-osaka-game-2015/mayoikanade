@@ -21,7 +21,7 @@ Brother::Brother(Library* pLibrary, bool* pPadState, bool* pPadOldState, Collisi
 
 	Ppos.x = 300;
 	Ppos.y = 300;
-	m_Hp = 100;
+	m_Hp = BROTHERHP;
 
 	//PlayerUI‚Ì¶¬
 	m_pPlayerUI = new PlayerUI(m_pLibrary,m_Hp);
@@ -238,9 +238,9 @@ void Brother::Move()		//“Ç‚İ‚É‚­‚¢‚©‚ç‰ü‘P‚·‚×‚«
 
 }
 
-void Brother ::ModeManagerSet(ModeManager* Mode)
+void Brother::ModeManagerSet(ModeManager* pModeManager)
 {
-	m_pModeManager = Mode;
+	m_pModeManager = pModeManager;
 }
 
 void Brother::Init()

@@ -5,6 +5,9 @@
 
 StaffScene::StaffScene(Library* pLibrary) :Scene(pLibrary)
 {
+	//time‚Ì‰Šú‰»
+	m_time = 0;
+
 	m_pLibrary->FileInfo_Set("file.csv", FILE_INFO);
 	m_pLibrary->VertexInfo_Set("StaffTex.csv", STAFF_VERTEXINFO_MAX);
 	m_pLibrary->LoadTextureEx("StaffScene.png", TEX_STAFF, 255, 0, 255, 0);
@@ -15,7 +18,7 @@ StaffScene::StaffScene(Library* pLibrary) :Scene(pLibrary)
 StaffScene::~StaffScene()
 {
 	delete m_pStaffBackGround;
-
+	
 	m_pLibrary->ReleaseTexture(TEX_STAFF);
 	m_pLibrary->VertexInfo_Release();
 	m_pLibrary->FileInfo_Release();

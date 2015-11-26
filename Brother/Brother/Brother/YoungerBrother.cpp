@@ -37,9 +37,9 @@ void YoungerBrother::Move()
 
 }
 
-void YoungerBrother::ModeManagerSet(ModeManager* Mode)
+void YoungerBrother::ModeManagerSet(ModeManager* pModeManager)
 {
-	m_pModeManager = Mode;
+	m_pModeManager = pModeManager;
 }
 
 

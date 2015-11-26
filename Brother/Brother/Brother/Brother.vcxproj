@@ -40,7 +40,7 @@
     <ClCompile Include="StaffScene.cpp" />
     <ClCompile Include="Text.cpp" />
     <ClCompile Include="Texture.cpp" />
-    <ClCompile Include="TimeManager.cpp" />
+    <ClCompile Include="GameTimeManager.cpp" />
     <ClCompile Include="TitleBackGround.cpp" />
     <ClCompile Include="TitleName.cpp" />
     <ClCompile Include="TitleScene.cpp" />
@@ -82,7 +82,7 @@
     <ClInclude Include="StaffScene.h" />
     <ClInclude Include="Text.h" />
     <ClInclude Include="Texture.h" />
-    <ClInclude Include="TimeManager.h" />
+    <ClInclude Include="GameTimeManager.h" />
     <ClInclude Include="TitleBackGround.h" />
     <ClInclude Include="TitleName.h" />
     <ClInclude Include="TitleScene.h" />

@@ -2,7 +2,7 @@
 #include "Map.h"
 
 
-DrawPositionSetter::DrawPositionSetter()
+DrawPositionSetter::DrawPositionSetter(Map* pMap) :m_pMap(pMap)
 {
 
 }

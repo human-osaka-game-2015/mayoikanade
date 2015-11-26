@@ -1,7 +1,7 @@
 #include "Shadow.h"
 
 
-Shadow::Shadow()
+Shadow::Shadow(Library* pLibrary) :m_pLibrary(pLibrary)
 {
 
 }
@@ -19,4 +19,9 @@ void Shadow::Control()
 void Shadow::Draw()
 {
 
+}
+
+void Shadow::ModeManagerSet(ModeManager* pModeManager)
+{
+	m_pModeManager = pModeManager;
 }

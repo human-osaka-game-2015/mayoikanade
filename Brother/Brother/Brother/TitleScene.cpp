@@ -5,6 +5,7 @@
 #include "TitleTimeManager.h"
 #include "TitleSelectManager.h"
 
+
 TitleScene::TitleScene(Library* pLibrary) :Scene(pLibrary)
 {
 	m_pLibrary->FileInfo_Set("file.csv", FILE_INFO);
@@ -13,10 +14,10 @@ TitleScene::TitleScene(Library* pLibrary) :Scene(pLibrary)
 	m_pLibrary->LoadTextureEx("TitleScene.png", TEX_TITLE, 255, 0, 255, 0);
 
 
-	m_pTitleBackGround = new TitleBackGround(m_pLibrary);
-	m_pTitleName = new TitleName(m_pLibrary);
-	m_pTitleSelectManager = new TitleSelectManager(m_pLibrary, m_PadState, m_PadOldState);
-	m_pTitleTimeManager = new TitleTimeManager(m_pLibrary);
+	m_pTitleBackGround		= new TitleBackGround(m_pLibrary);
+	m_pTitleName			= new TitleName(m_pLibrary);
+	m_pTitleSelectManager	= new TitleSelectManager(m_pLibrary, m_PadState, m_PadOldState);
+	m_pTitleTimeManager		= new TitleTimeManager(m_pLibrary, m_time);
 }
 
 TitleScene::~TitleScene()

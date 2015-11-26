@@ -1,9 +1,12 @@
 #include "ConnectingScene.h"
 
 
+
+
 ConnectingScene::ConnectingScene(Library* pLibrary) :Scene(pLibrary)
 {
-
+	//time‚Ì‰Šú‰»
+	m_time = 0;
 }
 
 ConnectingScene::~ConnectingScene()

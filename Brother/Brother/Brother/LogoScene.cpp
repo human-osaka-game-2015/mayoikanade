@@ -2,8 +2,13 @@
 #include "LogoBackGround.h"
 #include "Library.h"
 
+
+
 LogoScene::LogoScene(Library* pLibrary) :Scene(pLibrary)
 {
+	//timeの初期化
+	m_time = 0;
+
 	//ファイルの情報はいちいち読み込まずにもとで読んだほうがいいと思う
 	m_pLibrary->FileInfo_Set("file.csv", FILE_INFO);
 	m_pLibrary->VertexInfo_Set("LogoTex.csv", LOGO_VERTEXINFO_MAX);

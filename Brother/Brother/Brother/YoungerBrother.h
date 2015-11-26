@@ -23,7 +23,7 @@ public:
 	virtual void Draw();
 	virtual void Move();
 	virtual void Init();
-	void ModeManagerSet(ModeManager* Mode);
+	void ModeManagerSet(ModeManager* pModeManager);
 
 };
 
