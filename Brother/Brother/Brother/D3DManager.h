@@ -18,7 +18,7 @@ private:
 
 public:
 	static LPDIRECT3DDEVICE9		pD3Device;
-	D3DManager(HWND hwnd);
+	D3DManager(HWND hwnd,bool isFullWindow=false);
 	~D3DManager();
 	void Render_Init();
 	void Draw_Ready();

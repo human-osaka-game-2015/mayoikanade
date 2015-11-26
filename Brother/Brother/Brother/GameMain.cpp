@@ -4,7 +4,7 @@
 
 GameMain::GameMain(HWND hWnd)
 {
-	m_pLibrary = new Library(hWnd);
+	m_pLibrary = new Library(hWnd,true);
 	m_pSceneManager = new SceneManager(m_pLibrary);
 	
 }

@@ -1,9 +1,9 @@
 #include "Library.h"
 
 
-Library::Library(HWND hWnd):m_pD3DManager(NULL), m_pDSoundManager(NULL), m_pXInput(NULL), m_pTexture(NULL), m_pVertex(NULL), m_pUVSetter(NULL)
+Library::Library(HWND hWnd, bool isFullWindow) :m_pD3DManager(NULL), m_pDSoundManager(NULL), m_pXInput(NULL), m_pTexture(NULL), m_pVertex(NULL), m_pUVSetter(NULL)
 {
-	m_pD3DManager = new D3DManager(hWnd);
+	m_pD3DManager = new D3DManager(hWnd, isFullWindow);
 	m_pDSoundManager = new DSoundManager(hWnd);
 	m_pXInput = new XInput();
 	m_pTexture = new Texture();

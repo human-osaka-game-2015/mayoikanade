@@ -127,16 +127,13 @@ void Brother::Move()		//“Ç‚Ý‚É‚­‚¢‚©‚ç‰ü‘P‚·‚×‚«
 		}
 	}
 
-	float PlayerLeft = Ppos.x - (Ppos.w / 2);
-	float PlayerRight = Ppos.x + (Ppos.w / 2);
-	float PlayerTop = Ppos.y - (Ppos.h / 2);
-	float PlayerBottom = Ppos.y + (Ppos.h / 2);
 
 
 	//¶ˆÚ“®‚Ìˆ—
 	if (m_pPadState[ANALOG_LEFT])
 	{
 		Ppos.x -= BROTHERSPEAD;
+		float PlayerLeft = Ppos.x - (Ppos.w / 2);
 
 		if (m_pCollisionChecker->HitCheck(PlayerLeft, Ppos.y))
 		{
@@ -163,7 +160,8 @@ void Brother::Move()		//“Ç‚Ý‚É‚­‚¢‚©‚ç‰ü‘P‚·‚×‚«
 	if (m_pPadState[ANALOG_RIGHT])
 	{
 		Ppos.x += BROTHERSPEAD;
-		
+		float PlayerRight = Ppos.x + (Ppos.w / 2);
+
 		if (m_pCollisionChecker->HitCheck(PlayerRight, Ppos.y))
 		{
 			Ppos.x -= BROTHERSPEAD;
@@ -189,6 +187,7 @@ void Brother::Move()		//“Ç‚Ý‚É‚­‚¢‚©‚ç‰ü‘P‚·‚×‚«
 	if (m_pPadState[ANALOG_DOWN])
 	{	
 		Ppos.y += BROTHERSPEAD;
+		float PlayerBottom = Ppos.y + (Ppos.h / 2);
 
 		if (m_pCollisionChecker->HitCheck(Ppos.x, PlayerBottom))
 		{
@@ -215,7 +214,8 @@ void Brother::Move()		//“Ç‚Ý‚É‚­‚¢‚©‚ç‰ü‘P‚·‚×‚«
 	if (m_pPadState[ANALOG_UP])
 	{	
 		Ppos.y -= BROTHERSPEAD;
-		
+		float PlayerTop = Ppos.y - (Ppos.h / 2);
+
 		if (m_pCollisionChecker->HitCheck(Ppos.x, PlayerTop + 64))
 		{
 			Ppos.y += BROTHERSPEAD;

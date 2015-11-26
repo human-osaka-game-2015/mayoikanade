@@ -55,8 +55,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 		hInstance,
 		NULL
 		);
+	ShowWindow(hWnd, SW_SHOWNORMAL);
 
-	ShowWindow(hWnd, SW_MAXIMIZE);
 #else
 	hWnd = CreateWindow(
 		WINDOWTITLE,

@@ -11,7 +11,7 @@ LPDIRECT3DDEVICE9 D3DManager::pD3Device;
 
 
 
-D3DManager::D3DManager(HWND hwnd) :m_pDirect3D(NULL)
+D3DManager::D3DManager(HWND hwnd,bool isFullWindow) :m_pDirect3D(NULL)
 {
 
 	//DirectX オブジェクトの生成
@@ -22,10 +22,24 @@ D3DManager::D3DManager(HWND hwnd) :m_pDirect3D(NULL)
 	
 	ZeroMemory(&m_d3dpp,sizeof(D3DPRESENT_PARAMETERS));
 
-	m_d3dpp.BackBufferFormat = m_d3ddm.Format;
 	m_d3dpp.BackBufferCount = 1;
 	m_d3dpp.SwapEffect = D3DSWAPEFFECT_DISCARD;
-	m_d3dpp.Windowed = TRUE;
+
+	int ScreenX = GetSystemMetrics(SM_CXSCREEN);
+	int ScreenY = GetSystemMetrics(SM_CYSCREEN);
+
+	if (isFullWindow)
+	{
+		m_d3dpp.BackBufferWidth = ScreenX;
+		m_d3dpp.BackBufferHeight = ScreenY;
+		m_d3dpp.BackBufferFormat = D3DFMT_X8R8G8B8;
+		m_d3dpp.Windowed = FALSE;
+	}
+	else
+	{
+		m_d3dpp.BackBufferFormat = D3DFMT_UNKNOWN;
+		m_d3dpp.Windowed = TRUE;
+	}
 
 	//デバイスを作る
 	m_pDirect3D->CreateDevice(

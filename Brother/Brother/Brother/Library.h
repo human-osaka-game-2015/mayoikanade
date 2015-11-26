@@ -23,7 +23,7 @@ private:
 	XInput*			m_pXInput;
 
 public:
-	Library(HWND hWnd);
+	Library(HWND hWnd,bool isFullWindow=false);
 	~Library();
 
 	// Dxfont用暫定コード matsumura
