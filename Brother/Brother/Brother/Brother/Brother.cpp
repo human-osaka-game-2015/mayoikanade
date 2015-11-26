@@ -24,7 +24,7 @@ Brother::Brother(Library* pLibrary, bool* pPadState, bool* pPadOldState, Collisi
 	m_Hp = BROTHERHP;
 
 	//PlayerUI‚Ì¶¬
-	m_pPlayerUI = new PlayerUI(m_pLibrary,m_Hp);
+	m_pPlayerUI = new PlayerUI(m_pLibrary, m_Hp, BROTHER_LIFEFRAME, BROTHER_LIFEBAR, BROTHERUIPOSX, BROTHERUIPOSY);
 }
 
 Brother::~Brother()
@@ -90,11 +90,12 @@ void Brother::Draw()
 
 		break;
 	}
-
-	//Žd—l‚ª‚í‚©‚ç‚ñ‚©‚ç‰¼‚Å‚±‚±‚É‚¨‚­
-	m_pPlayerUI->Draw();
 }
 
+void Brother::UiDraw()
+{
+	m_pPlayerUI->Draw();
+}
 
 void Brother::Move()		//“Ç‚Ý‚É‚­‚¢‚©‚ç‰ü‘P‚·‚×‚«
 {

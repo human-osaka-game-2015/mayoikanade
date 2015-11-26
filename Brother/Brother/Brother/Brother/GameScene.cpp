@@ -98,10 +98,13 @@ void GameScene::Draw()
 	m_pMap->Draw();
 	m_pBrother->Draw();
 	
+
+	m_pBrother->UiDraw();
+
 	RECT rect = { 10, 10, 0, 0 };
 
 	pFont->DrawText(NULL, "入力チェック", -1, &rect, DT_CALCRECT, NULL);
-	pFont->DrawText(NULL, "入力チェック", -1, &rect, DT_LEFT | DT_BOTTOM, 0xffff0000);
+	pFont->DrawText(NULL, "入力チェック", -1, &rect, DT_LEFT | DT_BOTTOM, 0xff00ffff);
 
 }
 

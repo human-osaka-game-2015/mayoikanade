@@ -291,9 +291,6 @@
     <ClInclude Include="ConnectingScene.h">
       <Filter>WinMain\GameMain\SceneManager\Scene\ConnectingScene</Filter>
     </ClInclude>
-    <ClInclude Include="GameScene.h">
-      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene</Filter>
-    </ClInclude>
     <ClInclude Include="ResultScene.h">
       <Filter>WinMain\GameMain\SceneManager\Scene\ResultScene</Filter>
     </ClInclude>
@@ -368,6 +365,9 @@
     </ClInclude>
     <ClInclude Include="GameTimeManager.h">
       <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\GameTimeManager</Filter>
+    </ClInclude>
+    <ClInclude Include="GameScene.h">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
