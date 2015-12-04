@@ -17,7 +17,7 @@ class YoungerBrother:public Player
 private:
 
 public:
-	YoungerBrother(Library* pLibrary, bool* pPadState, bool* pPadOldState,CollisionChecker* pCollisionChecker);
+	YoungerBrother(Library* pLibrary, bool* pPadState, bool* pPadOldState, CollisionChecker* pCollisionChecker, DrawPositionSetter* pDrawPositionSetter, GameTimeManager* pGameTimeManager);
 	virtual ~YoungerBrother();
 	virtual void Control();
 	virtual void Draw();

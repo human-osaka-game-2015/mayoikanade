@@ -18,7 +18,7 @@ public:
 	~GameTimeManager();
 	void Control();
 	void ModeManagerSet(ModeManager* pModeManager);
-	inline int GetGameTime();
+	int GetGameTime(){return m_GameTime;};
 
 };
 

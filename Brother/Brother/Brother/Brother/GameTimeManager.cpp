@@ -23,7 +23,4 @@ void GameTimeManager::ModeManagerSet(ModeManager* pModeManager)
 }
 
 
-inline int GameTimeManager::GetGameTime()
-{ 
-	return m_GameTime; 
-}
+

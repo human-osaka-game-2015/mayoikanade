@@ -7,6 +7,8 @@ class Library;
 class ModeManager;
 class CollisionChecker;
 class PlayerUI;
+class GameTimeManager;
+class DrawPositionSetter;
 enum GAMEANIMA_ID;
 enum GAMEMODE_NUM;
 
@@ -27,6 +29,8 @@ protected:
 	Library*			m_pLibrary;				//ライブラリクラス
 	ModeManager*		m_pModeManager;			//Modeを管理するクラス、現在のモードを取得するときに使う
 	CollisionChecker*	m_pCollisionChecker;	//あたり判定をとる時に使う
+	DrawPositionSetter*	m_pDrawPositionSetter;	//プレイヤー座標の設定
+	GameTimeManager*	m_pGameTimeManager;		//現在の時間を取得する
 	PlayerUI*			m_pPlayerUI;			//playerUIを描画するときに使う
 	GAMEANIMA_ID		m_CurrentAnima;			//現在のアニメーションを指す
 	GAMEMODE_NUM		m_CurrentMode;			//現在のモードを指す
@@ -35,12 +39,13 @@ protected:
 	int					m_Hp;					//PlayerのHp
 
 public:
-	Player(Library* pLibrary, bool* pPadState, bool* pPadOldState, CollisionChecker* pCollisionChecker);
+	Player(Library* pLibrary, bool* pPadState, bool* pPadOldState, CollisionChecker* pCollisionChecker, DrawPositionSetter* pDrawPositionSetter,GameTimeManager* pGameTimeManager);
 	virtual ~Player();
 	virtual void Control() = 0;
 	virtual void Draw() = 0;
 	virtual void Move() = 0;
 	virtual void Init() = 0;
+	inline int GetHp(){ return m_Hp; };
 	PLAYER_DIRECTION m_Direction;
 	Position Ppos;
 

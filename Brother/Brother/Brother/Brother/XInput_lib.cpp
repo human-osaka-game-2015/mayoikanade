@@ -89,8 +89,9 @@ PADSTATE XInput::GetButtonState(XINPUT_ID id, XINPUTPAD pad)
 			{
 				State = PAD_OFF;
 			}
-			break;
+			m_PadOldState[pad][id] = PAD_OFF;
 		}
+		break;
 	}
 
 	return State;

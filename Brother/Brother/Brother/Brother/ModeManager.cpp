@@ -17,7 +17,7 @@ ModeManager::~ModeManager()
 
 void ModeManager::Control()
 {
-	m_Mode = CheckMode(m_Mode);
+	m_Mode = CheckMode();
 
 	if (m_Mode == GAMEOVER)
 	{
@@ -25,10 +25,15 @@ void ModeManager::Control()
 	}
 }
 
-GAMEMODE_NUM ModeManager::CheckMode(GAMEMODE_NUM GameMode)
+GAMEMODE_NUM ModeManager::CheckMode()
 {
-	//ここで他のクラスを見たりして、Modeを変更する
 	
+	//BrotherのHpが０だったら
+	if (m_pBrother->GetHp() <= 0)
+	{
+		return GAMEOVER;
+	}
+
 	return NORMAL;//仮
 }
 

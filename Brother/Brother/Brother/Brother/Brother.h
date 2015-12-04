@@ -20,7 +20,7 @@ class Brother:public Player
 private:
 	
 public:
-	Brother(Library* pLibrary, bool* pPadState, bool* pPadOldState,CollisionChecker* pCollisionChecker);
+	Brother(Library* pLibrary, bool* pPadState, bool* pPadOldState, CollisionChecker* pCollisionChecker, DrawPositionSetter* pDrawPositionSetter, GameTimeManager* pGameTimeManager);
 	virtual ~Brother();
 	virtual void Control();
 	virtual void Draw();

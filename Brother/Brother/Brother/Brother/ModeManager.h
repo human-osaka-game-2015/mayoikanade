@@ -29,7 +29,7 @@ private:
 	GameTimeManager*			m_pTimeManager;
 	Shadow*					m_pShadow;
 	GAMEMODE_NUM			m_Mode;
-	GAMEMODE_NUM CheckMode(GAMEMODE_NUM GameMode);
+	GAMEMODE_NUM CheckMode();
 
 
 public:

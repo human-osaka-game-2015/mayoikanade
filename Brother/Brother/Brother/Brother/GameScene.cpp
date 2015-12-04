@@ -33,12 +33,12 @@ GameScene::GameScene(Library* pLibrary) :Scene(pLibrary)
 	m_pSceneChangeListener	= new SceneChangeListener(&m_NextScene);
 	m_pMap					= new Map(m_pLibrary);
 	m_pCollisionChecker		= new CollisionChecker(m_pMap);
-	m_pBrother				= new Brother(m_pLibrary, m_PadState, m_PadOldState,m_pCollisionChecker);
-	m_pYoungerBrother		= new YoungerBrother(m_pLibrary, m_PadState, m_PadOldState, m_pCollisionChecker);
+	m_pDrawPositionSetter	= new DrawPositionSetter(m_pMap);
+	m_pGameTimeManager		= new GameTimeManager(m_time); 
+	m_pBrother				= new Brother(m_pLibrary, m_PadState, m_PadOldState, m_pCollisionChecker,m_pDrawPositionSetter,m_pGameTimeManager);
+	m_pYoungerBrother		= new YoungerBrother(m_pLibrary, m_PadState, m_PadOldState, m_pCollisionChecker, m_pDrawPositionSetter, m_pGameTimeManager);
 	m_pShadow				= new Shadow(m_pLibrary);
 	m_pText					= new Text(m_pLibrary);
-	m_pDrawPositionSetter	= new DrawPositionSetter(m_pMap);
-	m_pGameTimeManager		= new GameTimeManager(m_time);
 							  
 	m_pModeManager			= new ModeManager(m_pSceneChangeListener, m_pBrother, m_pYoungerBrother);
 
@@ -63,12 +63,13 @@ GameScene::~GameScene()
 
 	//オブジェクト
 	delete m_pModeManager;
-	delete m_pGameTimeManager;
-	delete m_pDrawPositionSetter;
+
 	delete m_pText;
 	delete m_pShadow;
 	delete m_pYoungerBrother;
 	delete m_pBrother;
+	delete m_pGameTimeManager;
+	delete m_pDrawPositionSetter;
 	delete m_pCollisionChecker;
 	delete m_pMap;
 	delete m_pSceneChangeListener;

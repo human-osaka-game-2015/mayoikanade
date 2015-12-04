@@ -3,11 +3,13 @@
 #include "Library.h"
 #include "ModeManager.h"
 #include "PlayerUI.h"
+#include "GameTimeManager.h"
+#include "DrawPositionSetter.h"
 #include "GameScene.h"
 
 
-Brother::Brother(Library* pLibrary, bool* pPadState, bool* pPadOldState, CollisionChecker* pCollisionChecker)
-	:Player(pLibrary, pPadState, pPadOldState, pCollisionChecker)
+Brother::Brother(Library* pLibrary, bool* pPadState, bool* pPadOldState, CollisionChecker* pCollisionChecker, DrawPositionSetter* pDrawPositionSetter, GameTimeManager* pGameTimeManager)
+	:Player(pLibrary, pPadState, pPadOldState, pCollisionChecker, pDrawPositionSetter, pGameTimeManager)
 {
 	m_pLibrary->InitAnima(BROTHER_WAIT_FRONT);
 	m_pLibrary->InitAnima(BROTHER_WAIT_SIDE);
@@ -39,8 +41,17 @@ void Brother::Control()
 	switch (m_CurrentMode)		//Œ»Ý‚Ìƒ‚[ƒh‚©‚ç
 	{
 	case NORMAL:				//NormalControlŠÖ”‚Å‚àì‚Á‚½‚Ù‚¤‚ªŒ©‚â‚·‚­‚È‚é‚Ì‚©‚à
+		if ((m_pGameTimeManager->GetGameTime() % (60)) == 0 )
+		{
+			m_Hp -= 4;
+		}
 		Move();
 
+		//Debug—p
+		if (m_pLibrary->GetButtonState(GAMEPAD_B, GAMEPAD1) == PAD_PUSH)
+		{
+			m_Hp = 100;
+		}
 		break;
 	case TEXT:
 

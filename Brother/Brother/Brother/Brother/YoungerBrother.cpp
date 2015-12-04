@@ -2,10 +2,11 @@
 #include "CollisionChecker.h"
 #include "Library.h"
 #include "ModeManager.h"
+#include "GameTimeManager.h"
+#include "DrawPositionSetter.h"
 
-
-YoungerBrother::YoungerBrother(Library* pLibrary, bool* pPadState, bool* pPadOldState, CollisionChecker* pCollisionChecker) 
-	:Player(pLibrary, pPadState, pPadOldState, pCollisionChecker)
+YoungerBrother::YoungerBrother(Library* pLibrary, bool* pPadState, bool* pPadOldState, CollisionChecker* pCollisionChecker, DrawPositionSetter* pDrawPositionSetter, GameTimeManager* pGameTimeManager)
+	:Player(pLibrary, pPadState, pPadOldState, pCollisionChecker, pDrawPositionSetter, pGameTimeManager)
 {
 
 }
