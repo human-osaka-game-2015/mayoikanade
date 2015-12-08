@@ -18,10 +18,11 @@ private:
 public:
 	MapBackGround(Library* pLibrary);
 	~MapBackGround();
-	void Draw();
+	void Control();
+	void Draw(float DrawPosX, float DrawPosY);
 	bool CsvRead(const char* filename);
 	void MapTex_UV_Set();
-	void MapTex_XY_Set();
+	void MapTex_XY_Set(float Posx, float Posy);
 	int BackGroundCheck(float x, float y);
 
 };

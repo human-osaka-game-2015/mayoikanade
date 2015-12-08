@@ -47,8 +47,9 @@ public:
 	virtual void Init() = 0;
 	inline int GetHp(){ return m_Hp; };
 	PLAYER_DIRECTION m_Direction;
-	Position Ppos;
-
+	Position m_Ppos;
+	float m_PlayerX;
+	float m_PlayerY;
 };
 
 #endif

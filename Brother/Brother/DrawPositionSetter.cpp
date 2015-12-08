@@ -12,12 +12,12 @@ DrawPositionSetter::~DrawPositionSetter()
 
 }
 
-void DrawPositionSetter::DrawPositionXSet(int x)
+void DrawPositionSetter::DrawPositionXSet(float x)
 {
 	m_pMap->m_DrawPositionX = x;
 }
 
-void DrawPositionSetter::DrawPositionYSet(int y)
+void DrawPositionSetter::DrawPositionYSet(float y)
 {
 	m_pMap->m_DrawPositionY= y;
 }

@@ -1,7 +1,7 @@
 #ifndef BROTHER_H
 #define BROTHER_H
 
-#define BROTHERSPEAD 4				//兄の移動速度
+#define BROTHERSPEAD 6				//兄の移動速度
 #define BROTHERHP 100				//兄の最大HP
 #define BROTHERUIPOSX 140			//兄のUIのX座標
 #define BROTHERUIPOSY 80			//兄のUIのY座標

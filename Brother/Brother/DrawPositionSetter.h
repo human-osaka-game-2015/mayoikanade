@@ -11,8 +11,8 @@ private:
 public:
 	DrawPositionSetter(Map* pMap);
 	~DrawPositionSetter();
-	void DrawPositionXSet(int x);
-	void DrawPositionYSet(int y);
+	void DrawPositionXSet(float x);
+	void DrawPositionYSet(float y);
 
 };
 

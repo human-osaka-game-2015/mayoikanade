@@ -44,9 +44,6 @@
     <Filter Include="WinMain\GameMain\SceneManager\Scene">
       <UniqueIdentifier>{a73b0a80-83f1-4c7b-8b26-29ee465db8c8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="WinMain\GameMain\SceneManager\Scene\LogoScene">
-      <UniqueIdentifier>{a0323456-7091-4010-992b-c1562edec565}</UniqueIdentifier>
-    </Filter>
     <Filter Include="WinMain\GameMain\SceneManager\Scene\OpeningScene">
       <UniqueIdentifier>{f0c0e859-5c34-4fb4-9465-c73c486b6824}</UniqueIdentifier>
     </Filter>
@@ -58,9 +55,6 @@
     </Filter>
     <Filter Include="WinMain\GameMain\SceneManager\Scene\ResultScene">
       <UniqueIdentifier>{365fe3d1-25d2-42db-9276-f1bd517a71f3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="WinMain\GameMain\SceneManager\Scene\LogoScene\LogoBackGround">
-      <UniqueIdentifier>{a49ce375-20e4-4fe4-9476-8b58a3eb98e2}</UniqueIdentifier>
     </Filter>
     <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\Player">
       <UniqueIdentifier>{06f91837-ca26-44bf-94a7-79215958191a}</UniqueIdentifier>
@@ -85,9 +79,6 @@
     </Filter>
     <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\Map\MapGimmick">
       <UniqueIdentifier>{eb344f23-7538-42e9-9d6c-309e254b32c4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\Map\MapBackGround">
-      <UniqueIdentifier>{4b57d8da-f0dc-45ca-a3f2-bc3678467883}</UniqueIdentifier>
     </Filter>
     <Filter Include="WinMain\GameMain\SceneManager\Scene\TitleScene">
       <UniqueIdentifier>{a2fd433d-6263-4d91-9d98-62e5326ce6e4}</UniqueIdentifier>
@@ -128,6 +119,21 @@
     <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\ModeManager">
       <UniqueIdentifier>{801e77f8-9289-4f70-b66e-2b1880fa2ee1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\Map\MapGimmick\Switch">
+      <UniqueIdentifier>{b421111e-5f52-4709-9470-862e40b10073}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\Map\MapGimmick\Gate">
+      <UniqueIdentifier>{5c4819f8-92dd-4dd9-a380-197c4b9c0265}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\LogoScene">
+      <UniqueIdentifier>{a0323456-7091-4010-992b-c1562edec565}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\LogoScene\LogoBackGround">
+      <UniqueIdentifier>{a49ce375-20e4-4fe4-9476-8b58a3eb98e2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\Map\MapBackGround">
+      <UniqueIdentifier>{4b57d8da-f0dc-45ca-a3f2-bc3678467883}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="XInput_lib.cpp">
@@ -167,7 +173,7 @@
       <Filter>WinMain\GameMain\SceneManager\Scene</Filter>
     </ClCompile>
     <ClCompile Include="LogoScene.cpp">
-      <Filter>WinMain\GameMain\SceneManager\Scene\LogoScene</Filter>
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\LogoScene</Filter>
     </ClCompile>
     <ClCompile Include="ConnectingScene.cpp">
       <Filter>WinMain\GameMain\SceneManager\Scene\ConnectingScene</Filter>
@@ -185,7 +191,7 @@
       <Filter>WinMain\GameMain\SceneManager\Scene\TitleScene</Filter>
     </ClCompile>
     <ClCompile Include="LogoBackGround.cpp">
-      <Filter>WinMain\GameMain\SceneManager\Scene\LogoScene\LogoBackGround</Filter>
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\LogoScene\LogoBackGround</Filter>
     </ClCompile>
     <ClCompile Include="Player.cpp">
       <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\Player</Filter>
@@ -286,7 +292,7 @@
       <Filter>WinMain\GameMain\SceneManager\Scene</Filter>
     </ClInclude>
     <ClInclude Include="LogoScene.h">
-      <Filter>WinMain\GameMain\SceneManager\Scene\LogoScene</Filter>
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\LogoScene</Filter>
     </ClInclude>
     <ClInclude Include="ConnectingScene.h">
       <Filter>WinMain\GameMain\SceneManager\Scene\ConnectingScene</Filter>
@@ -301,7 +307,7 @@
       <Filter>WinMain\GameMain\SceneManager\Scene\TitleScene</Filter>
     </ClInclude>
     <ClInclude Include="LogoBackGround.h">
-      <Filter>WinMain\GameMain\SceneManager\Scene\LogoScene\LogoBackGround</Filter>
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\LogoScene\LogoBackGround</Filter>
     </ClInclude>
     <ClInclude Include="Player.h">
       <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\Player</Filter>
@@ -314,9 +320,6 @@
     </ClInclude>
     <ClInclude Include="MapObject.h">
       <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\Map\MapObject</Filter>
-    </ClInclude>
-    <ClInclude Include="MapGimmick.h">
-      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\Map\MapGimmick</Filter>
     </ClInclude>
     <ClInclude Include="MapBackGround.h">
       <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\Map\MapBackGround</Filter>
@@ -368,6 +371,9 @@
     </ClInclude>
     <ClInclude Include="GameScene.h">
       <Filter>WinMain\GameMain\SceneManager\Scene\GameScene</Filter>
+    </ClInclude>
+    <ClInclude Include="MapGimmick.h">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\Map\MapGimmick</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

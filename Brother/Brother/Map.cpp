@@ -22,46 +22,30 @@ Map::~Map()
 	delete m_pMapBackGround;
 }
 
+
 void Map::Control()
 {
-
+	m_pMapBackGround->Control();
+	m_pMapGimmick->Control();
+	m_pMapObject->Control();
 }
 
 void Map::Draw()
 {
 	m_pMapBackGround->MapTex_UV_Set();
+	m_pMapGimmick->MapTex_UV_Set();
 	m_pMapObject->MapTex_UV_Set();
 
-	m_pMapBackGround->MapTex_XY_Set();
-	m_pMapObject->MapTex_XY_Set();
 
-	m_pMapBackGround->Draw();
-	m_pMapObject->Draw();
+	m_pMapBackGround->MapTex_XY_Set(m_DrawPositionX, m_DrawPositionY);
+	m_pMapGimmick->MapTex_XY_Set(m_DrawPositionX, m_DrawPositionY);
+	m_pMapObject->MapTex_XY_Set(m_DrawPositionX, m_DrawPositionY);
+
+
+	m_pMapBackGround->Draw(m_DrawPositionX, m_DrawPositionY);
+	m_pMapGimmick->Draw(m_DrawPositionX, m_DrawPositionY);
+	m_pMapObject->Draw(m_DrawPositionX, m_DrawPositionY);
 }
-
-//bool Map::StageInit(const char* Objname, const char* Gimmickname, const char* Backname)
-//{
-//	if (CsvRead(Objname, MAP_OBJECT) == false)
-//	{
-//		MessageBox(0, "ステージのオブジェクト構成に失敗しました", "", MB_OK);
-//		return false;
-//	}
-//
-//	if (CsvRead(Gimmickname, MAP_GIMMICK) == false)
-//	{
-//		MessageBox(0, "ステージのギミック構成に失敗しました", "", MB_OK);
-//		return false;
-//	}
-//
-//	if (CsvRead(Backname, MAP_BACKGROUND) == false)
-//	{
-//		MessageBox(0, "ステージの背景構成に失敗しました", "", MB_OK);
-//		return false;
-//	}
-//
-//
-//	return true;
-//}
 
 
 int Map::GimmickCheck(float x, float y)

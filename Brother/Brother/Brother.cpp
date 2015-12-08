@@ -21,8 +21,8 @@ Brother::Brother(Library* pLibrary, bool* pPadState, bool* pPadOldState, Collisi
 	m_Direction = PLAYER_FRONT;
 	m_CurrentAnima = BROTHER_WAIT_FRONT;
 
-	Ppos.x = 300;
-	Ppos.y = 300;
+	m_Ppos.x = 600;
+	m_Ppos.y = 350;
 	m_Hp = BROTHERHP;
 
 	//PlayerUI‚Ì¶¬
@@ -80,9 +80,9 @@ void Brother::Draw()
 	case NORMAL:											//NormalDrawŠÖ”‚Å‚àì‚é‚×‚«‚©‚à
 		
 		Tex_Id = m_pLibrary->AnimaControl(m_CurrentAnima);
-		m_pLibrary->MakePosition(Tex_Id, &Ppos);
+		m_pLibrary->MakePosition(Tex_Id, &m_Ppos);
 		m_pLibrary->MakeVertex(Tex_Id, player);
-		m_pLibrary->xySet(Ppos, player);
+		m_pLibrary->xySet(m_Ppos, player);
 
 		if (m_Direction == PLAYER_RIGHT)
 		{
@@ -110,12 +110,12 @@ void Brother::UiDraw()
 
 void Brother::Move()		//“Ç‚Ý‚É‚­‚¢‚©‚ç‰ü‘P‚·‚×‚«
 {
-	//Ppos‚ÌŒvŽZ‚ð‚µ‚Ä“n‚µ‚Ä‚¢‚é‚Æ‚±‚ë‚Æ‚©Œ©‚Ã‚ç‚¢
+	//m_Ppos‚ÌŒvŽZ‚ð‚µ‚Ä“n‚µ‚Ä‚¢‚é‚Æ‚±‚ë‚Æ‚©Œ©‚Ã‚ç‚¢
 	//HitCheck‚É‰½‚ð“n‚µ‚Ä‚¢‚é‚Ì‚©ˆêŒ©‚í‚©‚ç‚È‚¢‚©‚ç’¼‚·‚×‚«
 
 
 	//ˆÚ“®‚ª‚È‚©‚Á‚½‚ç‘Ò‹@‚ÌƒAƒjƒ[ƒVƒ‡ƒ“
-	if (m_pPadState[ANALOG_LEFT] == false && m_pPadState[ANALOG_RIGHT] == false && 
+	if (m_pPadState[ANALOG_LEFT] == false && m_pPadState[ANALOG_RIGHT] == false &&
 		m_pPadState[ANALOG_UP] == false && m_pPadState[ANALOG_DOWN] == false)
 	{
 		switch (m_Direction)
@@ -141,51 +141,67 @@ void Brother::Move()		//“Ç‚Ý‚É‚­‚¢‚©‚ç‰ü‘P‚·‚×‚«
 
 
 
+
 	//¶ˆÚ“®‚Ìˆ—
 	if (m_pPadState[ANALOG_LEFT])
 	{
-		Ppos.x -= BROTHERSPEAD;
-		float PlayerLeft = Ppos.x - (Ppos.w / 2);
+		m_PlayerX -= BROTHERSPEAD;
 
-		if (m_pCollisionChecker->HitCheck(PlayerLeft, Ppos.y))
+		float PlayerLeft = m_Ppos.x - (m_Ppos.w / 2) + m_PlayerX;
+
+		//ƒvƒŒƒCƒ„[‚Ì¶‘¤‚Ì‚ ‚½‚è”»’è
+		if (m_pCollisionChecker->HitCheck(PlayerLeft, m_Ppos.y + m_PlayerY))
 		{
-			Ppos.x += BROTHERSPEAD;
+			m_PlayerX += BROTHERSPEAD;
 		}
-		else if (m_pCollisionChecker->HitCheck(PlayerLeft, (Ppos.y + (Ppos.h / 2))))
+		else if (m_pCollisionChecker->HitCheck(PlayerLeft, (m_Ppos.y + (m_Ppos.h / 2) + m_PlayerY)))
 		{
-			Ppos.x += BROTHERSPEAD;
+			m_PlayerX += BROTHERSPEAD;
 		}
-		else if (m_pCollisionChecker->HitCheck(PlayerLeft, (Ppos.y + (Ppos.h / 2 / 2))))
+		else if (m_pCollisionChecker->HitCheck(PlayerLeft, (m_Ppos.y + (m_Ppos.h / 2 / 2)) + m_PlayerY))
 		{
-			Ppos.x += BROTHERSPEAD;
+			m_PlayerX += BROTHERSPEAD;
 		}
 		
+
+
+		//ˆÊ’uî•ñ‚ð‹³‚¦‚é
+		m_pDrawPositionSetter->DrawPositionXSet(m_PlayerX);
+
+		//Œü‚«‚Ì•ÏX
 		m_Direction = PLAYER_LEFT;
 		if (m_pPadOldState[ANALOG_LEFT])
 		{
 			m_CurrentAnima = BROTHER_WALK_SIDE;
-		}		
+		}
 	}
+	
+
+
+	
 
 
 	//‰E‚ÌˆÚ“®ˆ—
 	if (m_pPadState[ANALOG_RIGHT])
 	{
-		Ppos.x += BROTHERSPEAD;
-		float PlayerRight = Ppos.x + (Ppos.w / 2);
+		m_PlayerX += BROTHERSPEAD;
 
-		if (m_pCollisionChecker->HitCheck(PlayerRight, Ppos.y))
+		float PlayerRight = m_Ppos.x + (m_Ppos.w / 2) + m_PlayerX;
+
+		if (m_pCollisionChecker->HitCheck(PlayerRight, m_Ppos.y))
 		{
-			Ppos.x -= BROTHERSPEAD;
+			m_PlayerX -= BROTHERSPEAD;
 		}
-		else if (m_pCollisionChecker->HitCheck(PlayerRight, (Ppos.y + (Ppos.h / 2))))
+		else if (m_pCollisionChecker->HitCheck(PlayerRight, (m_Ppos.y + (m_Ppos.h / 2)) + m_PlayerY))
 		{
-			Ppos.x -= BROTHERSPEAD;
+			m_PlayerX -= BROTHERSPEAD;
 		}
-		else if (m_pCollisionChecker->HitCheck(PlayerRight, (Ppos.y + (Ppos.h / 2 /2))))
+		else if (m_pCollisionChecker->HitCheck(PlayerRight, (m_Ppos.y + (m_Ppos.h / 2 / 2)) + m_PlayerY))
 		{
-			Ppos.x -= BROTHERSPEAD;
+			m_PlayerX -= BROTHERSPEAD;
 		}
+
+		m_pDrawPositionSetter->DrawPositionXSet(m_PlayerX);
 
 		m_Direction = PLAYER_RIGHT;
 		if (m_pPadOldState[ANALOG_RIGHT])
@@ -195,24 +211,28 @@ void Brother::Move()		//“Ç‚Ý‚É‚­‚¢‚©‚ç‰ü‘P‚·‚×‚«
 	}
 
 
+
 	//‰ºˆÚ“®‚Ìˆ—
 	if (m_pPadState[ANALOG_DOWN])
-	{	
-		Ppos.y += BROTHERSPEAD;
-		float PlayerBottom = Ppos.y + (Ppos.h / 2);
+	{
+		m_PlayerY += BROTHERSPEAD;
 
-		if (m_pCollisionChecker->HitCheck(Ppos.x, PlayerBottom))
+		float PlayerBottom = m_Ppos.y + (m_Ppos.h / 2) + m_PlayerY;
+
+		if (m_pCollisionChecker->HitCheck(m_Ppos.x + m_PlayerX, PlayerBottom))
 		{
-			Ppos.y -= BROTHERSPEAD;
+			m_PlayerY -= BROTHERSPEAD;
 		}
-		else if (m_pCollisionChecker->HitCheck((Ppos.x + (Ppos.w / 2)), PlayerBottom))
+		else if (m_pCollisionChecker->HitCheck((m_Ppos.x + (m_Ppos.w / 2)) + m_PlayerX, PlayerBottom))
 		{
-			Ppos.y -= BROTHERSPEAD;
+			m_PlayerY -= BROTHERSPEAD;
 		}
-		else if (m_pCollisionChecker->HitCheck((Ppos.x - (Ppos.w / 2)), PlayerBottom))
+		else if (m_pCollisionChecker->HitCheck((m_Ppos.x - (m_Ppos.w / 2)) + m_PlayerX, PlayerBottom))
 		{
-			Ppos.y -= BROTHERSPEAD;
+			m_PlayerY -= BROTHERSPEAD;
 		}
+
+		m_pDrawPositionSetter->DrawPositionYSet(m_PlayerY);
 
 		m_Direction = PLAYER_FRONT;
 		if (m_pPadOldState[ANALOG_DOWN])
@@ -223,23 +243,29 @@ void Brother::Move()		//“Ç‚Ý‚É‚­‚¢‚©‚ç‰ü‘P‚·‚×‚«
 
 
 	//ãˆÚ“®‚Ìˆ—
-	if (m_pPadState[ANALOG_UP])
-	{	
-		Ppos.y -= BROTHERSPEAD;
-		float PlayerTop = Ppos.y - (Ppos.h / 2);
+	if (m_pPadState[ANALOG_UP]) 
+	{
+		m_PlayerY -= BROTHERSPEAD;
 
-		if (m_pCollisionChecker->HitCheck(Ppos.x, PlayerTop + 64))
+		float PlayerTop = m_Ppos.y - (m_Ppos.h / 2) + m_PlayerY;
+
+
+		if (m_pCollisionChecker->HitCheck(m_Ppos.x + m_PlayerX, PlayerTop + 64))
 		{
-			Ppos.y += BROTHERSPEAD;
+			m_PlayerY += BROTHERSPEAD;
 		}
-		else if (m_pCollisionChecker->HitCheck((Ppos.x + (Ppos.w / 2)), PlayerTop + 64))
+		else if (m_pCollisionChecker->HitCheck((m_Ppos.x + (m_Ppos.w / 2)) + m_PlayerX, PlayerTop + 64))
 		{
-			Ppos.y += BROTHERSPEAD;
+			m_PlayerY += BROTHERSPEAD;
 		}
-		else if (m_pCollisionChecker->HitCheck((Ppos.x - (Ppos.w / 2)), PlayerTop + 64))
+		else if (m_pCollisionChecker->HitCheck((m_Ppos.x - (m_Ppos.w / 2)) + m_PlayerX, PlayerTop + 64))
 		{
-			Ppos.y += BROTHERSPEAD;
+			m_PlayerY += BROTHERSPEAD;
 		}
+
+
+		m_pDrawPositionSetter->DrawPositionYSet(m_PlayerY);
+
 
 		m_Direction = PLAYER_BACK;
 		if (m_pPadOldState[ANALOG_UP])
@@ -247,8 +273,10 @@ void Brother::Move()		//“Ç‚Ý‚É‚­‚¢‚©‚ç‰ü‘P‚·‚×‚«
 			m_CurrentAnima = BROTHER_WALK_BACK;
 		}
 	}
-
+	
+	
 }
+
 
 void Brother::ModeManagerSet(ModeManager* pModeManager)
 {

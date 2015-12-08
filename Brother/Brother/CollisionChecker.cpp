@@ -16,7 +16,7 @@ bool CollisionChecker::HitCheck(float x,float y)
 {
 	int Chip;
 
-	//バックグラウンドはチェックしない
+	
 
 
 	Chip = m_pMap->GimmickCheck(x, y);
