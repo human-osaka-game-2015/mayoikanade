@@ -24,6 +24,7 @@ enum TEXTURE_NUM
 	TEX_TITLE,
 	TEX_STAFF,
 	TEX_GAME,
+	STENCIL,
 };
 
 class Scene

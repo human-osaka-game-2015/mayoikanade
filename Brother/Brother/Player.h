@@ -42,9 +42,10 @@ public:
 	Player(Library* pLibrary, bool* pPadState, bool* pPadOldState, CollisionChecker* pCollisionChecker, DrawPositionSetter* pDrawPositionSetter,GameTimeManager* pGameTimeManager);
 	virtual ~Player();
 	virtual void Control() = 0;
-	virtual void Draw() = 0;
-	virtual void Move() = 0;
-	virtual void Init() = 0;
+	virtual void Draw()    = 0;
+	virtual void Move()    = 0;
+	virtual void Action()  = 0;
+	virtual void Init()    = 0;
 	inline int GetHp(){ return m_Hp; };
 	PLAYER_DIRECTION m_Direction;
 	Position m_Ppos;

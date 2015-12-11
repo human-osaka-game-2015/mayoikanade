@@ -19,6 +19,7 @@
     <ClCompile Include="DSoundManager.cpp" />
     <ClCompile Include="GameMain.cpp" />
     <ClCompile Include="GameScene.cpp" />
+    <ClCompile Include="Gate.cpp" />
     <ClCompile Include="InputDevice.cpp" />
     <ClCompile Include="Library.cpp" />
     <ClCompile Include="LogoBackGround.cpp" />
@@ -38,6 +39,8 @@
     <ClCompile Include="Shadow.cpp" />
     <ClCompile Include="StaffBackGround.cpp" />
     <ClCompile Include="StaffScene.cpp" />
+    <ClCompile Include="StencilManager.cpp" />
+    <ClCompile Include="Switch.cpp" />
     <ClCompile Include="Text.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="GameTimeManager.cpp" />
@@ -61,6 +64,7 @@
     <ClInclude Include="DSoundManager.h" />
     <ClInclude Include="GameMain.h" />
     <ClInclude Include="GameScene.h" />
+    <ClInclude Include="Gate.h" />
     <ClInclude Include="InputDevice.h" />
     <ClInclude Include="Library.h" />
     <ClInclude Include="LogoBackGround.h" />
@@ -80,6 +84,8 @@
     <ClInclude Include="Shadow.h" />
     <ClInclude Include="StaffBackGround.h" />
     <ClInclude Include="StaffScene.h" />
+    <ClInclude Include="StencilManager.h" />
+    <ClInclude Include="Switch.h" />
     <ClInclude Include="Text.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="GameTimeManager.h" />

@@ -10,6 +10,7 @@
 #include "Texture.h"
 #include "Vertex.h"
 #include "UVSetter.h"
+#include "StencilManager.h"
 
 
 class Library
@@ -21,9 +22,10 @@ private:
 	Vertex*			m_pVertex;
 	UVSetter*		m_pUVSetter;
 	XInput*			m_pXInput;
+	StencilManager*	m_pStencilManager;
 
 public:
-	Library(HWND hWnd,bool isFullWindow=false);
+	Library(HWND hWnd, bool isFullWindow = false, bool isStencil = false);
 	~Library();
 
 	// Dxfont用暫定コード matsumura
@@ -61,6 +63,16 @@ public:
 	void Check(XINPUTPAD pad);
 	PADSTATE GetButtonState(XINPUT_ID id, XINPUTPAD pad);
 	bool GetAnalogState(ANALOGPAD id, XINPUTPAD pad);
+
+	//StencilManager
+	void StencilDrawReady();
+	void StencilDrawEnd();
+	void StencilRefSet(BYTE ref);
+	void StencilDraw(CustomVertex* vertex);
+	void AlphaTestReady(BYTE ref);
+	void AlphaTestEnd();
+	void StencilTestEnd();
+
 };
 
 

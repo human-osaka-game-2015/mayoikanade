@@ -27,6 +27,8 @@ GameScene::GameScene(Library* pLibrary) :Scene(pLibrary)
 	m_pLibrary->VertexInfo_Set("GameTex.csv", GAME_VERTEXINFO_MAX);
 	m_pLibrary->AnimaInfo_Set("Gameanimation.csv", GAME_ANIMA_INFO);
 	m_pLibrary->LoadTextureEx("GameScene.png", TEX_GAME, 255, 0, 255, 0);
+	m_pLibrary->LoadTextureEx("en.png", STENCIL, 255, 0, 255, 255);
+
 
 
 
@@ -34,13 +36,13 @@ GameScene::GameScene(Library* pLibrary) :Scene(pLibrary)
 	m_pMap					= new Map(m_pLibrary);
 	m_pCollisionChecker		= new CollisionChecker(m_pMap);
 	m_pDrawPositionSetter	= new DrawPositionSetter(m_pMap);
-	m_pGameTimeManager		= new GameTimeManager(m_time); 
+	m_pGameTimeManager		= new GameTimeManager(&m_time); 
 	m_pBrother				= new Brother(m_pLibrary, m_PadState, m_PadOldState, m_pCollisionChecker,m_pDrawPositionSetter,m_pGameTimeManager);
 	m_pYoungerBrother		= new YoungerBrother(m_pLibrary, m_PadState, m_PadOldState, m_pCollisionChecker, m_pDrawPositionSetter, m_pGameTimeManager);
-	m_pShadow				= new Shadow(m_pLibrary);
+	m_pShadow				= new Shadow(m_pLibrary,m_pGameTimeManager);
 	m_pText					= new Text(m_pLibrary);
 							  
-	m_pModeManager			= new ModeManager(m_pSceneChangeListener, m_pBrother, m_pYoungerBrother);
+	m_pModeManager			= new ModeManager(m_pSceneChangeListener, m_pBrother, m_pYoungerBrother,m_pGameTimeManager,m_pShadow);
 
 	//ModeManagerSetはBrotherなどに対してm_ModeManagerを渡す
 	m_pBrother->ModeManagerSet(m_pModeManager);
@@ -86,6 +88,8 @@ SCENE_NUM GameScene::Control()
 
 	m_pGameTimeManager->Control();
 
+	m_pShadow->Control();
+
 	m_pBrother->Control();
 
 	m_pMap->Control();
@@ -96,16 +100,23 @@ SCENE_NUM GameScene::Control()
 void GameScene::Draw()
 {
 
+	m_pShadow->Draw();
+
 	m_pMap->Draw();
 	m_pBrother->Draw();
-	
 
+
+	m_pLibrary->StencilTestEnd();
 	m_pBrother->UiDraw();
+
+
+
 
 	RECT rect = { 10, 10, 0, 0 };
 
 	pFont->DrawText(NULL, "入力チェック", -1, &rect, DT_CALCRECT, NULL);
 	pFont->DrawText(NULL, "入力チェック", -1, &rect, DT_LEFT | DT_BOTTOM, 0xff00ffff);
+
 
 }
 

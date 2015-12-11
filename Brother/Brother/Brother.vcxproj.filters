@@ -14,9 +14,6 @@
     <Filter Include="Library\DSoundManager">
       <UniqueIdentifier>{ad55b6c2-8621-40ed-a0be-2c622678763f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Library\InputDevice">
-      <UniqueIdentifier>{3033e11b-993d-452a-b40d-3054f1da0f60}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Library\Texture">
       <UniqueIdentifier>{b184895d-eed7-4420-bf45-25f987b7cc12}</UniqueIdentifier>
     </Filter>
@@ -125,14 +122,20 @@
     <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\Map\MapGimmick\Gate">
       <UniqueIdentifier>{5c4819f8-92dd-4dd9-a380-197c4b9c0265}</UniqueIdentifier>
     </Filter>
-    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\LogoScene">
-      <UniqueIdentifier>{a0323456-7091-4010-992b-c1562edec565}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\LogoScene\LogoBackGround">
-      <UniqueIdentifier>{a49ce375-20e4-4fe4-9476-8b58a3eb98e2}</UniqueIdentifier>
-    </Filter>
     <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\Map\MapBackGround">
       <UniqueIdentifier>{4b57d8da-f0dc-45ca-a3f2-bc3678467883}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="WinMain\GameMain\SceneManager\Scene\LogoScene">
+      <UniqueIdentifier>{a0323456-7091-4010-992b-c1562edec565}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="WinMain\GameMain\SceneManager\Scene\LogoScene\LogoBackGround">
+      <UniqueIdentifier>{a49ce375-20e4-4fe4-9476-8b58a3eb98e2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library\InputDevice">
+      <UniqueIdentifier>{3033e11b-993d-452a-b40d-3054f1da0f60}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library\StencilManager">
+      <UniqueIdentifier>{61dbcdf8-3cc4-43dc-888b-8efeb0c27825}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -173,13 +176,10 @@
       <Filter>WinMain\GameMain\SceneManager\Scene</Filter>
     </ClCompile>
     <ClCompile Include="LogoScene.cpp">
-      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\LogoScene</Filter>
+      <Filter>WinMain\GameMain\SceneManager\Scene\LogoScene</Filter>
     </ClCompile>
     <ClCompile Include="ConnectingScene.cpp">
       <Filter>WinMain\GameMain\SceneManager\Scene\ConnectingScene</Filter>
-    </ClCompile>
-    <ClCompile Include="GameScene.cpp">
-      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene</Filter>
     </ClCompile>
     <ClCompile Include="ResultScene.cpp">
       <Filter>WinMain\GameMain\SceneManager\Scene\ResultScene</Filter>
@@ -191,7 +191,7 @@
       <Filter>WinMain\GameMain\SceneManager\Scene\TitleScene</Filter>
     </ClCompile>
     <ClCompile Include="LogoBackGround.cpp">
-      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\LogoScene\LogoBackGround</Filter>
+      <Filter>WinMain\GameMain\SceneManager\Scene\LogoScene\LogoBackGround</Filter>
     </ClCompile>
     <ClCompile Include="Player.cpp">
       <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\Player</Filter>
@@ -256,6 +256,18 @@
     <ClCompile Include="GameTimeManager.cpp">
       <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\GameTimeManager</Filter>
     </ClCompile>
+    <ClCompile Include="Gate.cpp">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\Map\MapGimmick\Gate</Filter>
+    </ClCompile>
+    <ClCompile Include="Switch.cpp">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\Map\MapGimmick\Switch</Filter>
+    </ClCompile>
+    <ClCompile Include="StencilManager.cpp">
+      <Filter>Library\StencilManager</Filter>
+    </ClCompile>
+    <ClCompile Include="GameScene.cpp">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="XInput_lib.h">
@@ -292,7 +304,7 @@
       <Filter>WinMain\GameMain\SceneManager\Scene</Filter>
     </ClInclude>
     <ClInclude Include="LogoScene.h">
-      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\LogoScene</Filter>
+      <Filter>WinMain\GameMain\SceneManager\Scene\LogoScene</Filter>
     </ClInclude>
     <ClInclude Include="ConnectingScene.h">
       <Filter>WinMain\GameMain\SceneManager\Scene\ConnectingScene</Filter>
@@ -307,7 +319,7 @@
       <Filter>WinMain\GameMain\SceneManager\Scene\TitleScene</Filter>
     </ClInclude>
     <ClInclude Include="LogoBackGround.h">
-      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\LogoScene\LogoBackGround</Filter>
+      <Filter>WinMain\GameMain\SceneManager\Scene\LogoScene\LogoBackGround</Filter>
     </ClInclude>
     <ClInclude Include="Player.h">
       <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\Player</Filter>
@@ -374,6 +386,15 @@
     </ClInclude>
     <ClInclude Include="MapGimmick.h">
       <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\Map\MapGimmick</Filter>
+    </ClInclude>
+    <ClInclude Include="Gate.h">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\Map\MapGimmick\Gate</Filter>
+    </ClInclude>
+    <ClInclude Include="Switch.h">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\Map\MapGimmick\Switch</Filter>
+    </ClInclude>
+    <ClInclude Include="StencilManager.h">
+      <Filter>Library\StencilManager</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

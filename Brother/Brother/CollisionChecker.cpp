@@ -22,13 +22,29 @@ bool CollisionChecker::HitCheck(float x,float y)
 	Chip = m_pMap->GimmickCheck(x, y);
 	switch (Chip)
 	{
-	case SWITCH_01:
+	case SWITCH_RED_01:
 		//スイッチ処理とか
 
 		break;
-	case SWITCH_02:
+	case SWITCH_RED_02:
 		//押されてるスイッチなので何も処理しないとか
 
+		break;
+	case GATE_01:
+		
+		return true;
+		break;
+	case GATE_02:
+		
+		return true;
+		break;
+	case GATEPOST_01:
+		
+		return true;
+		break;
+	case GATEPOST_02:
+		
+		return true;
 		break;
 	}
 

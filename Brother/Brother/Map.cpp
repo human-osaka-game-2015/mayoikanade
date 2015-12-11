@@ -32,9 +32,9 @@ void Map::Control()
 
 void Map::Draw()
 {
-	m_pMapBackGround->MapTex_UV_Set();
-	m_pMapGimmick->MapTex_UV_Set();
-	m_pMapObject->MapTex_UV_Set();
+	m_pMapBackGround->MapTex_UV_Set(m_DrawPositionX, m_DrawPositionY);
+	m_pMapGimmick->MapTex_UV_Set(m_DrawPositionX, m_DrawPositionY);
+	m_pMapObject->MapTex_UV_Set(m_DrawPositionX, m_DrawPositionY);
 
 
 	m_pMapBackGround->MapTex_XY_Set(m_DrawPositionX, m_DrawPositionY);

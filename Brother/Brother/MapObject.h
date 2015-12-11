@@ -21,7 +21,7 @@ public:
 	void Control();
 	void Draw(float DrawPosX, float DrawPosY);
 	bool CsvRead(const char* filename);
-	void MapTex_UV_Set();
+	void MapTex_UV_Set(float Posx, float Posy);
 	void MapTex_XY_Set(float Posx, float Posy);
 	int ObjectCheck(float x, float y);
 

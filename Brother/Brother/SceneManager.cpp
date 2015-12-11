@@ -12,7 +12,7 @@
 SceneManager::SceneManager(Library* pLibrary) :m_pLibrary(pLibrary), m_NextScene(SCENE_NONE)
 {
 	//ゲームの開始時のシーンはロゴに行く
-	m_pScene = new LogoScene(m_pLibrary);
+	m_pScene = new GameScene(m_pLibrary);
 
 	//SetRenderState等の処理
 	m_pLibrary->Render_Init();

@@ -36,11 +36,39 @@ bool MapObject::CsvRead(const char* filename)
 }
 
 
-void MapObject::MapTex_UV_Set()
+void MapObject::MapTex_UV_Set(float Posx, float Posy)
 {
-	for (int i = 0; i < MAP_HEIGHT; i++)
+	int count_x = int((Posx - 64) / MAPTIP_SIZE);
+	int count_y = int((Posy - 64) / MAPTIP_SIZE);
+
+
+	if (count_x < 0)
 	{
-		for (int j = 0; j < MAP_WIDTH; j++)
+		count_x = 0;
+	}
+	if (count_y < 0)
+	{
+		count_y = 0;
+	}
+
+
+	//•`‰æ—Ìˆæ‚ð‹‚ß‚Ä‘ã“ü —]•ª‚Éˆê‚Âæ‚à“Ç‚ñ‚Å‚é‚Ì‚Å64‘«‚µ‚Ä‚¢‚é
+	int ScreenRight = int((Posx + SCREEN_SIZEX + 64) / MAPTIP_SIZE);
+	int ScreenBottom = int((Posy + SCREEN_SIZEY + 64) / MAPTIP_SIZE);
+
+	if (ScreenRight > MAP_WIDTH)
+	{
+		ScreenRight = MAP_WIDTH;
+	}
+	if (ScreenBottom > MAP_HEIGHT)
+	{
+		ScreenBottom = MAP_HEIGHT;
+	}
+
+
+	for (int i = count_y; i <= ScreenBottom; i++)
+	{
+		for (int j = count_x; j <= ScreenRight; j++)
 		{
 			switch (m_ObjectData[i][j])
 			{
@@ -59,7 +87,14 @@ void MapObject::MapTex_UV_Set()
 			case WOOD_04:
 				m_pLibrary->MakeVertex(WOOD_04, m_MapObject_Tex[i][j]);
 				break;
-
+			default :
+				for (int x = 0; x < VERTEXNUM; x++)
+				{
+					m_MapObject_Tex[i][j][x].color = DEFAULTCOLOR;
+					m_MapObject_Tex[i][j][x].rhw = DEFAULTRHW;
+					m_MapObject_Tex[i][j][x].z = DEFAULTZ;
+				}
+				break;
 			}
 		}
 	}
@@ -79,8 +114,8 @@ int MapObject::ObjectCheck(float x, float y)
 
 void MapObject::MapTex_XY_Set(float Posx, float Posy)
 {
-	int count_x = (Posx - 64) / MAPTIP_SIZE;
-	int count_y = (Posy - 64) / MAPTIP_SIZE;
+	int count_x = int((Posx - 64) / MAPTIP_SIZE);
+	int count_y = int((Posy - 64) / MAPTIP_SIZE);
 
 
 	if (count_x < 1)
@@ -94,8 +129,8 @@ void MapObject::MapTex_XY_Set(float Posx, float Posy)
 
 
 	//•`‰æ—Ìˆæ‚ð‹‚ß‚Ä‘ã“ü —]•ª‚Éˆê‚Âæ‚à“Ç‚ñ‚Å‚é‚Ì‚Å64‘«‚µ‚Ä‚¢‚é
-	int ScreenRight = (Posx + SCREEN_SIZEX + 64) / MAPTIP_SIZE;
-	int ScreenBottom = (Posy + SCREEN_SIZEY + 64) / MAPTIP_SIZE;
+	int ScreenRight =  int((Posx + SCREEN_SIZEX + 64) / MAPTIP_SIZE);
+	int ScreenBottom = int((Posy + SCREEN_SIZEY + 64) / MAPTIP_SIZE);
 
 	if (ScreenRight > MAP_WIDTH)
 	{
@@ -131,8 +166,8 @@ void MapObject::Control()
 
 void MapObject::Draw(float DrawPosX, float DrawPosY)
 {
-	int count_x = (DrawPosX- 64) / MAPTIP_SIZE;
-	int count_y = (DrawPosY- 64) / MAPTIP_SIZE;
+	int count_x = int((DrawPosX- 64) / MAPTIP_SIZE);
+	int count_y = int((DrawPosY- 64) / MAPTIP_SIZE);
 
 	if (count_x < 0)
 	{
@@ -145,8 +180,8 @@ void MapObject::Draw(float DrawPosX, float DrawPosY)
 
 
 	//•`‰æ—Ìˆæ‚ð‹‚ß‚Ä‘ã“ü —]•ª‚Éˆê‚Âæ‚à“Ç‚ñ‚Å‚é‚Ì‚Å64‘«‚µ‚Ä‚¢‚é
-	int ScreenRight = (DrawPosX + SCREEN_SIZEX + 64) / MAPTIP_SIZE;
-	int ScreenBottom = (DrawPosY + SCREEN_SIZEY + 64) / MAPTIP_SIZE;
+	int ScreenRight =  int((DrawPosX + SCREEN_SIZEX + 64) / MAPTIP_SIZE);
+	int ScreenBottom = int((DrawPosY + SCREEN_SIZEY + 64) / MAPTIP_SIZE);
 
 	if (ScreenRight > MAP_WIDTH)
 	{

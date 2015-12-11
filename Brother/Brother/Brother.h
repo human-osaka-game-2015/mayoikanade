@@ -25,6 +25,7 @@ public:
 	virtual void Control();
 	virtual void Draw();
 	virtual void Move();
+	virtual void Action();
 	virtual void Init();
 	void UiDraw();
 	void ModeManagerSet(ModeManager* pModeManager);

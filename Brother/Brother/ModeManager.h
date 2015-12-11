@@ -26,14 +26,14 @@ private:
 	YoungerBrother*			m_pYoungerBrother;
 	SceneChangeListener*	m_pSceneChangeListener;
 	Map*					m_pMap;
-	GameTimeManager*			m_pTimeManager;
+	GameTimeManager*		m_pTimeManager;
 	Shadow*					m_pShadow;
 	GAMEMODE_NUM			m_Mode;
 	GAMEMODE_NUM CheckMode();
 
 
 public:
-	ModeManager(SceneChangeListener* Listener,Brother* pBrother, YoungerBrother* pYoungerBrother);
+	ModeManager(SceneChangeListener* Listener, Brother* pBrother, YoungerBrother* pYoungerBrother,GameTimeManager* pGameTimeManager,Shadow* pShadow);
 	~ModeManager();
 	void Control();
 	GAMEMODE_NUM GetMode();

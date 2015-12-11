@@ -11,7 +11,7 @@ LPDIRECT3DDEVICE9 D3DManager::pD3Device;
 
 
 
-D3DManager::D3DManager(HWND hwnd,bool isFullWindow) :m_pDirect3D(NULL)
+D3DManager::D3DManager(HWND hwnd, bool isFullWindow, bool isStencilBuffer) :m_pDirect3D(NULL)
 {
 
 	//DirectX オブジェクトの生成
@@ -40,6 +40,13 @@ D3DManager::D3DManager(HWND hwnd,bool isFullWindow) :m_pDirect3D(NULL)
 		m_d3dpp.BackBufferFormat = D3DFMT_UNKNOWN;
 		m_d3dpp.Windowed = TRUE;
 	}
+
+	if (isStencilBuffer)
+	{
+		m_d3dpp.EnableAutoDepthStencil = TRUE;
+		m_d3dpp.AutoDepthStencilFormat = D3DFMT_D24S8;
+	}
+	
 
 	//デバイスを作る
 	m_pDirect3D->CreateDevice(
@@ -78,10 +85,7 @@ void D3DManager::Render_Init()
 void D3DManager::Draw_Ready()
 {
 	//画面の消去
-	pD3Device->Clear(0, NULL,
-		D3DCLEAR_TARGET,
-		D3DCOLOR_XRGB(0x00, 0x00, 0x00),
-		1.0, 0);
+	pD3Device->Clear(0, NULL, D3DCLEAR_ZBUFFER|D3DCLEAR_TARGET, D3DCOLOR_XRGB(0x00, 0x00, 0x00), 1.0, 0);
 
 	//描画の開始
 	pD3Device->BeginScene();

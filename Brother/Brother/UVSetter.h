@@ -3,7 +3,7 @@
 
 #define DEFAULTCOLOR 0xffffffff
 #define DEFAULTRHW 1
-#define DEFAULTZ 0.5
+#define DEFAULTZ 0
 #define INITFRAMECOUNT 0
 #define INITAnimaNum 0
 #define INITADDNUM 1

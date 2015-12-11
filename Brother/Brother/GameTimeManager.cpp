@@ -2,9 +2,9 @@
 #include "ModeManager.h"
 
 
-GameTimeManager::GameTimeManager(unsigned int& GameTime) :m_GameTime(GameTime)
+GameTimeManager::GameTimeManager(unsigned int *GameTime) :m_GameTime(GameTime)
 {
-	m_GameTime = 0;
+	*m_GameTime = 0;
 }
 
 GameTimeManager::~GameTimeManager()
@@ -14,7 +14,7 @@ GameTimeManager::~GameTimeManager()
 
 void GameTimeManager::Control()
 {
-	m_GameTime++;
+	(*m_GameTime) ++;
 }
 
 void GameTimeManager::ModeManagerSet(ModeManager* pModeManager)
@@ -22,5 +22,8 @@ void GameTimeManager::ModeManagerSet(ModeManager* pModeManager)
 	m_pModeManager = pModeManager;
 }
 
-
+int GameTimeManager::GetGameTime()
+{ 
+	return *m_GameTime; 
+}
 

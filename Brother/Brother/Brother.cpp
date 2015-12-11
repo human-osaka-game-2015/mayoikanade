@@ -38,7 +38,7 @@ void Brother::Control()
 {
 	m_CurrentMode = m_pModeManager->GetMode();		//Œ»Ý‚Ìƒ‚[ƒh‚ÌŽæ“¾
 
-	switch (m_CurrentMode)		//Œ»Ý‚Ìƒ‚[ƒh‚©‚ç
+	switch (m_CurrentMode)
 	{
 	case NORMAL:				//NormalControlŠÖ”‚Å‚àì‚Á‚½‚Ù‚¤‚ªŒ©‚â‚·‚­‚È‚é‚Ì‚©‚à
 		if ((m_pGameTimeManager->GetGameTime() % (60)) == 0 )
@@ -163,8 +163,6 @@ void Brother::Move()		//“Ç‚Ý‚É‚­‚¢‚©‚ç‰ü‘P‚·‚×‚«
 			m_PlayerX += BROTHERSPEAD;
 		}
 		
-
-
 		//ˆÊ’uî•ñ‚ð‹³‚¦‚é
 		m_pDrawPositionSetter->DrawPositionXSet(m_PlayerX);
 
@@ -175,8 +173,6 @@ void Brother::Move()		//“Ç‚Ý‚É‚­‚¢‚©‚ç‰ü‘P‚·‚×‚«
 			m_CurrentAnima = BROTHER_WALK_SIDE;
 		}
 	}
-	
-
 
 	
 
@@ -263,9 +259,7 @@ void Brother::Move()		//“Ç‚Ý‚É‚­‚¢‚©‚ç‰ü‘P‚·‚×‚«
 			m_PlayerY += BROTHERSPEAD;
 		}
 
-
 		m_pDrawPositionSetter->DrawPositionYSet(m_PlayerY);
-
 
 		m_Direction = PLAYER_BACK;
 		if (m_pPadOldState[ANALOG_UP])
@@ -273,8 +267,12 @@ void Brother::Move()		//“Ç‚Ý‚É‚­‚¢‚©‚ç‰ü‘P‚·‚×‚«
 			m_CurrentAnima = BROTHER_WALK_BACK;
 		}
 	}
-	
-	
+}
+
+
+void Brother::Action()
+{
+
 }
 
 

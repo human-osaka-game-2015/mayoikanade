@@ -44,7 +44,6 @@ void PlayerUI::Draw()
 	barUi[1].x -= Damage;
 	barUi[2].x -= Damage;
 
-	
 
 	//ライフバーとフレームの描画
 	m_pLibrary->DrawTexture(TEX_GAME, barUi);
