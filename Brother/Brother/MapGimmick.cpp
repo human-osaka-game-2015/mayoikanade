@@ -123,7 +123,8 @@ int MapGimmick::GimmickCheck(float x, float y)
 		{
 			for (int j = 0; j < MAP_WIDTH; j++)
 			{
-				if (m_GimmickData[i][j] / 10000 == GATE_01 || m_GimmickData[i][j] / 10000 == GATE_02)
+				if (m_GimmickData[i][j] / 10000 == GATE_01 && m_GimmickData[i][j] % 10000 == m_GimmickData[arrayy][arrayx] % 10000 ||
+					m_GimmickData[i][j] / 10000 == GATE_02 && m_GimmickData[i][j] % 10000 == m_GimmickData[arrayy][arrayx] % 10000 )
 				{
 					m_GimmickData[i][j] = 0;
 
@@ -133,9 +134,37 @@ int MapGimmick::GimmickCheck(float x, float y)
 		
 		break;
 	case SWITCH_BLUE_01:
+		m_GimmickData[arrayy][arrayx] = (m_GimmickData[arrayy][arrayx] % 10000 + SWITCH_BLUE_02 * 10000);
+
+		for (int i = 0; i < MAP_HEIGHT; i++)
+		{
+			for (int j = 0; j < MAP_WIDTH; j++)
+			{
+				if (m_GimmickData[i][j] / 10000 == GATE_01 && m_GimmickData[i][j] % 10000 == m_GimmickData[arrayy][arrayx] % 10000 ||
+					m_GimmickData[i][j] / 10000 == GATE_02 && m_GimmickData[i][j] % 10000 == m_GimmickData[arrayy][arrayx] % 10000 )
+				{
+					m_GimmickData[i][j] = 0;
+
+				}
+			}
+		}
 
 		break;
 	case SWITCH_YELLOW_01:
+		m_GimmickData[arrayy][arrayx] = (m_GimmickData[arrayy][arrayx] % 10000 + SWITCH_YELLOW_02 * 10000);
+
+		for (int i = 0; i < MAP_HEIGHT; i++)
+		{
+			for (int j = 0; j < MAP_WIDTH; j++)
+			{
+				if (m_GimmickData[i][j] / 10000 == GATE_01 && m_GimmickData[i][j] % 10000 == m_GimmickData[arrayy][arrayx] % 10000 ||
+					m_GimmickData[i][j] / 10000 == GATE_02 && m_GimmickData[i][j] % 10000 == m_GimmickData[arrayy][arrayx] % 10000)
+				{
+					m_GimmickData[i][j] = 0;
+
+				}
+			}
+		}
 
 		break;
 	default:
@@ -192,6 +221,22 @@ void MapGimmick::MapTex_UV_Set(float Posx, float Posy)
 				m_pLibrary->MakeVertex(SWITCH_RED_02, m_MapGimmick_Tex[i][j]);
 
 				break;
+			case SWITCH_BLUE_01:
+				m_pLibrary->MakeVertex(SWITCH_BLUE_01, m_MapGimmick_Tex[i][j]);
+
+				break;
+			case SWITCH_BLUE_02:
+				m_pLibrary->MakeVertex(SWITCH_BLUE_02, m_MapGimmick_Tex[i][j]);
+
+				break;
+			case SWITCH_YELLOW_01:
+				m_pLibrary->MakeVertex(SWITCH_YELLOW_01, m_MapGimmick_Tex[i][j]);
+
+				break;
+			case SWITCH_YELLOW_02:
+				m_pLibrary->MakeVertex(SWITCH_YELLOW_02, m_MapGimmick_Tex[i][j]);
+
+				break;
 			case GATEPOST_01:
 				m_pLibrary->MakeVertex(GATEPOST_01, m_MapGimmick_Tex[i][j]);
 
@@ -218,7 +263,6 @@ void MapGimmick::MapTex_UV_Set(float Posx, float Posy)
 					m_MapGimmick_Tex[i][j][x].z = DEFAULTZ;
 					m_MapGimmick_Tex[i][j][x].tu = 0;
 					m_MapGimmick_Tex[i][j][x].tv = 0;
-
 				}
 				break;
 			}
