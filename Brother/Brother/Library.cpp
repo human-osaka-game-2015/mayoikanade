@@ -28,6 +28,8 @@ void Library::SetTexture(int key)
 	m_pTexture->SetTexture(key);
 }
 
+
+//Å‰‚Ìˆø”‰æ‘œ‚É‘Î‚·‚éenum
 void Library::DrawTexture(int key, CustomVertex* pVertex)
 {
 	SetTexture(key);
