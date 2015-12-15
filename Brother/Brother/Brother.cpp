@@ -9,7 +9,8 @@
 
 
 Brother::Brother(Library* pLibrary, bool* pPadState, bool* pPadOldState, CollisionChecker* pCollisionChecker, DrawPositionSetter* pDrawPositionSetter, GameTimeManager* pGameTimeManager)
-	:Player(pLibrary, pPadState, pPadOldState, pCollisionChecker, pDrawPositionSetter, pGameTimeManager)
+	:Player(pLibrary, pPadState, pPadOldState, pCollisionChecker, pDrawPositionSetter, pGameTimeManager),
+	m_BrotherState(BROTHER_STATE_NORMAL)
 {
 	m_pLibrary->InitAnima(BROTHER_WAIT_FRONT);
 	m_pLibrary->InitAnima(BROTHER_WAIT_SIDE);
@@ -17,6 +18,13 @@ Brother::Brother(Library* pLibrary, bool* pPadState, bool* pPadOldState, Collisi
 	m_pLibrary->InitAnima(BROTHER_WALK_FRONT);
 	m_pLibrary->InitAnima(BROTHER_WALK_SIDE);
 	m_pLibrary->InitAnima(BROTHER_WALK_BACK);
+
+	m_pLibrary->InitAnima(BROTHER_WOODBOX_WAIT_FRONT);
+	m_pLibrary->InitAnima(BROTHER_WOODBOX_WAIT_SIDE);
+	m_pLibrary->InitAnima(BROTHER_WOODBOX_WAIT_BACK);
+	m_pLibrary->InitAnima(BROTHER_WOODBOX_WALK_FRONT);
+	m_pLibrary->InitAnima(BROTHER_WOODBOX_WALK_SIDE);
+	m_pLibrary->InitAnima(BROTHER_WOODBOX_WALK_BACK);
 
 	m_Direction = PLAYER_FRONT;
 	m_CurrentAnima = BROTHER_WAIT_FRONT;
@@ -41,16 +49,40 @@ void Brother::Control()
 	switch (m_CurrentMode)
 	{
 	case NORMAL:				//NormalControlŠÖ”‚Å‚àì‚Á‚½‚Ù‚¤‚ªŒ©‚â‚·‚­‚È‚é‚Ì‚©‚à
-		if ((m_pGameTimeManager->GetGameTime() % (60)) == 0 )
+		switch (m_BrotherState)
 		{
-			m_Hp -= 4;
-		}
-		Move();
+		case BROTHER_STATE_NORMAL:
+			
+			
+			Update();
+			Action();
+			
+			Move();
 
-		//Debug—p
-		if (m_pLibrary->GetButtonState(GAMEPAD_B, GAMEPAD1) == PAD_PUSH)
-		{
-			m_Hp = 100;
+
+			//Debug—p
+			if (m_pLibrary->GetButtonState(GAMEPAD_B, GAMEPAD1) == PAD_PUSH)
+			{
+				m_Hp = 100;
+			}
+
+			break;
+		case BROTHER_STATE_WOODBOX:
+
+
+			Update();
+			Action();
+			
+			Move();
+
+
+			//Debug—p
+			if (m_pLibrary->GetButtonState(GAMEPAD_B, GAMEPAD1) == PAD_PUSH)
+			{
+				m_Hp = 100;
+			}
+
+			break;
 		}
 		break;
 	case TEXT:
@@ -79,17 +111,40 @@ void Brother::Draw()
 	{
 	case NORMAL:											//NormalDrawŠÖ”‚Å‚àì‚é‚×‚«‚©‚à
 		
-		Tex_Id = m_pLibrary->AnimaControl(m_CurrentAnima);
-		m_pLibrary->MakePosition(Tex_Id, &m_Ppos);
-		m_pLibrary->MakeVertex(Tex_Id, player);
-		m_pLibrary->xySet(m_Ppos, player);
-
-		if (m_Direction == PLAYER_RIGHT)
+		switch (m_BrotherState)
 		{
-			m_pLibrary->UVReversal(player, LEFT_AND_RIGHT);
+		case BROTHER_STATE_NORMAL:
+
+			Tex_Id = m_pLibrary->AnimaControl(m_CurrentAnima);
+			m_pLibrary->MakePosition(Tex_Id, &m_Ppos);
+			m_pLibrary->MakeVertex(Tex_Id, player);
+			m_pLibrary->xySet(m_Ppos, player);
+
+			if (m_Direction == PLAYER_RIGHT)
+			{
+				m_pLibrary->UVReversal(player, LEFT_AND_RIGHT);
+			}
+
+			m_pLibrary->DrawTexture(TEX_GAME, player);
+
+			break;
+		case BROTHER_STATE_WOODBOX:
+
+			Tex_Id = m_pLibrary->AnimaControl(m_CurrentAnima);
+			m_pLibrary->MakePosition(Tex_Id, &m_Ppos);
+			m_pLibrary->MakeVertex(Tex_Id, player);
+			m_pLibrary->xySet(m_Ppos, player);
+
+			if (m_Direction == PLAYER_RIGHT)
+			{
+				m_pLibrary->UVReversal(player, LEFT_AND_RIGHT);
+			}
+
+			m_pLibrary->DrawTexture(TEX_GAME, player);
+
+			break;
 		}
 
-		m_pLibrary->DrawTexture(TEX_GAME, player);
 		break;
 	case TEXT:
 
@@ -108,35 +163,62 @@ void Brother::UiDraw()
 	m_pPlayerUI->Draw();
 }
 
-void Brother::Move()		//“Ç‚Ý‚É‚­‚¢‚©‚ç‰ü‘P‚·‚×‚«
+
+//ƒ_ƒ‚ÈŠÖ”‚Ì“TŒ^
+//â‘ÎC³‚·‚×‚«‚¾‚¯‚ÇŽžŠÔ‚ª‚È‚¢‚Ì‚Å¡‚Í‚±‚Ì‚Ü‚Ü
+void Brother::Move()
 {
-	//m_Ppos‚ÌŒvŽZ‚ð‚µ‚Ä“n‚µ‚Ä‚¢‚é‚Æ‚±‚ë‚Æ‚©Œ©‚Ã‚ç‚¢
-	//HitCheck‚É‰½‚ð“n‚µ‚Ä‚¢‚é‚Ì‚©ˆêŒ©‚í‚©‚ç‚È‚¢‚©‚ç’¼‚·‚×‚«
 
 
 	//ˆÚ“®‚ª‚È‚©‚Á‚½‚ç‘Ò‹@‚ÌƒAƒjƒ[ƒVƒ‡ƒ“
 	if (m_pPadState[ANALOG_LEFT] == false && m_pPadState[ANALOG_RIGHT] == false &&
 		m_pPadState[ANALOG_UP] == false && m_pPadState[ANALOG_DOWN] == false)
 	{
-		switch (m_Direction)
+		if (m_BrotherState == BROTHER_STATE_NORMAL)
 		{
-		case PLAYER_LEFT:
-			m_CurrentAnima = BROTHER_WAIT_SIDE;
+			switch (m_Direction)
+			{
+			case PLAYER_LEFT:
+				m_CurrentAnima = BROTHER_WAIT_SIDE;
 
-			break;
-		case PLAYER_RIGHT:
-			m_CurrentAnima = BROTHER_WAIT_SIDE;
+				break;
+			case PLAYER_RIGHT:
+				m_CurrentAnima = BROTHER_WAIT_SIDE;
 
-			break;
-		case PLAYER_FRONT:
-			m_CurrentAnima = BROTHER_WAIT_FRONT;
+				break;
+			case PLAYER_FRONT:
+				m_CurrentAnima = BROTHER_WAIT_FRONT;
 
-			break;
-		case PLAYER_BACK:
-			m_CurrentAnima = BROTHER_WAIT_BACK;
+				break;
+			case PLAYER_BACK:
+				m_CurrentAnima = BROTHER_WAIT_BACK;
 
-			break;
+				break;
+			}
 		}
+		else if (m_BrotherState == BROTHER_STATE_WOODBOX)
+		{
+			switch (m_Direction)
+			{
+			case PLAYER_LEFT:
+				m_CurrentAnima = BROTHER_WOODBOX_WAIT_SIDE;
+										 
+				break;					 
+			case PLAYER_RIGHT:			 
+				m_CurrentAnima = BROTHER_WOODBOX_WAIT_SIDE;
+										 
+				break;					 
+			case PLAYER_FRONT:			 
+				m_CurrentAnima = BROTHER_WOODBOX_WAIT_FRONT;
+										 
+				break;					 
+			case PLAYER_BACK:			 
+				m_CurrentAnima = BROTHER_WOODBOX_WAIT_BACK;
+
+				break;
+			}
+		}
+		
 	}
 
 
@@ -168,9 +250,21 @@ void Brother::Move()		//“Ç‚Ý‚É‚­‚¢‚©‚ç‰ü‘P‚·‚×‚«
 
 		//Œü‚«‚Ì•ÏX
 		m_Direction = PLAYER_LEFT;
+		
+
 		if (m_pPadOldState[ANALOG_LEFT])
 		{
-			m_CurrentAnima = BROTHER_WALK_SIDE;
+
+			if (m_BrotherState == BROTHER_STATE_NORMAL)
+			{
+				m_CurrentAnima = BROTHER_WALK_SIDE;
+			}
+			else if (m_BrotherState == BROTHER_STATE_WOODBOX)
+			{
+				m_CurrentAnima = BROTHER_WOODBOX_WALK_SIDE;
+			}
+
+
 		}
 	}
 
@@ -184,7 +278,7 @@ void Brother::Move()		//“Ç‚Ý‚É‚­‚¢‚©‚ç‰ü‘P‚·‚×‚«
 
 		float PlayerRight = m_Ppos.x + (m_Ppos.w / 2) + m_PlayerX;
 
-		if (m_pCollisionChecker->HitCheck(PlayerRight, m_Ppos.y))
+		if (m_pCollisionChecker->HitCheck(PlayerRight, m_Ppos.y + m_PlayerY))
 		{
 			m_PlayerX -= BROTHERSPEAD;
 		}
@@ -197,12 +291,21 @@ void Brother::Move()		//“Ç‚Ý‚É‚­‚¢‚©‚ç‰ü‘P‚·‚×‚«
 			m_PlayerX -= BROTHERSPEAD;
 		}
 
+
 		m_pDrawPositionSetter->DrawPositionXSet(m_PlayerX);
 
 		m_Direction = PLAYER_RIGHT;
+		
 		if (m_pPadOldState[ANALOG_RIGHT])
 		{
-			m_CurrentAnima = BROTHER_WALK_SIDE;
+			if (m_BrotherState == BROTHER_STATE_NORMAL)
+			{					
+				m_CurrentAnima = BROTHER_WALK_SIDE;
+			}
+			else if (m_BrotherState == BROTHER_STATE_WOODBOX)
+			{
+				m_CurrentAnima = BROTHER_WOODBOX_WALK_SIDE;
+			}
 		}
 	}
 
@@ -233,7 +336,14 @@ void Brother::Move()		//“Ç‚Ý‚É‚­‚¢‚©‚ç‰ü‘P‚·‚×‚«
 		m_Direction = PLAYER_FRONT;
 		if (m_pPadOldState[ANALOG_DOWN])
 		{
-			m_CurrentAnima = BROTHER_WALK_FRONT;
+			if (m_BrotherState == BROTHER_STATE_NORMAL)
+			{
+				m_CurrentAnima = BROTHER_WALK_FRONT;
+			}
+			else if (m_BrotherState == BROTHER_STATE_WOODBOX)
+			{
+				m_CurrentAnima = BROTHER_WOODBOX_WALK_FRONT;
+			}
 		}
 	}
 
@@ -264,15 +374,178 @@ void Brother::Move()		//“Ç‚Ý‚É‚­‚¢‚©‚ç‰ü‘P‚·‚×‚«
 		m_Direction = PLAYER_BACK;
 		if (m_pPadOldState[ANALOG_UP])
 		{
-			m_CurrentAnima = BROTHER_WALK_BACK;
+			if (m_BrotherState == BROTHER_STATE_NORMAL)
+			{
+				m_CurrentAnima = BROTHER_WALK_BACK;
+			}
+			else if (m_BrotherState == BROTHER_STATE_WOODBOX)
+			{
+				m_CurrentAnima = BROTHER_WOODBOX_WALK_BACK;
+			}
 		}
 	}
+
+
+	float PlayerLeft = m_Ppos.x - (m_Ppos.w / 2) + m_PlayerX;
+	float PlayerRight = m_Ppos.x + (m_Ppos.w / 2) + m_PlayerX;
+	float PlayerBottom = m_Ppos.y + (m_Ppos.h / 2) + m_PlayerY;
+	float PlayerTop = m_Ppos.y - (m_Ppos.h / 2) + m_PlayerY;
+
+
+	m_pCollisionChecker->SwitchOn(PlayerLeft, m_Ppos.y + m_PlayerY);
+	m_pCollisionChecker->SwitchOn(PlayerLeft, (m_Ppos.y + (m_Ppos.h / 2) + m_PlayerY));
+	m_pCollisionChecker->SwitchOn(PlayerLeft, (m_Ppos.y + (m_Ppos.h / 2 / 2)) + m_PlayerY);
+
+
+	m_pCollisionChecker->SwitchOn(PlayerRight, m_Ppos.y + m_PlayerY);
+	m_pCollisionChecker->SwitchOn(PlayerRight, (m_Ppos.y + (m_Ppos.h / 2)) + m_PlayerY);
+	m_pCollisionChecker->SwitchOn(PlayerRight, (m_Ppos.y + (m_Ppos.h / 2 / 2)) + m_PlayerY);
+
+	
+	m_pCollisionChecker->SwitchOn(m_Ppos.x + m_PlayerX, PlayerBottom);
+	m_pCollisionChecker->SwitchOn((m_Ppos.x + (m_Ppos.w / 2)) + m_PlayerX, PlayerBottom);
+	m_pCollisionChecker->SwitchOn((m_Ppos.x - (m_Ppos.w / 2)) + m_PlayerX, PlayerBottom);
+	
+
+	m_pCollisionChecker->SwitchOn(m_Ppos.x + m_PlayerX, PlayerTop + 64);
+	m_pCollisionChecker->SwitchOn((m_Ppos.x + (m_Ppos.w / 2)) + m_PlayerX, PlayerTop + 64);
+	m_pCollisionChecker->SwitchOn((m_Ppos.x - (m_Ppos.w / 2)) + m_PlayerX, PlayerTop + 64);
+
+
 }
+
+
+
+
 
 
 void Brother::Action()
 {
+	if (m_pLibrary->GetButtonState(GAMEPAD_A, GAMEPAD1) == PAD_PUSH)
+	{
+		switch (m_BrotherState)
+		{
+		case BROTHER_STATE_NORMAL:
+			switch (m_Direction)
+			{
+			case PLAYER_BACK:
 
+
+				if (m_pCollisionChecker->WoodBoxCheck(m_PlayerX + m_Ppos.x, m_PlayerY + m_Ppos.y - 60) == true)
+				{
+					m_BrotherState = BROTHER_STATE_WOODBOX;
+				}
+				else if (m_pCollisionChecker->WoodBoxCheck(m_PlayerX + m_Ppos.x + 30, m_PlayerY + m_Ppos.y - 60) == true)
+				{
+					m_BrotherState = BROTHER_STATE_WOODBOX;
+				}
+				else if (m_pCollisionChecker->WoodBoxCheck(m_PlayerX + m_Ppos.x - 30, m_PlayerY + m_Ppos.y - 60) == true)
+				{
+					m_BrotherState = BROTHER_STATE_WOODBOX;
+				}
+
+				break;
+			case PLAYER_FRONT:
+
+				if (m_pCollisionChecker->WoodBoxCheck(m_PlayerX + m_Ppos.x, m_PlayerY + m_Ppos.y + 111) == true)
+				{
+					m_BrotherState = BROTHER_STATE_WOODBOX;
+				}
+				else if (m_pCollisionChecker->WoodBoxCheck(m_PlayerX + m_Ppos.x+30, m_PlayerY + m_Ppos.y + 111) == true)
+				{
+					m_BrotherState = BROTHER_STATE_WOODBOX;
+				}
+				else if (m_pCollisionChecker->WoodBoxCheck(m_PlayerX + m_Ppos.x-30, m_PlayerY + m_Ppos.y + 111) == true)
+				{
+					m_BrotherState = BROTHER_STATE_WOODBOX;
+				}
+
+				break;
+			case PLAYER_LEFT:
+
+				if (m_pCollisionChecker->WoodBoxCheck(m_PlayerX + m_Ppos.x - 78, m_PlayerY + m_Ppos.y+ 10) == true)
+				{
+					m_BrotherState = BROTHER_STATE_WOODBOX;
+				}
+				else if (m_pCollisionChecker->WoodBoxCheck(m_PlayerX + m_Ppos.x - 78, m_PlayerY + m_Ppos.y + 40) == true)
+				{
+					m_BrotherState = BROTHER_STATE_WOODBOX;
+				}
+
+				break;
+			case PLAYER_RIGHT:
+
+				if (m_pCollisionChecker->WoodBoxCheck(m_PlayerX + m_Ppos.x + 78, m_PlayerY + +m_Ppos.y+10) == true)
+				{
+					m_BrotherState = BROTHER_STATE_WOODBOX;
+				}
+				else if (m_pCollisionChecker->WoodBoxCheck(m_PlayerX + m_Ppos.x + 78, m_PlayerY + m_Ppos.y + 40) == true)
+				{
+					m_BrotherState = BROTHER_STATE_WOODBOX;
+				}
+
+				break;
+			}
+
+
+
+			break;
+		case BROTHER_STATE_WOODBOX:
+			//‚±‚±‚ÅMap‚É‘Î‚µ‚Ä‚Ìˆ—
+
+			switch (m_BrotherState)
+			{
+			case BROTHER_STATE_WOODBOX:
+				
+				switch (m_Direction)
+				{
+				case PLAYER_BACK:
+
+					if (m_pCollisionChecker->WoodBoxSet(m_PlayerX + m_Ppos.x, m_PlayerY + m_Ppos.y - 60) == true)
+					{
+						m_BrotherState = BROTHER_STATE_NORMAL;
+					}
+
+					break;
+				case PLAYER_FRONT:
+
+					if (m_pCollisionChecker->WoodBoxSet(m_PlayerX + m_Ppos.x, m_PlayerY + m_Ppos.y + 111+32) == true)
+					{
+						m_BrotherState = BROTHER_STATE_NORMAL;
+					}
+
+					break;
+				case PLAYER_LEFT:
+
+					if (m_pCollisionChecker->WoodBoxSet(m_PlayerX + m_Ppos.x - 78, m_PlayerY + m_Ppos.y+64) == true)
+					{
+						m_BrotherState = BROTHER_STATE_NORMAL;
+					}
+
+					break;
+				case PLAYER_RIGHT:
+
+					if (m_pCollisionChecker->WoodBoxSet(m_PlayerX + m_Ppos.x + 78, m_PlayerY + +m_Ppos.y+64) == true)
+					{
+						m_BrotherState = BROTHER_STATE_NORMAL;
+					}
+
+					break;
+				}
+
+
+
+			}
+		}
+	}
+}
+
+void Brother::Update()
+{
+	if ((m_pGameTimeManager->GetGameTime() % (60)) == 0)
+	{
+		m_Hp -= 4;
+	}
 }
 
 

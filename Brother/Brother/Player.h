@@ -45,6 +45,7 @@ public:
 	virtual void Draw()    = 0;
 	virtual void Move()    = 0;
 	virtual void Action()  = 0;
+	virtual void Update()  = 0;
 	virtual void Init()    = 0;
 	inline int GetHp(){ return m_Hp; };
 	PLAYER_DIRECTION m_Direction;

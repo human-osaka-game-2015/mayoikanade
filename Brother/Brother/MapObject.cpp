@@ -87,12 +87,18 @@ void MapObject::MapTex_UV_Set(float Posx, float Posy)
 			case WOOD_04:
 				m_pLibrary->MakeVertex(WOOD_04, m_MapObject_Tex[i][j]);
 				break;
+			case WOODBOX:
+				m_pLibrary->MakeVertex(WOODBOX, m_MapObject_Tex[i][j]);
+
+				break;
 			default :
 				for (int x = 0; x < VERTEXNUM; x++)
 				{
 					m_MapObject_Tex[i][j][x].color = DEFAULTCOLOR;
 					m_MapObject_Tex[i][j][x].rhw = DEFAULTRHW;
 					m_MapObject_Tex[i][j][x].z = DEFAULTZ;
+					m_MapObject_Tex[i][j][x].tu = 0;
+					m_MapObject_Tex[i][j][x].tv = 0;
 				}
 				break;
 			}
@@ -200,3 +206,41 @@ void MapObject::Draw(float DrawPosX, float DrawPosY)
 		}
 	}
 }
+
+
+bool MapObject::WoodBoxCheck(float x, float y)
+{
+	int arrayx = 0, arrayy = 0;
+
+	arrayx = int(x / 64);
+	arrayy = int(y / 64);
+
+
+	if (m_ObjectData[arrayy][arrayx] == WOODBOX)
+	{
+		m_ObjectData[arrayy][arrayx] = 0;
+		return true;
+	}
+
+	return false;
+}
+
+
+bool MapObject::WoodBoxSet(float x, float y)
+{
+	int arrayx = 0, arrayy = 0;
+
+	arrayx = int(x / 64);
+	arrayy = int(y / 64);
+
+
+	if (m_ObjectData[arrayy][arrayx] == 0)
+	{
+		m_ObjectData[arrayy][arrayx] = WOODBOX;
+		return true;
+	}
+
+	return false;
+}
+
+

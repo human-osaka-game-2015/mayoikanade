@@ -11,7 +11,6 @@ class MapBackGround
 private:
 	Library*		m_pLibrary;
 	CustomVertex	m_MapBackGround_Tex[MAP_HEIGHT][MAP_WIDTH][4];
-	int				m_BackGroundData[MAP_HEIGHT][MAP_WIDTH];
 	Position		m_MapBackGround_Pos[MAP_HEIGHT][MAP_WIDTH];
 
 
@@ -24,6 +23,9 @@ public:
 	void MapTex_UV_Set(float Posx, float Posy);
 	void MapTex_XY_Set(float Posx, float Posy);
 	int BackGroundCheck(float x, float y);
+
+	int				m_BackGroundData[MAP_HEIGHT][MAP_WIDTH];
+
 
 };
 

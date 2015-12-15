@@ -52,6 +52,7 @@
     <ClCompile Include="UVSetter.cpp" />
     <ClCompile Include="Vertex.cpp" />
     <ClCompile Include="WinMain.cpp" />
+    <ClCompile Include="WoodBox.cpp" />
     <ClCompile Include="XInput_lib.cpp" />
     <ClCompile Include="YoungerBrother.cpp" />
   </ItemGroup>
@@ -96,6 +97,7 @@
     <ClInclude Include="TitleTimeManager.h" />
     <ClInclude Include="UVSetter.h" />
     <ClInclude Include="Vertex.h" />
+    <ClInclude Include="WoodBox.h" />
     <ClInclude Include="XInput_lib.h" />
     <ClInclude Include="YoungerBrother.h" />
   </ItemGroup>

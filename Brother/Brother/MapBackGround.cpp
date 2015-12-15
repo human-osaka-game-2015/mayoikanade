@@ -86,6 +86,8 @@ void MapBackGround::MapTex_UV_Set(float Posx, float Posy)
 					m_MapBackGround_Tex[i][j][x].color = DEFAULTCOLOR;
 					m_MapBackGround_Tex[i][j][x].rhw = DEFAULTRHW;
 					m_MapBackGround_Tex[i][j][x].z = DEFAULTZ;
+					m_MapBackGround_Tex[i][j][x].tu = 0;
+					m_MapBackGround_Tex[i][j][x].tv = 0;
 				}
 				break;
 			}

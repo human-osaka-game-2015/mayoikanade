@@ -45,14 +45,14 @@ void MapGimmick::Init()
 	{
 		for (int j = 0; j < MAP_WIDTH; j++)
 		{
-			switch (m_GimmickData[i][j]/10000)
+			switch (m_GimmickData[i][j] / 10000)
 			{
 			case GATE_01:
 				m_Gate.push_back(Gate(m_pLibrary));
 				break;
 			case SWITCH_RED_01:
 				int Id = m_GimmickData[i][j] % 10000;
-				m_Switch.push_back(Switch(m_pLibrary,Id, m_GimmickData, SWITCH_RED_01));
+				m_Switch.push_back(Switch(m_pLibrary, Id, m_GimmickData, SWITCH_RED_01));
 				break;
 
 			}
@@ -111,40 +111,83 @@ int MapGimmick::GimmickCheck(float x, float y)
 	arrayx = int(x / 64);
 	arrayy = int(y / 64);
 
+	return m_GimmickData[arrayy][arrayx] / 10000;
+}
+
+
+void MapGimmick::SwitchOn(float x, float y)
+{
+	int arrayx = 0, arrayy = 0;
+	int switchCount = 0;
+	arrayx = int(x / 64);
+	arrayy = int(y / 64);
+
 
 	//スイッチが押された時の処理
 	//現状はここでやっているが、できればswitchクラスに乗せたい
 	switch (m_GimmickData[arrayy][arrayx] / 10000)
 	{
 	case SWITCH_RED_01:
-		m_GimmickData[arrayy][arrayx] = (m_GimmickData[arrayy][arrayx] % 10000 + SWITCH_RED_02 *10000);
-		
+		m_GimmickData[arrayy][arrayx] = (m_GimmickData[arrayy][arrayx] % 10000 + SWITCH_RED_02 * 10000);
+		switchCount = 0;
+
 		for (int i = 0; i < MAP_HEIGHT; i++)
 		{
 			for (int j = 0; j < MAP_WIDTH; j++)
 			{
-				if (m_GimmickData[i][j] / 10000 == GATE_01 && m_GimmickData[i][j] % 10000 == m_GimmickData[arrayy][arrayx] % 10000 ||
-					m_GimmickData[i][j] / 10000 == GATE_02 && m_GimmickData[i][j] % 10000 == m_GimmickData[arrayy][arrayx] % 10000 )
+				if (m_GimmickData[i][j] == m_GimmickData[arrayy][arrayx] % 10000 + SWITCH_RED_01 * 10000)
 				{
-					m_GimmickData[i][j] = 0;
+					switchCount++;
+				}
 
+				if (m_GimmickData[i][j] / 10000 == GATE_01 && m_GimmickData[i][j] % 10000 == m_GimmickData[arrayy][arrayx] % 10000 && switchCount == 0)
+				{
+					m_GimmickData[i][j] = (LOSTGATE_01 * 10000) + (m_GimmickData[i][j] % 10000);
+				}
+				else if (m_GimmickData[i][j] / 10000 == GATE_02 && m_GimmickData[i][j] % 10000 == m_GimmickData[arrayy][arrayx] % 10000 && switchCount == 0)
+				{
+					m_GimmickData[i][j] = (LOSTGATE_02 * 10000) + (m_GimmickData[i][j] % 10000);
+				}
+				else if (m_GimmickData[i][j] / 10000 == GATE_PORTRAIT_01 && m_GimmickData[i][j] % 10000 == m_GimmickData[arrayy][arrayx] % 10000 && switchCount == 0)
+				{
+					m_GimmickData[i][j] = (LOSTGATE_03 * 10000) + (m_GimmickData[i][j] % 10000);
+				}
+				else if (m_GimmickData[i][j] / 10000 == GATE_PORTRAIT_02 && m_GimmickData[i][j] % 10000 == m_GimmickData[arrayy][arrayx] % 10000 && switchCount == 0)
+				{
+					m_GimmickData[i][j] = (LOSTGATE_04 * 10000) + (m_GimmickData[i][j] % 10000);
 				}
 			}
 		}
-		
+
 		break;
 	case SWITCH_BLUE_01:
 		m_GimmickData[arrayy][arrayx] = (m_GimmickData[arrayy][arrayx] % 10000 + SWITCH_BLUE_02 * 10000);
+		switchCount = 0;
 
 		for (int i = 0; i < MAP_HEIGHT; i++)
 		{
 			for (int j = 0; j < MAP_WIDTH; j++)
 			{
-				if (m_GimmickData[i][j] / 10000 == GATE_01 && m_GimmickData[i][j] % 10000 == m_GimmickData[arrayy][arrayx] % 10000 ||
-					m_GimmickData[i][j] / 10000 == GATE_02 && m_GimmickData[i][j] % 10000 == m_GimmickData[arrayy][arrayx] % 10000 )
+				if (m_GimmickData[i][j] == m_GimmickData[arrayy][arrayx] % 10000 + SWITCH_BLUE_01 * 10000)
 				{
-					m_GimmickData[i][j] = 0;
+					switchCount++;
+				}
 
+				if (m_GimmickData[i][j] / 10000 == GATE_01 && m_GimmickData[i][j] % 10000 == m_GimmickData[arrayy][arrayx] % 10000 && switchCount == 0)
+				{
+					m_GimmickData[i][j] = (LOSTGATE_01 * 10000) + (m_GimmickData[i][j] % 10000);
+				}
+				else if (m_GimmickData[i][j] / 10000 == GATE_02 && m_GimmickData[i][j] % 10000 == m_GimmickData[arrayy][arrayx] % 10000 && switchCount == 0)
+				{
+					m_GimmickData[i][j] = (LOSTGATE_02 * 10000) + (m_GimmickData[i][j] % 10000);
+				}
+				else if (m_GimmickData[i][j] / 10000 == GATE_PORTRAIT_01 && m_GimmickData[i][j] % 10000 == m_GimmickData[arrayy][arrayx] % 10000 && switchCount == 0)
+				{
+					m_GimmickData[i][j] = (LOSTGATE_03 * 10000) + (m_GimmickData[i][j] % 10000);
+				}
+				else if (m_GimmickData[i][j] / 10000 == GATE_PORTRAIT_02 && m_GimmickData[i][j] % 10000 == m_GimmickData[arrayy][arrayx] % 10000 && switchCount == 0)
+				{
+					m_GimmickData[i][j] = (LOSTGATE_04 * 10000) + (m_GimmickData[i][j] % 10000);
 				}
 			}
 		}
@@ -152,16 +195,32 @@ int MapGimmick::GimmickCheck(float x, float y)
 		break;
 	case SWITCH_YELLOW_01:
 		m_GimmickData[arrayy][arrayx] = (m_GimmickData[arrayy][arrayx] % 10000 + SWITCH_YELLOW_02 * 10000);
+		switchCount = 0;
 
 		for (int i = 0; i < MAP_HEIGHT; i++)
 		{
 			for (int j = 0; j < MAP_WIDTH; j++)
 			{
-				if (m_GimmickData[i][j] / 10000 == GATE_01 && m_GimmickData[i][j] % 10000 == m_GimmickData[arrayy][arrayx] % 10000 ||
-					m_GimmickData[i][j] / 10000 == GATE_02 && m_GimmickData[i][j] % 10000 == m_GimmickData[arrayy][arrayx] % 10000)
+				if (m_GimmickData[i][j] == m_GimmickData[arrayy][arrayx] % 10000 + SWITCH_YELLOW_01 * 10000)
 				{
-					m_GimmickData[i][j] = 0;
+					switchCount++;
+				}
 
+				if (m_GimmickData[i][j] / 10000 == GATE_01 && m_GimmickData[i][j] % 10000 == m_GimmickData[arrayy][arrayx] % 10000 && switchCount == 0)
+				{
+					m_GimmickData[i][j] = (LOSTGATE_01 * 10000) + (m_GimmickData[i][j] % 10000);
+				}
+				else if (m_GimmickData[i][j] / 10000 == GATE_02 && m_GimmickData[i][j] % 10000 == m_GimmickData[arrayy][arrayx] % 10000 && switchCount == 0)
+				{
+					m_GimmickData[i][j] = (LOSTGATE_02 * 10000) + (m_GimmickData[i][j] % 10000);
+				}
+				else if (m_GimmickData[i][j] / 10000 == GATE_PORTRAIT_01 && m_GimmickData[i][j] % 10000 == m_GimmickData[arrayy][arrayx] % 10000 && switchCount == 0)
+				{
+					m_GimmickData[i][j] = (LOSTGATE_03 * 10000) + (m_GimmickData[i][j] % 10000);
+				}
+				else if (m_GimmickData[i][j] / 10000 == GATE_PORTRAIT_02 && m_GimmickData[i][j] % 10000 == m_GimmickData[arrayy][arrayx] % 10000 && switchCount == 0)
+				{
+					m_GimmickData[i][j] = (LOSTGATE_04 * 10000) + (m_GimmickData[i][j] % 10000);
 				}
 			}
 		}
@@ -171,9 +230,104 @@ int MapGimmick::GimmickCheck(float x, float y)
 		break;
 	}
 
-	return m_GimmickData[arrayy][arrayx]/10000;
 }
 
+void MapGimmick::SwitchOff(float x, float y)
+{
+	int arrayx = 0, arrayy = 0;
+	arrayx = int(x / 64);
+	arrayy = int(y / 64);
+
+
+	//スイッチが押された時の処理
+	//現状はここでやっているが、できればswitchクラスに乗せたい
+	switch (m_GimmickData[arrayy][arrayx] / 10000)
+	{
+	case SWITCH_RED_02:
+		m_GimmickData[arrayy][arrayx] = (m_GimmickData[arrayy][arrayx] % 10000 + SWITCH_RED_01 * 10000);
+
+		for (int i = 0; i < MAP_HEIGHT; i++)
+		{
+			for (int j = 0; j < MAP_WIDTH; j++)
+			{
+				if (m_GimmickData[i][j] / 10000 == LOSTGATE_01 && m_GimmickData[i][j] % 10000 == m_GimmickData[arrayy][arrayx] % 10000)
+				{
+					m_GimmickData[i][j] = (GATE_01 * 10000) + (m_GimmickData[i][j] % 10000);
+				}
+				else if (m_GimmickData[i][j] / 10000 == LOSTGATE_02 && m_GimmickData[i][j] % 10000 == m_GimmickData[arrayy][arrayx] % 10000)
+				{
+					m_GimmickData[i][j] = (GATE_02 * 10000) + (m_GimmickData[i][j] % 10000);
+				}
+				else if (m_GimmickData[i][j] / 10000 == LOSTGATE_03 && m_GimmickData[i][j] % 10000 == m_GimmickData[arrayy][arrayx] % 10000)
+				{
+					m_GimmickData[i][j] = (GATE_PORTRAIT_01 * 10000) + (m_GimmickData[i][j] % 10000);
+				}
+				else if (m_GimmickData[i][j] / 10000 == LOSTGATE_04 && m_GimmickData[i][j] % 10000 == m_GimmickData[arrayy][arrayx] % 10000)
+				{
+					m_GimmickData[i][j] = (GATE_PORTRAIT_02 * 10000) + (m_GimmickData[i][j] % 10000);
+				}
+			}
+		}
+
+		break;
+	case SWITCH_BLUE_02:
+		m_GimmickData[arrayy][arrayx] = (m_GimmickData[arrayy][arrayx] % 10000 + SWITCH_BLUE_01 * 10000);
+
+		for (int i = 0; i < MAP_HEIGHT; i++)
+		{
+			for (int j = 0; j < MAP_WIDTH; j++)
+			{
+				if (m_GimmickData[i][j] / 10000 == LOSTGATE_01 && m_GimmickData[i][j] % 10000 == m_GimmickData[arrayy][arrayx] % 10000)
+				{
+					m_GimmickData[i][j] = (GATE_01 * 10000) + (m_GimmickData[i][j] % 10000);
+				}
+				else if (m_GimmickData[i][j] / 10000 == LOSTGATE_02 && m_GimmickData[i][j] % 10000 == m_GimmickData[arrayy][arrayx] % 10000)
+				{
+					m_GimmickData[i][j] = (GATE_02 * 10000) + (m_GimmickData[i][j] % 10000);
+				}
+				else if (m_GimmickData[i][j] / 10000 == LOSTGATE_03 && m_GimmickData[i][j] % 10000 == m_GimmickData[arrayy][arrayx] % 10000)
+				{
+					m_GimmickData[i][j] = (GATE_PORTRAIT_01 * 10000) + (m_GimmickData[i][j] % 10000);
+				}
+				else if (m_GimmickData[i][j] / 10000 == LOSTGATE_04 && m_GimmickData[i][j] % 10000 == m_GimmickData[arrayy][arrayx] % 10000)
+				{
+					m_GimmickData[i][j] = (GATE_PORTRAIT_02 * 10000) + (m_GimmickData[i][j] % 10000);
+				}
+			}
+		}
+
+		break;
+	case SWITCH_YELLOW_02:
+		m_GimmickData[arrayy][arrayx] = (m_GimmickData[arrayy][arrayx] % 10000 + SWITCH_YELLOW_01 * 10000);
+
+		for (int i = 0; i < MAP_HEIGHT; i++)
+		{
+			for (int j = 0; j < MAP_WIDTH; j++)
+			{
+				if (m_GimmickData[i][j] / 10000 == LOSTGATE_01 && m_GimmickData[i][j] % 10000 == m_GimmickData[arrayy][arrayx] % 10000)
+				{
+					m_GimmickData[i][j] = (GATE_01 * 10000) + (m_GimmickData[i][j] % 10000);
+				}
+				else if (m_GimmickData[i][j] / 10000 == LOSTGATE_02 && m_GimmickData[i][j] % 10000 == m_GimmickData[arrayy][arrayx] % 10000)
+				{
+					m_GimmickData[i][j] = (GATE_02 * 10000) + (m_GimmickData[i][j] % 10000);
+				}
+				else if (m_GimmickData[i][j] / 10000 == LOSTGATE_03 && m_GimmickData[i][j] % 10000 == m_GimmickData[arrayy][arrayx] % 10000)
+				{
+					m_GimmickData[i][j] = (GATE_PORTRAIT_01 * 10000) + (m_GimmickData[i][j] % 10000);
+				}
+				else if (m_GimmickData[i][j] / 10000 == LOSTGATE_04 && m_GimmickData[i][j] % 10000 == m_GimmickData[arrayy][arrayx] % 10000)
+				{
+					m_GimmickData[i][j] = (GATE_PORTRAIT_02 * 10000) + (m_GimmickData[i][j] % 10000);
+				}
+			}
+		}
+
+		break;
+	default:
+		break;
+	}
+}
 
 
 
@@ -255,6 +409,26 @@ void MapGimmick::MapTex_UV_Set(float Posx, float Posy)
 				m_pLibrary->MakeVertex(GATE_02, m_MapGimmick_Tex[i][j]);
 				m_pLibrary->UVReversal(m_MapGimmick_Tex[i][j], LEFT_AND_RIGHT);
 				break;
+			case GATEPOST_PORTRAIT_01:
+				m_pLibrary->MakeVertex(GATEPOST_PORTRAIT_01, m_MapGimmick_Tex[i][j]);
+
+				break;
+			case GATEPOST_PORTRAIT_02:
+				m_pLibrary->MakeVertex(GATEPOST_PORTRAIT_02, m_MapGimmick_Tex[i][j]);
+
+				break;
+			case GATE_PORTRAIT_01:
+				m_pLibrary->MakeVertex(GATE_PORTRAIT_01, m_MapGimmick_Tex[i][j]);
+
+				break;
+			case GATE_PORTRAIT_02:
+				m_pLibrary->MakeVertex(GATE_PORTRAIT_02, m_MapGimmick_Tex[i][j]);
+				
+				break;
+			case HOLE_01:
+				m_pLibrary->MakeVertex(HOLE_01, m_MapGimmick_Tex[i][j]);
+
+				break;
 			default:
 				for (int x = 0; x < VERTEXNUM; x++)
 				{
@@ -288,7 +462,7 @@ void MapGimmick::MapTex_XY_Set(float Posx, float Posy)
 
 
 	//描画領域を求めて代入 余分に一つ先も読んでるので64足している
-	int ScreenRight =  int((Posx + SCREEN_SIZEX + 64) / MAPTIP_SIZE);
+	int ScreenRight = int((Posx + SCREEN_SIZEX + 64) / MAPTIP_SIZE);
 	int ScreenBottom = int((Posy + SCREEN_SIZEY + 64) / MAPTIP_SIZE);
 
 	if (ScreenRight > MAP_WIDTH)

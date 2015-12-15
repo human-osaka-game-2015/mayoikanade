@@ -12,6 +12,8 @@ CollisionChecker::~CollisionChecker()
 
 }
 
+
+//キャラ以外のあたり判定には使えなくなっている
 bool CollisionChecker::HitCheck(float x,float y)
 {
 	int Chip;
@@ -23,27 +25,34 @@ bool CollisionChecker::HitCheck(float x,float y)
 	switch (Chip)
 	{
 	case SWITCH_RED_01:
-		//スイッチ処理とか
-
 		break;
 	case SWITCH_RED_02:
-		//押されてるスイッチなので何も処理しないとか
-
 		break;
 	case GATE_01:
-		
 		return true;
 		break;
 	case GATE_02:
-		
 		return true;
 		break;
 	case GATEPOST_01:
-		
 		return true;
 		break;
 	case GATEPOST_02:
-		
+		return true;
+		break;
+	case GATEPOST_PORTRAIT_01:
+		return true;
+		break;
+	case GATEPOST_PORTRAIT_02:
+		return true;
+		break;
+	case GATE_PORTRAIT_01:
+		return true;
+		break;
+	case GATE_PORTRAIT_02:
+		return true;
+		break;
+	case HOLE_01:
 		return true;
 		break;
 	}
@@ -68,7 +77,28 @@ bool CollisionChecker::HitCheck(float x,float y)
 		return true;
 
 		break;
+	case WOODBOX:
+		return true;
+
+		break;
 	}
 
 	return false;
 }
+
+
+bool CollisionChecker::WoodBoxCheck(float x,float y)
+{
+	return m_pMap->WoodBoxCheck(x, y);
+}
+
+bool CollisionChecker::WoodBoxSet(float x, float y)
+{
+	return m_pMap->WoodBoxSet(x, y);
+}
+
+void CollisionChecker::SwitchOn(float x, float y)
+{
+	m_pMap->SwitchOn(x, y);
+}
+

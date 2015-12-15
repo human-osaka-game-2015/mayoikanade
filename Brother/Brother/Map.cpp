@@ -25,6 +25,24 @@ Map::~Map()
 
 void Map::Control()
 {
+	for (int i = 0; i < MAP_HEIGHT; i++)
+	{
+		for (int j = 0; j < MAP_WIDTH; j++)
+		{
+			if ((m_pMapGimmick->m_GimmickData[i][j]/10000) == SWITCH_BLUE_02)
+			{
+				if (m_pMapObject->m_ObjectData[i][j] == WOODBOX)
+				{
+					SwitchOn(j * 64.f, i * 64.f);
+				}
+				else
+				{
+					SwitchOff(j * 64.f, i * 64.f);
+				}
+			}
+		}
+	}
+
 	m_pMapBackGround->Control();
 	m_pMapGimmick->Control();
 	m_pMapObject->Control();
@@ -53,10 +71,72 @@ int Map::GimmickCheck(float x, float y)
 	return m_pMapGimmick->GimmickCheck(x, y);
 }
 
+void Map::SwitchOn(float x, float y)
+{
+	return m_pMapGimmick->SwitchOn(x, y);
+}
+
+void Map::SwitchOff(float x, float y)
+{
+	return m_pMapGimmick->SwitchOff(x, y);
+}
+
+
+
+
 int Map::ObjectCheck(float x, float y)
 {
 	return m_pMapObject->ObjectCheck(x, y);
 }
+
+bool Map::WoodBoxCheck(float x, float y)
+{
+	return m_pMapObject->WoodBoxCheck(x, y);
+}
+
+bool Map::WoodBoxSet(float x, float y)
+{
+	switch (m_pMapGimmick->GimmickCheck(x, y))
+	{
+	case GATEPOST_01:
+		return false;
+		break;
+	case GATEPOST_02:
+		return false;
+		break;
+	case GATE_01:
+		return false;
+		break;
+	case GATE_02:
+		return false;
+		break;
+	case GATEPOST_PORTRAIT_01:
+		return false;
+		break;
+	case GATEPOST_PORTRAIT_02:
+		return false;
+		break;
+	case GATE_PORTRAIT_01:
+		return false;
+		break;
+	case GATE_PORTRAIT_02:
+		return false;
+		break;
+	case HOLE_02:
+		return false;
+		break;
+	}
+
+	bool isBoxSet = m_pMapObject->WoodBoxSet(x, y);
+
+	if (isBoxSet)
+	{
+		m_pMapGimmick->SwitchOn(x, y);
+	}
+
+	return isBoxSet;
+}
+
 
 int Map::BackGroundCheck(float x, float y)
 {

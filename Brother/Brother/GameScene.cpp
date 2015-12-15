@@ -25,7 +25,7 @@ GameScene::GameScene(Library* pLibrary) :Scene(pLibrary)
 	//GameScene‚Ì‰æ‘œ‚Æcsv‚Ì“Ç‚Ýž‚Ý
 	m_pLibrary->FileInfo_Set("file.csv", FILE_INFO);
 	m_pLibrary->VertexInfo_Set("GameTex.csv", GAME_VERTEXINFO_MAX);
-	m_pLibrary->AnimaInfo_Set("Gameanimation.csv", GAME_ANIMA_INFO);
+	m_pLibrary->AnimaInfo_Set("Gameanimation.csv", GAMEANIMA_MAX);
 	m_pLibrary->LoadTextureEx("GameScene.png", TEX_GAME, 255, 0, 255, 0);
 	m_pLibrary->LoadTextureEx("en.png", STENCIL, 255, 0, 255, 255);
 
@@ -88,11 +88,12 @@ SCENE_NUM GameScene::Control()
 
 	m_pGameTimeManager->Control();
 
+	m_pMap->Control();
+
 	m_pShadow->Control();
 
 	m_pBrother->Control();
 
-	m_pMap->Control();
 	
 	return m_NextScene;
 }

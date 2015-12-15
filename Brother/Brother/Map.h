@@ -38,9 +38,7 @@ enum MAP_ID
 class Map
 {
 private:
-	
 	Library*		m_pLibrary;
-	
 	MapObject*		m_pMapObject;
 	MapGimmick*		m_pMapGimmick;
 	MapBackGround*	m_pMapBackGround;
@@ -50,8 +48,14 @@ public:
 	Map(Library* pLibrary);
 	~Map();
 	int GimmickCheck(float x, float y);
+	void SwitchOn(float x, float y);
+	void SwitchOff(float x, float y);
+
 	int ObjectCheck(float x, float y);
 	int BackGroundCheck(float x, float y);
+	bool WoodBoxCheck(float x, float y);
+	bool WoodBoxSet(float x, float y);
+
 	void Control();
 	void Draw();
 	bool StageInit(const char* Objname, const char* Gimmickname, const char* Backname);

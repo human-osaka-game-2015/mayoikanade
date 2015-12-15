@@ -2,6 +2,7 @@
 #include "GameScene.h"
 #include "Library.h"
 #include "GameTimeManager.h"
+#include "ModeManager.h"
 
 Shadow::Shadow(Library* pLibrary, GameTimeManager* pGameTimeManager) :m_pLibrary(pLibrary), m_GameTimeManager(pGameTimeManager)
 {
@@ -19,17 +20,32 @@ Shadow::~Shadow()
 
 void Shadow::Control()
 {
-	int time = m_GameTimeManager->GetGameTime();
-	if (time % 60 == 0)
+	switch (m_pModeManager->GetMode())
 	{
-		m_Pos.h -= 50;
-		m_Pos.w -= 50;
-	}
+	case NORMAL:											//NormalDrawŠÖ”‚Å‚àì‚é‚×‚«‚©‚à
+		
+		if (m_GameTimeManager->GetGameTime() % 60 == 0)
+		{
+			m_Pos.h -= 10;
+			m_Pos.w -= 10;
+		}
 
-	if (m_Pos.h <= 0 || m_Pos.w <= 0)
-	{
-		m_Pos.h = 0;
-		m_Pos.w = 0;
+		if (m_Pos.h <= 0 || m_Pos.w <= 0)
+		{
+			m_Pos.h = 0;
+			m_Pos.w = 0;
+		}
+
+		break;
+	case TEXT:
+
+		break;
+	case GAMEOVEREFFECT:
+
+		break;
+	case GAMEOVER:
+
+		break;
 	}
 }
 
