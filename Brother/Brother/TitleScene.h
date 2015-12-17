@@ -31,6 +31,13 @@ enum TITLEANIMA_ID
 };
 
 
+enum TITLESOUND_ID
+{
+	TITLE_BGM,
+	TITLESOUND_ID_MAX
+};
+
+
 class TitleScene:public Scene
 {
 private:
@@ -39,7 +46,6 @@ private:
 	TitleSelectManager*	m_pTitleSelectManager;
 	TitleTimeManager*	m_pTitleTimeManager;
 	TitleName*			m_pTitleName;
-
 	bool isTimeOver = false;
 	
 

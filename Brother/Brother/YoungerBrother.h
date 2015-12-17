@@ -3,21 +3,32 @@
 
 #include "Player.h"
 
+#define YOUNGERBROTHERHP 100
+#define YOUNGERBROTHERSPEAD 7
+#define YOUNGERBROTHERUIPOSX 420
+#define YOUNGERBROTHERUIPOSY 100
+
 class Library;
 class ModeManager;
 class CollisionChecker;
+class PlayerUI;
 enum GAMEANIMA_ID;
 enum GAMEMODE_NUM;
 
-
+enum YOUNGERBROTHER_STATE
+{
+	YOUNGERBROTHER_STATE_NORMAL,
+	YOUNGERBROTHER_STATE_MAX
+};
 
 
 class YoungerBrother:public Player
 {
 private:
+	YOUNGERBROTHER_STATE m_YoungerBrotherState;
 
 public:
-	YoungerBrother(Library* pLibrary, bool* pPadState, bool* pPadOldState, CollisionChecker* pCollisionChecker, DrawPositionSetter* pDrawPositionSetter, GameTimeManager* pGameTimeManager);
+	YoungerBrother(Library* pLibrary, bool* pPadState, bool* pPadOldState, PADSTATE* pButtonState, CollisionChecker* pCollisionChecker, DrawPositionSetter* pDrawPositionSetter, GameTimeManager* pGameTimeManager, Player* pPlayer);
 	virtual ~YoungerBrother();
 	virtual void Control();
 	virtual void Draw();
@@ -26,6 +37,9 @@ public:
 	virtual void Update();
 	virtual void Init();
 	void ModeManagerSet(ModeManager* pModeManager);
+	void UiDraw();
+	void PosChange(CustomVertex* pvertex);
+	Player* m_pPlayer;
 
 };
 

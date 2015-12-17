@@ -140,6 +140,12 @@
     <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\Map\MapObject\WoodBox">
       <UniqueIdentifier>{a87cc17c-c4e0-4120-802c-fa3db9e581d4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\server">
+      <UniqueIdentifier>{bf22c3c4-0865-4c5f-a32c-a9ca043cf638}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\PositionManager">
+      <UniqueIdentifier>{6a54d30a-5dca-4ede-8e02-8a9bed2697fd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="XInput_lib.cpp">
@@ -268,11 +274,17 @@
     <ClCompile Include="StencilManager.cpp">
       <Filter>Library\StencilManager</Filter>
     </ClCompile>
-    <ClCompile Include="GameScene.cpp">
-      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene</Filter>
-    </ClCompile>
     <ClCompile Include="WoodBox.cpp">
       <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\Map\MapObject\WoodBox</Filter>
+    </ClCompile>
+    <ClCompile Include="Server.cpp">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\server</Filter>
+    </ClCompile>
+    <ClCompile Include="PositionManager.cpp">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\PositionManager</Filter>
+    </ClCompile>
+    <ClCompile Include="GameScene.cpp">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -404,6 +416,12 @@
     </ClInclude>
     <ClInclude Include="WoodBox.h">
       <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\Map\MapObject\WoodBox</Filter>
+    </ClInclude>
+    <ClInclude Include="Server.h">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\server</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionManager.h">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\PositionManager</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

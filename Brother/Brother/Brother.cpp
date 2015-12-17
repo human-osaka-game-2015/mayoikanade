@@ -8,8 +8,8 @@
 #include "GameScene.h"
 
 
-Brother::Brother(Library* pLibrary, bool* pPadState, bool* pPadOldState, CollisionChecker* pCollisionChecker, DrawPositionSetter* pDrawPositionSetter, GameTimeManager* pGameTimeManager)
-	:Player(pLibrary, pPadState, pPadOldState, pCollisionChecker, pDrawPositionSetter, pGameTimeManager),
+Brother::Brother(Library* pLibrary, bool* pPadState, bool* pPadOldState, PADSTATE* pButtonState, CollisionChecker* pCollisionChecker, DrawPositionSetter* pDrawPositionSetter, GameTimeManager* pGameTimeManager)
+	:Player(pLibrary, pPadState, pPadOldState,pButtonState, pCollisionChecker, pDrawPositionSetter, pGameTimeManager),
 	m_BrotherState(BROTHER_STATE_NORMAL)
 {
 	m_pLibrary->InitAnima(BROTHER_WAIT_FRONT);
@@ -53,15 +53,14 @@ void Brother::Control()
 		{
 		case BROTHER_STATE_NORMAL:
 			
-			
 			Update();
 			Action();
-			
 			Move();
 
 
 			//Debug用
-			if (m_pLibrary->GetButtonState(GAMEPAD_B, GAMEPAD1) == PAD_PUSH)
+			//Bボタンを押したら
+			if (m_pButtonState[1] == PAD_PUSH)
 			{
 				m_Hp = 100;
 			}
@@ -77,7 +76,7 @@ void Brother::Control()
 
 
 			//Debug用
-			if (m_pLibrary->GetButtonState(GAMEPAD_B, GAMEPAD1) == PAD_PUSH)
+			if (m_pButtonState[1] == PAD_PUSH)
 			{
 				m_Hp = 100;
 			}
@@ -421,7 +420,7 @@ void Brother::Move()
 
 void Brother::Action()
 {
-	if (m_pLibrary->GetButtonState(GAMEPAD_A, GAMEPAD1) == PAD_PUSH)
+	if (m_pButtonState[0] == PAD_PUSH)
 	{
 		switch (m_BrotherState)
 		{

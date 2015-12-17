@@ -4,7 +4,7 @@
 #define BROTHERSPEAD 6				//兄の移動速度
 #define BROTHERHP 100				//兄の最大HP
 #define BROTHERUIPOSX 140			//兄のUIのX座標
-#define BROTHERUIPOSY 80			//兄のUIのY座標
+#define BROTHERUIPOSY 100			//兄のUIのY座標
 
 #include "Player.h"
 
@@ -29,7 +29,7 @@ private:
 	BROTHER_STATE m_BrotherState;
 	
 public:
-	Brother(Library* pLibrary, bool* pPadState, bool* pPadOldState, CollisionChecker* pCollisionChecker, DrawPositionSetter* pDrawPositionSetter, GameTimeManager* pGameTimeManager);
+	Brother(Library* pLibrary, bool* pPadState, bool* pPadOldState, PADSTATE* pButtonState, CollisionChecker* pCollisionChecker, DrawPositionSetter* pDrawPositionSetter, GameTimeManager* pGameTimeManager);
 	virtual ~Brother();
 	virtual void Control();
 	virtual void Draw();

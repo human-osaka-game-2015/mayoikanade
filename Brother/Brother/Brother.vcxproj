@@ -32,10 +32,12 @@
     <ClCompile Include="OpeningScene.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerUI.cpp" />
+    <ClCompile Include="PositionManager.cpp" />
     <ClCompile Include="ResultScene.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneChangeListener.cpp" />
     <ClCompile Include="SceneManager.cpp" />
+    <ClCompile Include="Server.cpp" />
     <ClCompile Include="Shadow.cpp" />
     <ClCompile Include="StaffBackGround.cpp" />
     <ClCompile Include="StaffScene.cpp" />
@@ -78,10 +80,12 @@
     <ClInclude Include="OpeningScene.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerUI.h" />
+    <ClInclude Include="PositionManager.h" />
     <ClInclude Include="ResultScene.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneChangeListener.h" />
     <ClInclude Include="SceneManager.h" />
+    <ClInclude Include="Server.h" />
     <ClInclude Include="Shadow.h" />
     <ClInclude Include="StaffBackGround.h" />
     <ClInclude Include="StaffScene.h" />
@@ -143,7 +147,7 @@
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>winmm.lib;d3d9.lib;d3dx9.lib;dinput8.lib;dxguid.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>winmm.lib;d3d9.lib;d3dx9.lib;dinput8.lib;dxguid.lib;Ws2_32.lib;dsound.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -160,7 +164,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalLibraryDirectories>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>winmm.lib;d3d9.lib;d3dx9.lib;dinput8.lib;dxguid.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>winmm.lib;d3d9.lib;d3dx9.lib;dinput8.lib;dxguid.lib;ws2_32.lib;Dsound.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -11,6 +11,7 @@ class GameTimeManager;
 class DrawPositionSetter;
 enum GAMEANIMA_ID;
 enum GAMEMODE_NUM;
+enum PADSTATE;
 
 enum PLAYER_DIRECTION
 {
@@ -34,12 +35,14 @@ protected:
 	PlayerUI*			m_pPlayerUI;			//playerUIを描画するときに使う
 	GAMEANIMA_ID		m_CurrentAnima;			//現在のアニメーションを指す
 	GAMEMODE_NUM		m_CurrentMode;			//現在のモードを指す
-	bool*				m_pPadState;			//現在のキー状態
-	bool*				m_pPadOldState;			//ひとつ前のキー状態
+	bool*				m_pPadState;			//現在のスティック状態
+	bool*				m_pPadOldState;			//ひとつ前のスティック状態
+	PADSTATE*			m_pButtonState;			//現在のボタン状態
+
 	int					m_Hp;					//PlayerのHp
 
 public:
-	Player(Library* pLibrary, bool* pPadState, bool* pPadOldState, CollisionChecker* pCollisionChecker, DrawPositionSetter* pDrawPositionSetter,GameTimeManager* pGameTimeManager);
+	Player(Library* pLibrary, bool* pPadState, bool* pPadOldState, PADSTATE* pButtonState,CollisionChecker* pCollisionChecker, DrawPositionSetter* pDrawPositionSetter, GameTimeManager* pGameTimeManager);
 	virtual ~Player();
 	virtual void Control() = 0;
 	virtual void Draw()    = 0;

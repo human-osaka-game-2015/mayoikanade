@@ -42,8 +42,15 @@ public:
 	virtual SCENE_NUM Control() = 0;
 	virtual void Draw() = 0;
 	virtual void PadCheck() = 0;
+	
 	bool	m_PadState[ANALOG_MAX];
 	bool	m_PadOldState[ANALOG_MAX];
+	PADSTATE m_ButtonState[2];
+
+	bool	m_ClientPadState[ANALOG_MAX];
+	bool	m_ClientPadOldState[ANALOG_MAX];
+	PADSTATE m_ClientButtonState[2];
+
 };
 
 
