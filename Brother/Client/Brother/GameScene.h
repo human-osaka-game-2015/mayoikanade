@@ -186,6 +186,12 @@ enum GAMEANIMA_ID
 };
 
 
+enum GAMESOUND_ID
+{
+	GAME_BGM,
+	GAMESOUND_ID_MAX
+};
+
 
 class GameScene : public Scene
 {

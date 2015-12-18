@@ -148,7 +148,10 @@ isConnect(false)
 	m_pLibrary->LoadTextureEx("en.png", STENCIL, 255, 0, 255, 255);
 
 
+	m_pLibrary->SoundLoad("S_G_BGM.wav", GAME_BGM);
 
+	//‰¹ºƒ‹[ƒv
+	m_pLibrary->Sound_Operation(GAME_BGM, SOUND_LOOP);
 
 	m_pSceneChangeListener	= new SceneChangeListener(&m_NextScene);
 	m_pMap					= new Map(m_pLibrary);
@@ -207,7 +210,7 @@ GameScene::~GameScene()
 	delete m_pMap;
 	delete m_pSceneChangeListener;
 
-	//‰æ‘œ‚Ì‰ð•úˆ—
+	m_pLibrary->SoundRelease(GAME_BGM);
 	m_pLibrary->ReleaseTexture(TEX_GAME);
 }
 
