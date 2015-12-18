@@ -139,22 +139,32 @@ void MapGimmick::SwitchOn(float x, float y)
 				{
 					switchCount++;
 				}
+			}
+		}
 
-				if (m_GimmickData[i][j] / 10000 == GATE_01 && m_GimmickData[i][j] % 10000 == m_GimmickData[arrayy][arrayx] % 10000 && switchCount == 0)
+		if (switchCount == 0)
+		{
+
+			for (int i = 0; i < MAP_HEIGHT; i++)
+			{
+				for (int j = 0; j < MAP_WIDTH; j++)
 				{
-					m_GimmickData[i][j] = (LOSTGATE_01 * 10000) + (m_GimmickData[i][j] % 10000);
-				}
-				else if (m_GimmickData[i][j] / 10000 == GATE_02 && m_GimmickData[i][j] % 10000 == m_GimmickData[arrayy][arrayx] % 10000 && switchCount == 0)
-				{
-					m_GimmickData[i][j] = (LOSTGATE_02 * 10000) + (m_GimmickData[i][j] % 10000);
-				}
-				else if (m_GimmickData[i][j] / 10000 == GATE_PORTRAIT_01 && m_GimmickData[i][j] % 10000 == m_GimmickData[arrayy][arrayx] % 10000 && switchCount == 0)
-				{
-					m_GimmickData[i][j] = (LOSTGATE_03 * 10000) + (m_GimmickData[i][j] % 10000);
-				}
-				else if (m_GimmickData[i][j] / 10000 == GATE_PORTRAIT_02 && m_GimmickData[i][j] % 10000 == m_GimmickData[arrayy][arrayx] % 10000 && switchCount == 0)
-				{
-					m_GimmickData[i][j] = (LOSTGATE_04 * 10000) + (m_GimmickData[i][j] % 10000);
+					if (m_GimmickData[i][j] / 10000 == GATE_01 && m_GimmickData[i][j] % 10000 == m_GimmickData[arrayy][arrayx] % 10000 )
+					{
+						m_GimmickData[i][j] = (LOSTGATE_01 * 10000) + (m_GimmickData[i][j] % 10000);
+					}
+					else if (m_GimmickData[i][j] / 10000 == GATE_02 && m_GimmickData[i][j] % 10000 == m_GimmickData[arrayy][arrayx] % 10000 )
+					{
+						m_GimmickData[i][j] = (LOSTGATE_02 * 10000) + (m_GimmickData[i][j] % 10000);
+					}
+					else if (m_GimmickData[i][j] / 10000 == GATE_PORTRAIT_01 && m_GimmickData[i][j] % 10000 == m_GimmickData[arrayy][arrayx] % 10000 )
+					{
+						m_GimmickData[i][j] = (LOSTGATE_03 * 10000) + (m_GimmickData[i][j] % 10000);
+					}
+					else if (m_GimmickData[i][j] / 10000 == GATE_PORTRAIT_02 && m_GimmickData[i][j] % 10000 == m_GimmickData[arrayy][arrayx] % 10000 )
+					{
+						m_GimmickData[i][j] = (LOSTGATE_04 * 10000) + (m_GimmickData[i][j] % 10000);
+					}
 				}
 			}
 		}
@@ -172,22 +182,31 @@ void MapGimmick::SwitchOn(float x, float y)
 				{
 					switchCount++;
 				}
+			}
+		}
 
-				if (m_GimmickData[i][j] / 10000 == GATE_01 && m_GimmickData[i][j] % 10000 == m_GimmickData[arrayy][arrayx] % 10000 && switchCount == 0)
+		if (switchCount == 0)
+		{
+			for (int i = 0; i < MAP_HEIGHT; i++)
+			{
+				for (int j = 0; j < MAP_WIDTH; j++)
 				{
-					m_GimmickData[i][j] = (LOSTGATE_01 * 10000) + (m_GimmickData[i][j] % 10000);
-				}
-				else if (m_GimmickData[i][j] / 10000 == GATE_02 && m_GimmickData[i][j] % 10000 == m_GimmickData[arrayy][arrayx] % 10000 && switchCount == 0)
-				{
-					m_GimmickData[i][j] = (LOSTGATE_02 * 10000) + (m_GimmickData[i][j] % 10000);
-				}
-				else if (m_GimmickData[i][j] / 10000 == GATE_PORTRAIT_01 && m_GimmickData[i][j] % 10000 == m_GimmickData[arrayy][arrayx] % 10000 && switchCount == 0)
-				{
-					m_GimmickData[i][j] = (LOSTGATE_03 * 10000) + (m_GimmickData[i][j] % 10000);
-				}
-				else if (m_GimmickData[i][j] / 10000 == GATE_PORTRAIT_02 && m_GimmickData[i][j] % 10000 == m_GimmickData[arrayy][arrayx] % 10000 && switchCount == 0)
-				{
-					m_GimmickData[i][j] = (LOSTGATE_04 * 10000) + (m_GimmickData[i][j] % 10000);
+					if (m_GimmickData[i][j] / 10000 == GATE_01 && m_GimmickData[i][j] % 10000 == m_GimmickData[arrayy][arrayx] % 10000 )
+					{
+						m_GimmickData[i][j] = (LOSTGATE_01 * 10000) + (m_GimmickData[i][j] % 10000);
+					}
+					else if (m_GimmickData[i][j] / 10000 == GATE_02 && m_GimmickData[i][j] % 10000 == m_GimmickData[arrayy][arrayx] % 10000)
+					{
+						m_GimmickData[i][j] = (LOSTGATE_02 * 10000) + (m_GimmickData[i][j] % 10000);
+					}
+					else if (m_GimmickData[i][j] / 10000 == GATE_PORTRAIT_01 && m_GimmickData[i][j] % 10000 == m_GimmickData[arrayy][arrayx] % 10000)
+					{
+						m_GimmickData[i][j] = (LOSTGATE_03 * 10000) + (m_GimmickData[i][j] % 10000);
+					}
+					else if (m_GimmickData[i][j] / 10000 == GATE_PORTRAIT_02 && m_GimmickData[i][j] % 10000 == m_GimmickData[arrayy][arrayx] % 10000)
+					{
+						m_GimmickData[i][j] = (LOSTGATE_04 * 10000) + (m_GimmickData[i][j] % 10000);
+					}
 				}
 			}
 		}
@@ -205,22 +224,32 @@ void MapGimmick::SwitchOn(float x, float y)
 				{
 					switchCount++;
 				}
+			}
+		}
 
-				if (m_GimmickData[i][j] / 10000 == GATE_01 && m_GimmickData[i][j] % 10000 == m_GimmickData[arrayy][arrayx] % 10000 && switchCount == 0)
+		if (switchCount == 0)
+		{
+
+			for (int i = 0; i < MAP_HEIGHT; i++)
+			{
+				for (int j = 0; j < MAP_WIDTH; j++)
 				{
-					m_GimmickData[i][j] = (LOSTGATE_01 * 10000) + (m_GimmickData[i][j] % 10000);
-				}
-				else if (m_GimmickData[i][j] / 10000 == GATE_02 && m_GimmickData[i][j] % 10000 == m_GimmickData[arrayy][arrayx] % 10000 && switchCount == 0)
-				{
-					m_GimmickData[i][j] = (LOSTGATE_02 * 10000) + (m_GimmickData[i][j] % 10000);
-				}
-				else if (m_GimmickData[i][j] / 10000 == GATE_PORTRAIT_01 && m_GimmickData[i][j] % 10000 == m_GimmickData[arrayy][arrayx] % 10000 && switchCount == 0)
-				{
-					m_GimmickData[i][j] = (LOSTGATE_03 * 10000) + (m_GimmickData[i][j] % 10000);
-				}
-				else if (m_GimmickData[i][j] / 10000 == GATE_PORTRAIT_02 && m_GimmickData[i][j] % 10000 == m_GimmickData[arrayy][arrayx] % 10000 && switchCount == 0)
-				{
-					m_GimmickData[i][j] = (LOSTGATE_04 * 10000) + (m_GimmickData[i][j] % 10000);
+					if (m_GimmickData[i][j] / 10000 == GATE_01 && m_GimmickData[i][j] % 10000 == m_GimmickData[arrayy][arrayx] % 10000)
+					{
+						m_GimmickData[i][j] = (LOSTGATE_01 * 10000) + (m_GimmickData[i][j] % 10000);
+					}
+					else if (m_GimmickData[i][j] / 10000 == GATE_02 && m_GimmickData[i][j] % 10000 == m_GimmickData[arrayy][arrayx] % 10000)
+					{
+						m_GimmickData[i][j] = (LOSTGATE_02 * 10000) + (m_GimmickData[i][j] % 10000);
+					}
+					else if (m_GimmickData[i][j] / 10000 == GATE_PORTRAIT_01 && m_GimmickData[i][j] % 10000 == m_GimmickData[arrayy][arrayx] % 10000 )
+					{
+						m_GimmickData[i][j] = (LOSTGATE_03 * 10000) + (m_GimmickData[i][j] % 10000);
+					}
+					else if (m_GimmickData[i][j] / 10000 == GATE_PORTRAIT_02 && m_GimmickData[i][j] % 10000 == m_GimmickData[arrayy][arrayx] % 10000 )
+					{
+						m_GimmickData[i][j] = (LOSTGATE_04 * 10000) + (m_GimmickData[i][j] % 10000);
+					}
 				}
 			}
 		}

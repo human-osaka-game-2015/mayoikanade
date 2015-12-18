@@ -30,8 +30,8 @@ Brother::Brother(Library* pLibrary, bool* pPadState, bool* pPadOldState, PADSTAT
 	m_Direction = PLAYER_FRONT;
 	m_CurrentAnima = BROTHER_WAIT_FRONT;
 
-	m_Ppos.x = 600;
-	m_Ppos.y = 350;
+	m_Ppos.x = 800;
+	m_Ppos.y = 950;
 	m_Hp = BROTHERHP;
 
 	//PlayerUIÇÃê∂ê¨

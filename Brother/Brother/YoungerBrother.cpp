@@ -22,10 +22,11 @@ YoungerBrother::YoungerBrother(Library* pLibrary, bool* pPadState, bool* pPadOld
 	m_Direction = PLAYER_FRONT;
 	m_CurrentAnima = BROTHER_WAIT_FRONT;
 
-	m_Ppos.x = 400;
-	m_Ppos.y = 400;
+	m_Ppos.x = 720;
+	m_Ppos.y = 950;
 	m_Hp = YOUNGERBROTHERHP;
 
+	
 	m_pPlayerUI = new PlayerUI(m_pLibrary, m_Hp, YOUNGERBROTHER_LIFEFRAME, YOUNGERBROTHER_LIFEBAR, YOUNGERBROTHERUIPOSX, YOUNGERBROTHERUIPOSY);
 
 }

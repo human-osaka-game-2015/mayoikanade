@@ -24,9 +24,9 @@ YoungerBrother::YoungerBrother(Library* pLibrary, bool* pPadState, bool* pPadOld
 	m_Ppos.x = 600;
 	m_Ppos.y = 350;
 	m_Hp = YOUNGERBROTHERHP;
-	
-	m_PlayerX -= 200;
-	m_PlayerY += 50;
+	m_PlayerX += 120;
+	m_PlayerY += 600;
+
 	m_pDrawPositionSetter->DrawPositionXSet(m_PlayerX);
 	m_pDrawPositionSetter->DrawPositionYSet(m_PlayerY);
 

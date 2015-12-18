@@ -32,6 +32,10 @@ Brother::Brother(Library* pLibrary, bool* pPadState, bool* pPadOldState, PADSTAT
 	m_Ppos.x = 600;
 	m_Ppos.y = 350;
 	m_Hp = BROTHERHP;
+	m_PlayerX += 200;
+	m_PlayerY += 600;
+	m_pDrawPositionSetter->DrawPositionXSet(m_PlayerX);
+	m_pDrawPositionSetter->DrawPositionYSet(m_PlayerY);
 
 	//PlayerUIÇÃê∂ê¨
 	m_pPlayerUI = new PlayerUI(m_pLibrary, m_Hp, BROTHER_LIFEFRAME, BROTHER_LIFEBAR, BROTHERUIPOSX, BROTHERUIPOSY);

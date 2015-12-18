@@ -2,7 +2,7 @@
 #define MAP_H
 
 #define MAP_HEIGHT 60
-#define MAP_WIDTH 60
+#define MAP_WIDTH 70
 #define MAP_DEFAULT_HEIGHT 0
 #define MAP_DEFAULT_WIDTH 0
 #define MAPTIP_DEFAULT_POSX 32
