@@ -52,7 +52,10 @@ void YoungerBrother::Control()
 		Action();
 		Move();
 
-
+		if (m_pButtonState[1] == PAD_PUSH)
+		{
+			m_Hp = 100;
+		}
 
 		break;
 	case TEXT:

@@ -46,7 +46,7 @@ void PlayerUI::Draw()
 
 
 	//ライフバーとフレームの描画
-	m_pLibrary->DrawTexture(TEX_GAME, barUi);
 	m_pLibrary->DrawTexture(TEX_GAME, frameUi);
+	m_pLibrary->DrawTexture(TEX_GAME, barUi);
 
 }

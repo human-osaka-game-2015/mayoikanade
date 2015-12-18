@@ -117,18 +117,18 @@ void TitleSelectManager::Draw()
 	switch (m_CurrentSelect)
 	{
 	case GAME_START:
-		m_CursolPos.x = STARTPOS_X - 150;
+		m_CursolPos.x = STARTPOS_X - 200;
 		m_CursolPos.y = STARTPOS_Y - 10;
 
 		break;
 	case GAME_STAFF:
-		m_CursolPos.x = STAFFPOS_X - 150;
+		m_CursolPos.x = STAFFPOS_X - 200;
 		m_CursolPos.y = STAFFPOS_Y - 10;
 
 		break;
 	case GAME_END:
 		m_CursolPos.x = ENDPOS_X;
-		m_CursolPos.y = ENDPOS_Y - 150;
+		m_CursolPos.y = ENDPOS_Y - 100;
 
 		break;
 	}

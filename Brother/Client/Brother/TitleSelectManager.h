@@ -5,7 +5,7 @@
 #define STARTPOS_Y 500
 #define STAFFPOS_X 1100
 #define STAFFPOS_Y 650
-#define ENDPOS_X 200
+#define ENDPOS_X 190
 #define ENDPOS_Y 600
 #include "Library.h"
 
