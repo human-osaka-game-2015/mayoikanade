@@ -294,6 +294,31 @@ void YoungerBrother::Move()
 			
 		}
 	}
+}
+
+
+void YoungerBrother::Action()
+{
+
+}
+
+
+void YoungerBrother::Update()
+{
+	if ((m_pGameTimeManager->GetGameTime() % (60)) == 0)
+	{
+		m_Hp -= 3;
+	}
+}
+
+void YoungerBrother::ModeManagerSet(ModeManager* pModeManager)
+{
+	m_pModeManager = pModeManager;
+}
+
+void YoungerBrother::SwitchOn()
+{
+
 
 
 	float PlayerLeft = m_Ppos.x - (m_Ppos.w / 2);
@@ -321,26 +346,6 @@ void YoungerBrother::Move()
 	m_pCollisionChecker->SwitchOn((m_Ppos.x + (m_Ppos.w / 2)), PlayerTop + 64);
 	m_pCollisionChecker->SwitchOn((m_Ppos.x - (m_Ppos.w / 2)), PlayerTop + 64);
 
-}
-
-
-void YoungerBrother::Action()
-{
-
-}
-
-
-void YoungerBrother::Update()
-{
-	if ((m_pGameTimeManager->GetGameTime() % (60)) == 0)
-	{
-		m_Hp -= 3;
-	}
-}
-
-void YoungerBrother::ModeManagerSet(ModeManager* pModeManager)
-{
-	m_pModeManager = pModeManager;
 }
 
 

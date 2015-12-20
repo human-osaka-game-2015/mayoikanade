@@ -72,6 +72,7 @@ void Brother::Control()
 
 
 			//Debug用
+			//Bボタンを押したら
 			if (m_pButtonState[1] == PAD_PUSH)
 			{
 				m_Hp = 100;
@@ -183,9 +184,6 @@ void Brother::Move()
 {
 
 
-
-
-
 	//移動がなかったら待機のアニメーション
 	if (m_pPadState[ANALOG_LEFT] == false && m_pPadState[ANALOG_RIGHT] == false &&
 		m_pPadState[ANALOG_UP] == false && m_pPadState[ANALOG_DOWN] == false)
@@ -218,23 +216,25 @@ void Brother::Move()
 			{
 			case PLAYER_LEFT:
 				m_CurrentAnima = BROTHER_WOODBOX_WAIT_SIDE;
-
-				break;
-			case PLAYER_RIGHT:
+										 
+				break;					 
+			case PLAYER_RIGHT:			 
 				m_CurrentAnima = BROTHER_WOODBOX_WAIT_SIDE;
-
-				break;
-			case PLAYER_FRONT:
+										 
+				break;					 
+			case PLAYER_FRONT:			 
 				m_CurrentAnima = BROTHER_WOODBOX_WAIT_FRONT;
-
-				break;
-			case PLAYER_BACK:
+										 
+				break;					 
+			case PLAYER_BACK:			 
 				m_CurrentAnima = BROTHER_WOODBOX_WAIT_BACK;
 
 				break;
 			}
 		}
+		
 	}
+
 
 
 
@@ -390,35 +390,10 @@ void Brother::Move()
 			{
 				m_CurrentAnima = BROTHER_WOODBOX_WALK_BACK;
 			}
-
 		}
 	}
 
 
-	float PlayerLeft = m_Ppos.x - (m_Ppos.w / 2);
-	float PlayerRight = m_Ppos.x + (m_Ppos.w / 2);
-	float PlayerBottom = m_Ppos.y + (m_Ppos.h / 2);
-	float PlayerTop = m_Ppos.y - (m_Ppos.h / 2);
-
-
-	m_pCollisionChecker->SwitchOn(PlayerLeft, m_Ppos.y);
-	m_pCollisionChecker->SwitchOn(PlayerLeft, (m_Ppos.y + (m_Ppos.h / 2)));
-	m_pCollisionChecker->SwitchOn(PlayerLeft, (m_Ppos.y + (m_Ppos.h / 2 / 2)));
-
-
-	m_pCollisionChecker->SwitchOn(PlayerRight, m_Ppos.y);
-	m_pCollisionChecker->SwitchOn(PlayerRight, (m_Ppos.y + (m_Ppos.h / 2)));
-	m_pCollisionChecker->SwitchOn(PlayerRight, (m_Ppos.y + (m_Ppos.h / 2 / 2)));
-
-
-	m_pCollisionChecker->SwitchOn(m_Ppos.x, PlayerBottom);
-	m_pCollisionChecker->SwitchOn((m_Ppos.x + (m_Ppos.w / 2)), PlayerBottom);
-	m_pCollisionChecker->SwitchOn((m_Ppos.x - (m_Ppos.w / 2)), PlayerBottom);
-
-
-	m_pCollisionChecker->SwitchOn(m_Ppos.x, PlayerTop + 64);
-	m_pCollisionChecker->SwitchOn((m_Ppos.x + (m_Ppos.w / 2)), PlayerTop + 64);
-	m_pCollisionChecker->SwitchOn((m_Ppos.x - (m_Ppos.w / 2)), PlayerTop + 64);
 
 }
 
@@ -501,48 +476,40 @@ void Brother::Action()
 		case BROTHER_STATE_WOODBOX:
 			//ここでMapに対しての処理
 
-			switch (m_BrotherState)
+			switch (m_Direction)
 			{
-			case BROTHER_STATE_WOODBOX:
-				
-				switch (m_Direction)
+			case PLAYER_BACK:
+
+				if (m_pCollisionChecker->WoodBoxSet(m_Ppos.x, m_Ppos.y - 60) == true)
 				{
-				case PLAYER_BACK:
-
-					if (m_pCollisionChecker->WoodBoxSet(m_Ppos.x,  m_Ppos.y - 60) == true)
-					{
-						m_BrotherState = BROTHER_STATE_NORMAL;
-					}
-
-					break;
-				case PLAYER_FRONT:
-
-					if (m_pCollisionChecker->WoodBoxSet(m_Ppos.x,  m_Ppos.y + 111+32) == true)
-					{
-						m_BrotherState = BROTHER_STATE_NORMAL;
-					}
-
-					break;
-				case PLAYER_LEFT:
-
-					if (m_pCollisionChecker->WoodBoxSet(m_Ppos.x - 78, m_Ppos.y+64) == true)
-					{
-						m_BrotherState = BROTHER_STATE_NORMAL;
-					}
-
-					break;
-				case PLAYER_RIGHT:
-
-					if (m_pCollisionChecker->WoodBoxSet(m_Ppos.x + 78, m_Ppos.y+64) == true)
-					{
-						m_BrotherState = BROTHER_STATE_NORMAL;
-					}
-
-					break;
+					m_BrotherState = BROTHER_STATE_NORMAL;
 				}
 
+				break;
+			case PLAYER_FRONT:
 
+				if (m_pCollisionChecker->WoodBoxSet(m_Ppos.x, m_Ppos.y + 111 + 32) == true)
+				{
+					m_BrotherState = BROTHER_STATE_NORMAL;
+				}
 
+				break;
+			case PLAYER_LEFT:
+
+				if (m_pCollisionChecker->WoodBoxSet(m_Ppos.x - 78, m_Ppos.y + 64) == true)
+				{
+					m_BrotherState = BROTHER_STATE_NORMAL;
+				}
+
+				break;
+			case PLAYER_RIGHT:
+
+				if (m_pCollisionChecker->WoodBoxSet(m_Ppos.x + 78, m_Ppos.y + 64) == true)
+				{
+					m_BrotherState = BROTHER_STATE_NORMAL;
+				}
+
+				break;
 			}
 		}
 	}
@@ -561,6 +528,38 @@ void Brother::ModeManagerSet(ModeManager* pModeManager)
 {
 	m_pModeManager = pModeManager;
 }
+
+void Brother::SwitchOn()
+{
+
+
+	float PlayerLeft = m_Ppos.x - (m_Ppos.w / 2);
+	float PlayerRight = m_Ppos.x + (m_Ppos.w / 2);
+	float PlayerBottom = m_Ppos.y + (m_Ppos.h / 2);
+	float PlayerTop = m_Ppos.y - (m_Ppos.h / 2);
+
+
+	m_pCollisionChecker->SwitchOn(PlayerLeft, m_Ppos.y);
+	m_pCollisionChecker->SwitchOn(PlayerLeft, (m_Ppos.y + (m_Ppos.h / 2)));
+	m_pCollisionChecker->SwitchOn(PlayerLeft, (m_Ppos.y + (m_Ppos.h / 2 / 2)));
+
+
+	m_pCollisionChecker->SwitchOn(PlayerRight, m_Ppos.y);
+	m_pCollisionChecker->SwitchOn(PlayerRight, (m_Ppos.y + (m_Ppos.h / 2)));
+	m_pCollisionChecker->SwitchOn(PlayerRight, (m_Ppos.y + (m_Ppos.h / 2 / 2)));
+
+
+	m_pCollisionChecker->SwitchOn(m_Ppos.x, PlayerBottom);
+	m_pCollisionChecker->SwitchOn((m_Ppos.x + (m_Ppos.w / 2)), PlayerBottom);
+	m_pCollisionChecker->SwitchOn((m_Ppos.x - (m_Ppos.w / 2)), PlayerBottom);
+
+
+	m_pCollisionChecker->SwitchOn(m_Ppos.x + m_PlayerX, PlayerTop + 64);
+	m_pCollisionChecker->SwitchOn((m_Ppos.x + (m_Ppos.w / 2)), PlayerTop + 64);
+	m_pCollisionChecker->SwitchOn((m_Ppos.x - (m_Ppos.w / 2)), PlayerTop + 64);
+
+}
+
 
 void Brother::Init()
 {

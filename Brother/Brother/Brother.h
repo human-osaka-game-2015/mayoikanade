@@ -39,7 +39,7 @@ public:
 	virtual void Init();
 	void UiDraw();
 	void ModeManagerSet(ModeManager* pModeManager);
-
+	void SwitchOn();
 };
 
 #endif

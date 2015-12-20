@@ -296,6 +296,19 @@ void YoungerBrother::Move()
 		}
 	}
 
+	
+
+}
+
+
+void YoungerBrother::Action()
+{
+
+}
+
+
+void YoungerBrother::SwitchOn()
+{
 
 	float PlayerLeft = m_Ppos.x - (m_Ppos.w / 2) + m_PlayerX;
 	float PlayerRight = m_Ppos.x + (m_Ppos.w / 2) + m_PlayerX;
@@ -322,13 +335,6 @@ void YoungerBrother::Move()
 	m_pCollisionChecker->SwitchOn((m_Ppos.x + (m_Ppos.w / 2)) + m_PlayerX, PlayerTop + 64);
 	m_pCollisionChecker->SwitchOn((m_Ppos.x - (m_Ppos.w / 2)) + m_PlayerX, PlayerTop + 64);
 
-
-}
-
-
-void YoungerBrother::Action()
-{
-
 }
 
 
@@ -344,7 +350,6 @@ void YoungerBrother::ModeManagerSet(ModeManager* pModeManager)
 {
 	m_pModeManager = pModeManager;
 }
-
 
 void YoungerBrother::Init()
 {

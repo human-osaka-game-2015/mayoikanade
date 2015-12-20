@@ -40,6 +40,8 @@ public:
 	void UiDraw();
 	void ModeManagerSet(ModeManager* pModeManager);
 	void PosChange(CustomVertex* pvertex);
+	void SwitchOn();
+
 	Player* m_pPlayer;
 };
 

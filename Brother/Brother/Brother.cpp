@@ -389,30 +389,7 @@ void Brother::Move()
 	}
 
 
-	float PlayerLeft = m_Ppos.x - (m_Ppos.w / 2) + m_PlayerX;
-	float PlayerRight = m_Ppos.x + (m_Ppos.w / 2) + m_PlayerX;
-	float PlayerBottom = m_Ppos.y + (m_Ppos.h / 2) + m_PlayerY;
-	float PlayerTop = m_Ppos.y - (m_Ppos.h / 2) + m_PlayerY;
 
-
-	m_pCollisionChecker->SwitchOn(PlayerLeft, m_Ppos.y + m_PlayerY);
-	m_pCollisionChecker->SwitchOn(PlayerLeft, (m_Ppos.y + (m_Ppos.h / 2) + m_PlayerY));
-	m_pCollisionChecker->SwitchOn(PlayerLeft, (m_Ppos.y + (m_Ppos.h / 2 / 2)) + m_PlayerY);
-
-
-	m_pCollisionChecker->SwitchOn(PlayerRight, m_Ppos.y + m_PlayerY);
-	m_pCollisionChecker->SwitchOn(PlayerRight, (m_Ppos.y + (m_Ppos.h / 2)) + m_PlayerY);
-	m_pCollisionChecker->SwitchOn(PlayerRight, (m_Ppos.y + (m_Ppos.h / 2 / 2)) + m_PlayerY);
-
-	
-	m_pCollisionChecker->SwitchOn(m_Ppos.x + m_PlayerX, PlayerBottom);
-	m_pCollisionChecker->SwitchOn((m_Ppos.x + (m_Ppos.w / 2)) + m_PlayerX, PlayerBottom);
-	m_pCollisionChecker->SwitchOn((m_Ppos.x - (m_Ppos.w / 2)) + m_PlayerX, PlayerBottom);
-	
-
-	m_pCollisionChecker->SwitchOn(m_Ppos.x + m_PlayerX, PlayerTop + 64);
-	m_pCollisionChecker->SwitchOn((m_Ppos.x + (m_Ppos.w / 2)) + m_PlayerX, PlayerTop + 64);
-	m_pCollisionChecker->SwitchOn((m_Ppos.x - (m_Ppos.w / 2)) + m_PlayerX, PlayerTop + 64);
 
 
 }
@@ -496,48 +473,40 @@ void Brother::Action()
 		case BROTHER_STATE_WOODBOX:
 			//‚±‚±‚ÅMap‚É‘Î‚µ‚Ä‚Ìˆ—
 
-			switch (m_BrotherState)
+			switch (m_Direction)
 			{
-			case BROTHER_STATE_WOODBOX:
-				
-				switch (m_Direction)
+			case PLAYER_BACK:
+
+				if (m_pCollisionChecker->WoodBoxSet(m_PlayerX + m_Ppos.x, m_PlayerY + m_Ppos.y - 60) == true)
 				{
-				case PLAYER_BACK:
-
-					if (m_pCollisionChecker->WoodBoxSet(m_PlayerX + m_Ppos.x, m_PlayerY + m_Ppos.y - 60) == true)
-					{
-						m_BrotherState = BROTHER_STATE_NORMAL;
-					}
-
-					break;
-				case PLAYER_FRONT:
-
-					if (m_pCollisionChecker->WoodBoxSet(m_PlayerX + m_Ppos.x, m_PlayerY + m_Ppos.y + 111+32) == true)
-					{
-						m_BrotherState = BROTHER_STATE_NORMAL;
-					}
-
-					break;
-				case PLAYER_LEFT:
-
-					if (m_pCollisionChecker->WoodBoxSet(m_PlayerX + m_Ppos.x - 78, m_PlayerY + m_Ppos.y+64) == true)
-					{
-						m_BrotherState = BROTHER_STATE_NORMAL;
-					}
-
-					break;
-				case PLAYER_RIGHT:
-
-					if (m_pCollisionChecker->WoodBoxSet(m_PlayerX + m_Ppos.x + 78, m_PlayerY + +m_Ppos.y+64) == true)
-					{
-						m_BrotherState = BROTHER_STATE_NORMAL;
-					}
-
-					break;
+					m_BrotherState = BROTHER_STATE_NORMAL;
 				}
 
+				break;
+			case PLAYER_FRONT:
 
+				if (m_pCollisionChecker->WoodBoxSet(m_PlayerX + m_Ppos.x, m_PlayerY + m_Ppos.y + 111 + 32) == true)
+				{
+					m_BrotherState = BROTHER_STATE_NORMAL;
+				}
 
+				break;
+			case PLAYER_LEFT:
+
+				if (m_pCollisionChecker->WoodBoxSet(m_PlayerX + m_Ppos.x - 78, m_PlayerY + m_Ppos.y + 64) == true)
+				{
+					m_BrotherState = BROTHER_STATE_NORMAL;
+				}
+
+				break;
+			case PLAYER_RIGHT:
+
+				if (m_pCollisionChecker->WoodBoxSet(m_PlayerX + m_Ppos.x + 78, m_PlayerY +m_Ppos.y + 64) == true)
+				{
+					m_BrotherState = BROTHER_STATE_NORMAL;
+				}
+
+				break;
 			}
 		}
 	}
@@ -555,6 +524,34 @@ void Brother::Update()
 void Brother::ModeManagerSet(ModeManager* pModeManager)
 {
 	m_pModeManager = pModeManager;
+}
+
+void Brother::SwitchOn()
+{
+	float PlayerLeft = m_Ppos.x - (m_Ppos.w / 2)  + m_PlayerX;
+	float PlayerRight = m_Ppos.x + (m_Ppos.w / 2) + m_PlayerX;
+	float PlayerBottom = m_Ppos.y + (m_Ppos.h / 2) + m_PlayerY;
+	float PlayerTop = m_Ppos.y - (m_Ppos.h / 2)   + m_PlayerY;
+
+
+	m_pCollisionChecker->SwitchOn(PlayerLeft, m_Ppos.y + m_PlayerY);
+	m_pCollisionChecker->SwitchOn(PlayerLeft, (m_Ppos.y + (m_Ppos.h / 2) + m_PlayerY));
+	m_pCollisionChecker->SwitchOn(PlayerLeft, (m_Ppos.y + (m_Ppos.h / 2 / 2)) + m_PlayerY);
+
+
+	m_pCollisionChecker->SwitchOn(PlayerRight, m_Ppos.y + m_PlayerY);
+	m_pCollisionChecker->SwitchOn(PlayerRight, (m_Ppos.y + (m_Ppos.h / 2)) + m_PlayerY);
+	m_pCollisionChecker->SwitchOn(PlayerRight, (m_Ppos.y + (m_Ppos.h / 2 / 2)) + m_PlayerY);
+
+
+	m_pCollisionChecker->SwitchOn(m_Ppos.x + m_PlayerX, PlayerBottom);
+	m_pCollisionChecker->SwitchOn((m_Ppos.x + (m_Ppos.w / 2)) + m_PlayerX, PlayerBottom);
+	m_pCollisionChecker->SwitchOn((m_Ppos.x - (m_Ppos.w / 2)) + m_PlayerX, PlayerBottom);
+
+
+	m_pCollisionChecker->SwitchOn(m_Ppos.x + m_PlayerX, PlayerTop + 64);
+	m_pCollisionChecker->SwitchOn((m_Ppos.x + (m_Ppos.w / 2)) + m_PlayerX, PlayerTop + 64);
+	m_pCollisionChecker->SwitchOn((m_Ppos.x - (m_Ppos.w / 2)) + m_PlayerX, PlayerTop + 64);
 }
 
 void Brother::Init()

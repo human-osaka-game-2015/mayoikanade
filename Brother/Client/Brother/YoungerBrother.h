@@ -38,7 +38,8 @@ public:
 	virtual void Init();
 	void ModeManagerSet(ModeManager* pModeManager);
 	void UiDraw();
-	
+	void SwitchOn();
+
 
 };
 

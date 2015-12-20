@@ -48,7 +48,7 @@ DWORD WINAPI GameScene::Connect(LPVOID vpGameScene)
 
 			for (int i = 4; i < 6; i++)
 			{
-				if (pGameScene->m_ButtonState[i - 4] == PAD_PUSH || pGameScene->m_ServerButtonState[i - 4] == PAD_ON)
+				if (pGameScene->m_ButtonState[i - 4] == PAD_PUSH || pGameScene->m_ButtonState[i - 4] == PAD_ON)
 				{
 					pGameScene->CData[i] = 1;
 				}
@@ -216,6 +216,15 @@ SCENE_NUM GameScene::Control()
 	m_pMap->Control();
 
 	m_pShadow->Control();
+
+	
+	//こいつが犯人
+	//Debugの実行して箱を置くときに起きるバグは多分こいつが悪い
+	//処理を効率的にすることで何とかなりそう
+	//とりあえず今のこいつの処理はひどい
+	m_pBrother->SwitchOn();
+	m_pYoungerBrother->SwitchOn();
+
 
 	m_pBrother->Control();
 	m_pYoungerBrother->Control();

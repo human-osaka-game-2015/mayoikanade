@@ -226,6 +226,12 @@ SCENE_NUM GameScene::Control()
 
 	m_pShadow->Control();
 
+	//全部こいつが悪い
+	//Debugのバグはこいつのせい
+	//Releaseは最適化されるから大丈夫のはず
+	m_pBrother->SwitchOn();
+	m_pYoungerBrother->SwitchOn();
+	
 	m_pBrother->Control();
 	m_pYoungerBrother->Control();
 
