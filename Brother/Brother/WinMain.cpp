@@ -6,11 +6,12 @@
 
 #include "GameMain.h"
 #include"SceneManager.h"
+
 #define WINDOWTITLE "–À‚¢ŒZ’í"
 
 LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wp, LPARAM lp);
 
-//#define FULLWINDOW
+#define FULLWINDOW
 
 
 //-------------------------------------------------------------

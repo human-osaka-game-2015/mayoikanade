@@ -3,7 +3,6 @@
 
 Text::Text(Library* pLibrary) :m_pLibrary(pLibrary)
 {
-
 }
 
 Text::~Text()
