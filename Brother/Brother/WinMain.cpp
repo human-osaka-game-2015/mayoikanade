@@ -11,7 +11,7 @@
 
 LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wp, LPARAM lp);
 
-#define FULLWINDOW
+//#define FULLWINDOW
 
 
 //-------------------------------------------------------------

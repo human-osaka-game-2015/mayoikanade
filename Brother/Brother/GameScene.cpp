@@ -26,25 +26,10 @@ DWORD WINAPI GameScene::Connect(LPVOID vpGameScene)
 	BrotherServer.Clientlisten();
 
 
-	DWORD SyncOld = timeGetTime();
-	DWORD SyncNow;
-	timeBeginPeriod(1);
-
-
 	while (pGameScene->m_isGameScene)
 	{
 		if (pGameScene->isConnect == true)
 		{
-
-			/*SyncNow = timeGetTime();
-			if (SyncNow - SyncOld >= 1000 / 60)
-			{
-
-
-			SyncOld = SyncNow;
-			}*/
-
-
 			BrotherServer.recvData(pGameScene->CData, sizeof(pGameScene->CData));
 
 			for (int i = 0; i < 4; i++)
@@ -58,6 +43,13 @@ DWORD WINAPI GameScene::Connect(LPVOID vpGameScene)
 					pGameScene->m_ClientPadState[i] = false;
 				}
 			}
+
+
+			//クライアントのスティックのデータを移す
+			pGameScene->m_ClientPadOldState[ANALOG_LEFT] =  pGameScene->m_ClientPadState[ANALOG_LEFT];
+			pGameScene->m_ClientPadOldState[ANALOG_RIGHT] = pGameScene->m_ClientPadState[ANALOG_RIGHT];
+			pGameScene->m_ClientPadOldState[ANALOG_DOWN] =  pGameScene->m_ClientPadState[ANALOG_DOWN];
+			pGameScene->m_ClientPadOldState[ANALOG_UP] =    pGameScene->m_ClientPadState[ANALOG_UP];
 
 			//ライブラリの修正にもなるのでいまはこれで
 			for (int i = 4; i < 6; i++)
@@ -115,14 +107,13 @@ DWORD WINAPI GameScene::Connect(LPVOID vpGameScene)
 
 			BrotherServer.sendData(pGameScene->SData, sizeof(pGameScene->SData));
 
-
 			ZeroMemory(pGameScene->CData, sizeof(pGameScene->CData));
 			ZeroMemory(pGameScene->SData, sizeof(pGameScene->SData));
 
+			pGameScene->isConnect = false;
 		}
 	}
 
-	timeEndPeriod(1);
 	ExitThread(TRUE);
 }
 
@@ -291,14 +282,4 @@ void GameScene::PadCheck()
 	m_ButtonState[1] = m_pLibrary->GetButtonState(GAMEPAD_B, GAMEPAD1);
 
 	
-	//クライアントのスティックのデータを移す
-	m_ClientPadOldState[ANALOG_LEFT] = m_ClientPadState[ANALOG_LEFT];
-	m_ClientPadOldState[ANALOG_RIGHT] = m_ClientPadState[ANALOG_RIGHT];
-	m_ClientPadOldState[ANALOG_DOWN] = m_ClientPadState[ANALOG_DOWN];
-	m_ClientPadOldState[ANALOG_UP] = m_ClientPadState[ANALOG_UP];
-
-
-	
-
-
 }

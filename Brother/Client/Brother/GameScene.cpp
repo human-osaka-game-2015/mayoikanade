@@ -67,6 +67,12 @@ DWORD WINAPI GameScene::Connect(LPVOID vpGameScene)
 
 			BrotherClient.recvData(pGameScene->SData, sizeof(pGameScene->SData));
 
+
+			pGameScene->m_ServerPadOldState[ANALOG_LEFT] = pGameScene->m_ServerPadState[ANALOG_LEFT];
+			pGameScene->m_ServerPadOldState[ANALOG_RIGHT] = pGameScene->m_ServerPadState[ANALOG_RIGHT];
+			pGameScene->m_ServerPadOldState[ANALOG_DOWN] = pGameScene->m_ServerPadState[ANALOG_DOWN];
+			pGameScene->m_ServerPadOldState[ANALOG_UP] = pGameScene->m_ServerPadState[ANALOG_UP];
+
 			for (int i = 0; i < 4; i++)
 			{
 				if (pGameScene->SData[i] == 1)
@@ -281,9 +287,5 @@ void GameScene::PadCheck()
 	m_ButtonState[1] = m_pLibrary->GetButtonState(GAMEPAD_B, GAMEPAD1);
 
 
-	m_ServerPadOldState[ANALOG_LEFT]	= m_ServerPadState[ANALOG_LEFT];
-	m_ServerPadOldState[ANALOG_RIGHT]	= m_ServerPadState[ANALOG_RIGHT];
-	m_ServerPadOldState[ANALOG_DOWN]	= m_ServerPadState[ANALOG_DOWN];
-	m_ServerPadOldState[ANALOG_UP]		= m_ServerPadState[ANALOG_UP];
-
+	
 }
