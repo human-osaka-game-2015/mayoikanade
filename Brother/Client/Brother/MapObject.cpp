@@ -222,6 +222,7 @@ bool MapObject::WoodBoxCheck(float x, float y)
 		return true;
 	}
 
+
 	return false;
 }
 
@@ -242,5 +243,7 @@ bool MapObject::WoodBoxSet(float x, float y)
 
 	return false;
 }
+
+
 
 

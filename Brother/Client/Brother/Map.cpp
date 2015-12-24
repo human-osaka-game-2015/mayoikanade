@@ -91,7 +91,16 @@ int Map::ObjectCheck(float x, float y)
 
 bool Map::WoodBoxCheck(float x, float y)
 {
-	return m_pMapObject->WoodBoxCheck(x, y);
+	if (m_pMapObject->WoodBoxCheck(x, y) == true)
+	{
+		return true;
+	}
+	else if (m_pMapGimmick->WoodBoxHoleCheck(x, y) == true)
+	{
+		return true;
+	}
+
+	return false;
 }
 
 bool Map::WoodBoxSet(float x, float y)
@@ -122,12 +131,20 @@ bool Map::WoodBoxSet(float x, float y)
 	case GATE_PORTRAIT_02:
 		return false;
 		break;
-	case HOLE_02:
-		return false;
-		break;
+	
 	}
 
-	bool isBoxSet = m_pMapObject->WoodBoxSet(x, y);
+	bool isBoxSet;
+
+	if (m_pMapObject->WoodBoxSet(x, y))
+	{
+		isBoxSet = true;
+	}
+	if (m_pMapGimmick->HoleCheck(x, y))
+	{
+		m_pMapObject->WoodBoxCheck(x,y);
+		isBoxSet = true;
+	}
 
 	if (isBoxSet)
 	{

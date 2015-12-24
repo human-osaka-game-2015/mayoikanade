@@ -458,6 +458,10 @@ void MapGimmick::MapTex_UV_Set(float Posx, float Posy)
 				m_pLibrary->MakeVertex(HOLE_01, m_MapGimmick_Tex[i][j]);
 
 				break;
+			case HOLE_02:
+				m_pLibrary->MakeVertex(HOLE_02, m_MapGimmick_Tex[i][j]);
+
+				break;
 			default:
 				for (int x = 0; x < VERTEXNUM; x++)
 				{
@@ -522,3 +526,40 @@ void MapGimmick::MapTex_XY_Set(float Posx, float Posy)
 		}
 	}
 }
+
+
+
+bool MapGimmick::HoleCheck(float x, float y)
+{
+	int arrayx = 0, arrayy = 0;
+	arrayx = int(x / 64);
+	arrayy = int(y / 64);
+
+	if (m_GimmickData[arrayy][arrayx] / 10000 == HOLE_01)
+	{
+		m_GimmickData[arrayy][arrayx] = HOLE_02 * 10000;
+		return true;
+	}
+
+	return false;
+
+}
+
+
+bool MapGimmick::WoodBoxHoleCheck(float x, float y)
+{
+	int arrayx = 0, arrayy = 0;
+	arrayx = int(x / 64);
+	arrayy = int(y / 64);
+
+	if (m_GimmickData[arrayy][arrayx] / 10000 == HOLE_02)
+	{
+		m_GimmickData[arrayy][arrayx] = HOLE_01 * 10000;
+		return true;
+
+	}
+
+	return false;
+
+}
+

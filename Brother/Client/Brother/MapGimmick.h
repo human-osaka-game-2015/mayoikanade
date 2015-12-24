@@ -30,7 +30,8 @@ public:
 	int GimmickCheck(float x, float y); 
 	void SwitchOn(float x,float y);
 	void SwitchOff(float x, float y);
-
+	bool HoleCheck(float x, float y);
+	bool WoodBoxHoleCheck(float x, float y);
 	int						m_GimmickData[MAP_HEIGHT][MAP_WIDTH];
 
 };
