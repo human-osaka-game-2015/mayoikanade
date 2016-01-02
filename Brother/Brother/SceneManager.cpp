@@ -42,7 +42,7 @@ bool SceneManager::Control()
 		break;
 	case OPENING_SCENE:
 		delete m_pScene;
-		m_pScene = new OpeningScene(m_pLibrary);
+		m_pScene = new OpeningScene(m_pLibrary,m_hWnd);
 
 		break;
 	case TITLE_SCENE:

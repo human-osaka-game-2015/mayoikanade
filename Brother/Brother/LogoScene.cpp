@@ -32,12 +32,12 @@ SCENE_NUM LogoScene::Control()
 	PadCheck();
 	if (m_ButtonState[0] == PAD_PUSH)
 	{
-		m_NextScene = TITLE_SCENE;
+		m_NextScene = OPENING_SCENE;
 	}
 
 	if (m_pLogoBackGround->Control())
 	{
-		m_NextScene = TITLE_SCENE;
+		m_NextScene = OPENING_SCENE;
 	}
 
 	return m_NextScene;
