@@ -102,3 +102,7 @@ void CollisionChecker::SwitchOn(float x, float y)
 	m_pMap->SwitchOn(x, y);
 }
 
+void CollisionChecker::SwitchOnYoung(float x, float y)
+{
+	m_pMap->SwitchOnYoung(x, y);
+}

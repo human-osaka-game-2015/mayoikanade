@@ -40,6 +40,28 @@ void Map::Control()
 					SwitchOff(j * 64.f, i * 64.f);
 				}
 			}
+			else if ((m_pMapGimmick->m_GimmickData[i][j] / 10000) == SWITCH_YELLOW_02)
+			{
+				if (m_pMapObject->m_ObjectData[i][j] == WOODBOX)
+				{
+					SwitchOn(j * 64.f, i * 64.f);
+				}
+				else
+				{
+					SwitchOff(j * 64.f, i * 64.f);
+				}
+			}
+			else if ((m_pMapGimmick->m_GimmickData[i][j] / 10000) == SWITCH_RED_02)
+			{
+				if (m_pMapObject->m_ObjectData[i][j] == WOODBOX)
+				{
+					SwitchOn(j * 64.f, i * 64.f);
+				}
+				else
+				{
+					SwitchOff(j * 64.f, i * 64.f);
+				}
+			}
 		}
 	}
 
@@ -74,6 +96,11 @@ int Map::GimmickCheck(float x, float y)
 void Map::SwitchOn(float x, float y)
 {
 	return m_pMapGimmick->SwitchOn(x, y);
+}
+
+void Map::SwitchOnYoung(float x, float y)
+{
+	return m_pMapGimmick->SwitchOnYoung(x, y);
 }
 
 void Map::SwitchOff(float x, float y)

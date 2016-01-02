@@ -49,6 +49,7 @@ public:
 	~Map();
 	int GimmickCheck(float x, float y);
 	void SwitchOn(float x, float y);
+	void SwitchOnYoung(float x, float y);
 	void SwitchOff(float x, float y);
 
 	int ObjectCheck(float x, float y);

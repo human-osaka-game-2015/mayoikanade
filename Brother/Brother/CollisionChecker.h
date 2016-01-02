@@ -15,6 +15,8 @@ public:
 	bool WoodBoxCheck(float x, float y);
 	bool WoodBoxSet(float x, float y);
 	void SwitchOn(float x, float y);
+	void SwitchOnYoung(float x, float y);
+
 };
 
 

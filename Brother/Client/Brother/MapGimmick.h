@@ -28,7 +28,8 @@ public:
 	void MapTex_UV_Set(float Posx, float Posy);
 	void MapTex_XY_Set(float Posx, float Posy);
 	int GimmickCheck(float x, float y); 
-	void SwitchOn(float x,float y);
+	void SwitchOn(float x, float y);
+	void SwitchOnYoung(float x, float y);
 	void SwitchOff(float x, float y);
 	bool HoleCheck(float x, float y);
 	bool WoodBoxHoleCheck(float x, float y);

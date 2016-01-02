@@ -9,6 +9,8 @@
 #include "StaffScene.h"
 #include "Library.h"
 
+
+
 SceneManager::SceneManager(Library* pLibrary,HWND hWnd) :
 m_pLibrary(pLibrary), 
 m_NextScene(SCENE_NONE),
