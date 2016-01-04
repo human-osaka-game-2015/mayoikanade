@@ -27,11 +27,13 @@ D3DManager::D3DManager(HWND hwnd, bool isFullWindow, bool isStencilBuffer) :m_pD
 
 	int ScreenX = GetSystemMetrics(SM_CXSCREEN);
 	int ScreenY = GetSystemMetrics(SM_CYSCREEN);
+	//int ScreenX = 1280;
+	//int ScreenY = 1024;
 
 	if (isFullWindow)
 	{
-		m_d3dpp.BackBufferWidth = ScreenX;
-		m_d3dpp.BackBufferHeight = ScreenY;
+		m_d3dpp.BackBufferWidth = 1280;
+		m_d3dpp.BackBufferHeight = 1024;
 		m_d3dpp.BackBufferFormat = D3DFMT_X8R8G8B8;
 		m_d3dpp.Windowed = FALSE;
 	}

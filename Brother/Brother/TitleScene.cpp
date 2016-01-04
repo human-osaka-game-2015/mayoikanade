@@ -76,7 +76,7 @@ SCENE_NUM TitleScene::Control()
 		switch (m_pTitleSelectManager->Control())
 		{
 		case GAME_START:
-			m_NextScene = GAME_SCENE;
+			m_NextScene = CONNECTING_SCENE;
 
 			break;
 		case GAME_END:

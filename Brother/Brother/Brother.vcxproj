@@ -11,41 +11,62 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Brother.cpp" />
-    <ClCompile Include="CollisionChecker.cpp" />
+    <ClCompile Include="ClientBrother.cpp" />
+    <ClCompile Include="ClientCollisionChecker.cpp" />
+    <ClCompile Include="ClientDrawPositionSetter.cpp" />
+    <ClCompile Include="ClientGameTimeManager.cpp" />
+    <ClCompile Include="ClientGate.cpp" />
+    <ClCompile Include="ClientMap.cpp" />
+    <ClCompile Include="ClientMapBackGround.cpp" />
+    <ClCompile Include="ClientMapGimmick.cpp" />
+    <ClCompile Include="ClientMapObject.cpp" />
+    <ClCompile Include="ClientPlayer.cpp" />
+    <ClCompile Include="ClientPlayerUI.cpp" />
+    <ClCompile Include="ClientShadow.cpp" />
+    <ClCompile Include="ClientSwitch.cpp" />
+    <ClCompile Include="ClientText.cpp" />
+    <ClCompile Include="ClientYoungerBrother.cpp" />
+    <ClCompile Include="ClientModeManager.cpp" />
+    <ClCompile Include="ServerBrother.cpp" />
+    <ClCompile Include="Client.cpp" />
+    <ClCompile Include="ClientGameScene.cpp" />
+    <ClCompile Include="ServerCollisionChecker.cpp" />
     <ClCompile Include="ConnectingScene.cpp" />
+    <ClCompile Include="ConnectSelectManager.cpp" />
     <ClCompile Include="D3DManager.cpp" />
-    <ClCompile Include="DrawPositionSetter.cpp" />
+    <ClCompile Include="ServerDrawPositionSetter.cpp" />
     <ClCompile Include="DSoundManager.cpp" />
     <ClCompile Include="GameMain.cpp" />
-    <ClCompile Include="GameScene.cpp" />
-    <ClCompile Include="Gate.cpp" />
+    <ClCompile Include="ServerGameScene.cpp" />
+    <ClCompile Include="ServerGate.cpp" />
     <ClCompile Include="InputDevice.cpp" />
+    <ClCompile Include="IPAddSelectScene.cpp" />
     <ClCompile Include="Library.cpp" />
+    <ClCompile Include="ListenServer.cpp" />
     <ClCompile Include="LogoBackGround.cpp" />
     <ClCompile Include="LogoScene.cpp" />
-    <ClCompile Include="Map.cpp" />
-    <ClCompile Include="MapBackGround.cpp" />
-    <ClCompile Include="MapGimmick.cpp" />
-    <ClCompile Include="MapObject.cpp" />
-    <ClCompile Include="ModeManager.cpp" />
+    <ClCompile Include="ServerMap.cpp" />
+    <ClCompile Include="ServerMapBackGround.cpp" />
+    <ClCompile Include="ServerMapGimmick.cpp" />
+    <ClCompile Include="ServerMapObject.cpp" />
     <ClCompile Include="OpeningScene.cpp" />
-    <ClCompile Include="Player.cpp" />
-    <ClCompile Include="PlayerUI.cpp" />
+    <ClCompile Include="ServerModeManager.cpp" />
+    <ClCompile Include="ServerPlayer.cpp" />
+    <ClCompile Include="ServerPlayerUI.cpp" />
     <ClCompile Include="PositionManager.cpp" />
     <ClCompile Include="ResultScene.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneChangeListener.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="Server.cpp" />
-    <ClCompile Include="Shadow.cpp" />
+    <ClCompile Include="ServerShadow.cpp" />
     <ClCompile Include="StaffBackGround.cpp" />
     <ClCompile Include="StaffScene.cpp" />
     <ClCompile Include="StencilManager.cpp" />
-    <ClCompile Include="Switch.cpp" />
-    <ClCompile Include="Text.cpp" />
+    <ClCompile Include="ServerSwitch.cpp" />
+    <ClCompile Include="ServerText.cpp" />
     <ClCompile Include="Texture.cpp" />
-    <ClCompile Include="GameTimeManager.cpp" />
+    <ClCompile Include="ServerGameTimeManager.cpp" />
     <ClCompile Include="TitleBackGround.cpp" />
     <ClCompile Include="TitleName.cpp" />
     <ClCompile Include="TitleScene.cpp" />
@@ -56,44 +77,66 @@
     <ClCompile Include="WinMain.cpp" />
     <ClCompile Include="WoodBox.cpp" />
     <ClCompile Include="XInput_lib.cpp" />
-    <ClCompile Include="YoungerBrother.cpp" />
+    <ClCompile Include="ServerYoungerBrother.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Brother.h" />
-    <ClInclude Include="CollisionChecker.h" />
+    <ClInclude Include="ClientBrother.h" />
+    <ClInclude Include="ClientCollisionChecker.h" />
+    <ClInclude Include="ClientDrawPositionSetter.h" />
+    <ClInclude Include="ClientGameTimeManager.h" />
+    <ClInclude Include="ClientGate.h" />
+    <ClInclude Include="ClientMap.h" />
+    <ClInclude Include="ClientMapBackGround.h" />
+    <ClInclude Include="ClientMapGimmick.h" />
+    <ClInclude Include="ClientMapObject.h" />
+    <ClInclude Include="ClientPlayer.h" />
+    <ClInclude Include="ClientPlayerUI.h" />
+    <ClInclude Include="ClientShadow.h" />
+    <ClInclude Include="ClientSwitch.h" />
+    <ClInclude Include="ClientText.h" />
+    <ClInclude Include="ClientYoungerBrother.h" />
+    <ClInclude Include="ClientModeManager.h" />
+    <ClInclude Include="ServerBrother.h" />
+    <ClInclude Include="Client.h" />
+    <ClInclude Include="ClientGameScene.h" />
+    <ClInclude Include="ServerCollisionChecker.h" />
     <ClInclude Include="ConnectingScene.h" />
+    <ClInclude Include="ConnectSelectManager..h" />
     <ClInclude Include="D3DManager.h" />
-    <ClInclude Include="DrawPositionSetter.h" />
+    <ClInclude Include="ServerDrawPositionSetter.h" />
     <ClInclude Include="DSoundManager.h" />
     <ClInclude Include="GameMain.h" />
-    <ClInclude Include="GameScene.h" />
-    <ClInclude Include="Gate.h" />
+    <ClInclude Include="ServerGameScene.h" />
+    <ClInclude Include="ServerGate.h" />
     <ClInclude Include="InputDevice.h" />
+    <ClInclude Include="IPAddSelectScene.h" />
     <ClInclude Include="Library.h" />
+    <ClInclude Include="ListenServer.h" />
     <ClInclude Include="LogoBackGround.h" />
     <ClInclude Include="LogoScene.h" />
-    <ClInclude Include="Map.h" />
-    <ClInclude Include="MapBackGround.h" />
-    <ClInclude Include="MapGimmick.h" />
-    <ClInclude Include="MapObject.h" />
-    <ClInclude Include="ModeManager.h" />
+    <ClInclude Include="ServerMap.h" />
+    <ClInclude Include="ServerMapBackGround.h" />
+    <ClInclude Include="ServerMapGimmick.h" />
+    <ClInclude Include="ServerMapObject.h" />
     <ClInclude Include="OpeningScene.h" />
-    <ClInclude Include="Player.h" />
-    <ClInclude Include="PlayerUI.h" />
+    <ClInclude Include="ServerModeManager.h" />
+    <ClInclude Include="ServerPlayer.h" />
+    <ClInclude Include="ServerPlayerUI.h" />
     <ClInclude Include="PositionManager.h" />
     <ClInclude Include="ResultScene.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneChangeListener.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="Server.h" />
-    <ClInclude Include="Shadow.h" />
+    <ClInclude Include="ServerShadow.h" />
     <ClInclude Include="StaffBackGround.h" />
     <ClInclude Include="StaffScene.h" />
     <ClInclude Include="StencilManager.h" />
-    <ClInclude Include="Switch.h" />
-    <ClInclude Include="Text.h" />
+    <ClInclude Include="ServerSwitch.h" />
+    <ClInclude Include="Tex.h" />
+    <ClInclude Include="ServerText.h" />
     <ClInclude Include="Texture.h" />
-    <ClInclude Include="GameTimeManager.h" />
+    <ClInclude Include="ServerGameTimeManager.h" />
     <ClInclude Include="TitleBackGround.h" />
     <ClInclude Include="TitleName.h" />
     <ClInclude Include="TitleScene.h" />
@@ -103,7 +146,7 @@
     <ClInclude Include="Vertex.h" />
     <ClInclude Include="WoodBox.h" />
     <ClInclude Include="XInput_lib.h" />
-    <ClInclude Include="YoungerBrother.h" />
+    <ClInclude Include="ServerYoungerBrother.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Texture順番.txt" />
@@ -164,7 +207,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalLibraryDirectories>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>winmm.lib;d3d9.lib;d3dx9.lib;dinput8.lib;dxguid.lib;ws2_32.lib;Dsound.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>winmm.lib;d3d9.lib;d3dx9.lib;dinput8.lib;dxguid.lib;ws2_32.lib;Dsound.lib;Strmiids.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

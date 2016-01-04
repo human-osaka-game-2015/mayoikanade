@@ -8,10 +8,8 @@
 #include"SceneManager.h"
 
 #define WINDOWTITLE "–À‚¢ŒZ’í"
-
-LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wp, LPARAM lp);
-
 //#define FULLWINDOW
+LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wp, LPARAM lp);
 
 
 //-------------------------------------------------------------
@@ -40,7 +38,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 
 	if (!RegisterClass(&winc)) return 0;
 
-	int dH = GetSystemMetrics(SM_CYCAPTION) + GetSystemMetrics(SM_CYFRAME) * 2;
+	int dH = GetSystemMetrics(SM_CYCAPTION) + GetSystemMetrics(SM_CYFRAME);
 	int dW = GetSystemMetrics(SM_CXFRAME) * 2;
 #ifdef FULLWINDOW
 	hWnd = CreateWindow(
@@ -49,14 +47,21 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 		WS_VISIBLE | WS_POPUP,
 		CW_USEDEFAULT,
 		CW_USEDEFAULT,
-		1280 + dW,
-		1024 + dH,
+		1280,
+		1024,
 		NULL,
 		NULL,
 		hInstance,
 		NULL
 		);
+	DEVMODE devMode;
+
+	devMode.dmSize       = sizeof(DEVMODE);
+	devMode.dmFields     = DM_PELSWIDTH | DM_PELSHEIGHT;
+	devMode.dmPelsWidth  = 1280;
+	devMode.dmPelsHeight = 1024;
 	ShowWindow(hWnd, SW_SHOWNORMAL);
+	ChangeDisplaySettings(&devMode, CDS_FULLSCREEN);
 
 #else
 	hWnd = CreateWindow(
@@ -65,8 +70,10 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 		WS_OVERLAPPEDWINDOW | WS_VISIBLE,
 		CW_USEDEFAULT,
 		CW_USEDEFAULT,
-		1280 + dW,
-		1024 + dH,
+		//1280 + dW,
+		//1024 + dH,
+		1280,
+		1024,
 		NULL,
 		NULL,
 		hInstance,

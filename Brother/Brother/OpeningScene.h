@@ -10,7 +10,7 @@
 #include "Scene.h"
 class Library;
 
-class OpeningScene:public Scene
+class OpeningScene :public Scene
 {
 private:
 	IGraphBuilder*			m_pGB;
@@ -21,7 +21,7 @@ private:
 
 
 public:
-	OpeningScene(Library* pLibrary,HWND hWnd);
+	OpeningScene(Library* pLibrary, HWND hWnd);
 	~OpeningScene();
 	virtual SCENE_NUM Control();
 	virtual void Draw();

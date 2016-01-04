@@ -4,17 +4,16 @@
 #include "OpeningScene.h"
 #include "TitleScene.h"
 #include "ConnectingScene.h"
-#include "GameScene.h"
+#include "ServerGameScene.h"
+#include "ClientGameScene.h"
 #include "ResultScene.h"
 #include "StaffScene.h"
 #include "Library.h"
 
-
-
 SceneManager::SceneManager(Library* pLibrary,HWND hWnd) :
-m_pLibrary(pLibrary), 
-m_NextScene(SCENE_NONE),
-m_hWnd(hWnd)
+	m_pLibrary(pLibrary), 
+	m_NextScene(SCENE_NONE),
+	m_hWnd(hWnd)
 {
 	//ゲームの開始時のシーンはロゴに行く
 	m_pScene = new LogoScene(m_pLibrary);
@@ -31,7 +30,7 @@ SceneManager::~SceneManager()
 
 bool SceneManager::Control()
 {
-	
+	//サーバーかクライアントの切り替えはこのシーンで分ける
 	switch (m_NextScene)
 	{
 	case SCENE_NONE:	//そのまま抜ける
@@ -44,7 +43,7 @@ bool SceneManager::Control()
 		break;
 	case OPENING_SCENE:
 		delete m_pScene;
-		m_pScene = new OpeningScene(m_pLibrary,m_hWnd);
+		m_pScene = new OpeningScene(m_pLibrary, m_hWnd);
 
 		break;
 	case TITLE_SCENE:
@@ -54,12 +53,16 @@ bool SceneManager::Control()
 		break;
 	case CONNECTING_SCENE:
 		delete m_pScene;
-		m_pScene = new ConnectingScene(m_pLibrary);
+		m_pScene = new ConnectingScene(m_pLibrary, m_pIPadd);
 
 		break;
-	case GAME_SCENE:
+	case SERVER_GAME_SCENE:
 		delete m_pScene;
-		m_pScene = new GameScene(m_pLibrary, m_hWnd);
+		m_pScene = new ServerGameScene(m_pLibrary, m_hWnd);
+		break;
+	case CLIENT_GAME_SCENE:
+		delete m_pScene;
+		m_pScene = new ClientGameScene(m_pLibrary, m_hWnd, m_pIPadd);
 
 		break;
 	case RESULT_SCENE:

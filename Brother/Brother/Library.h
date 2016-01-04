@@ -10,6 +10,7 @@
 #include "Vertex.h"
 #include "UVSetter.h"
 #include "StencilManager.h"
+#include "InputDevice.h"
 
 class D3DManager;
 
@@ -23,8 +24,10 @@ private:
 	UVSetter*		m_pUVSetter;
 	XInput*			m_pXInput;
 	StencilManager*	m_pStencilManager;
+	
 
 public:
+	InputDevice* m_pInputDevice;
 	Library(HWND hWnd, bool isFullWindow = false, bool isStencil = false);
 	~Library();
 
@@ -78,6 +81,7 @@ public:
 	void AlphaTestEnd();
 	void StencilTestEnd();
 
+	void Init_Key();
 };
 
 

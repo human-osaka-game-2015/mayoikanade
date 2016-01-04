@@ -11,21 +11,27 @@ enum SCENE_NUM
 	OPENING_SCENE,
 	TITLE_SCENE,
 	CONNECTING_SCENE,
-	GAME_SCENE,
+	SERVER_GAME_SCENE,
+	CLIENT_GAME_SCENE,
 	RESULT_SCENE,
 	END_SCENE,
 	STAFF_SCENE,
-	MAX_SCENE,
+	MAX_SCENE
 };
 
 enum TEXTURE_NUM
 {
 	TEX_LOGO,
 	TEX_TITLE,
+	TEX_CONNECT,
 	TEX_STAFF,
 	TEX_GAME,
-	STENCIL,
+	CONNECTING_WAIT,
+	CONNECTSELECT_WAIT,
+	STENCIL
 };
+
+enum CONNECT_TYPE;
 
 class Scene
 {
@@ -33,6 +39,7 @@ private:
 
 protected:
 	SCENE_NUM				m_NextScene;
+
 	Library*				m_pLibrary;
 	static unsigned int		m_time;
 
@@ -51,6 +58,9 @@ public:
 	bool	m_ClientPadOldState[ANALOG_MAX];
 	PADSTATE m_ClientButtonState[2];
 
+	bool	m_ServerPadState[ANALOG_MAX];
+	bool	m_ServerPadOldState[ANALOG_MAX];
+	PADSTATE m_ServerButtonState[2];
 };
 
 

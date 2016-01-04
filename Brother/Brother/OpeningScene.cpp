@@ -12,9 +12,9 @@ m_hWnd(hWnd)
 {
 	//timeの初期化
 	m_time = 0;
-	
+
 	WCHAR wFileName[] = L"A.avi";
-	
+
 	//COMコンポーネントを使う上で必要
 	if (FAILED(CoInitializeEx(NULL, COINIT_APARTMENTTHREADED)))
 	{
@@ -26,25 +26,25 @@ m_hWnd(hWnd)
 	if (FAILED(CoCreateInstance(CLSID_FilterGraph, NULL, CLSCTX_INPROC_SERVER, IID_IGraphBuilder, reinterpret_cast<void**>(&m_pGB))))
 	{
 		MessageBox(0, "グラフインターフェースの取得に失敗しました", "", MB_OK);
-		CoUninitialize(); 
+		CoUninitialize();
 	}
 
 	//VRM9フィルタの作成と登録
 	//VRM9はレンダリングを担当してくれる
 	if (FAILED(CoCreateInstance(CLSID_VideoMixingRenderer9, NULL, CLSCTX_INPROC_SERVER, IID_IBaseFilter, reinterpret_cast<void**>(&m_pVMR9))))
-	{ 
+	{
 		MessageBox(0, "VMR9フィルタの作成に失敗しました", "", MB_OK);
-		CoUninitialize(); 
+		CoUninitialize();
 	}
 	m_pGB->AddFilter(m_pVMR9, L"VMR9");       // フィルタグラフに登録
-	
+
 
 	// VRM9をウィンドウレスモードにする
 	IVMRFilterConfig* pVMRCfg = NULL;
 	if (FAILED(m_pVMR9->QueryInterface(IID_IVMRFilterConfig9, reinterpret_cast<void**>(&pVMRCfg))))
-	{ 
+	{
 		MessageBox(0, "IVMRFilterConfigの作成に失敗しました", "", MB_OK);
-		m_pGB->Release(); 
+		m_pGB->Release();
 		CoUninitialize();
 	}
 	//ウィンドウレスモードに変更する
@@ -73,10 +73,10 @@ m_hWnd(hWnd)
 	// CaptureGraphBuilder2インターフェイスの取得
 	//CaptureGraphBuilder2はフィルタ接続をある程度自動化してくれるいいやつ
 	if (FAILED(CoCreateInstance(CLSID_CaptureGraphBuilder2, NULL, CLSCTX_INPROC_SERVER, IID_ICaptureGraphBuilder2, reinterpret_cast<void**>(&m_pCGB2))))
-	{ 
+	{
 		MessageBox(0, "CaptureGraphBuilder2の取得に失敗しました", "", MB_OK);
-		m_pGB->Release(); 
-		CoUninitialize(); 
+		m_pGB->Release();
+		CoUninitialize();
 	}
 
 	//ICaptureGraphBuilder2の初期化
@@ -89,9 +89,9 @@ m_hWnd(hWnd)
 	if (FAILED(m_pCGB2->RenderStream(0, 0, pSource, 0, m_pVMR9)))
 	{
 		MessageBox(0, "フィルタ接続に失敗しました", "", MB_OK);
-		m_pCGB2->Release(); 
-		m_pGB->Release(); 
-		CoUninitialize(); 
+		m_pCGB2->Release();
+		m_pGB->Release();
+		CoUninitialize();
 	}
 
 	if (FAILED(m_pCGB2->RenderStream(0, &MEDIATYPE_Audio, pSource, 0, 0)))
@@ -107,19 +107,19 @@ m_hWnd(hWnd)
 	// 描画領域の設定
 	LONG W, H;
 	RECT SrcRect, ClientRect;
-	
+
 	//動画のサイズを取得
 	pVMRWndCont->GetNativeVideoSize(&W, &H, NULL, NULL);
-	
+
 	//SrcRectに移す
 	SetRect(&SrcRect, 0, 0, W, H);
-	
+
 	//クライアント領域取得
 	GetClientRect(hWnd, &ClientRect);
-	
+
 	//動画サイズとクライアント領域を渡して、クライアント領域全体に表示されるようにする
 	pVMRWndCont->SetVideoPosition(&SrcRect, &ClientRect);
-	
+
 
 	// ウィンドウレスコントロールは不必要
 	pVMRWndCont->Release();
@@ -129,13 +129,13 @@ m_hWnd(hWnd)
 	// メディアコントロールインターフェイスの取得
 	//こいつ使って動画再生とかする
 	if (FAILED(m_pGB->QueryInterface(IID_IMediaControl, reinterpret_cast<void**>(&m_pMediaCont))))
-	{ 
-		m_pCGB2->Release(); 
-		m_pGB->Release(); 
-		CoUninitialize(); 
+	{
+		m_pCGB2->Release();
+		m_pGB->Release();
+		CoUninitialize();
 	}
 
-	
+
 
 	m_pMediaCont->Run();
 
@@ -171,12 +171,12 @@ SCENE_NUM OpeningScene::Control()
 		if (SyncNow - SyncOld >= 1000 / 60)
 		{
 			PadCheck();
-			
+
 			if (m_ButtonState[0] == PAD_PUSH)
 			{
 				break;
 			}
-			
+
 
 			m_time++;
 			SyncOld = SyncNow;

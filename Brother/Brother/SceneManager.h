@@ -14,8 +14,8 @@ private:
 	SCENE_NUM	m_NextScene;
 	Library*	m_pLibrary;
 	HWND		m_hWnd;
-
 public:
+	char m_pIPadd[16];
 	SceneManager(Library* pLibrary,HWND hWnd);
 	~SceneManager();
 	bool Control();

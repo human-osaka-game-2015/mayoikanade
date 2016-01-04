@@ -52,7 +52,6 @@ void Server::Clientlisten()
 	}
 
 	int fromlen = (int)sizeof(from);
-	
 	s = accept(listen_s, (SOCKADDR *)&from, &fromlen);
 	
 	if (s == INVALID_SOCKET) 

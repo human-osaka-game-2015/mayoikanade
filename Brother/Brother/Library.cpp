@@ -18,10 +18,12 @@ Library::Library(HWND hWnd, bool isFullWindow,bool isStencil) :m_pD3DManager(NUL
 	m_pVertex = new Vertex();
 	m_pUVSetter = new UVSetter();
 	m_pStencilManager = new StencilManager();
+	m_pInputDevice = new InputDevice(hWnd);
 }
 
 Library::~Library()
 {
+	delete m_pInputDevice;
 	delete m_pStencilManager;
 	delete m_pUVSetter;
 	delete m_pVertex;
@@ -221,6 +223,15 @@ bool Library::GetAnalogState(ANALOGPAD id, XINPUTPAD pad)
 	return m_pXInput->GetAnalogState(id, pad);
 }
 
+//--------------------------------------------------------------------------------------
+//
+//		InputKey
+//
+//--------------------------------------------------------------------------------------
+void Library::Init_Key()
+{
+	m_pInputDevice->Init_Dinput_Key();
+}
 
 
 //--------------------------------------------------------------------------------------

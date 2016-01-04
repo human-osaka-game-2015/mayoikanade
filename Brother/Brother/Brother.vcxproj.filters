@@ -47,35 +47,8 @@
     <Filter Include="WinMain\GameMain\SceneManager\Scene\ConnectingScene">
       <UniqueIdentifier>{610ef43e-fbe3-40dd-9d10-fa04281b4a3f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene">
-      <UniqueIdentifier>{f35ae513-493e-4c67-b800-6b36a8a7935b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="WinMain\GameMain\SceneManager\Scene\ResultScene">
       <UniqueIdentifier>{365fe3d1-25d2-42db-9276-f1bd517a71f3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\Player">
-      <UniqueIdentifier>{06f91837-ca26-44bf-94a7-79215958191a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\Map">
-      <UniqueIdentifier>{15df8ae9-8213-4d18-8e75-33812e8ca25f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\CollisionChecker">
-      <UniqueIdentifier>{cdbf8baf-9fb4-4b8e-af01-f07a39e5a720}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\SceneListener">
-      <UniqueIdentifier>{6205b4d0-2fe0-416f-ad60-3958266e86fa}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\Player\YoungerBrother">
-      <UniqueIdentifier>{b2461888-b64e-47b6-a9d4-9a3a84e2caf2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\Player\Brother">
-      <UniqueIdentifier>{2cfd6569-fdbe-418e-976b-b174aa768f37}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\Map\MapObject">
-      <UniqueIdentifier>{8f263b3f-634f-483e-abf7-0a3ec5475e7d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\Map\MapGimmick">
-      <UniqueIdentifier>{eb344f23-7538-42e9-9d6c-309e254b32c4}</UniqueIdentifier>
     </Filter>
     <Filter Include="WinMain\GameMain\SceneManager\Scene\TitleScene">
       <UniqueIdentifier>{a2fd433d-6263-4d91-9d98-62e5326ce6e4}</UniqueIdentifier>
@@ -98,44 +71,32 @@
     <Filter Include="WinMain\GameMain\SceneManager\Scene\StaffScene\StaffBackGround">
       <UniqueIdentifier>{9169434c-0b0d-4764-8d34-6edf895b2c84}</UniqueIdentifier>
     </Filter>
-    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\Player\PlayerUI">
-      <UniqueIdentifier>{02917e0b-7ce9-4882-8c49-f2994ac4230c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\DrawPositionSetter">
-      <UniqueIdentifier>{515d2bf2-4aad-46ce-9d25-08819e26071a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\Shadow">
-      <UniqueIdentifier>{6df0e253-ca3a-4863-ad53-98b5590dcea2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\Text">
-      <UniqueIdentifier>{6e246c1f-7c4d-4a4a-9370-03d481f09f91}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\GameTimeManager">
-      <UniqueIdentifier>{3654a7b0-375e-47d4-871e-971b9dbcbbaa}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\ModeManager">
-      <UniqueIdentifier>{801e77f8-9289-4f70-b66e-2b1880fa2ee1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\Map\MapGimmick\Switch">
-      <UniqueIdentifier>{b421111e-5f52-4709-9470-862e40b10073}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\Map\MapGimmick\Gate">
-      <UniqueIdentifier>{5c4819f8-92dd-4dd9-a380-197c4b9c0265}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\Map\MapBackGround">
-      <UniqueIdentifier>{4b57d8da-f0dc-45ca-a3f2-bc3678467883}</UniqueIdentifier>
-    </Filter>
     <Filter Include="WinMain\GameMain\SceneManager\Scene\LogoScene">
       <UniqueIdentifier>{a0323456-7091-4010-992b-c1562edec565}</UniqueIdentifier>
     </Filter>
     <Filter Include="WinMain\GameMain\SceneManager\Scene\LogoScene\LogoBackGround">
       <UniqueIdentifier>{a49ce375-20e4-4fe4-9476-8b58a3eb98e2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Library\InputDevice">
+      <UniqueIdentifier>{3033e11b-993d-452a-b40d-3054f1da0f60}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Library\StencilManager">
       <UniqueIdentifier>{61dbcdf8-3cc4-43dc-888b-8efeb0c27825}</UniqueIdentifier>
     </Filter>
-    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\Map\MapObject\WoodBox">
-      <UniqueIdentifier>{a87cc17c-c4e0-4120-802c-fa3db9e581d4}</UniqueIdentifier>
+    <Filter Include="WinMain\GameMain\SceneManager\Scene\ConnectingScene\ConnectSelectManager">
+      <UniqueIdentifier>{d3e4dc4e-35d2-46c2-ab6f-be6c2efff257}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="WinMain\GameMain\SceneManager\Scene\ConnectingScene\IPAddSelectScene">
+      <UniqueIdentifier>{5b14919c-d96b-4b6b-8608-eef7d590eef8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="WinMain\GameMain\SceneManager\Scene\ConnectingScene\ListenServer">
+      <UniqueIdentifier>{2ff97282-bd8e-438f-b993-ff2d022a4c1d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene">
+      <UniqueIdentifier>{f35ae513-493e-4c67-b800-6b36a8a7935b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\SceneListener">
+      <UniqueIdentifier>{6205b4d0-2fe0-416f-ad60-3958266e86fa}</UniqueIdentifier>
     </Filter>
     <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\server">
       <UniqueIdentifier>{bf22c3c4-0865-4c5f-a32c-a9ca043cf638}</UniqueIdentifier>
@@ -143,8 +104,113 @@
     <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\PositionManager">
       <UniqueIdentifier>{6a54d30a-5dca-4ede-8e02-8a9bed2697fd}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Library\DSoundManager\InputDevice">
-      <UniqueIdentifier>{3033e11b-993d-452a-b40d-3054f1da0f60}</UniqueIdentifier>
+    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\client">
+      <UniqueIdentifier>{a0f32ed3-1258-4e7b-bb2e-87cb4194e868}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\server\PlayerUI">
+      <UniqueIdentifier>{02917e0b-7ce9-4882-8c49-f2994ac4230c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\server\YoungerBrother">
+      <UniqueIdentifier>{b2461888-b64e-47b6-a9d4-9a3a84e2caf2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\server\ServerBrother">
+      <UniqueIdentifier>{2cfd6569-fdbe-418e-976b-b174aa768f37}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\server\ServerPlayer">
+      <UniqueIdentifier>{06f91837-ca26-44bf-94a7-79215958191a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\server\ServerGame">
+      <UniqueIdentifier>{79625aeb-cce5-4777-9d5c-24ce4705a9ff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\client\ClientGame">
+      <UniqueIdentifier>{9736e5e9-19af-49db-b848-1a3a2afae095}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\client\ClientBrother">
+      <UniqueIdentifier>{e18c1aa7-fc11-43a7-ba85-cffb57db5249}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\client\ClientPlayer">
+      <UniqueIdentifier>{1c5533e2-696c-4f00-b587-41a8312f3468}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\client\ClientPlayerUI">
+      <UniqueIdentifier>{c18a509b-bec0-4145-8852-337cdf643129}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\client\ClientYoungerBrother">
+      <UniqueIdentifier>{5355f8da-70bf-4827-99a7-0807d9908bba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\client\ClientModeManager">
+      <UniqueIdentifier>{6a29ef31-749b-467c-91ce-152bba64347a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\server\ServerModeManager">
+      <UniqueIdentifier>{67322d58-e7ec-4b52-a529-a31f9fecaff9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\server\ServerText">
+      <UniqueIdentifier>{6e246c1f-7c4d-4a4a-9370-03d481f09f91}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\client\ClientText">
+      <UniqueIdentifier>{a4bf1ac2-e017-459f-87a7-df8fc609fc45}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\server\ServerMap">
+      <UniqueIdentifier>{15df8ae9-8213-4d18-8e75-33812e8ca25f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\server\ServerShadow">
+      <UniqueIdentifier>{6df0e253-ca3a-4863-ad53-98b5590dcea2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\client\ClientShadow">
+      <UniqueIdentifier>{260bfbc1-7a69-47f6-adb0-6d36fd13f9f9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\server\ServerGameTimeManager">
+      <UniqueIdentifier>{3654a7b0-375e-47d4-871e-971b9dbcbbaa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\server\ServerDrawPositionSetter">
+      <UniqueIdentifier>{515d2bf2-4aad-46ce-9d25-08819e26071a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\client\ClientDrawPositionSetter">
+      <UniqueIdentifier>{5dd421c7-5453-4c7e-8b95-43bef5eaec43}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\client\ClientGameTimeManager">
+      <UniqueIdentifier>{80759ad0-cacb-4ccf-a368-948a2fa3e013}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\client\ClientMap">
+      <UniqueIdentifier>{397bad61-431b-455c-bd99-3477d2d866b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\server\ServerCollisionChecker">
+      <UniqueIdentifier>{cdbf8baf-9fb4-4b8e-af01-f07a39e5a720}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\client\ClientCollisionChecker">
+      <UniqueIdentifier>{f75ef672-894b-4284-8d68-97695bb6b15f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\server\ServerMap\ServerMapBackGround">
+      <UniqueIdentifier>{4b57d8da-f0dc-45ca-a3f2-bc3678467883}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\server\ServerMap\ServerMapGimmick">
+      <UniqueIdentifier>{eb344f23-7538-42e9-9d6c-309e254b32c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\server\ServerMap\ServerMapObject">
+      <UniqueIdentifier>{8f263b3f-634f-483e-abf7-0a3ec5475e7d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\server\ServerMap\ServerMapObject\WoodBox">
+      <UniqueIdentifier>{a87cc17c-c4e0-4120-802c-fa3db9e581d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\server\ServerMap\ServerMapGimmick\ServerSwitch">
+      <UniqueIdentifier>{b421111e-5f52-4709-9470-862e40b10073}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\client\ClientMap\ClientMapBackGround">
+      <UniqueIdentifier>{e4fb847a-e3bf-45e8-a1be-726a49afc1bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\client\ClientMap\ClientMapGimmick">
+      <UniqueIdentifier>{f63ec0c3-71a5-440b-9c8f-49f877180b2e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\client\ClientMap\ClientMapObject">
+      <UniqueIdentifier>{2cfeaad8-9e56-4444-b0a4-0336ce6ca755}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\client\ClientMap\ClientMapGimmick\ClientSwitch">
+      <UniqueIdentifier>{d613d9d5-52e8-4699-80a2-27fc3eaa2e3b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\server\ServerMap\ServerMapGimmick\ServerGate">
+      <UniqueIdentifier>{5c4819f8-92dd-4dd9-a380-197c4b9c0265}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\client\ClientMap\ClientMapGimmick\ClientGate">
+      <UniqueIdentifier>{40e63571-6aeb-4fbb-bc4a-168860c0c85a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -158,7 +224,7 @@
       <Filter>Library\DSoundManager</Filter>
     </ClCompile>
     <ClCompile Include="InputDevice.cpp">
-      <Filter>Library\DSoundManager\InputDevice</Filter>
+      <Filter>Library\InputDevice</Filter>
     </ClCompile>
     <ClCompile Include="Texture.cpp">
       <Filter>Library\Texture</Filter>
@@ -202,35 +268,8 @@
     <ClCompile Include="LogoBackGround.cpp">
       <Filter>WinMain\GameMain\SceneManager\Scene\LogoScene\LogoBackGround</Filter>
     </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\Player</Filter>
-    </ClCompile>
-    <ClCompile Include="Brother.cpp">
-      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\Player\Brother</Filter>
-    </ClCompile>
-    <ClCompile Include="YoungerBrother.cpp">
-      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\Player\YoungerBrother</Filter>
-    </ClCompile>
-    <ClCompile Include="MapObject.cpp">
-      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\Map\MapObject</Filter>
-    </ClCompile>
-    <ClCompile Include="MapGimmick.cpp">
-      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\Map\MapGimmick</Filter>
-    </ClCompile>
-    <ClCompile Include="MapBackGround.cpp">
-      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\Map\MapBackGround</Filter>
-    </ClCompile>
-    <ClCompile Include="CollisionChecker.cpp">
-      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\CollisionChecker</Filter>
-    </ClCompile>
-    <ClCompile Include="ModeManager.cpp">
-      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\ModeManager</Filter>
-    </ClCompile>
     <ClCompile Include="SceneChangeListener.cpp">
       <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\SceneListener</Filter>
-    </ClCompile>
-    <ClCompile Include="Map.cpp">
-      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\Map</Filter>
     </ClCompile>
     <ClCompile Include="TitleBackGround.cpp">
       <Filter>WinMain\GameMain\SceneManager\Scene\TitleScene\TitleBackGround</Filter>
@@ -250,32 +289,11 @@
     <ClCompile Include="StaffBackGround.cpp">
       <Filter>WinMain\GameMain\SceneManager\Scene\StaffScene\StaffBackGround</Filter>
     </ClCompile>
-    <ClCompile Include="PlayerUI.cpp">
-      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\Player\PlayerUI</Filter>
-    </ClCompile>
-    <ClCompile Include="DrawPositionSetter.cpp">
-      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\DrawPositionSetter</Filter>
-    </ClCompile>
-    <ClCompile Include="Shadow.cpp">
-      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\Shadow</Filter>
-    </ClCompile>
-    <ClCompile Include="Text.cpp">
-      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\Text</Filter>
-    </ClCompile>
-    <ClCompile Include="GameTimeManager.cpp">
-      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\GameTimeManager</Filter>
-    </ClCompile>
-    <ClCompile Include="Gate.cpp">
-      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\Map\MapGimmick\Gate</Filter>
-    </ClCompile>
-    <ClCompile Include="Switch.cpp">
-      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\Map\MapGimmick\Switch</Filter>
-    </ClCompile>
     <ClCompile Include="StencilManager.cpp">
       <Filter>Library\StencilManager</Filter>
     </ClCompile>
     <ClCompile Include="WoodBox.cpp">
-      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\Map\MapObject\WoodBox</Filter>
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\server\ServerMap\ServerMapObject\WoodBox</Filter>
     </ClCompile>
     <ClCompile Include="Server.cpp">
       <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\server</Filter>
@@ -283,8 +301,119 @@
     <ClCompile Include="PositionManager.cpp">
       <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\PositionManager</Filter>
     </ClCompile>
-    <ClCompile Include="GameScene.cpp">
-      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene</Filter>
+    <ClCompile Include="ConnectSelectManager.cpp">
+      <Filter>WinMain\GameMain\SceneManager\Scene\ConnectingScene\ConnectSelectManager</Filter>
+    </ClCompile>
+    <ClCompile Include="IPAddSelectScene.cpp">
+      <Filter>WinMain\GameMain\SceneManager\Scene\ConnectingScene\IPAddSelectScene</Filter>
+    </ClCompile>
+    <ClCompile Include="ListenServer.cpp">
+      <Filter>WinMain\GameMain\SceneManager\Scene\ConnectingScene\ListenServer</Filter>
+    </ClCompile>
+    <ClCompile Include="ClientGameScene.cpp">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\client\ClientGame</Filter>
+    </ClCompile>
+    <ClCompile Include="Client.cpp">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\client</Filter>
+    </ClCompile>
+    <ClCompile Include="ServerGameScene.cpp">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\server\ServerGame</Filter>
+    </ClCompile>
+    <ClCompile Include="ServerBrother.cpp">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\server\ServerBrother</Filter>
+    </ClCompile>
+    <ClCompile Include="ServerPlayer.cpp">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\server\ServerPlayer</Filter>
+    </ClCompile>
+    <ClCompile Include="ServerPlayerUI.cpp">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\server\PlayerUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ServerYoungerBrother.cpp">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\server\YoungerBrother</Filter>
+    </ClCompile>
+    <ClCompile Include="ClientBrother.cpp">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\client\ClientBrother</Filter>
+    </ClCompile>
+    <ClCompile Include="ClientPlayer.cpp">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\client\ClientPlayer</Filter>
+    </ClCompile>
+    <ClCompile Include="ClientPlayerUI.cpp">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\client\ClientPlayerUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ClientYoungerBrother.cpp">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\client\ClientYoungerBrother</Filter>
+    </ClCompile>
+    <ClCompile Include="ClientModeManager.cpp">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\client\ClientModeManager</Filter>
+    </ClCompile>
+    <ClCompile Include="ServerModeManager.cpp">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\server\ServerModeManager</Filter>
+    </ClCompile>
+    <ClCompile Include="ServerText.cpp">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\server\ServerText</Filter>
+    </ClCompile>
+    <ClCompile Include="ClientText.cpp">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\client\ClientText</Filter>
+    </ClCompile>
+    <ClCompile Include="ServerGameTimeManager.cpp">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\server\ServerGameTimeManager</Filter>
+    </ClCompile>
+    <ClCompile Include="ServerShadow.cpp">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\server\ServerShadow</Filter>
+    </ClCompile>
+    <ClCompile Include="ServerMap.cpp">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\server\ServerMap</Filter>
+    </ClCompile>
+    <ClCompile Include="ServerMapObject.cpp">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\server\ServerMap\ServerMapObject</Filter>
+    </ClCompile>
+    <ClCompile Include="ServerMapGimmick.cpp">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\server\ServerMap\ServerMapGimmick</Filter>
+    </ClCompile>
+    <ClCompile Include="ServerSwitch.cpp">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\server\ServerMap\ServerMapGimmick\ServerSwitch</Filter>
+    </ClCompile>
+    <ClCompile Include="ServerGate.cpp">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\server\ServerMap\ServerMapGimmick\ServerGate</Filter>
+    </ClCompile>
+    <ClCompile Include="ServerMapBackGround.cpp">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\server\ServerMap\ServerMapBackGround</Filter>
+    </ClCompile>
+    <ClCompile Include="ServerDrawPositionSetter.cpp">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\server\ServerDrawPositionSetter</Filter>
+    </ClCompile>
+    <ClCompile Include="ServerCollisionChecker.cpp">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\server\ServerCollisionChecker</Filter>
+    </ClCompile>
+    <ClCompile Include="ClientShadow.cpp">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\client\ClientShadow</Filter>
+    </ClCompile>
+    <ClCompile Include="ClientDrawPositionSetter.cpp">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\client\ClientDrawPositionSetter</Filter>
+    </ClCompile>
+    <ClCompile Include="ClientGameTimeManager.cpp">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\client\ClientGameTimeManager</Filter>
+    </ClCompile>
+    <ClCompile Include="ClientMap.cpp">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\client\ClientMap</Filter>
+    </ClCompile>
+    <ClCompile Include="ClientMapBackGround.cpp">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\client\ClientMap\ClientMapBackGround</Filter>
+    </ClCompile>
+    <ClCompile Include="ClientMapGimmick.cpp">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\client\ClientMap\ClientMapGimmick</Filter>
+    </ClCompile>
+    <ClCompile Include="ClientMapObject.cpp">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\client\ClientMap\ClientMapObject</Filter>
+    </ClCompile>
+    <ClCompile Include="ClientSwitch.cpp">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\client\ClientMap\ClientMapGimmick\ClientSwitch</Filter>
+    </ClCompile>
+    <ClCompile Include="ClientCollisionChecker.cpp">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\client\ClientCollisionChecker</Filter>
+    </ClCompile>
+    <ClCompile Include="ClientGate.cpp">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\client\ClientMap\ClientMapGimmick\ClientGate</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -298,7 +427,7 @@
       <Filter>Library\DSoundManager</Filter>
     </ClInclude>
     <ClInclude Include="InputDevice.h">
-      <Filter>Library\DSoundManager\InputDevice</Filter>
+      <Filter>Library\InputDevice</Filter>
     </ClInclude>
     <ClInclude Include="Texture.h">
       <Filter>Library\Texture</Filter>
@@ -339,32 +468,8 @@
     <ClInclude Include="LogoBackGround.h">
       <Filter>WinMain\GameMain\SceneManager\Scene\LogoScene\LogoBackGround</Filter>
     </ClInclude>
-    <ClInclude Include="Player.h">
-      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\Player</Filter>
-    </ClInclude>
-    <ClInclude Include="Brother.h">
-      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\Player\Brother</Filter>
-    </ClInclude>
-    <ClInclude Include="YoungerBrother.h">
-      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\Player\YoungerBrother</Filter>
-    </ClInclude>
-    <ClInclude Include="MapObject.h">
-      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\Map\MapObject</Filter>
-    </ClInclude>
-    <ClInclude Include="MapBackGround.h">
-      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\Map\MapBackGround</Filter>
-    </ClInclude>
-    <ClInclude Include="CollisionChecker.h">
-      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\CollisionChecker</Filter>
-    </ClInclude>
-    <ClInclude Include="ModeManager.h">
-      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\ModeManager</Filter>
-    </ClInclude>
     <ClInclude Include="SceneChangeListener.h">
       <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\SceneListener</Filter>
-    </ClInclude>
-    <ClInclude Include="Map.h">
-      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\Map</Filter>
     </ClInclude>
     <ClInclude Include="TitleBackGround.h">
       <Filter>WinMain\GameMain\SceneManager\Scene\TitleScene\TitleBackGround</Filter>
@@ -384,44 +489,134 @@
     <ClInclude Include="StaffBackGround.h">
       <Filter>WinMain\GameMain\SceneManager\Scene\StaffScene\StaffBackGround</Filter>
     </ClInclude>
-    <ClInclude Include="PlayerUI.h">
-      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\Player\PlayerUI</Filter>
-    </ClInclude>
-    <ClInclude Include="DrawPositionSetter.h">
-      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\DrawPositionSetter</Filter>
-    </ClInclude>
-    <ClInclude Include="Shadow.h">
-      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\Shadow</Filter>
-    </ClInclude>
-    <ClInclude Include="Text.h">
-      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\Text</Filter>
-    </ClInclude>
-    <ClInclude Include="GameTimeManager.h">
-      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\GameTimeManager</Filter>
-    </ClInclude>
-    <ClInclude Include="GameScene.h">
-      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene</Filter>
-    </ClInclude>
-    <ClInclude Include="MapGimmick.h">
-      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\Map\MapGimmick</Filter>
-    </ClInclude>
-    <ClInclude Include="Gate.h">
-      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\Map\MapGimmick\Gate</Filter>
-    </ClInclude>
-    <ClInclude Include="Switch.h">
-      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\Map\MapGimmick\Switch</Filter>
-    </ClInclude>
     <ClInclude Include="StencilManager.h">
       <Filter>Library\StencilManager</Filter>
     </ClInclude>
     <ClInclude Include="WoodBox.h">
-      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\Map\MapObject\WoodBox</Filter>
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\server\ServerMap\ServerMapObject\WoodBox</Filter>
     </ClInclude>
     <ClInclude Include="Server.h">
       <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\server</Filter>
     </ClInclude>
     <ClInclude Include="PositionManager.h">
       <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\PositionManager</Filter>
+    </ClInclude>
+    <ClInclude Include="ConnectSelectManager..h">
+      <Filter>WinMain\GameMain\SceneManager\Scene\ConnectingScene\ConnectSelectManager</Filter>
+    </ClInclude>
+    <ClInclude Include="IPAddSelectScene.h">
+      <Filter>WinMain\GameMain\SceneManager\Scene\ConnectingScene\IPAddSelectScene</Filter>
+    </ClInclude>
+    <ClInclude Include="ListenServer.h">
+      <Filter>WinMain\GameMain\SceneManager\Scene\ConnectingScene\ListenServer</Filter>
+    </ClInclude>
+    <ClInclude Include="ClientGameScene.h">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\client\ClientGame</Filter>
+    </ClInclude>
+    <ClInclude Include="Client.h">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\client</Filter>
+    </ClInclude>
+    <ClInclude Include="ServerGameScene.h">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\server\ServerGame</Filter>
+    </ClInclude>
+    <ClInclude Include="ServerBrother.h">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\server\ServerBrother</Filter>
+    </ClInclude>
+    <ClInclude Include="ServerPlayer.h">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\server\ServerPlayer</Filter>
+    </ClInclude>
+    <ClInclude Include="ServerPlayerUI.h">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\server\PlayerUI</Filter>
+    </ClInclude>
+    <ClInclude Include="ServerYoungerBrother.h">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\server\YoungerBrother</Filter>
+    </ClInclude>
+    <ClInclude Include="ClientBrother.h">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\client\ClientBrother</Filter>
+    </ClInclude>
+    <ClInclude Include="ClientPlayer.h">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\client\ClientPlayer</Filter>
+    </ClInclude>
+    <ClInclude Include="ClientPlayerUI.h">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\client\ClientPlayerUI</Filter>
+    </ClInclude>
+    <ClInclude Include="ClientYoungerBrother.h">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\client\ClientYoungerBrother</Filter>
+    </ClInclude>
+    <ClInclude Include="Tex.h">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene</Filter>
+    </ClInclude>
+    <ClInclude Include="ClientModeManager.h">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\client\ClientModeManager</Filter>
+    </ClInclude>
+    <ClInclude Include="ServerModeManager.h">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\server\ServerModeManager</Filter>
+    </ClInclude>
+    <ClInclude Include="ServerText.h">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\server\ServerText</Filter>
+    </ClInclude>
+    <ClInclude Include="ClientText.h">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\client\ClientText</Filter>
+    </ClInclude>
+    <ClInclude Include="ServerGameTimeManager.h">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\server\ServerGameTimeManager</Filter>
+    </ClInclude>
+    <ClInclude Include="ServerShadow.h">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\server\ServerShadow</Filter>
+    </ClInclude>
+    <ClInclude Include="ServerMap.h">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\server\ServerMap</Filter>
+    </ClInclude>
+    <ClInclude Include="ServerMapObject.h">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\server\ServerMap\ServerMapObject</Filter>
+    </ClInclude>
+    <ClInclude Include="ServerMapGimmick.h">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\server\ServerMap\ServerMapGimmick</Filter>
+    </ClInclude>
+    <ClInclude Include="ServerSwitch.h">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\server\ServerMap\ServerMapGimmick\ServerSwitch</Filter>
+    </ClInclude>
+    <ClInclude Include="ServerGate.h">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\server\ServerMap\ServerMapGimmick\ServerGate</Filter>
+    </ClInclude>
+    <ClInclude Include="ServerMapBackGround.h">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\server\ServerMap\ServerMapBackGround</Filter>
+    </ClInclude>
+    <ClInclude Include="ServerDrawPositionSetter.h">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\server\ServerDrawPositionSetter</Filter>
+    </ClInclude>
+    <ClInclude Include="ServerCollisionChecker.h">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\server\ServerCollisionChecker</Filter>
+    </ClInclude>
+    <ClInclude Include="ClientShadow.h">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\client\ClientShadow</Filter>
+    </ClInclude>
+    <ClInclude Include="ClientDrawPositionSetter.h">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\client\ClientDrawPositionSetter</Filter>
+    </ClInclude>
+    <ClInclude Include="ClientGameTimeManager.h">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\client\ClientGameTimeManager</Filter>
+    </ClInclude>
+    <ClInclude Include="ClientMap.h">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\client\ClientMap</Filter>
+    </ClInclude>
+    <ClInclude Include="ClientMapBackGround.h">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\client\ClientMap\ClientMapBackGround</Filter>
+    </ClInclude>
+    <ClInclude Include="ClientMapGimmick.h">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\client\ClientMap\ClientMapGimmick</Filter>
+    </ClInclude>
+    <ClInclude Include="ClientMapObject.h">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\client\ClientMap\ClientMapObject</Filter>
+    </ClInclude>
+    <ClInclude Include="ClientSwitch.h">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\client\ClientMap\ClientMapGimmick\ClientSwitch</Filter>
+    </ClInclude>
+    <ClInclude Include="ClientCollisionChecker.h">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\client\ClientCollisionChecker</Filter>
+    </ClInclude>
+    <ClInclude Include="ClientGate.h">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\client\ClientMap\ClientMapGimmick\ClientGate</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
