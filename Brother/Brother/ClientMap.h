@@ -61,6 +61,8 @@ public:
 	void Draw();
 	bool StageInit(const char* Objname, const char* Gimmickname, const char* Backname);
 
+	bool GrassPortRaitCheck(float x, float y);
+	bool GrassCheck(float x, float y);
 
 	float	m_DrawPositionX;
 	float	m_DrawPositionY;

@@ -3,10 +3,12 @@
 
 #include "ServerPlayer.h"
 
-#define YOUNGERBROTHERHP 100
-#define YOUNGERBROTHERSPEAD 7
-#define YOUNGERBROTHERUIPOSX 420
-#define YOUNGERBROTHERUIPOSY 100
+#define YOUNGERBROTHER_HP 100
+#define YOUNGERBROTHER_SPEAD 7
+#define YOUNGERBROTHER_STANDUP_TIME 120
+#define YOUNGERBROTHER_UI_POSX 420
+#define YOUNGERBROTHER_UI_POSY 100
+
 
 class Library;
 class ServerModeManager;
@@ -15,9 +17,11 @@ class ServerPlayerUI;
 enum GAMEANIMA_ID;
 enum GAMEMODE_NUM;
 
+
 enum YOUNGERBROTHER_STATE
 {
 	YOUNGERBROTHER_STATE_NORMAL,
+	YOUNGERBROTHER_STATE_DOWN,
 	YOUNGERBROTHER_STATE_MAX
 };
 
@@ -25,7 +29,8 @@ enum YOUNGERBROTHER_STATE
 class ServerYoungerBrother :public ServerPlayer
 {
 private:
-	YOUNGERBROTHER_STATE m_YoungerBrotherState;
+	YOUNGERBROTHER_STATE	m_YoungerBrotherState;
+	int						m_StandUpTime;
 
 public:
 	ServerYoungerBrother(Library* pLibrary, bool* pPadState, bool* pPadOldState, PADSTATE* pButtonState, ServerCollisionChecker* pCollisionChecker, ServerDrawPositionSetter* pDrawPositionSetter, ServerGameTimeManager* pGameTimeManager, ServerPlayer* pPlayer);

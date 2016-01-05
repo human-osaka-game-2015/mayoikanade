@@ -23,14 +23,14 @@ ClientYoungerBrother::ClientYoungerBrother(Library* pLibrary, bool* pPadState, b
 
 	m_Ppos.x = 600;
 	m_Ppos.y = 350;
-	m_Hp = YOUNGERBROTHERHP;
+	m_Hp = YOUNGERBROTHER_HP;
 	m_PlayerX += 120;
 	m_PlayerY += 600;
 
 	m_pDrawPositionSetter->DrawPositionXSet(m_PlayerX);
 	m_pDrawPositionSetter->DrawPositionYSet(m_PlayerY);
 
-	m_pPlayerUI = new ClientPlayerUI(m_pLibrary, m_Hp, YOUNGERBROTHER_LIFEFRAME, YOUNGERBROTHER_LIFEBAR, YOUNGERBROTHERUIPOSX, YOUNGERBROTHERUIPOSY);
+	m_pPlayerUI = new ClientPlayerUI(m_pLibrary, m_Hp, YOUNGERBROTHER_LIFEFRAME, YOUNGERBROTHER_LIFEBAR, YOUNGERBROTHER_UI_POSX, YOUNGERBROTHER_UI_POSY);
 
 }
 
@@ -153,22 +153,22 @@ void ClientYoungerBrother::Move()
 	//左移動の処理
 	if (m_pPadState[ANALOG_LEFT])
 	{
-		m_PlayerX -= YOUNGERBROTHERSPEAD;
+		m_PlayerX -= YOUNGERBROTHER_SPEAD;
 
 		float PlayerLeft = m_Ppos.x - (m_Ppos.w / 2) + m_PlayerX;
 
 		//プレイヤーの左側のあたり判定
 		if (m_pCollisionChecker->HitCheck(PlayerLeft, m_Ppos.y + m_PlayerY))
 		{
-			m_PlayerX += YOUNGERBROTHERSPEAD;
+			m_PlayerX += YOUNGERBROTHER_SPEAD;
 		}
 		else if (m_pCollisionChecker->HitCheck(PlayerLeft, (m_Ppos.y + (m_Ppos.h / 2) + m_PlayerY)))
 		{
-			m_PlayerX += YOUNGERBROTHERSPEAD;
+			m_PlayerX += YOUNGERBROTHER_SPEAD;
 		}
 		else if (m_pCollisionChecker->HitCheck(PlayerLeft, (m_Ppos.y + (m_Ppos.h / 2 / 2)) + m_PlayerY))
 		{
-			m_PlayerX += YOUNGERBROTHERSPEAD;
+			m_PlayerX += YOUNGERBROTHER_SPEAD;
 		}
 
 		//位置情報を教える
@@ -194,21 +194,21 @@ void ClientYoungerBrother::Move()
 	//右の移動処理
 	if (m_pPadState[ANALOG_RIGHT])
 	{
-		m_PlayerX += YOUNGERBROTHERSPEAD;
+		m_PlayerX += YOUNGERBROTHER_SPEAD;
 
 		float PlayerRight = m_Ppos.x + (m_Ppos.w / 2) + m_PlayerX;
 
 		if (m_pCollisionChecker->HitCheck(PlayerRight, m_Ppos.y + m_PlayerY))
 		{
-			m_PlayerX -= YOUNGERBROTHERSPEAD;
+			m_PlayerX -= YOUNGERBROTHER_SPEAD;
 		}
 		else if (m_pCollisionChecker->HitCheck(PlayerRight, (m_Ppos.y + (m_Ppos.h / 2)) + m_PlayerY))
 		{
-			m_PlayerX -= YOUNGERBROTHERSPEAD;
+			m_PlayerX -= YOUNGERBROTHER_SPEAD;
 		}
 		else if (m_pCollisionChecker->HitCheck(PlayerRight, (m_Ppos.y + (m_Ppos.h / 2 / 2)) + m_PlayerY))
 		{
-			m_PlayerX -= YOUNGERBROTHERSPEAD;
+			m_PlayerX -= YOUNGERBROTHER_SPEAD;
 		}
 
 
@@ -231,21 +231,21 @@ void ClientYoungerBrother::Move()
 	//下移動の処理
 	if (m_pPadState[ANALOG_DOWN])
 	{
-		m_PlayerY += YOUNGERBROTHERSPEAD;
+		m_PlayerY += YOUNGERBROTHER_SPEAD;
 
 		float PlayerBottom = m_Ppos.y + (m_Ppos.h / 2) + m_PlayerY;
 
 		if (m_pCollisionChecker->HitCheck(m_Ppos.x + m_PlayerX, PlayerBottom))
 		{
-			m_PlayerY -= YOUNGERBROTHERSPEAD;
+			m_PlayerY -= YOUNGERBROTHER_SPEAD;
 		}
 		else if (m_pCollisionChecker->HitCheck((m_Ppos.x + (m_Ppos.w / 2)) + m_PlayerX, PlayerBottom))
 		{
-			m_PlayerY -= YOUNGERBROTHERSPEAD;
+			m_PlayerY -= YOUNGERBROTHER_SPEAD;
 		}
 		else if (m_pCollisionChecker->HitCheck((m_Ppos.x - (m_Ppos.w / 2)) + m_PlayerX, PlayerBottom))
 		{
-			m_PlayerY -= YOUNGERBROTHERSPEAD;
+			m_PlayerY -= YOUNGERBROTHER_SPEAD;
 		}
 
 		m_pDrawPositionSetter->DrawPositionYSet(m_PlayerY);
@@ -265,22 +265,22 @@ void ClientYoungerBrother::Move()
 	//上移動の処理
 	if (m_pPadState[ANALOG_UP])
 	{
-		m_PlayerY -= YOUNGERBROTHERSPEAD;
+		m_PlayerY -= YOUNGERBROTHER_SPEAD;
 
 		float PlayerTop = m_Ppos.y - (m_Ppos.h / 2) + m_PlayerY;
 
 
 		if (m_pCollisionChecker->HitCheck(m_Ppos.x + m_PlayerX, PlayerTop + 64))
 		{
-			m_PlayerY += YOUNGERBROTHERSPEAD;
+			m_PlayerY += YOUNGERBROTHER_SPEAD;
 		}
 		else if (m_pCollisionChecker->HitCheck((m_Ppos.x + (m_Ppos.w / 2)) + m_PlayerX, PlayerTop + 64))
 		{
-			m_PlayerY += YOUNGERBROTHERSPEAD;
+			m_PlayerY += YOUNGERBROTHER_SPEAD;
 		}
 		else if (m_pCollisionChecker->HitCheck((m_Ppos.x - (m_Ppos.w / 2)) + m_PlayerX, PlayerTop + 64))
 		{
-			m_PlayerY += YOUNGERBROTHERSPEAD;
+			m_PlayerY += YOUNGERBROTHER_SPEAD;
 		}
 
 		m_pDrawPositionSetter->DrawPositionYSet(m_PlayerY);

@@ -1,4 +1,4 @@
-#include "XInput_lib.h"
+#include "XInput.h"
 #define CONDEADZONE   65535/4 //コントローラーのデッドゾーン
 #define NO_SIGNAL 0x0000
 

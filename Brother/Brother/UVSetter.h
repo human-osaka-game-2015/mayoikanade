@@ -13,19 +13,17 @@
 
 
 
-
-
 #include <d3dx9.h>
 #include <d3dx9tex.h>
 #include "Vertex.h"
+
+
 
 enum REVERSAL_NUM
 {
 	UP_AND_DOWN,
 	LEFT_AND_RIGHT
 };
-
-
 
 typedef struct _InfoFile_
 {
@@ -55,6 +53,7 @@ typedef struct _InfoAnime_
 } InfoAnime, *PInfoAnime;
 
 
+
 class UVSetter
 {
 private:
@@ -67,13 +66,13 @@ public:
 	~UVSetter();
 
 	//読み込むcsvファイルのパスとそのファイル内の情報量を渡す
-	int FileInfo_Set(const char* name, int fileNum);
-	int VertexInfo_Set(const char* name, int vertexNum);
-	int AnimaInfo_Set(const char* name, int animaNum);
+	int FileInfoSet(const char* name, int fileNum);
+	int VertexInfoSet(const char* name, int vertexNum);
+	int AnimaInfoSet(const char* name, int animaNum);
 
-	void FileInfo_Release();
-	void VertexInfo_Release();
-	void AnimaInfo_Release();
+	void FileInfoRelease();
+	void VertexInfoRelease();
+	void AnimaInfoRelease();
 
 	void MakeVertex(int vertexNum, CustomVertex* pVertex);
 	void MakePosition(int vertexNum, Position* pPos);

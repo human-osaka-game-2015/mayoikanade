@@ -69,7 +69,7 @@ D3DManager::~D3DManager()
 
 
 //描画方法の設定
-void D3DManager::Render_Init()
+void D3DManager::RenderInit()
 {
 	pD3Device->SetRenderState(D3DRS_ALPHABLENDENABLE, true);
 	pD3Device->SetRenderState(D3DRS_SRCBLEND, D3DBLEND_SRCALPHA);  //SRCの設定
@@ -84,7 +84,7 @@ void D3DManager::Render_Init()
 }
 
 //描画の開始
-void D3DManager::Draw_Ready()
+void D3DManager::DrawReady()
 {
 	//画面の消去
 	pD3Device->Clear(0, NULL, D3DCLEAR_ZBUFFER|D3DCLEAR_TARGET, D3DCOLOR_XRGB(0x00, 0x00, 0x00), 1.0, 0);
@@ -96,7 +96,7 @@ void D3DManager::Draw_Ready()
 }
 
 //描画の終了
-void D3DManager::Draw_End()
+void D3DManager::DrawEnd()
 {
 	//描画の終了
 	pD3Device->EndScene();
@@ -106,7 +106,7 @@ void D3DManager::Draw_End()
 }
 
 //Deviceが失われているのかをチェックする
-bool D3DManager::isDevice_Lost()
+bool D3DManager::isDeviceLost()
 {
 	if (D3DManager::pD3Device == NULL)
 	{

@@ -85,12 +85,12 @@ enum KEYKIND
 /**
  * マウスの状態の構造体
  */
-typedef struct
+struct MOUSEKIND
 {
 	bool LEFT, RIGHT;
 	int lx, ly, lz;
 
-} MOUSEKIND;
+};
 
 
 class InputDevice
@@ -99,7 +99,7 @@ private:
 	LPDIRECTINPUT8			m_pDinput;
 	LPDIRECTINPUTDEVICE8	m_pKeyDevice;
 	LPDIRECTINPUTDEVICE8	m_pMouseDevice;
-	HWND					m_hWnd;			//
+	HWND					m_hWnd;
 
 public:
 	InputDevice(HWND hwnd);

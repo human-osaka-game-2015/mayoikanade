@@ -1,10 +1,10 @@
 #ifndef BROTHER_H
 #define BROTHER_H
 
-#define BROTHERSPEAD 6				//兄の移動速度
-#define BROTHERHP 100				//兄の最大HP
-#define BROTHERUIPOSX 140			//兄のUIのX座標
-#define BROTHERUIPOSY 100			//兄のUIのY座標
+#define BROTHER_SPEAD 6				//兄の移動速度
+#define BROTHER_HP 100				//兄の最大HP
+#define BROTHER_UI_POSX 140			//兄のUIのX座標
+#define BROTHER_UI_POSY 100			//兄のUIのY座標
 
 #include "ClientPlayer.h"
 

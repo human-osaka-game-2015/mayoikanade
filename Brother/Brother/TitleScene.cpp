@@ -9,14 +9,14 @@
 TitleScene::TitleScene(Library* pLibrary) :Scene(pLibrary)
 {
 	//ファイルの読み込み
-	m_pLibrary->FileInfo_Set("file.csv", FILE_INFO);
-	m_pLibrary->VertexInfo_Set("TitleTex.csv", TITLE_VERTEXINFO_MAX);
-	m_pLibrary->AnimaInfo_Set("TitleAnimation.csv", TITLEANIMA_ID_MAX);
+	m_pLibrary->FileInfoSet("file.csv", FILE_INFO);
+	m_pLibrary->VertexInfoSet("TitleTex.csv", TITLE_VERTEXINFO_MAX);
+	m_pLibrary->AnimaInfoSet("TitleAnimation.csv", TITLEANIMA_ID_MAX);
 	m_pLibrary->LoadTextureEx("TitleScene.png", TEX_TITLE, 255, 0, 255, 0);
 	m_pLibrary->SoundLoad("S_T_BGM.wav", TITLE_BGM);
 
 	//音声ループ
-	m_pLibrary->Sound_Operation(TITLE_BGM,SOUND_LOOP);
+	m_pLibrary->SoundOperation(TITLE_BGM,SOUND_LOOP);
 
 	//オブジェクトの生成
 	m_pTitleBackGround		= new TitleBackGround(m_pLibrary);
@@ -34,11 +34,11 @@ TitleScene::~TitleScene()
 	delete m_pTitleBackGround;
 
 	//読み込んだファイルの開放
-	m_pLibrary->SoundRelease(TITLE_BGM);
+	m_pLibrary->ReleaseSound(TITLE_BGM);
 	m_pLibrary->ReleaseTexture(TEX_TITLE);
-	m_pLibrary->AnimaInfo_Release();
-	m_pLibrary->VertexInfo_Release();
-	m_pLibrary->FileInfo_Release();
+	m_pLibrary->AnimaInfoRelease();
+	m_pLibrary->VertexInfoRelease();
+	m_pLibrary->FileInfoRelease();
 
 }
 

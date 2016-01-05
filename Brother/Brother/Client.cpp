@@ -1,5 +1,8 @@
 #include "Client.h"
 #include <windows.h>
+
+
+
 Client::Client(char* portnum)
 {
 	//ポート番号の指定

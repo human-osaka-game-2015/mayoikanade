@@ -24,7 +24,7 @@ UVSetter::~UVSetter()
 	
 }
 
-int UVSetter::FileInfo_Set(const char* name, int FileNum)
+int UVSetter::FileInfoSet(const char* name, int FileNum)
 {
 	if (FileNum <= 0)
 	{
@@ -50,7 +50,7 @@ int UVSetter::FileInfo_Set(const char* name, int FileNum)
 }
 
 
-int UVSetter::VertexInfo_Set(const char* name, int VertexNum)
+int UVSetter::VertexInfoSet(const char* name, int VertexNum)
 {
 	if (VertexNum <= 0)
 	{
@@ -77,7 +77,7 @@ int UVSetter::VertexInfo_Set(const char* name, int VertexNum)
 }
 
 
-int UVSetter::AnimaInfo_Set(const char* name, int AnimaNum)
+int UVSetter::AnimaInfoSet(const char* name, int AnimaNum)
 {
 	if (AnimaNum <= 0)
 	{
@@ -104,17 +104,17 @@ int UVSetter::AnimaInfo_Set(const char* name, int AnimaNum)
 }
 
 
-void UVSetter::FileInfo_Release()
+void UVSetter::FileInfoRelease()
 {
 	delete[] m_pFileInfo;
 }
 
-void UVSetter::VertexInfo_Release()
+void UVSetter::VertexInfoRelease()
 {
 	delete[] m_pVertexInfo;
 }
 
-void UVSetter::AnimaInfo_Release()
+void UVSetter::AnimaInfoRelease()
 {
 	delete[] m_pAnimaInfo;
 }

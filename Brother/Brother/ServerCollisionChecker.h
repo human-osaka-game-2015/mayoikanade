@@ -17,6 +17,9 @@ public:
 	void SwitchOn(float x, float y);
 	void SwitchOnYoung(float x, float y);
 
+	bool GrassPortRaitCheck(float x, float y);
+	bool GrassCheck(float x, float y);
+
 };
 
 

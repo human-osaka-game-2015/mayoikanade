@@ -19,8 +19,7 @@ SceneManager::SceneManager(Library* pLibrary,HWND hWnd) :
 	m_pScene = new LogoScene(m_pLibrary);
 
 	//SetRenderState“™‚Ìˆ—
-	m_pLibrary->Render_Init();
-
+	m_pLibrary->RenderInit();
 }
 
 SceneManager::~SceneManager()
@@ -90,10 +89,10 @@ bool SceneManager::Control()
 
 void SceneManager::Draw()
 {
-	m_pLibrary->Draw_Ready();
+	m_pLibrary->DrawReady();
 
 	m_pScene->Draw();
 
-	m_pLibrary->Draw_End();
+	m_pLibrary->DrawEnd();
 
 }

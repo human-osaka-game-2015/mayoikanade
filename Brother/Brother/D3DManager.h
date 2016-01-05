@@ -17,14 +17,15 @@ private:
 	D3DDISPLAYMODE			m_d3ddm;
 
 public:
-	static LPDIRECT3DDEVICE9		pD3Device;
 	D3DManager(HWND hwnd, bool isFullWindow = false, bool isStencilBuffer = false);
 	~D3DManager();
-	void Render_Init();
-	void Draw_Ready();
-	void Draw_End();
-	bool isDevice_Lost();
-		
+	void RenderInit();
+	void DrawReady();
+	void DrawEnd();
+	bool isDeviceLost();
+	
+	static LPDIRECT3DDEVICE9	pD3Device;
+
 };
 
 

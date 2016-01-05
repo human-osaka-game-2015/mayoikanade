@@ -164,3 +164,17 @@ int ServerMap::BackGroundCheck(float x, float y)
 {
 	return m_pMapBackGround->BackGroundCheck(x, y);
 }
+
+
+bool ServerMap::GrassPortRaitCheck(float x, float y)
+{
+	return m_pMapGimmick->GrassPortRaitCheck(x, y);
+}
+
+
+bool ServerMap::GrassCheck(float x, float y)
+{
+	return m_pMapGimmick->GrassCheck(x, y);
+}
+
+

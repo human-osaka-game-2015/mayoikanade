@@ -10,8 +10,8 @@ LogoScene::LogoScene(Library* pLibrary) :Scene(pLibrary)
 	m_time = 0;
 
 	//ファイルの情報はいちいち読み込まずにもとで読んだほうがいいと思う
-	m_pLibrary->FileInfo_Set("file.csv", FILE_INFO);
-	m_pLibrary->VertexInfo_Set("LogoTex.csv", LOGO_VERTEXINFO_MAX);
+	m_pLibrary->FileInfoSet("file.csv", FILE_INFO);
+	m_pLibrary->VertexInfoSet("LogoTex.csv", LOGO_VERTEXINFO_MAX);
 	m_pLibrary->LoadTextureEx("LogoScene.png", TEX_LOGO, 255, 0, 255, 0);
 	//アニメーションはないから必要ない
 	
@@ -23,8 +23,8 @@ LogoScene::~LogoScene()
 	delete m_pLogoBackGround;
 
 	m_pLibrary->ReleaseTexture(TEX_LOGO);
-	m_pLibrary->VertexInfo_Release();
-	m_pLibrary->FileInfo_Release();
+	m_pLibrary->VertexInfoRelease();
+	m_pLibrary->FileInfoRelease();
 }
 
 SCENE_NUM LogoScene::Control()

@@ -22,14 +22,14 @@ private:
 	IDirectSound8*						m_pDS8;
 	std::map<int, LPDIRECTSOUNDBUFFER8> m_SoundMap;
 
-	bool Open_Wave(TCHAR *filename, WAVEFORMATEX &wFmt, char** pWaveData, DWORD &waveSize);
+	bool OpenWave(TCHAR *filename, WAVEFORMATEX &wFmt, char** pWaveData, DWORD &waveSize);
 
 public:
 	DSoundManager(HWND hWnd);
 	~DSoundManager();
 	int SoundLoad(char* filename, int Key);
-	void SoundRelease(int Key);
-	void Sound_Operation(int Key, SOUND_OPERATION operation);
+	void ReleaseSound(int Key);
+	void SoundOperation(int Key, SOUND_OPERATION operation);
 	
 
 };

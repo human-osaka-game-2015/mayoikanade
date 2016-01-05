@@ -28,9 +28,9 @@ ConnectSelectManager::~ConnectSelectManager()
 
 CONNECT_TYPE ConnectSelectManager::Control()
 {
-	m_pLibrary->m_pInputDevice->Key_Check(&Key[KEY_UP], DIK_UP);
-	m_pLibrary->m_pInputDevice->Key_Check(&Key[KEY_DOWN], DIK_DOWN);
-	m_pLibrary->m_pInputDevice->Key_Check(&Key[KEY_FIRE], DIK_RETURN);
+	m_pLibrary->KeyCheck(&Key[KEY_UP], DIK_UP);
+	m_pLibrary->KeyCheck(&Key[KEY_DOWN], DIK_DOWN);
+	m_pLibrary->KeyCheck(&Key[KEY_FIRE], DIK_RETURN);
 
 	//コントローラーの入力で状態を変更して
 	//カーソル位置なんかが変わるようにしている

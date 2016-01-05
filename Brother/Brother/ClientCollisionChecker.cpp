@@ -18,9 +18,6 @@ bool ClientCollisionChecker::HitCheck(float x, float y)
 {
 	int Chip;
 
-
-
-
 	Chip = m_pMap->GimmickCheck(x, y);
 	switch (Chip)
 	{
@@ -63,23 +60,18 @@ bool ClientCollisionChecker::HitCheck(float x, float y)
 	{
 	case WOOD_01:
 		return true;
-
 		break;
 	case WOOD_02:
 		return true;
-
 		break;
 	case WOOD_03:
 		return true;
-
 		break;
 	case WOOD_04:
 		return true;
-
 		break;
 	case WOODBOX:
 		return true;
-
 		break;
 	}
 
@@ -92,18 +84,34 @@ bool ClientCollisionChecker::WoodBoxCheck(float x, float y)
 	return m_pMap->WoodBoxCheck(x, y);
 }
 
+
 bool ClientCollisionChecker::WoodBoxSet(float x, float y)
 {
 	return m_pMap->WoodBoxSet(x, y);
 }
+
 
 void ClientCollisionChecker::SwitchOn(float x, float y)
 {
 	m_pMap->SwitchOn(x, y);
 }
 
+
 void ClientCollisionChecker::SwitchOnYoung(float x, float y)
 {
 	m_pMap->SwitchOnYoung(x, y);
 }
+
+
+bool ClientCollisionChecker::GrassCheck(float x, float y)
+{
+	return m_pMap->GrassCheck(x, y);
+}
+
+
+bool ClientCollisionChecker::GrassPortRaitCheck(float x, float y)
+{
+	return m_pMap->GrassPortRaitCheck(x, y);
+}
+
 

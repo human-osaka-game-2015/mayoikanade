@@ -165,9 +165,9 @@ isConnect(false)
 	}
 
 	//GameSceneの画像とcsvの読み込み
-	m_pLibrary->FileInfo_Set("file.csv", FILE_INFO);
-	m_pLibrary->VertexInfo_Set("GameTex.csv", GAME_VERTEXINFO_MAX);
-	m_pLibrary->AnimaInfo_Set("Gameanimation.csv", GAMEANIMA_MAX);
+	m_pLibrary->FileInfoSet("file.csv", FILE_INFO);
+	m_pLibrary->VertexInfoSet("GameTex.csv", GAME_VERTEXINFO_MAX);
+	m_pLibrary->AnimaInfoSet("Gameanimation.csv", GAMEANIMA_MAX);
 	m_pLibrary->LoadTextureEx("GameScene.png", TEX_GAME, 255, 0, 255, 0);
 	m_pLibrary->LoadTextureEx("en.png", STENCIL, 255, 0, 255, 255);
 
@@ -175,7 +175,7 @@ isConnect(false)
 	m_pLibrary->SoundLoad("S_G_BGM.wav", GAME_BGM);
 
 	//音声ループ
-	m_pLibrary->Sound_Operation(GAME_BGM, SOUND_LOOP);
+	m_pLibrary->SoundOperation(GAME_BGM, SOUND_LOOP);
 
 
 	m_pSceneChangeListener	= new SceneChangeListener(&m_NextScene);
@@ -214,9 +214,9 @@ isConnect(false)
 ClientGameScene::~ClientGameScene()
 {
 	//画像のuv情報のリリース
-	m_pLibrary->FileInfo_Release();
-	m_pLibrary->VertexInfo_Release();
-	m_pLibrary->AnimaInfo_Release();
+	m_pLibrary->FileInfoRelease();
+	m_pLibrary->VertexInfoRelease();
+	m_pLibrary->AnimaInfoRelease();
 
 
 	m_isGameScene = false;
@@ -239,7 +239,7 @@ ClientGameScene::~ClientGameScene()
 	delete m_pMap;
 	delete m_pSceneChangeListener;
 
-	m_pLibrary->SoundRelease(GAME_BGM);
+	m_pLibrary->ReleaseSound(GAME_BGM);
 	m_pLibrary->ReleaseTexture(TEX_GAME);
 }
 

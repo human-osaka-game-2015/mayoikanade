@@ -672,3 +672,36 @@ bool ServerMapGimmick::WoodBoxHoleCheck(float x, float y)
 
 }
 
+
+
+bool ServerMapGimmick::GrassPortRaitCheck(float x, float y)
+{
+	int arrayx = 0, arrayy = 0;
+	arrayx = int(x / 64);
+	arrayy = int(y / 64);
+
+	if (m_GimmickData[arrayy][arrayx] / 10000 == GRASS_KNOT_PORTRAIT)
+	{
+		return true;
+	}
+
+	return false;
+
+}
+
+
+bool ServerMapGimmick::GrassCheck(float x, float y)
+{
+	int arrayx = 0, arrayy = 0;
+	arrayx = int(x / 64);
+	arrayy = int(y / 64);
+
+	if (m_GimmickData[arrayy][arrayx] / 10000 == GRASS_KNOT)
+	{
+		return true;
+	}
+
+	return false;
+
+}
+

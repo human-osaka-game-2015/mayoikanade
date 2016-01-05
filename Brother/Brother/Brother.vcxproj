@@ -53,7 +53,6 @@
     <ClCompile Include="ServerModeManager.cpp" />
     <ClCompile Include="ServerPlayer.cpp" />
     <ClCompile Include="ServerPlayerUI.cpp" />
-    <ClCompile Include="PositionManager.cpp" />
     <ClCompile Include="ResultScene.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneChangeListener.cpp" />
@@ -76,7 +75,7 @@
     <ClCompile Include="Vertex.cpp" />
     <ClCompile Include="WinMain.cpp" />
     <ClCompile Include="WoodBox.cpp" />
-    <ClCompile Include="XInput_lib.cpp" />
+    <ClCompile Include="XInput.cpp" />
     <ClCompile Include="ServerYoungerBrother.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -122,7 +121,6 @@
     <ClInclude Include="ServerModeManager.h" />
     <ClInclude Include="ServerPlayer.h" />
     <ClInclude Include="ServerPlayerUI.h" />
-    <ClInclude Include="PositionManager.h" />
     <ClInclude Include="ResultScene.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneChangeListener.h" />
@@ -145,7 +143,7 @@
     <ClInclude Include="UVSetter.h" />
     <ClInclude Include="Vertex.h" />
     <ClInclude Include="WoodBox.h" />
-    <ClInclude Include="XInput_lib.h" />
+    <ClInclude Include="XInput.h" />
     <ClInclude Include="ServerYoungerBrother.h" />
   </ItemGroup>
   <ItemGroup>

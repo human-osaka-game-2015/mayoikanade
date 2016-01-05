@@ -5,6 +5,8 @@
 #include "Scene.h"
 #include <d3dx9.h>
 #include "Tex.h"
+
+
 class Library;
 class SceneChangeListener;
 class ClientModeManager;
@@ -17,12 +19,13 @@ class ClientGameTimeManager;
 class ClientText;
 class ClientShadow;
 class ClientGameScene;
+
+
 typedef struct
 {
 	LPVOID pGameScene;
 	char portnum[16];
 }GameThread;
-
 
 typedef struct
 {
@@ -38,22 +41,23 @@ typedef struct
 	short Bposy;
 }ClientRecvData;
 
+
 class ClientGameScene : public Scene
 {
 private:
-	SceneChangeListener*	m_pSceneChangeListener;
-	ClientModeManager*		m_pModeManager;
+	SceneChangeListener*		m_pSceneChangeListener;
+	ClientModeManager*			m_pModeManager;
 	ClientMap*					m_pMap;
 	ClientCollisionChecker*		m_pCollisionChecker;
-	ClientBrother*			m_pBrother;
-	ClientYoungerBrother*	m_pYoungerBrother;
-	ClientDrawPositionSetter*		m_pDrawPositionSetter;
+	ClientBrother*				m_pBrother;
+	ClientYoungerBrother*		m_pYoungerBrother;
+	ClientDrawPositionSetter*	m_pDrawPositionSetter;
 	ClientGameTimeManager*		m_pGameTimeManager;
 	ClientText*					m_pText;
-	ClientShadow*					m_pShadow;
-	HWND					m_hWnd;
+	ClientShadow*				m_pShadow;
+	HWND						m_hWnd;
+	GameThread					Gamemain;
 
-	GameThread Gamemain;
 public:
 	ClientGameScene(Library* pLibrary, HWND hWnd, char* IPadd);
 	virtual ~ClientGameScene();
@@ -67,8 +71,6 @@ public:
 	static DWORD WINAPI Connect(LPVOID pGameScene);
 	bool m_isGameScene;
 	bool isConnect;
-	//char SData[6];
-	//char CData[6];
 
 	ClientSendData m_SendData;
 	ClientRecvData m_RecvData;
@@ -76,5 +78,6 @@ public:
 	//ƒeƒXƒg
 	LPD3DXFONT pFont;
 };
+
 
 #endif

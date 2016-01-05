@@ -1,6 +1,8 @@
 #include "Server.h"
 #include <windows.h>
 
+
+
 Server::Server(char* portnum)
 {
 	//ポート番号の指定

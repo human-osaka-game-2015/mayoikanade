@@ -6,6 +6,9 @@
 #include <d3dx9tex.h>
 #include <map>
 
+
+typedef struct _CustomVertex_ CustomVertex, *PCutomVertex;;
+
 class Texture
 {
 private:
@@ -14,11 +17,12 @@ private:
 public:
 	Texture();
 	~Texture();
-	int Tex_Load(const char* name, LPDIRECT3DTEXTURE9* pTexture);
-	int Tex_Load_EX(const char* name, LPDIRECT3DTEXTURE9* pTexture, int alpha, int red, int green, int blue);
-	int LoadEx(const char* name, int key, int alpha, int red, int green, int blue);
-	void Release(int key);
+	int LoadTexture(const char* name, int key);
+	int LoadTextureEx(const char* name, int key, int alpha, int red, int green, int blue);
+	void ReleaseTexture(int key);
 	void SetTexture(int key);
+	void DrawTexture(int key, CustomVertex* pVertex);
+
 
 };
 

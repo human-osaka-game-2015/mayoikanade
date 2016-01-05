@@ -33,7 +33,10 @@ public:
 	void SwitchOff(float x, float y);
 	bool HoleCheck(float x, float y);
 	bool WoodBoxHoleCheck(float x, float y);
-	int						m_GimmickData[MAP_HEIGHT][MAP_WIDTH];
+	bool GrassPortRaitCheck(float x,float y);
+	bool GrassCheck(float x, float y);
+
+	int	m_GimmickData[MAP_HEIGHT][MAP_WIDTH];
 
 };
 

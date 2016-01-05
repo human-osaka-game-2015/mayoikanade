@@ -8,8 +8,8 @@
 #include "ClientGameScene.h"
 
 
-ClientBrother::ClientBrother(Library* pLibrary, bool* pPadState, bool* pPadOldState, PADSTATE* pButtonState, ClientCollisionChecker* pCollisionChecker, ClientDrawPositionSetter* pDrawPositionSetter, ClientGameTimeManager* pGameTimeManager, ClientPlayer* pPlayer)
-	:ClientPlayer(pLibrary, pPadState, pPadOldState, pButtonState, pCollisionChecker, pDrawPositionSetter, pGameTimeManager),
+ClientBrother::ClientBrother(Library* pLibrary, bool* pPadState, bool* pPadOldState, PADSTATE* pButtonState, ClientCollisionChecker* pCollisionChecker, ClientDrawPositionSetter* pDrawPositionSetter, ClientGameTimeManager* pGameTimeManager, ClientPlayer* pPlayer):
+	ClientPlayer(pLibrary, pPadState, pPadOldState, pButtonState, pCollisionChecker, pDrawPositionSetter, pGameTimeManager),
 	m_BrotherState(BROTHER_STATE_NORMAL),
 	m_pPlayer(pPlayer)
 {
@@ -32,10 +32,10 @@ ClientBrother::ClientBrother(Library* pLibrary, bool* pPadState, bool* pPadOldSt
 
 	m_Ppos.x = 800;
 	m_Ppos.y = 950;
-	m_Hp = BROTHERHP;
+	m_Hp = BROTHER_HP;
 
 	//PlayerUIの生成
-	m_pPlayerUI = new ClientPlayerUI(m_pLibrary, m_Hp, BROTHER_LIFEFRAME, BROTHER_LIFEBAR, BROTHERUIPOSX, BROTHERUIPOSY);
+	m_pPlayerUI = new ClientPlayerUI(m_pLibrary, m_Hp, BROTHER_LIFEFRAME, BROTHER_LIFEBAR, BROTHER_UI_POSX, BROTHER_UI_POSY);
 }
 
 ClientBrother::~ClientBrother()
@@ -241,22 +241,22 @@ void ClientBrother::Move()
 	//左移動の処理
 	if (m_pPadState[ANALOG_LEFT])
 	{
-		m_Ppos.x -= BROTHERSPEAD;
+		m_Ppos.x -= BROTHER_SPEAD;
 
 		float PlayerLeft = m_Ppos.x - (m_Ppos.w / 2);
 
 		//プレイヤーの左側のあたり判定
 		if (m_pCollisionChecker->HitCheck(PlayerLeft, m_Ppos.y))
 		{
-			m_Ppos.x += BROTHERSPEAD;
+			m_Ppos.x += BROTHER_SPEAD;
 		}
 		else if (m_pCollisionChecker->HitCheck(PlayerLeft, (m_Ppos.y + (m_Ppos.h / 2))))
 		{
-			m_Ppos.x += BROTHERSPEAD;
+			m_Ppos.x += BROTHER_SPEAD;
 		}
 		else if (m_pCollisionChecker->HitCheck(PlayerLeft, (m_Ppos.y + (m_Ppos.h / 2 / 2))))
 		{
-			m_Ppos.x += BROTHERSPEAD;
+			m_Ppos.x += BROTHER_SPEAD;
 		}
 
 
@@ -284,21 +284,21 @@ void ClientBrother::Move()
 	//右の移動処理
 	if (m_pPadState[ANALOG_RIGHT])
 	{
-		m_Ppos.x += BROTHERSPEAD;
+		m_Ppos.x += BROTHER_SPEAD;
 
 		float PlayerRight = m_Ppos.x + (m_Ppos.w / 2);
 
 		if (m_pCollisionChecker->HitCheck(PlayerRight, m_Ppos.y))
 		{
-			m_Ppos.x -= BROTHERSPEAD;
+			m_Ppos.x -= BROTHER_SPEAD;
 		}
 		else if (m_pCollisionChecker->HitCheck(PlayerRight, (m_Ppos.y + (m_Ppos.h / 2))))
 		{
-			m_Ppos.x -= BROTHERSPEAD;
+			m_Ppos.x -= BROTHER_SPEAD;
 		}
 		else if (m_pCollisionChecker->HitCheck(PlayerRight, (m_Ppos.y + (m_Ppos.h / 2 / 2))))
 		{
-			m_Ppos.x -= BROTHERSPEAD;
+			m_Ppos.x -= BROTHER_SPEAD;
 		}
 
 
@@ -323,21 +323,21 @@ void ClientBrother::Move()
 	//下移動の処理
 	if (m_pPadState[ANALOG_DOWN])
 	{
-		m_Ppos.y += BROTHERSPEAD;
+		m_Ppos.y += BROTHER_SPEAD;
 
 		float PlayerBottom = m_Ppos.y + (m_Ppos.h / 2);
 
 		if (m_pCollisionChecker->HitCheck(m_Ppos.x, PlayerBottom))
 		{
-			m_Ppos.y -= BROTHERSPEAD;
+			m_Ppos.y -= BROTHER_SPEAD;
 		}
 		else if (m_pCollisionChecker->HitCheck((m_Ppos.x + (m_Ppos.w / 2)), PlayerBottom))
 		{
-			m_Ppos.y -= BROTHERSPEAD;
+			m_Ppos.y -= BROTHER_SPEAD;
 		}
 		else if (m_pCollisionChecker->HitCheck((m_Ppos.x - (m_Ppos.w / 2)), PlayerBottom))
 		{
-			m_Ppos.y -= BROTHERSPEAD;
+			m_Ppos.y -= BROTHER_SPEAD;
 		}
 
 
@@ -360,22 +360,22 @@ void ClientBrother::Move()
 	//上移動の処理
 	if (m_pPadState[ANALOG_UP])
 	{
-		m_Ppos.y -= BROTHERSPEAD;
+		m_Ppos.y -= BROTHER_SPEAD;
 
 		float PlayerTop = m_Ppos.y - (m_Ppos.h / 2);
 
 
 		if (m_pCollisionChecker->HitCheck(m_Ppos.x, PlayerTop + 64))
 		{
-			m_Ppos.y += BROTHERSPEAD;
+			m_Ppos.y += BROTHER_SPEAD;
 		}
 		else if (m_pCollisionChecker->HitCheck((m_Ppos.x + (m_Ppos.w / 2)), PlayerTop + 64))
 		{
-			m_Ppos.y += BROTHERSPEAD;
+			m_Ppos.y += BROTHER_SPEAD;
 		}
 		else if (m_pCollisionChecker->HitCheck((m_Ppos.x - (m_Ppos.w / 2)), PlayerTop + 64))
 		{
-			m_Ppos.y += BROTHERSPEAD;
+			m_Ppos.y += BROTHER_SPEAD;
 		}
 
 

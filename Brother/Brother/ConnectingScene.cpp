@@ -8,9 +8,9 @@ ConnectingScene::ConnectingScene(Library* pLibrary,char* IPadd) :Scene(pLibrary)
 	m_pIPAddSelectScene     = new IPAddSelectScene(m_pLibrary, IPadd);
 	m_pListenServer         = new ListenServer(m_pLibrary);
 
-	m_pLibrary->FileInfo_Set("file.csv", FILE_INFO);
-	m_pLibrary->VertexInfo_Set("ConnectingTex.csv", CONNECT_VERTEXINFO_MAX);
-	m_pLibrary->AnimaInfo_Set("ConnectingAnimation.csv", CONNECTANIMA_ID_MAX);
+	m_pLibrary->FileInfoSet("file.csv", FILE_INFO);
+	m_pLibrary->VertexInfoSet("ConnectingTex.csv", CONNECT_VERTEXINFO_MAX);
+	m_pLibrary->AnimaInfoSet("ConnectingAnimation.csv", CONNECTANIMA_ID_MAX);
 	m_pLibrary->LoadTextureEx("ConnectingScene.png", TEX_CONNECT, 255, 0, 255, 0);
 	m_pLibrary->LoadTextureEx("ConnectSelect.png", CONNECTSELECT_WAIT, 255, 0, 255, 0);
 	m_Client_isSelect = false;
@@ -22,7 +22,7 @@ ConnectingScene::ConnectingScene(Library* pLibrary,char* IPadd) :Scene(pLibrary)
 	m_pLibrary->SoundLoad("S_T_BGM.wav", CONNECTBGM);
 
 	//‰¹ºƒ‹[ƒv
-	m_pLibrary->Sound_Operation(CONNECTBGM, SOUND_LOOP);
+	m_pLibrary->SoundOperation(CONNECTBGM, SOUND_LOOP);
 
 	//time‚Ì‰Šú‰»
 	m_time = 0;
@@ -30,11 +30,11 @@ ConnectingScene::ConnectingScene(Library* pLibrary,char* IPadd) :Scene(pLibrary)
 
 ConnectingScene::~ConnectingScene()
 {
-	m_pLibrary->SoundRelease(CONNECTBGM);
+	m_pLibrary->ReleaseSound(CONNECTBGM);
 	m_pLibrary->ReleaseTexture(TEX_CONNECT);
-	m_pLibrary->AnimaInfo_Release();
-	m_pLibrary->VertexInfo_Release();
-	m_pLibrary->FileInfo_Release();
+	m_pLibrary->AnimaInfoRelease();
+	m_pLibrary->VertexInfoRelease();
+	m_pLibrary->FileInfoRelease();
 	delete m_pListenServer;
 	delete m_pIPAddSelectScene;
 	delete m_pConnectSelectManager;

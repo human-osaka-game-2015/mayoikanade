@@ -2,10 +2,13 @@
 #include "ServerGameScene.h"
 #include "ServerMap.h"
 
+
+
 ServerCollisionChecker::ServerCollisionChecker(ServerMap* pMap)
 {
 	m_pMap = pMap;
 }
+
 
 ServerCollisionChecker::~ServerCollisionChecker()
 {
@@ -92,10 +95,12 @@ bool ServerCollisionChecker::WoodBoxCheck(float x,float y)
 	return m_pMap->WoodBoxCheck(x, y);
 }
 
+
 bool ServerCollisionChecker::WoodBoxSet(float x, float y)
 {
 	return m_pMap->WoodBoxSet(x, y);
 }
+
 
 void ServerCollisionChecker::SwitchOn(float x, float y)
 {
@@ -107,3 +112,16 @@ void ServerCollisionChecker::SwitchOnYoung(float x, float y)
 {
 	m_pMap->SwitchOnYoung(x, y);
 }
+
+
+bool ServerCollisionChecker::GrassCheck(float x, float y)
+{
+	return m_pMap->GrassCheck(x, y);
+}
+
+
+bool ServerCollisionChecker::GrassPortRaitCheck(float x, float y)
+{
+	return m_pMap->GrassPortRaitCheck(x, y);
+}
+

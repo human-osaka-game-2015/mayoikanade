@@ -32,7 +32,7 @@ DSoundManager::~DSoundManager()
 
 
 // Waveファイルオープン関数
-bool DSoundManager::Open_Wave(TCHAR *filename, WAVEFORMATEX &wFmt, char** pWaveData, DWORD &waveSize)
+bool DSoundManager::OpenWave(TCHAR *filename, WAVEFORMATEX &wFmt, char** pWaveData, DWORD &waveSize)
 {
 	//filepathの位置になにもなければ失敗なのでfalseを返す
 	if (filename == 0)
@@ -124,7 +124,7 @@ int DSoundManager::SoundLoad(char* filename, int Key)
 	char *pWaveData = 0;
 	DWORD waveSize = 0;
 
-	if (!Open_Wave((filename), wFmt, &pWaveData, waveSize))
+	if (!OpenWave((filename), wFmt, &pWaveData, waveSize))
 	{
 		return 0;
 	}
@@ -169,7 +169,7 @@ int DSoundManager::SoundLoad(char* filename, int Key)
 }
 
 
-void DSoundManager::SoundRelease(int Key)
+void DSoundManager::ReleaseSound(int Key)
 {
 	m_SoundMap[Key]->Release();
 }
@@ -177,7 +177,7 @@ void DSoundManager::SoundRelease(int Key)
 
 
 //サウンドバッファの操作
-void DSoundManager::Sound_Operation(int Key, SOUND_OPERATION operation)
+void DSoundManager::SoundOperation(int Key, SOUND_OPERATION operation)
 {
 
 	switch (operation)

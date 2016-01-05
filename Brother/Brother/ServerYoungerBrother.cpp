@@ -8,9 +8,11 @@
 #include "ServerGameScene.h"
 #include "ServerPlayerUI.h"
 
-ServerYoungerBrother::ServerYoungerBrother(Library* pLibrary, bool* pPadState, bool* pPadOldState, PADSTATE* pButtonState, ServerCollisionChecker* pCollisionChecker, ServerDrawPositionSetter* pDrawPositionSetter, ServerGameTimeManager* pGameTimeManager, ServerPlayer* pPlayer)
-	:ServerPlayer(pLibrary, pPadState, pPadOldState, pButtonState, pCollisionChecker, pDrawPositionSetter, pGameTimeManager),
-	m_pPlayer(pPlayer)
+
+ServerYoungerBrother::ServerYoungerBrother(Library* pLibrary, bool* pPadState, bool* pPadOldState, PADSTATE* pButtonState, ServerCollisionChecker* pCollisionChecker, ServerDrawPositionSetter* pDrawPositionSetter, ServerGameTimeManager* pGameTimeManager, ServerPlayer* pPlayer):
+	ServerPlayer(pLibrary, pPadState, pPadOldState, pButtonState, pCollisionChecker, pDrawPositionSetter, pGameTimeManager),
+	m_pPlayer(pPlayer),
+	m_StandUpTime(0)
 {
 	m_pLibrary->InitAnima(YOUNGERBROTHER_WAIT_FRONT);
 	m_pLibrary->InitAnima(YOUNGERBROTHER_WAIT_SIDE);
@@ -24,17 +26,18 @@ ServerYoungerBrother::ServerYoungerBrother(Library* pLibrary, bool* pPadState, b
 
 	m_Ppos.x = 720;
 	m_Ppos.y = 950;
-	m_Hp = YOUNGERBROTHERHP;
+	m_Hp = YOUNGERBROTHER_HP;
 
 	
-	m_pPlayerUI = new ServerPlayerUI(m_pLibrary, m_Hp, YOUNGERBROTHER_LIFEFRAME, YOUNGERBROTHER_LIFEBAR, YOUNGERBROTHERUIPOSX, YOUNGERBROTHERUIPOSY);
-
+	m_pPlayerUI = new ServerPlayerUI(m_pLibrary, m_Hp, YOUNGERBROTHER_LIFEFRAME, YOUNGERBROTHER_LIFEBAR, YOUNGERBROTHER_UI_POSX, YOUNGERBROTHER_UI_POSY);
 }
+
 
 ServerYoungerBrother::~ServerYoungerBrother()
 {
 	delete m_pPlayerUI;
 }
+
 
 void ServerYoungerBrother::PosChange(CustomVertex* pvertex)
 {
@@ -78,6 +81,7 @@ void ServerYoungerBrother::Control()
 
 	m_pPlayerUI->Control();
 }
+
 
 void ServerYoungerBrother::Draw()
 {
@@ -158,22 +162,22 @@ void ServerYoungerBrother::Move()
 	//左移動の処理
 	if (m_pPadState[ANALOG_LEFT])
 	{
-		m_Ppos.x -= YOUNGERBROTHERSPEAD;
+		m_Ppos.x -= YOUNGERBROTHER_SPEAD;
 
 		float PlayerLeft = m_Ppos.x - (m_Ppos.w / 2);
 
 		//プレイヤーの左側のあたり判定
 		if (m_pCollisionChecker->HitCheck(PlayerLeft, m_Ppos.y))
 		{
-			m_Ppos.x += YOUNGERBROTHERSPEAD;
+			m_Ppos.x += YOUNGERBROTHER_SPEAD;
 		}
 		else if (m_pCollisionChecker->HitCheck(PlayerLeft, (m_Ppos.y + (m_Ppos.h / 2))))
 		{
-			m_Ppos.x += YOUNGERBROTHERSPEAD;
+			m_Ppos.x += YOUNGERBROTHER_SPEAD;
 		}
 		else if (m_pCollisionChecker->HitCheck(PlayerLeft, (m_Ppos.y + (m_Ppos.h / 2 / 2))))
 		{
-			m_Ppos.x += YOUNGERBROTHERSPEAD;
+			m_Ppos.x += YOUNGERBROTHER_SPEAD;
 		}
 
 
@@ -197,21 +201,21 @@ void ServerYoungerBrother::Move()
 	//右の移動処理
 	if (m_pPadState[ANALOG_RIGHT])
 	{
-		m_Ppos.x += YOUNGERBROTHERSPEAD;
+		m_Ppos.x += YOUNGERBROTHER_SPEAD;
 
 		float PlayerRight = m_Ppos.x + (m_Ppos.w / 2);
 
 		if (m_pCollisionChecker->HitCheck(PlayerRight, m_Ppos.y))
 		{
-			m_Ppos.x -= YOUNGERBROTHERSPEAD;
+			m_Ppos.x -= YOUNGERBROTHER_SPEAD;
 		}
 		else if (m_pCollisionChecker->HitCheck(PlayerRight, (m_Ppos.y + (m_Ppos.h / 2))))
 		{
-			m_Ppos.x -= YOUNGERBROTHERSPEAD;
+			m_Ppos.x -= YOUNGERBROTHER_SPEAD;
 		}
 		else if (m_pCollisionChecker->HitCheck(PlayerRight, (m_Ppos.y + (m_Ppos.h / 2 / 2))))
 		{
-			m_Ppos.x -= YOUNGERBROTHERSPEAD;
+			m_Ppos.x -= YOUNGERBROTHER_SPEAD;
 		}
 
 
@@ -232,21 +236,21 @@ void ServerYoungerBrother::Move()
 	//下移動の処理
 	if (m_pPadState[ANALOG_DOWN])
 	{
-		m_Ppos.y += YOUNGERBROTHERSPEAD;
+		m_Ppos.y += YOUNGERBROTHER_SPEAD;
 
 		float PlayerBottom = m_Ppos.y + (m_Ppos.h / 2);
 
 		if (m_pCollisionChecker->HitCheck(m_Ppos.x, PlayerBottom))
 		{
-			m_Ppos.y -= YOUNGERBROTHERSPEAD;
+			m_Ppos.y -= YOUNGERBROTHER_SPEAD;
 		}
 		else if (m_pCollisionChecker->HitCheck((m_Ppos.x + (m_Ppos.w / 2)), PlayerBottom))
 		{
-			m_Ppos.y -= YOUNGERBROTHERSPEAD;
+			m_Ppos.y -= YOUNGERBROTHER_SPEAD;
 		}
 		else if (m_pCollisionChecker->HitCheck((m_Ppos.x - (m_Ppos.w / 2)), PlayerBottom))
 		{
-			m_Ppos.y -= YOUNGERBROTHERSPEAD;
+			m_Ppos.y -= YOUNGERBROTHER_SPEAD;
 		}
 
 
@@ -265,22 +269,22 @@ void ServerYoungerBrother::Move()
 	//上移動の処理
 	if (m_pPadState[ANALOG_UP])
 	{
-		m_Ppos.y -= YOUNGERBROTHERSPEAD;
+		m_Ppos.y -= YOUNGERBROTHER_SPEAD;
 
 		float PlayerTop = m_Ppos.y - (m_Ppos.h / 2);
 
 
 		if (m_pCollisionChecker->HitCheck(m_Ppos.x, PlayerTop + 64))
 		{
-			m_Ppos.y += YOUNGERBROTHERSPEAD;
+			m_Ppos.y += YOUNGERBROTHER_SPEAD;
 		}
 		else if (m_pCollisionChecker->HitCheck((m_Ppos.x + (m_Ppos.w / 2)), PlayerTop + 64))
 		{
-			m_Ppos.y += YOUNGERBROTHERSPEAD;
+			m_Ppos.y += YOUNGERBROTHER_SPEAD;
 		}
 		else if (m_pCollisionChecker->HitCheck((m_Ppos.x - (m_Ppos.w / 2)), PlayerTop + 64))
 		{
-			m_Ppos.y += YOUNGERBROTHERSPEAD;
+			m_Ppos.y += YOUNGERBROTHER_SPEAD;
 		}
 
 
@@ -291,9 +295,9 @@ void ServerYoungerBrother::Move()
 			{
 				m_CurrentAnima = YOUNGERBROTHER_WALK_BACK;
 			}
-			
 		}
 	}
+
 }
 
 
@@ -311,10 +315,12 @@ void ServerYoungerBrother::Update()
 	}
 }
 
+
 void ServerYoungerBrother::ModeManagerSet(ServerModeManager* pModeManager)
 {
 	m_pModeManager = pModeManager;
 }
+
 
 void ServerYoungerBrother::SwitchOn()
 {
