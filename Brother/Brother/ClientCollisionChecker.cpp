@@ -102,3 +102,8 @@ void ClientCollisionChecker::SwitchOn(float x, float y)
 	m_pMap->SwitchOn(x, y);
 }
 
+void ClientCollisionChecker::SwitchOnYoung(float x, float y)
+{
+	m_pMap->SwitchOnYoung(x, y);
+}
+

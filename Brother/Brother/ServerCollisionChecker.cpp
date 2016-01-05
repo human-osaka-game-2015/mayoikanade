@@ -102,3 +102,8 @@ void ServerCollisionChecker::SwitchOn(float x, float y)
 	m_pMap->SwitchOn(x, y);
 }
 
+
+void ServerCollisionChecker::SwitchOnYoung(float x, float y)
+{
+	m_pMap->SwitchOnYoung(x, y);
+}

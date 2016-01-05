@@ -76,6 +76,11 @@ void ClientMap::SwitchOn(float x, float y)
 	return m_pMapGimmick->SwitchOn(x, y);
 }
 
+void ClientMap::SwitchOnYoung(float x, float y)
+{
+	return m_pMapGimmick->SwitchOnYoung(x, y);
+}
+
 void ClientMap::SwitchOff(float x, float y)
 {
 	return m_pMapGimmick->SwitchOff(x, y);

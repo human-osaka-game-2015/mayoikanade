@@ -316,24 +316,24 @@ void ClientYoungerBrother::SwitchOn()
 	float PlayerTop = m_Ppos.y - (m_Ppos.h / 2) + m_PlayerY;
 
 
-	m_pCollisionChecker->SwitchOn(PlayerLeft, m_Ppos.y + m_PlayerY);
-	m_pCollisionChecker->SwitchOn(PlayerLeft, (m_Ppos.y + (m_Ppos.h / 2) + m_PlayerY));
-	m_pCollisionChecker->SwitchOn(PlayerLeft, (m_Ppos.y + (m_Ppos.h / 2 / 2)) + m_PlayerY);
+	m_pCollisionChecker->SwitchOnYoung(PlayerLeft, m_Ppos.y + m_PlayerY);
+	m_pCollisionChecker->SwitchOnYoung(PlayerLeft, (m_Ppos.y + (m_Ppos.h / 2) + m_PlayerY));
+	m_pCollisionChecker->SwitchOnYoung(PlayerLeft, (m_Ppos.y + (m_Ppos.h / 2 / 2)) + m_PlayerY);
 
 
-	m_pCollisionChecker->SwitchOn(PlayerRight, m_Ppos.y + m_PlayerY);
-	m_pCollisionChecker->SwitchOn(PlayerRight, (m_Ppos.y + (m_Ppos.h / 2)) + m_PlayerY);
-	m_pCollisionChecker->SwitchOn(PlayerRight, (m_Ppos.y + (m_Ppos.h / 2 / 2)) + m_PlayerY);
+	m_pCollisionChecker->SwitchOnYoung(PlayerRight, m_Ppos.y + m_PlayerY);
+	m_pCollisionChecker->SwitchOnYoung(PlayerRight, (m_Ppos.y + (m_Ppos.h / 2)) + m_PlayerY);
+	m_pCollisionChecker->SwitchOnYoung(PlayerRight, (m_Ppos.y + (m_Ppos.h / 2 / 2)) + m_PlayerY);
 
 
-	m_pCollisionChecker->SwitchOn(m_Ppos.x + m_PlayerX, PlayerBottom);
-	m_pCollisionChecker->SwitchOn((m_Ppos.x + (m_Ppos.w / 2)) + m_PlayerX, PlayerBottom);
-	m_pCollisionChecker->SwitchOn((m_Ppos.x - (m_Ppos.w / 2)) + m_PlayerX, PlayerBottom);
+	m_pCollisionChecker->SwitchOnYoung(m_Ppos.x + m_PlayerX, PlayerBottom);
+	m_pCollisionChecker->SwitchOnYoung((m_Ppos.x + (m_Ppos.w / 2)) + m_PlayerX, PlayerBottom);
+	m_pCollisionChecker->SwitchOnYoung((m_Ppos.x - (m_Ppos.w / 2)) + m_PlayerX, PlayerBottom);
 
 
-	m_pCollisionChecker->SwitchOn(m_Ppos.x + m_PlayerX, PlayerTop + 64);
-	m_pCollisionChecker->SwitchOn((m_Ppos.x + (m_Ppos.w / 2)) + m_PlayerX, PlayerTop + 64);
-	m_pCollisionChecker->SwitchOn((m_Ppos.x - (m_Ppos.w / 2)) + m_PlayerX, PlayerTop + 64);
+	m_pCollisionChecker->SwitchOnYoung(m_Ppos.x + m_PlayerX, PlayerTop + 64);
+	m_pCollisionChecker->SwitchOnYoung((m_Ppos.x + (m_Ppos.w / 2)) + m_PlayerX, PlayerTop + 64);
+	m_pCollisionChecker->SwitchOnYoung((m_Ppos.x - (m_Ppos.w / 2)) + m_PlayerX, PlayerTop + 64);
 
 }
 
