@@ -223,15 +223,6 @@ bool Library::GetAnalogState(ANALOGPAD id, XINPUTPAD pad)
 	return m_pXInput->GetAnalogState(id, pad);
 }
 
-//--------------------------------------------------------------------------------------
-//
-//		InputKey
-//
-//--------------------------------------------------------------------------------------
-void Library::Init_Key()
-{
-	m_pInputDevice->Init_Dinput_Key();
-}
 
 
 //--------------------------------------------------------------------------------------
@@ -273,3 +264,34 @@ void Library::StencilTestEnd()
 {
 	m_pStencilManager->StencilTestEnd();
 }
+
+
+
+//--------------------------------------------------------------------------------------
+//
+//		InputDevice
+//
+//--------------------------------------------------------------------------------------
+HRESULT Library::InitDinputKey()
+{
+	return m_pInputDevice->InitDinputKey();
+}
+
+
+HRESULT Library::InitDinputMouse()
+{
+	return m_pInputDevice->InitDinputMouse();
+}
+
+
+void Library::KeyCheck(KEYSTATE* Key, int DIK)
+{
+	m_pInputDevice->KeyCheck(Key, DIK);
+}
+
+
+void Library::MouseCheck(MOUSEKIND* Mouse)
+{
+	m_pInputDevice->MouseCheck(Mouse);
+}
+

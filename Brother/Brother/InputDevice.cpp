@@ -39,7 +39,7 @@ InputDevice::~InputDevice()
 /**
 * ダイレクトインプットのキーボード初期化
 */
-HRESULT InputDevice::Init_Dinput_Key()
+HRESULT InputDevice::InitDinputKey()
 {
 	HRESULT hr;
 
@@ -71,7 +71,7 @@ HRESULT InputDevice::Init_Dinput_Key()
 /**
 * ダイレクトインプットのマウス初期化
 */
-HRESULT InputDevice::Init_Dinput_Mouse()
+HRESULT InputDevice::InitDinputMouse()
 {
 	HRESULT hr;
 
@@ -133,7 +133,7 @@ HRESULT InputDevice::Init_Dinput_Mouse()
 * int DIKはDirectinputの文字識別コード、状態をチェックしたいキーの状態を保存する
 * LPDIRECTINPUTDEVICE8　はデバイスのオブジェクト
 */
-void InputDevice::Key_Check(KEYSTATE* Key, int DIK)
+void InputDevice::KeyCheck(KEYSTATE* Key, int DIK)
 {
 	BYTE diks[256];
 	static int old_diks[256] = { OFF };
@@ -177,7 +177,7 @@ void InputDevice::Key_Check(KEYSTATE* Key, int DIK)
 *MOUSEKINDはマウスの状態を格納する構造体
 *一度呼ぶだけですべての状態をとってくれる。
 */
-void InputDevice::Mouse_Check(MOUSEKIND* Mouse)
+void InputDevice::MouseCheck(MOUSEKIND* Mouse)
 {
 	DIMOUSESTATE dims;
 	HRESULT hr;

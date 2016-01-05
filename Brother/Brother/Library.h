@@ -24,10 +24,10 @@ private:
 	UVSetter*		m_pUVSetter;
 	XInput*			m_pXInput;
 	StencilManager*	m_pStencilManager;
-	
+	InputDevice* m_pInputDevice;
+
 
 public:
-	InputDevice* m_pInputDevice;
 	Library(HWND hWnd, bool isFullWindow = false, bool isStencil = false);
 	~Library();
 
@@ -81,7 +81,13 @@ public:
 	void AlphaTestEnd();
 	void StencilTestEnd();
 
-	void Init_Key();
+
+	//StencilManager
+	HRESULT InitDinputKey();
+	HRESULT InitDinputMouse();
+	void KeyCheck(KEYSTATE* Key, int DIK);
+	void MouseCheck(MOUSEKIND* Mouse);
+
 };
 
 

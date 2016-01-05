@@ -19,7 +19,7 @@
 #define IDCOMMA 46
 IPAddSelectScene::IPAddSelectScene(Library* pLibrary,char* IPadd) :m_pLibrary(pLibrary)
 {
-	m_pLibrary->Init_Key();
+	m_pLibrary->InitDinputKey();
 	D3DXCreateFont(m_pLibrary->GetDevice(), 30, 15, FW_REGULAR, NULL, FALSE, SHIFTJIS_CHARSET, OUT_DEFAULT_PRECIS, PROOF_QUALITY, FIXED_PITCH | FF_MODERN, "Consolas", &m_pFont);
 	memset(IPadd,0,sizeof(IPadd));
 	for (int i = 0; i < 16; i++)
@@ -47,19 +47,19 @@ IPAddSelectScene::~IPAddSelectScene()
 
 bool IPAddSelectScene::Control()
 {
-	m_pLibrary->m_pInputDevice->Key_Check(&Key[KEY_1], DIK_1);
-	m_pLibrary->m_pInputDevice->Key_Check(&Key[KEY_2], DIK_2);
-	m_pLibrary->m_pInputDevice->Key_Check(&Key[KEY_3], DIK_3);
-	m_pLibrary->m_pInputDevice->Key_Check(&Key[KEY_4], DIK_4);
-	m_pLibrary->m_pInputDevice->Key_Check(&Key[KEY_5], DIK_5);
-	m_pLibrary->m_pInputDevice->Key_Check(&Key[KEY_6], DIK_6);
-	m_pLibrary->m_pInputDevice->Key_Check(&Key[KEY_7], DIK_7);
-	m_pLibrary->m_pInputDevice->Key_Check(&Key[KEY_8], DIK_8);
-	m_pLibrary->m_pInputDevice->Key_Check(&Key[KEY_9], DIK_9);
-	m_pLibrary->m_pInputDevice->Key_Check(&Key[KEY_0], DIK_0);
-	m_pLibrary->m_pInputDevice->Key_Check(&Key[KEY_BACKSPACE], DIK_BACK);
-	m_pLibrary->m_pInputDevice->Key_Check(&Key[KEY_FIRE], DIK_RETURN);
-	m_pLibrary->m_pInputDevice->Key_Check(&Key[KEY_COMMA], DIK_PERIOD);
+	m_pLibrary->KeyCheck(&Key[KEY_1], DIK_1);
+	m_pLibrary->KeyCheck(&Key[KEY_2], DIK_2);
+	m_pLibrary->KeyCheck(&Key[KEY_3], DIK_3);
+	m_pLibrary->KeyCheck(&Key[KEY_4], DIK_4);
+	m_pLibrary->KeyCheck(&Key[KEY_5], DIK_5);
+	m_pLibrary->KeyCheck(&Key[KEY_6], DIK_6);
+	m_pLibrary->KeyCheck(&Key[KEY_7], DIK_7);
+	m_pLibrary->KeyCheck(&Key[KEY_8], DIK_8);
+	m_pLibrary->KeyCheck(&Key[KEY_9], DIK_9);
+	m_pLibrary->KeyCheck(&Key[KEY_0], DIK_0);
+	m_pLibrary->KeyCheck(&Key[KEY_BACKSPACE], DIK_BACK);
+	m_pLibrary->KeyCheck(&Key[KEY_FIRE], DIK_RETURN);
+	m_pLibrary->KeyCheck(&Key[KEY_COMMA], DIK_PERIOD);
 	if (Key[KEY_COMMA] == PUSH && IPpos < IPADDSIZE - 1)
 	{
 		*m_IPadd[IPpos] = IDCOMMA;

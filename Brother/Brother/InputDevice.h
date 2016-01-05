@@ -104,10 +104,10 @@ private:
 public:
 	InputDevice(HWND hwnd);
 	~InputDevice();
-	HRESULT Init_Dinput_Key();
-	HRESULT Init_Dinput_Mouse();
-	void Key_Check(KEYSTATE* Key, int DIK);
-	void Mouse_Check(MOUSEKIND* Mouse);
+	HRESULT InitDinputKey();
+	HRESULT InitDinputMouse();
+	void KeyCheck(KEYSTATE* Key, int DIK);
+	void MouseCheck(MOUSEKIND* Mouse);
 
 };
 
