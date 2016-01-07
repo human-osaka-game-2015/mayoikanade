@@ -27,19 +27,19 @@ class ServerPlayer
 private:
 
 protected:
-	Library*			m_pLibrary;				//ライブラリクラス
-	ServerModeManager*	m_pModeManager;			//Modeを管理するクラス、現在のモードを取得するときに使う
-	ServerCollisionChecker*	m_pCollisionChecker;	//あたり判定をとる時に使う
+	Library*					m_pLibrary;				//ライブラリクラス
+	ServerModeManager*			m_pModeManager;			//Modeを管理するクラス、現在のモードを取得するときに使う
+	ServerCollisionChecker*		m_pCollisionChecker;	//あたり判定をとる時に使う
 	ServerDrawPositionSetter*	m_pDrawPositionSetter;	//プレイヤー座標の設定
-	ServerGameTimeManager*	m_pGameTimeManager;		//現在の時間を取得する
-	ServerPlayerUI*		m_pPlayerUI;			//playerUIを描画するときに使う
-	GAMEANIMA_ID		m_CurrentAnima;			//現在のアニメーションを指す
-	GAMEMODE_NUM		m_CurrentMode;			//現在のモードを指す
-	bool*				m_pPadState;			//現在のスティック状態
-	bool*				m_pPadOldState;			//ひとつ前のスティック状態
-	PADSTATE*			m_pButtonState;			//現在のボタン状態
+	ServerGameTimeManager*		m_pGameTimeManager;		//現在の時間を取得する
+	ServerPlayerUI*				m_pPlayerUI;			//playerUIを描画するときに使う
+	GAMEANIMA_ID				m_CurrentAnima;			//現在のアニメーションを指す
+	GAMEMODE_NUM				m_CurrentMode;			//現在のモードを指す
+	bool*						m_pPadState;			//現在のスティック状態
+	bool*						m_pPadOldState;			//ひとつ前のスティック状態
+	PADSTATE*					m_pButtonState;			//現在のボタン状態
 
-	int					m_Hp;					//PlayerのHp
+	int							m_Hp;					//PlayerのHp
 
 public:
 	ServerPlayer(Library* pLibrary, bool* pPadState, bool* pPadOldState, PADSTATE* pButtonState, ServerCollisionChecker* pCollisionChecker, ServerDrawPositionSetter* pDrawPositionSetter, ServerGameTimeManager* pGameTimeManager);

@@ -20,6 +20,10 @@ ServerYoungerBrother::ServerYoungerBrother(Library* pLibrary, bool* pPadState, b
 	m_pLibrary->InitAnima(YOUNGERBROTHER_WALK_FRONT);
 	m_pLibrary->InitAnima(YOUNGERBROTHER_WALK_SIDE);
 	m_pLibrary->InitAnima(YOUNGERBROTHER_WALK_BACK);
+	m_pLibrary->InitAnima(YOUNGERBROTHER_DOWN_BACK);
+	m_pLibrary->InitAnima(YOUNGERBROTHER_DOWN_FRONT);
+	m_pLibrary->InitAnima(YOUNGERBROTHER_DOWN_SIDE);
+
 	
 	m_Direction = PLAYER_FRONT;
 	m_CurrentAnima = BROTHER_WAIT_FRONT;
@@ -129,11 +133,13 @@ void ServerYoungerBrother::UiDraw()
 
 void ServerYoungerBrother::Move()
 {
-	//移動がなかったら待機のアニメーション
-	if (m_pPadState[ANALOG_LEFT] == false && m_pPadState[ANALOG_RIGHT] == false &&
-		m_pPadState[ANALOG_UP] == false && m_pPadState[ANALOG_DOWN] == false)
+	switch (m_YoungerBrotherState)
 	{
-		if (m_YoungerBrotherState == YOUNGERBROTHER_STATE_NORMAL)
+	case YOUNGERBROTHER_STATE_NORMAL:
+
+		//移動がなかったら待機のアニメーション
+		if (m_pPadState[ANALOG_LEFT] == false && m_pPadState[ANALOG_RIGHT] == false &&
+			m_pPadState[ANALOG_UP] == false && m_pPadState[ANALOG_DOWN] == false)
 		{
 			switch (m_Direction)
 			{
@@ -155,148 +161,248 @@ void ServerYoungerBrother::Move()
 				break;
 			}
 		}
-	}
 
 
-
-	//左移動の処理
-	if (m_pPadState[ANALOG_LEFT])
-	{
-		m_Ppos.x -= YOUNGERBROTHER_SPEAD;
-
-		float PlayerLeft = m_Ppos.x - (m_Ppos.w / 2);
-
-		//プレイヤーの左側のあたり判定
-		if (m_pCollisionChecker->HitCheck(PlayerLeft, m_Ppos.y))
+		//左移動の処理
+		if (m_pPadState[ANALOG_LEFT])
 		{
-			m_Ppos.x += YOUNGERBROTHER_SPEAD;
-		}
-		else if (m_pCollisionChecker->HitCheck(PlayerLeft, (m_Ppos.y + (m_Ppos.h / 2))))
-		{
-			m_Ppos.x += YOUNGERBROTHER_SPEAD;
-		}
-		else if (m_pCollisionChecker->HitCheck(PlayerLeft, (m_Ppos.y + (m_Ppos.h / 2 / 2))))
-		{
-			m_Ppos.x += YOUNGERBROTHER_SPEAD;
-		}
+			m_Ppos.x -= YOUNGERBROTHER_SPEAD;
+
+			float PlayerLeft = m_Ppos.x - (m_Ppos.w / 2);
+			float PlayerBottom = m_Ppos.y + (m_Ppos.h / 2);
 
 
-		//向きの変更
-		m_Direction = PLAYER_LEFT;
+			//プレイヤーの左側のあたり判定
+			if (m_pCollisionChecker->HitCheck(PlayerLeft, m_Ppos.y))
+			{
+				m_Ppos.x += YOUNGERBROTHER_SPEAD;
+			}
+			else if (m_pCollisionChecker->HitCheck(PlayerLeft, (m_Ppos.y + (m_Ppos.h / 2))))
+			{
+				m_Ppos.x += YOUNGERBROTHER_SPEAD;
+			}
+			else if (m_pCollisionChecker->HitCheck(PlayerLeft, (m_Ppos.y + (m_Ppos.h / 2 / 2))))
+			{
+				m_Ppos.x += YOUNGERBROTHER_SPEAD;
+			}
 
 
-		if (m_pPadOldState[ANALOG_LEFT])
-		{
+			//向きの変更
+			m_Direction = PLAYER_LEFT;
 
-			if (m_YoungerBrotherState == YOUNGERBROTHER_STATE_NORMAL)
+			if (m_pCollisionChecker->GrassPortRaitCheck(m_Ppos.x, PlayerBottom))
+			{
+				m_YoungerBrotherState = YOUNGERBROTHER_STATE_DOWN;
+				m_CurrentAnima = YOUNGERBROTHER_DOWN_SIDE;
+			}
+			else
 			{
 				m_CurrentAnima = YOUNGERBROTHER_WALK_SIDE;
 			}
 		}
-	}
 
 
 
 
-	//右の移動処理
-	if (m_pPadState[ANALOG_RIGHT])
-	{
-		m_Ppos.x += YOUNGERBROTHER_SPEAD;
-
-		float PlayerRight = m_Ppos.x + (m_Ppos.w / 2);
-
-		if (m_pCollisionChecker->HitCheck(PlayerRight, m_Ppos.y))
+		//右の移動処理
+		if (m_pPadState[ANALOG_RIGHT])
 		{
-			m_Ppos.x -= YOUNGERBROTHER_SPEAD;
-		}
-		else if (m_pCollisionChecker->HitCheck(PlayerRight, (m_Ppos.y + (m_Ppos.h / 2))))
-		{
-			m_Ppos.x -= YOUNGERBROTHER_SPEAD;
-		}
-		else if (m_pCollisionChecker->HitCheck(PlayerRight, (m_Ppos.y + (m_Ppos.h / 2 / 2))))
-		{
-			m_Ppos.x -= YOUNGERBROTHER_SPEAD;
-		}
+			m_Ppos.x += YOUNGERBROTHER_SPEAD;
+
+			float PlayerRight = m_Ppos.x + (m_Ppos.w / 2);
+			float PlayerBottom = m_Ppos.y + (m_Ppos.h / 2);
+
+
+			if (m_pCollisionChecker->HitCheck(PlayerRight, m_Ppos.y))
+			{
+				m_Ppos.x -= YOUNGERBROTHER_SPEAD;
+			}
+			else if (m_pCollisionChecker->HitCheck(PlayerRight, (m_Ppos.y + (m_Ppos.h / 2))))
+			{
+				m_Ppos.x -= YOUNGERBROTHER_SPEAD;
+			}
+			else if (m_pCollisionChecker->HitCheck(PlayerRight, (m_Ppos.y + (m_Ppos.h / 2 / 2))))
+			{
+				m_Ppos.x -= YOUNGERBROTHER_SPEAD;
+			}
 
 
 
-		m_Direction = PLAYER_RIGHT;
+			m_Direction = PLAYER_RIGHT;
 
-		if (m_pPadOldState[ANALOG_RIGHT])
-		{
-			if (m_YoungerBrotherState == YOUNGERBROTHER_STATE_NORMAL)
+			if (m_pCollisionChecker->GrassPortRaitCheck(m_Ppos.x, PlayerBottom))
+			{
+				m_YoungerBrotherState = YOUNGERBROTHER_STATE_DOWN;
+				m_CurrentAnima = YOUNGERBROTHER_DOWN_SIDE;
+			}
+			else
 			{
 				m_CurrentAnima = YOUNGERBROTHER_WALK_SIDE;
 			}
-		}
-	}
 
 
-
-	//下移動の処理
-	if (m_pPadState[ANALOG_DOWN])
-	{
-		m_Ppos.y += YOUNGERBROTHER_SPEAD;
-
-		float PlayerBottom = m_Ppos.y + (m_Ppos.h / 2);
-
-		if (m_pCollisionChecker->HitCheck(m_Ppos.x, PlayerBottom))
-		{
-			m_Ppos.y -= YOUNGERBROTHER_SPEAD;
-		}
-		else if (m_pCollisionChecker->HitCheck((m_Ppos.x + (m_Ppos.w / 2)), PlayerBottom))
-		{
-			m_Ppos.y -= YOUNGERBROTHER_SPEAD;
-		}
-		else if (m_pCollisionChecker->HitCheck((m_Ppos.x - (m_Ppos.w / 2)), PlayerBottom))
-		{
-			m_Ppos.y -= YOUNGERBROTHER_SPEAD;
 		}
 
 
-		m_Direction = PLAYER_FRONT;
-		if (m_pPadOldState[ANALOG_DOWN])
+
+		//下移動の処理
+		if (m_pPadState[ANALOG_DOWN])
 		{
-			if (m_YoungerBrotherState == YOUNGERBROTHER_STATE_NORMAL)
+			m_Ppos.y += YOUNGERBROTHER_SPEAD;
+
+			float PlayerBottom = m_Ppos.y + (m_Ppos.h / 2);
+
+			if (m_pCollisionChecker->HitCheck(m_Ppos.x, PlayerBottom))
+			{
+				m_Ppos.y -= YOUNGERBROTHER_SPEAD;
+			}
+			else if (m_pCollisionChecker->HitCheck((m_Ppos.x + (m_Ppos.w / 2)), PlayerBottom))
+			{
+				m_Ppos.y -= YOUNGERBROTHER_SPEAD;
+			}
+			else if (m_pCollisionChecker->HitCheck((m_Ppos.x - (m_Ppos.w / 2)), PlayerBottom))
+			{
+				m_Ppos.y -= YOUNGERBROTHER_SPEAD;
+			}
+
+
+			m_Direction = PLAYER_FRONT;
+
+			if (m_pCollisionChecker->GrassCheck(m_Ppos.x, PlayerBottom))
+			{
+				m_YoungerBrotherState = YOUNGERBROTHER_STATE_DOWN;
+				m_CurrentAnima = YOUNGERBROTHER_DOWN_FRONT;
+			}
+			else
 			{
 				m_CurrentAnima = YOUNGERBROTHER_WALK_FRONT;
 			}
-		
-		}
-	}
 
-
-	//上移動の処理
-	if (m_pPadState[ANALOG_UP])
-	{
-		m_Ppos.y -= YOUNGERBROTHER_SPEAD;
-
-		float PlayerTop = m_Ppos.y - (m_Ppos.h / 2);
-
-
-		if (m_pCollisionChecker->HitCheck(m_Ppos.x, PlayerTop + 64))
-		{
-			m_Ppos.y += YOUNGERBROTHER_SPEAD;
-		}
-		else if (m_pCollisionChecker->HitCheck((m_Ppos.x + (m_Ppos.w / 2)), PlayerTop + 64))
-		{
-			m_Ppos.y += YOUNGERBROTHER_SPEAD;
-		}
-		else if (m_pCollisionChecker->HitCheck((m_Ppos.x - (m_Ppos.w / 2)), PlayerTop + 64))
-		{
-			m_Ppos.y += YOUNGERBROTHER_SPEAD;
 		}
 
 
-		m_Direction = PLAYER_BACK;
-		if (m_pPadOldState[ANALOG_UP])
+
+		//上移動の処理
+		if (m_pPadState[ANALOG_UP])
 		{
-			if (m_YoungerBrotherState == YOUNGERBROTHER_STATE_NORMAL)
+			m_Ppos.y -= YOUNGERBROTHER_SPEAD;
+
+			float PlayerTop = m_Ppos.y - (m_Ppos.h / 2);
+			float PlayerBottom = m_Ppos.y + (m_Ppos.h / 2);
+
+
+			if (m_pCollisionChecker->HitCheck(m_Ppos.x, PlayerTop + 64))
+			{
+				m_Ppos.y += YOUNGERBROTHER_SPEAD;
+			}
+			else if (m_pCollisionChecker->HitCheck((m_Ppos.x + (m_Ppos.w / 2)), PlayerTop + 64))
+			{
+				m_Ppos.y += YOUNGERBROTHER_SPEAD;
+			}
+			else if (m_pCollisionChecker->HitCheck((m_Ppos.x - (m_Ppos.w / 2)), PlayerTop + 64))
+			{
+				m_Ppos.y += YOUNGERBROTHER_SPEAD;
+			}
+
+
+			m_Direction = PLAYER_BACK;
+
+			if (m_pCollisionChecker->GrassCheck(m_Ppos.x, PlayerBottom))
+			{
+				m_YoungerBrotherState = YOUNGERBROTHER_STATE_DOWN;
+				m_CurrentAnima = YOUNGERBROTHER_DOWN_BACK;
+			}
+			else
 			{
 				m_CurrentAnima = YOUNGERBROTHER_WALK_BACK;
 			}
+
+
 		}
+
+
+
+
+		break;
+	case YOUNGERBROTHER_STATE_DOWN:
+
+		float PlayerLeft = (m_Ppos.x - YOUNGERBROTHER_SLIDE_SPEADE) - (m_Ppos.w / 2);
+		float PlayerRight = (m_Ppos.x + YOUNGERBROTHER_SLIDE_SPEADE) + (m_Ppos.w / 2);
+		float PlayerTop = (m_Ppos.y - YOUNGERBROTHER_SLIDE_SPEADE) - (m_Ppos.h / 2);
+		float PlayerBottom = (m_Ppos.y + YOUNGERBROTHER_SLIDE_SPEADE) + (m_Ppos.h / 2);
+
+		switch (m_Direction)
+		{
+		case PLAYER_LEFT:
+
+
+			
+
+			m_StandUpTime += 2;
+			if (m_StandUpTime >= YOUNGERBROTHER_STANDUP_TIME)
+			{
+				m_YoungerBrotherState = YOUNGERBROTHER_STATE_NORMAL;
+				m_CurrentAnima = YOUNGERBROTHER_WAIT_SIDE;
+				m_Ppos.x -= 64;
+				m_StandUpTime = 0;
+			}
+
+			break;
+		case PLAYER_RIGHT:
+
+			
+
+		
+
+			m_StandUpTime += 2;
+			if (m_StandUpTime >= YOUNGERBROTHER_STANDUP_TIME)
+			{
+				m_YoungerBrotherState = YOUNGERBROTHER_STATE_NORMAL;
+				m_CurrentAnima = YOUNGERBROTHER_WAIT_SIDE;
+				m_Ppos.x += 64;
+				m_StandUpTime = 0;
+			}
+
+			break;
+		case PLAYER_BACK:
+
+
+
+			
+			m_StandUpTime += 2;
+			if (m_StandUpTime >= YOUNGERBROTHER_STANDUP_TIME)
+			{
+				m_YoungerBrotherState = YOUNGERBROTHER_STATE_NORMAL;
+				m_CurrentAnima = YOUNGERBROTHER_WAIT_BACK;
+				m_Ppos.y -= 64;
+				m_StandUpTime = 0;
+			}
+
+			break;
+		case PLAYER_FRONT:
+
+
+
+			m_StandUpTime += 2;
+			if (m_StandUpTime >= YOUNGERBROTHER_STANDUP_TIME)
+			{
+				m_YoungerBrotherState = YOUNGERBROTHER_STATE_NORMAL;
+				m_CurrentAnima = YOUNGERBROTHER_WAIT_FRONT;
+				m_Ppos.y += 64;
+				m_StandUpTime = 0;
+			}
+
+			break;
+		}
+		
+
+		break;
 	}
+	
+
+
+
+	
 
 }
 

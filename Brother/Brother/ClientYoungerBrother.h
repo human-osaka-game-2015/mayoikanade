@@ -5,7 +5,8 @@
 
 #define YOUNGERBROTHER_HP 100
 #define YOUNGERBROTHER_SPEAD 7
-#define YOUNGERBROTHER_STANDUP_TIME
+#define YOUNGERBROTHER_SLIDE_SPEADE 2
+#define YOUNGERBROTHER_STANDUP_TIME 120
 #define YOUNGERBROTHER_UI_POSX 420
 #define YOUNGERBROTHER_UI_POSY 100
 
@@ -30,7 +31,8 @@ enum YOUNGERBROTHER_STATE
 class ClientYoungerBrother :public ClientPlayer
 {
 private:
-	YOUNGERBROTHER_STATE m_YoungerBrotherState;
+	YOUNGERBROTHER_STATE	m_YoungerBrotherState;
+	int						m_StandUpTime;
 
 public:
 	ClientYoungerBrother(Library* pLibrary, bool* pPadState, bool* pPadOldState, PADSTATE* pButtonState, ClientCollisionChecker* pCollisionChecker, ClientDrawPositionSetter* pDrawPositionSetter, ClientGameTimeManager* pGameTimeManager);

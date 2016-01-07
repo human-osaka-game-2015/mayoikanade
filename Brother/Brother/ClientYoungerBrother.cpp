@@ -17,6 +17,9 @@ ClientYoungerBrother::ClientYoungerBrother(Library* pLibrary, bool* pPadState, b
 	m_pLibrary->InitAnima(YOUNGERBROTHER_WALK_FRONT);
 	m_pLibrary->InitAnima(YOUNGERBROTHER_WALK_SIDE);
 	m_pLibrary->InitAnima(YOUNGERBROTHER_WALK_BACK);
+	m_pLibrary->InitAnima(YOUNGERBROTHER_DOWN_FRONT);
+	m_pLibrary->InitAnima(YOUNGERBROTHER_DOWN_SIDE);
+	m_pLibrary->InitAnima(YOUNGERBROTHER_DOWN_BACK);
 	
 	m_Direction = PLAYER_FRONT;
 	m_CurrentAnima = BROTHER_WAIT_FRONT;
@@ -118,182 +121,263 @@ void ClientYoungerBrother::UiDraw()
 void ClientYoungerBrother::Move()
 {
 
-
-	//移動がなかったら待機のアニメーション
-	if (m_pPadState[ANALOG_LEFT] == false && m_pPadState[ANALOG_RIGHT] == false &&
-		m_pPadState[ANALOG_UP] == false && m_pPadState[ANALOG_DOWN] == false)
+	switch (m_YoungerBrotherState)
 	{
-		if (m_YoungerBrotherState == YOUNGERBROTHER_STATE_NORMAL)
+	case YOUNGERBROTHER_STATE_NORMAL:
+
+		//移動がなかったら待機のアニメーション
+		if (m_pPadState[ANALOG_LEFT] == false && m_pPadState[ANALOG_RIGHT] == false &&
+			m_pPadState[ANALOG_UP] == false && m_pPadState[ANALOG_DOWN] == false)
 		{
-			switch (m_Direction)
+			if (m_YoungerBrotherState == YOUNGERBROTHER_STATE_NORMAL)
 			{
-			case PLAYER_LEFT:
-				m_CurrentAnima = YOUNGERBROTHER_WAIT_SIDE;
+				switch (m_Direction)
+				{
+				case PLAYER_LEFT:
+					m_CurrentAnima = YOUNGERBROTHER_WAIT_SIDE;
 
-				break;
-			case PLAYER_RIGHT:
-				m_CurrentAnima = YOUNGERBROTHER_WAIT_SIDE;
+					break;
+				case PLAYER_RIGHT:
+					m_CurrentAnima = YOUNGERBROTHER_WAIT_SIDE;
 
-				break;
-			case PLAYER_FRONT:
-				m_CurrentAnima = YOUNGERBROTHER_WAIT_FRONT;
+					break;
+				case PLAYER_FRONT:
+					m_CurrentAnima = YOUNGERBROTHER_WAIT_FRONT;
 
-				break;
-			case PLAYER_BACK:
-				m_CurrentAnima = YOUNGERBROTHER_WAIT_BACK;
+					break;
+				case PLAYER_BACK:
+					m_CurrentAnima = YOUNGERBROTHER_WAIT_BACK;
 
-				break;
+					break;
+				}
 			}
 		}
-	}
 
 
 
 
-	//左移動の処理
-	if (m_pPadState[ANALOG_LEFT])
-	{
-		m_PlayerX -= YOUNGERBROTHER_SPEAD;
+		//左移動の処理
+		if (m_pPadState[ANALOG_LEFT])
+		{
+			m_PlayerX -= YOUNGERBROTHER_SPEAD;
 
-		float PlayerLeft = m_Ppos.x - (m_Ppos.w / 2) + m_PlayerX;
+			float PlayerLeft = m_Ppos.x - (m_Ppos.w / 2) + m_PlayerX;
+			float PlayerBottom = m_Ppos.y + (m_Ppos.h / 2) + m_PlayerY;
 
-		//プレイヤーの左側のあたり判定
-		if (m_pCollisionChecker->HitCheck(PlayerLeft, m_Ppos.y + m_PlayerY))
+			//プレイヤーの左側のあたり判定
+			if (m_pCollisionChecker->HitCheck(PlayerLeft, m_Ppos.y + m_PlayerY))
+			{
+				m_PlayerX += YOUNGERBROTHER_SPEAD;
+			}
+			else if (m_pCollisionChecker->HitCheck(PlayerLeft, (m_Ppos.y + (m_Ppos.h / 2) + m_PlayerY)))
+			{
+				m_PlayerX += YOUNGERBROTHER_SPEAD;
+			}
+			else if (m_pCollisionChecker->HitCheck(PlayerLeft, (m_Ppos.y + (m_Ppos.h / 2 / 2)) + m_PlayerY))
+			{
+				m_PlayerX += YOUNGERBROTHER_SPEAD;
+			}
+
+			//位置情報を教える
+			m_pDrawPositionSetter->DrawPositionXSet(m_PlayerX);
+
+			//向きの変更
+			m_Direction = PLAYER_LEFT;
+
+
+			if (m_pCollisionChecker->GrassPortRaitCheck(m_Ppos.x + m_PlayerX, PlayerBottom))
+			{
+				m_YoungerBrotherState = YOUNGERBROTHER_STATE_DOWN;
+				m_CurrentAnima = YOUNGERBROTHER_DOWN_SIDE;
+			}
+			else
+			{
+				m_CurrentAnima = YOUNGERBROTHER_WALK_SIDE;
+			}
+		}
+
+
+
+
+		//右の移動処理
+		if (m_pPadState[ANALOG_RIGHT])
 		{
 			m_PlayerX += YOUNGERBROTHER_SPEAD;
-		}
-		else if (m_pCollisionChecker->HitCheck(PlayerLeft, (m_Ppos.y + (m_Ppos.h / 2) + m_PlayerY)))
-		{
-			m_PlayerX += YOUNGERBROTHER_SPEAD;
-		}
-		else if (m_pCollisionChecker->HitCheck(PlayerLeft, (m_Ppos.y + (m_Ppos.h / 2 / 2)) + m_PlayerY))
-		{
-			m_PlayerX += YOUNGERBROTHER_SPEAD;
-		}
 
-		//位置情報を教える
-		m_pDrawPositionSetter->DrawPositionXSet(m_PlayerX);
+			float PlayerRight = m_Ppos.x + (m_Ppos.w / 2) + m_PlayerX;
+			float PlayerBottom = m_Ppos.y + (m_Ppos.h / 2) + m_PlayerY;
 
-		//向きの変更
-		m_Direction = PLAYER_LEFT;
+			if (m_pCollisionChecker->HitCheck(PlayerRight, m_Ppos.y + m_PlayerY))
+			{
+				m_PlayerX -= YOUNGERBROTHER_SPEAD;
+			}
+			else if (m_pCollisionChecker->HitCheck(PlayerRight, (m_Ppos.y + (m_Ppos.h / 2)) + m_PlayerY))
+			{
+				m_PlayerX -= YOUNGERBROTHER_SPEAD;
+			}
+			else if (m_pCollisionChecker->HitCheck(PlayerRight, (m_Ppos.y + (m_Ppos.h / 2 / 2)) + m_PlayerY))
+			{
+				m_PlayerX -= YOUNGERBROTHER_SPEAD;
+			}
 
 
-		if (m_pPadOldState[ANALOG_LEFT])
-		{
+			m_pDrawPositionSetter->DrawPositionXSet(m_PlayerX);
 
-			if (m_YoungerBrotherState == YOUNGERBROTHER_STATE_NORMAL)
+			m_Direction = PLAYER_RIGHT;
+
+			if (m_pCollisionChecker->GrassPortRaitCheck(m_Ppos.x + m_PlayerX, PlayerBottom))
+			{
+				m_YoungerBrotherState = YOUNGERBROTHER_STATE_DOWN;
+				m_CurrentAnima = YOUNGERBROTHER_DOWN_SIDE;
+			}
+			else
 			{
 				m_CurrentAnima = YOUNGERBROTHER_WALK_SIDE;
 			}
 		}
-	}
 
 
 
-
-	//右の移動処理
-	if (m_pPadState[ANALOG_RIGHT])
-	{
-		m_PlayerX += YOUNGERBROTHER_SPEAD;
-
-		float PlayerRight = m_Ppos.x + (m_Ppos.w / 2) + m_PlayerX;
-
-		if (m_pCollisionChecker->HitCheck(PlayerRight, m_Ppos.y + m_PlayerY))
+		//下移動の処理
+		if (m_pPadState[ANALOG_DOWN])
 		{
-			m_PlayerX -= YOUNGERBROTHER_SPEAD;
-		}
-		else if (m_pCollisionChecker->HitCheck(PlayerRight, (m_Ppos.y + (m_Ppos.h / 2)) + m_PlayerY))
-		{
-			m_PlayerX -= YOUNGERBROTHER_SPEAD;
-		}
-		else if (m_pCollisionChecker->HitCheck(PlayerRight, (m_Ppos.y + (m_Ppos.h / 2 / 2)) + m_PlayerY))
-		{
-			m_PlayerX -= YOUNGERBROTHER_SPEAD;
-		}
+			m_PlayerY += YOUNGERBROTHER_SPEAD;
 
+			float PlayerBottom = m_Ppos.y + (m_Ppos.h / 2) + m_PlayerY;
 
-		m_pDrawPositionSetter->DrawPositionXSet(m_PlayerX);
-
-		m_Direction = PLAYER_RIGHT;
-
-		if (m_pPadOldState[ANALOG_RIGHT])
-		{
-			if (m_YoungerBrotherState == YOUNGERBROTHER_STATE_NORMAL)
+			if (m_pCollisionChecker->HitCheck(m_Ppos.x + m_PlayerX, PlayerBottom))
 			{
-				m_CurrentAnima = YOUNGERBROTHER_WALK_SIDE;
+				m_PlayerY -= YOUNGERBROTHER_SPEAD;
 			}
-			
-		}
-	}
+			else if (m_pCollisionChecker->HitCheck((m_Ppos.x + (m_Ppos.w / 2)) + m_PlayerX, PlayerBottom))
+			{
+				m_PlayerY -= YOUNGERBROTHER_SPEAD;
+			}
+			else if (m_pCollisionChecker->HitCheck((m_Ppos.x - (m_Ppos.w / 2)) + m_PlayerX, PlayerBottom))
+			{
+				m_PlayerY -= YOUNGERBROTHER_SPEAD;
+			}
 
+			m_pDrawPositionSetter->DrawPositionYSet(m_PlayerY);
 
+			m_Direction = PLAYER_FRONT;
 
-	//下移動の処理
-	if (m_pPadState[ANALOG_DOWN])
-	{
-		m_PlayerY += YOUNGERBROTHER_SPEAD;
-
-		float PlayerBottom = m_Ppos.y + (m_Ppos.h / 2) + m_PlayerY;
-
-		if (m_pCollisionChecker->HitCheck(m_Ppos.x + m_PlayerX, PlayerBottom))
-		{
-			m_PlayerY -= YOUNGERBROTHER_SPEAD;
-		}
-		else if (m_pCollisionChecker->HitCheck((m_Ppos.x + (m_Ppos.w / 2)) + m_PlayerX, PlayerBottom))
-		{
-			m_PlayerY -= YOUNGERBROTHER_SPEAD;
-		}
-		else if (m_pCollisionChecker->HitCheck((m_Ppos.x - (m_Ppos.w / 2)) + m_PlayerX, PlayerBottom))
-		{
-			m_PlayerY -= YOUNGERBROTHER_SPEAD;
-		}
-
-		m_pDrawPositionSetter->DrawPositionYSet(m_PlayerY);
-
-		m_Direction = PLAYER_FRONT;
-		if (m_pPadOldState[ANALOG_DOWN])
-		{
-			if (m_YoungerBrotherState == YOUNGERBROTHER_STATE_NORMAL)
+			if (m_pCollisionChecker->GrassCheck(m_Ppos.x + m_PlayerX, PlayerBottom))
+			{
+				m_YoungerBrotherState = YOUNGERBROTHER_STATE_DOWN;
+				m_CurrentAnima = YOUNGERBROTHER_DOWN_FRONT;
+			}
+			else
 			{
 				m_CurrentAnima = YOUNGERBROTHER_WALK_FRONT;
 			}
-			
-		}
-	}
-
-
-	//上移動の処理
-	if (m_pPadState[ANALOG_UP])
-	{
-		m_PlayerY -= YOUNGERBROTHER_SPEAD;
-
-		float PlayerTop = m_Ppos.y - (m_Ppos.h / 2) + m_PlayerY;
-
-
-		if (m_pCollisionChecker->HitCheck(m_Ppos.x + m_PlayerX, PlayerTop + 64))
-		{
-			m_PlayerY += YOUNGERBROTHER_SPEAD;
-		}
-		else if (m_pCollisionChecker->HitCheck((m_Ppos.x + (m_Ppos.w / 2)) + m_PlayerX, PlayerTop + 64))
-		{
-			m_PlayerY += YOUNGERBROTHER_SPEAD;
-		}
-		else if (m_pCollisionChecker->HitCheck((m_Ppos.x - (m_Ppos.w / 2)) + m_PlayerX, PlayerTop + 64))
-		{
-			m_PlayerY += YOUNGERBROTHER_SPEAD;
 		}
 
-		m_pDrawPositionSetter->DrawPositionYSet(m_PlayerY);
 
-		m_Direction = PLAYER_BACK;
-		if (m_pPadOldState[ANALOG_UP])
+		//上移動の処理
+		if (m_pPadState[ANALOG_UP])
 		{
-			if (m_YoungerBrotherState == YOUNGERBROTHER_STATE_NORMAL)
+			m_PlayerY -= YOUNGERBROTHER_SPEAD;
+
+			float PlayerTop = m_Ppos.y - (m_Ppos.h / 2) + m_PlayerY;
+			float PlayerBottom = m_Ppos.y + (m_Ppos.h / 2) + m_PlayerY;
+
+
+			if (m_pCollisionChecker->HitCheck(m_Ppos.x + m_PlayerX, PlayerTop + 64))
+			{
+				m_PlayerY += YOUNGERBROTHER_SPEAD;
+			}
+			else if (m_pCollisionChecker->HitCheck((m_Ppos.x + (m_Ppos.w / 2)) + m_PlayerX, PlayerTop + 64))
+			{
+				m_PlayerY += YOUNGERBROTHER_SPEAD;
+			}
+			else if (m_pCollisionChecker->HitCheck((m_Ppos.x - (m_Ppos.w / 2)) + m_PlayerX, PlayerTop + 64))
+			{
+				m_PlayerY += YOUNGERBROTHER_SPEAD;
+			}
+
+			m_pDrawPositionSetter->DrawPositionYSet(m_PlayerY);
+
+			m_Direction = PLAYER_BACK;
+
+			if (m_pCollisionChecker->GrassCheck(m_Ppos.x + m_PlayerX, PlayerBottom))
+			{
+				m_YoungerBrotherState = YOUNGERBROTHER_STATE_DOWN;
+				m_CurrentAnima = YOUNGERBROTHER_DOWN_BACK;
+			}
+			else
 			{
 				m_CurrentAnima = YOUNGERBROTHER_WALK_BACK;
 			}
 			
 		}
+
+
+		break;
+	case YOUNGERBROTHER_STATE_DOWN:
+
+		
+
+		switch (m_Direction)
+		{
+		case PLAYER_LEFT:
+
+			m_StandUpTime += 2;
+			if (m_StandUpTime >= YOUNGERBROTHER_STANDUP_TIME)
+			{
+				m_YoungerBrotherState = YOUNGERBROTHER_STATE_NORMAL;
+				m_CurrentAnima = YOUNGERBROTHER_WAIT_SIDE;
+				m_PlayerX -= 64;
+				m_pDrawPositionSetter->DrawPositionXSet(m_PlayerX);
+
+				m_StandUpTime = 0;
+			}
+
+			break;
+		case PLAYER_RIGHT:
+
+			m_StandUpTime += 2;
+			if (m_StandUpTime >= YOUNGERBROTHER_STANDUP_TIME)
+			{
+				m_YoungerBrotherState = YOUNGERBROTHER_STATE_NORMAL;
+				m_CurrentAnima = YOUNGERBROTHER_WAIT_SIDE;
+				m_PlayerX += 64;
+				m_pDrawPositionSetter->DrawPositionXSet(m_PlayerX);
+
+				m_StandUpTime = 0;
+			}
+
+			break;
+		case PLAYER_BACK:
+
+			m_StandUpTime += 2;
+			if (m_StandUpTime >= YOUNGERBROTHER_STANDUP_TIME)
+			{
+				m_YoungerBrotherState = YOUNGERBROTHER_STATE_NORMAL;
+				m_CurrentAnima = YOUNGERBROTHER_WAIT_BACK;
+				m_PlayerY -= 64;
+				m_pDrawPositionSetter->DrawPositionYSet(m_PlayerY);
+
+				m_StandUpTime = 0;
+			}
+
+			break;
+		case PLAYER_FRONT:
+
+			m_StandUpTime += 2;
+			if (m_StandUpTime >= YOUNGERBROTHER_STANDUP_TIME)
+			{
+				m_YoungerBrotherState = YOUNGERBROTHER_STATE_NORMAL;
+				m_CurrentAnima = YOUNGERBROTHER_WAIT_FRONT;
+				m_PlayerY += 64;
+				m_pDrawPositionSetter->DrawPositionYSet(m_PlayerY);
+
+				m_StandUpTime = 0;
+			}
+
+			break;
+		}
+
 	}
 
 	

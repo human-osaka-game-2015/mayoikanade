@@ -571,6 +571,14 @@ void ServerMapGimmick::MapTex_UV_Set(float Posx, float Posy)
 				m_pLibrary->MakeVertex(HOLE_02, m_MapGimmick_Tex[i][j]);
 
 				break;
+			case GRASS_KNOT:
+				m_pLibrary->MakeVertex(GRASS_KNOT, m_MapGimmick_Tex[i][j]);
+
+				break;
+			case GRASS_KNOT_PORTRAIT:
+				m_pLibrary->MakeVertex(GRASS_KNOT_PORTRAIT, m_MapGimmick_Tex[i][j]);
+
+				break;
 			default:
 				for (int x = 0; x < VERTEXNUM; x++)
 				{
