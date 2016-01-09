@@ -12,6 +12,8 @@ class Library;
 class ServerModeManager;
 enum GAMEMODE_NUM;
 
+enum PADSTATE;
+
 enum TEXT_NUM
 {
 	DARKNESS,
