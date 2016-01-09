@@ -186,9 +186,9 @@ isConnect(false)
 	m_pYoungerBrother = new ClientYoungerBrother(m_pLibrary, m_PadState, m_PadOldState, m_ButtonState, m_pCollisionChecker, m_pDrawPositionSetter, m_pGameTimeManager);
 	m_pBrother = new ClientBrother(m_pLibrary, m_ServerPadState, m_ServerPadOldState, m_ServerButtonState, m_pCollisionChecker, m_pDrawPositionSetter, m_pGameTimeManager, m_pYoungerBrother);
 	m_pShadow = new ClientShadow(m_pLibrary, m_pGameTimeManager);
-	m_pText = new ClientText(m_pLibrary);
+	m_pText = new ClientText(m_pLibrary, m_PadState, m_PadOldState, m_ButtonState);
 	
-	m_pModeManager = new ClientModeManager(m_pSceneChangeListener, m_pBrother, m_pYoungerBrother, m_pGameTimeManager, m_pShadow);
+	m_pModeManager = new ClientModeManager(m_pSceneChangeListener, m_pBrother, m_pYoungerBrother, m_pGameTimeManager, m_pShadow, m_pText);
 
 	//ModeManagerSetはBrotherなどに対してm_ModeManagerを渡す
 	m_pBrother->ModeManagerSet(m_pModeManager);
@@ -255,7 +255,8 @@ SCENE_NUM ClientGameScene::Control()
 
 	m_pShadow->Control();
 
-	
+	m_pText->Control();
+
 	//こいつが犯人
 	//Debugの実行して箱を置くときに起きるバグは多分こいつが悪い
 	//処理を効率的にすることで何とかなりそう
@@ -287,7 +288,7 @@ void ClientGameScene::Draw()
 	m_pBrother->UiDraw();
 	m_pYoungerBrother->UiDraw();
 
-
+	m_pText->Draw();
 
 
 	RECT rect = { 10, 10, 0, 0 };

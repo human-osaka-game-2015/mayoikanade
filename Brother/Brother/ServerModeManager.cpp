@@ -3,14 +3,17 @@
 #include "ServerBrother.h"
 #include "ServerYoungerBrother.h"
 #include "ServerShadow.h"
+#include "ServerText.h"
+#include "ServerGameTimeManager.h"
 
-ServerModeManager::ServerModeManager(SceneChangeListener* Listener, ServerBrother* pBrother, ServerYoungerBrother* pYoungerBrother, ServerGameTimeManager* pGameTimeManager, ServerShadow* pShadow) :
+ServerModeManager::ServerModeManager(SceneChangeListener* Listener, ServerBrother* pBrother, ServerYoungerBrother* pYoungerBrother, ServerGameTimeManager* pGameTimeManager, ServerShadow* pShadow,ServerText* pText) :
 m_Mode(NORMAL), 
 m_pSceneChangeListener(Listener),
 m_pBrother(pBrother),
 m_pYoungerBrother(pYoungerBrother),
 m_pTimeManager(pGameTimeManager),
-m_pShadow(pShadow)
+m_pShadow(pShadow),
+m_pText(pText)
 {
 
 }
@@ -43,6 +46,12 @@ GAMEMODE_NUM ServerModeManager::CheckMode()
 	{
 		return GAMEOVER;
 	}
+
+	if (TEXT_TIME <= m_pTimeManager->GetGameTime() && m_pText->GetMessageEnd())
+	{
+		return TEXT;
+	}
+
 
 	return NORMAL;//‰¼
 }

@@ -195,8 +195,8 @@ m_pisConnect(&m_isConnect)
 	m_pBrother				= new ServerBrother(m_pLibrary, m_PadState, m_PadOldState, m_ButtonState, m_pCollisionChecker, m_pDrawPositionSetter, m_pGameTimeManager);
 	m_pYoungerBrother		= new ServerYoungerBrother(m_pLibrary, m_ClientPadState, m_ClientPadOldState, m_ClientButtonState, m_pCollisionChecker, m_pDrawPositionSetter, m_pGameTimeManager, m_pBrother);
 	m_pShadow = new ServerShadow(m_pLibrary, m_pGameTimeManager);
-	m_pText					= new ServerText(m_pLibrary);
-	m_pModeManager			= new ServerModeManager(m_pSceneChangeListener, m_pBrother, m_pYoungerBrother, m_pGameTimeManager, m_pShadow);
+	m_pText = new ServerText(m_pLibrary, m_PadState, m_PadOldState, m_ButtonState);
+	m_pModeManager			= new ServerModeManager(m_pSceneChangeListener, m_pBrother, m_pYoungerBrother, m_pGameTimeManager, m_pShadow, m_pText);
 
 	//ModeManagerSetはBrotherなどに対してm_ModeManagerを渡す
 	m_pBrother->ModeManagerSet(m_pModeManager);
@@ -278,6 +278,8 @@ SCENE_NUM ServerGameScene::Control()
 
 		m_pShadow->Control();
 
+		m_pText->Control();
+
 		//全部こいつが悪い
 		//Debugのバグはこいつのせい
 		//Releaseは最適化されるから大丈夫のはず
@@ -318,7 +320,7 @@ void ServerGameScene::Draw()
 		m_pBrother->UiDraw();
 		m_pYoungerBrother->UiDraw();
 
-
+		m_pText->Draw();
 
 
 		RECT rect = { 10, 10, 0, 0 };

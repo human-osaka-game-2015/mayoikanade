@@ -3,14 +3,17 @@
 #include "ClientBrother.h"
 #include "ClientYoungerBrother.h"
 #include "ClientShadow.h"
+#include "ClientText.h"
+#include "ClientGameTimeManager.h"
 
-ClientModeManager::ClientModeManager(SceneChangeListener* Listener, ClientBrother* pBrother, ClientYoungerBrother* pYoungerBrother, ClientGameTimeManager* pGameTimeManager, ClientShadow* pShadow) :
+ClientModeManager::ClientModeManager(SceneChangeListener* Listener, ClientBrother* pBrother, ClientYoungerBrother* pYoungerBrother, ClientGameTimeManager* pGameTimeManager, ClientShadow* pShadow,ClientText* pText) :
 m_Mode(NORMAL), 
 m_pSceneChangeListener(Listener),
 m_pBrother(pBrother),
 m_pYoungerBrother(pYoungerBrother),
 m_pTimeManager(pGameTimeManager),
-m_pShadow(pShadow)
+m_pShadow(pShadow),
+m_pText(pText)
 {
 
 }
@@ -43,6 +46,11 @@ GAMEMODE_NUM ClientModeManager::CheckMode()
 	{
 		return GAMEOVER;
 	}
+	if (TEXT_TIME <= m_pTimeManager->GetGameTime() && m_pText->GetMessageEnd())
+	{
+		return TEXT;
+	}
+
 
 	return NORMAL;//‰¼
 }
