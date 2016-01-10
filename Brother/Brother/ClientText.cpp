@@ -127,7 +127,7 @@ void ClientText::TextControl()
 	if (m_all_alpha_is_max)
 	{
 		m_pLibrary->Check(GAMEPAD1);
-		if (m_pButtonState[0] == PAD_PUSH&&m_message_wait == false && m_text_is_end == false)
+		if (m_pButtonState[0] == PAD_PUSH && m_message_wait == false && m_text_is_end == false)
 		{
 			m_message_count += 1;
 			m_message_wait = true;

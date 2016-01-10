@@ -208,6 +208,7 @@ m_pisConnect(&m_isConnect)
 	//Dxfont
 	D3DXCreateFont(m_pLibrary->GetDevice(), 0, 8, FW_REGULAR, NULL, FALSE, SHIFTJIS_CHARSET, OUT_DEFAULT_PRECIS, PROOF_QUALITY, FIXED_PITCH | FF_MODERN, "tahoma", &pFont);
 	
+	//これは自分の勘違いだったのでつかえない
 	//IN_ADDR inaddr; 				// IPアドレスを格納する構造体
 	//char szBuf[256]; // ホスト名/IPアドレスを格納する配列
 	//// WinSockの初期化
