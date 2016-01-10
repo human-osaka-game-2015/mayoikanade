@@ -190,15 +190,19 @@ void ServerYoungerBrother::Move()
 			//Œü‚«‚Ì•ÏX
 			m_Direction = PLAYER_LEFT;
 
-			if (m_pCollisionChecker->GrassPortRaitCheck(m_Ppos.x, PlayerBottom))
+			if (m_pPadState[ANALOG_UP] == false && m_pPadState[ANALOG_DOWN] == false)
 			{
-				m_YoungerBrotherState = YOUNGERBROTHER_STATE_DOWN;
-				m_CurrentAnima = YOUNGERBROTHER_DOWN_SIDE;
+				if (m_pCollisionChecker->GrassPortRaitCheck(m_Ppos.x, PlayerBottom))
+				{
+					m_YoungerBrotherState = YOUNGERBROTHER_STATE_DOWN;
+					m_CurrentAnima = YOUNGERBROTHER_DOWN_SIDE;
+				}
+				else
+				{
+					m_CurrentAnima = YOUNGERBROTHER_WALK_SIDE;
+				}
 			}
-			else
-			{
-				m_CurrentAnima = YOUNGERBROTHER_WALK_SIDE;
-			}
+			
 		}
 
 
@@ -230,14 +234,17 @@ void ServerYoungerBrother::Move()
 
 			m_Direction = PLAYER_RIGHT;
 
-			if (m_pCollisionChecker->GrassPortRaitCheck(m_Ppos.x, PlayerBottom))
+			if (m_pPadState[ANALOG_UP] == false && m_pPadState[ANALOG_DOWN] == false)
 			{
-				m_YoungerBrotherState = YOUNGERBROTHER_STATE_DOWN;
-				m_CurrentAnima = YOUNGERBROTHER_DOWN_SIDE;
-			}
-			else
-			{
-				m_CurrentAnima = YOUNGERBROTHER_WALK_SIDE;
+				if (m_pCollisionChecker->GrassPortRaitCheck(m_Ppos.x, PlayerBottom))
+				{
+					m_YoungerBrotherState = YOUNGERBROTHER_STATE_DOWN;
+					m_CurrentAnima = YOUNGERBROTHER_DOWN_SIDE;
+				}
+				else
+				{
+					m_CurrentAnima = YOUNGERBROTHER_WALK_SIDE;
+				}
 			}
 
 
