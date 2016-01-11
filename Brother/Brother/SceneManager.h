@@ -16,6 +16,9 @@ private:
 	HWND		m_hWnd;
 public:
 	char m_pIPadd[16];
+
+	bool m_isGameClear;
+
 	SceneManager(Library* pLibrary,HWND hWnd);
 	~SceneManager();
 	bool Control();

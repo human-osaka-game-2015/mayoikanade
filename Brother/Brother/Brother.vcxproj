@@ -27,6 +27,8 @@
     <ClCompile Include="ClientText.cpp" />
     <ClCompile Include="ClientYoungerBrother.cpp" />
     <ClCompile Include="ClientModeManager.cpp" />
+    <ClCompile Include="ResultBackGround.cpp" />
+    <ClCompile Include="ResultClock.cpp" />
     <ClCompile Include="ServerBrother.cpp" />
     <ClCompile Include="Client.cpp" />
     <ClCompile Include="ClientGameScene.cpp" />
@@ -95,6 +97,8 @@
     <ClInclude Include="ClientText.h" />
     <ClInclude Include="ClientYoungerBrother.h" />
     <ClInclude Include="ClientModeManager.h" />
+    <ClInclude Include="ResultBackGround.h" />
+    <ClInclude Include="ResultClock.h" />
     <ClInclude Include="ServerBrother.h" />
     <ClInclude Include="Client.h" />
     <ClInclude Include="ClientGameScene.h" />

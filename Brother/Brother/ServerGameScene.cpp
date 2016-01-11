@@ -161,9 +161,10 @@ DWORD WINAPI ServerGameScene::Synchro(LPVOID vpGameScene)
 }
 
 
-ServerGameScene::ServerGameScene(Library* pLibrary, HWND hWnd) :
+ServerGameScene::ServerGameScene(Library* pLibrary, HWND hWnd, bool* pisGameClear) :
 Scene(pLibrary),
 m_hWnd(hWnd),
+m_pisGameClear(pisGameClear),
 m_isGameScene(true),
 m_pisConnect(&m_isConnect)
 {

@@ -152,9 +152,10 @@ DWORD WINAPI ClientGameScene::Connect(LPVOID Gamemain)
 }
 
 
-ClientGameScene::ClientGameScene(Library* pLibrary, HWND hWnd,char* IPadd) :
+ClientGameScene::ClientGameScene(Library* pLibrary, HWND hWnd, char* IPadd, bool* pisGameClear) :
 Scene(pLibrary), 
 m_hWnd(hWnd),
+m_pisGameClear(pisGameClear),
 m_isGameScene(true),
 isConnect(false)
 {

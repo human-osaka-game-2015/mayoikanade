@@ -209,6 +209,12 @@
     <Filter Include="Library\Client">
       <UniqueIdentifier>{a0f32ed3-1258-4e7b-bb2e-87cb4194e868}</UniqueIdentifier>
     </Filter>
+    <Filter Include="WinMain\GameMain\SceneManager\Scene\ResultScene\ResultBackGround">
+      <UniqueIdentifier>{e513b7ac-d5ca-4c83-8cf5-b81e81b57839}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="WinMain\GameMain\SceneManager\Scene\ResultScene\ResultClock">
+      <UniqueIdentifier>{9b1b703e-a67e-40c7-bda3-f6f1c6509871}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="D3DManager.cpp">
@@ -409,6 +415,12 @@
     <ClCompile Include="XInput.cpp">
       <Filter>Library\XInput</Filter>
     </ClCompile>
+    <ClCompile Include="ResultBackGround.cpp">
+      <Filter>WinMain\GameMain\SceneManager\Scene\ResultScene\ResultBackGround</Filter>
+    </ClCompile>
+    <ClCompile Include="ResultClock.cpp">
+      <Filter>WinMain\GameMain\SceneManager\Scene\ResultScene\ResultClock</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="D3DManager.h">
@@ -608,6 +620,12 @@
     </ClInclude>
     <ClInclude Include="XInput.h">
       <Filter>Library\XInput</Filter>
+    </ClInclude>
+    <ClInclude Include="ResultBackGround.h">
+      <Filter>WinMain\GameMain\SceneManager\Scene\ResultScene\ResultBackGround</Filter>
+    </ClInclude>
+    <ClInclude Include="ResultClock.h">
+      <Filter>WinMain\GameMain\SceneManager\Scene\ResultScene\ResultClock</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

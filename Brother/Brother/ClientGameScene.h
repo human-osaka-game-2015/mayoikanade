@@ -57,9 +57,11 @@ private:
 	ClientShadow*				m_pShadow;
 	HWND						m_hWnd;
 	GameThread					Gamemain;
+	bool*						m_pisGameClear;
+
 
 public:
-	ClientGameScene(Library* pLibrary, HWND hWnd, char* IPadd);
+	ClientGameScene(Library* pLibrary, HWND hWnd, char* IPadd, bool* pisGameClear);
 	virtual ~ClientGameScene();
 	virtual SCENE_NUM Control();
 	virtual void Draw();

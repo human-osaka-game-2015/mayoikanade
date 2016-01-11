@@ -44,13 +44,14 @@ private:
 	ServerGameTimeManager*		m_pGameTimeManager;
 	ServerText*					m_pText;
 	ServerShadow*				m_pShadow;
-	HWND					m_hWnd;
+	HWND						m_hWnd;
+	bool*						m_pisGameClear;
 
 	char szIP[16];
 	HOSTENT* lpHost; 			//  ホスト情報を格納する構造体
 
 public:
-	ServerGameScene(Library* pLibrary, HWND hWnd);
+	ServerGameScene(Library* pLibrary, HWND hWnd, bool* pisGameClear );
 	virtual ~ServerGameScene();
 	virtual SCENE_NUM Control();
 	virtual void Draw();
