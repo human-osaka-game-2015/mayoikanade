@@ -50,17 +50,32 @@ void Vertex::Turn(CustomVertex* pVertex,Position* Pos, double angle)
 	double rad;
 	rad = angle * (3.141592 / 180);
 
-	pVertex[0].x = float(-Pos->w * cos(rad) - -Pos->h * sin(rad));
-	pVertex[0].y = float(-Pos->h * cos(rad) + -Pos->w * sin(rad));
+	pVertex[0].x = float((-Pos->w / 2) * cos(rad) - (-Pos->h / 2) * sin(rad));
+	pVertex[0].y = float((-Pos->h / 2) * cos(rad) + (-Pos->w / 2) * sin(rad));
 
-	pVertex[1].x = float( Pos->w * cos(rad) - -Pos->h * sin(rad));
-	pVertex[1].y = float(-Pos->h * cos(rad) +  Pos->w * sin(rad));
+	pVertex[1].x = float((Pos->w / 2) * cos(rad) - (-Pos->h / 2) * sin(rad));
+	pVertex[1].y = float((-Pos->h / 2) * cos(rad) + (Pos->w / 2) * sin(rad));
 
-	pVertex[2].x = float( Pos->w * cos(rad) -  Pos->h * sin(rad));
-	pVertex[2].y = float( Pos->h * cos(rad) +  Pos->w * sin(rad));
+	pVertex[2].x = float((Pos->w / 2) * cos(rad) - (Pos->h / 2) * sin(rad));
+	pVertex[2].y = float((Pos->h / 2) * cos(rad) + (Pos->w / 2) * sin(rad));
 
-	pVertex[3].x = float(-Pos->w * cos(rad) -  Pos->h * sin(rad));
-	pVertex[3].y = float( Pos->h * cos(rad) + -Pos->w * sin(rad));
+	pVertex[3].x = float((-Pos->w / 2) * cos(rad) - (Pos->h / 2) * sin(rad));
+	pVertex[3].y = float((Pos->h / 2) * cos(rad) + (-Pos->w / 2) * sin(rad));
+
+
+	pVertex[0].x += Pos->x;
+	pVertex[0].y += Pos->y;
+
+	pVertex[1].x += Pos->x;
+	pVertex[1].y += Pos->y;
+
+	pVertex[2].x += Pos->x;
+	pVertex[2].y += Pos->y;
+
+	pVertex[3].x += Pos->x;
+	pVertex[3].y += Pos->y;
+
+
 }
 
 void Vertex::xySet(Position pos, CustomVertex* pVertex)

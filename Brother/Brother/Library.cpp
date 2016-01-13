@@ -129,6 +129,10 @@ void Library::xySet(Position pos, CustomVertex* pVertex)
 	m_pVertex->xySet(pos, pVertex);
 }
 
+void Library::Turn(CustomVertex* pVertex, Position* pos, double angle)
+{
+	m_pVertex->Turn(pVertex, pos, angle);
+}
 
 
 //--------------------------------------------------------------------------------------

@@ -71,12 +71,12 @@ void ClientBrother::Control()
 			Move();
 
 
-			//Debug—p
-			//Bƒ{ƒ^ƒ“‚ð‰Ÿ‚µ‚½‚ç
+#ifdef _DEBUG
 			if (m_pButtonState[1] == PAD_PUSH)
 			{
 				m_Hp = 100;
 			}
+#endif
 
 			break;
 		case BROTHER_STATE_WOODBOX:

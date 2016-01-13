@@ -2,6 +2,8 @@
 #define TEXTURE_H
 
 #define COLORMAX 255
+#define COLORMIN 0
+
 #include <d3dx9.h>
 #include <d3dx9tex.h>
 #include <map>

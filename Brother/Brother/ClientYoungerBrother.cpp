@@ -55,10 +55,12 @@ void ClientYoungerBrother::Control()
 		Action();
 		Move();
 
+#ifdef _DEBUG
 		if (m_pButtonState[1] == PAD_PUSH)
 		{
 			m_Hp = 100;
 		}
+#endif
 
 		break;
 	case TEXT:

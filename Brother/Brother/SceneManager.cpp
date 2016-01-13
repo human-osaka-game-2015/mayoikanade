@@ -16,7 +16,7 @@ SceneManager::SceneManager(Library* pLibrary,HWND hWnd) :
 	m_hWnd(hWnd)
 {
 	//ゲームの開始時のシーンはロゴに行く
-	m_pScene = new LogoScene(m_pLibrary);
+	m_pScene = new ResultScene(m_pLibrary, true);
 
 	//SetRenderState等の処理
 	m_pLibrary->RenderInit();
@@ -66,7 +66,7 @@ bool SceneManager::Control()
 		break;
 	case RESULT_SCENE:
 		delete m_pScene;
-		m_pScene = new ResultScene(m_pLibrary);
+		m_pScene = new ResultScene(m_pLibrary, m_isGameClear);
 
 		break;
 	case STAFF_SCENE:

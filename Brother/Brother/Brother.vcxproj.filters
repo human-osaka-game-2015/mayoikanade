@@ -215,6 +215,9 @@
     <Filter Include="WinMain\GameMain\SceneManager\Scene\ResultScene\ResultClock">
       <UniqueIdentifier>{9b1b703e-a67e-40c7-bda3-f6f1c6509871}</UniqueIdentifier>
     </Filter>
+    <Filter Include="WinMain\GameMain\SceneManager\Scene\ResultScene\ResultText">
+      <UniqueIdentifier>{4a60d7af-dd0a-426a-b2f9-df31f3dceff0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="D3DManager.cpp">
@@ -421,6 +424,9 @@
     <ClCompile Include="ResultClock.cpp">
       <Filter>WinMain\GameMain\SceneManager\Scene\ResultScene\ResultClock</Filter>
     </ClCompile>
+    <ClCompile Include="ResultText.cpp">
+      <Filter>WinMain\GameMain\SceneManager\Scene\ResultScene\ResultText</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="D3DManager.h">
@@ -626,6 +632,9 @@
     </ClInclude>
     <ClInclude Include="ResultClock.h">
       <Filter>WinMain\GameMain\SceneManager\Scene\ResultScene\ResultClock</Filter>
+    </ClInclude>
+    <ClInclude Include="ResultText.h">
+      <Filter>WinMain\GameMain\SceneManager\Scene\ResultScene\ResultText</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

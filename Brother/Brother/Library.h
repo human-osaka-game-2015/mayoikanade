@@ -55,6 +55,7 @@ public:
 
 	// Vertex
 	void xySet(Position pos, CustomVertex* pVertex);
+	void Library::Turn(CustomVertex* pVertex, Position* pos, double angle);
 
 	// UVSetter
 	int FileInfoSet(const char* name, int fileNum);

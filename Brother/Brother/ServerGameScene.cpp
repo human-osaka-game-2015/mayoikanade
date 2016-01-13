@@ -182,8 +182,8 @@ m_pisConnect(&m_isConnect)
 	m_pLibrary->LoadTextureEx("ConnectingWait.png", CONNECTING_WAIT, 255, 0, 255, 255);
 	m_pLibrary->LoadTextureEx("en.png", STENCIL, 255, 0, 255, 255);
 
-
 	m_pLibrary->SoundLoad("S_G_BGM.wav", GAME_BGM);
+	m_pLibrary->SoundLoad("se_maoudamashii_se_switch01.wav", GAME_SWITCH01);
 
 	//‰¹ºƒ‹[ƒv
 	m_pLibrary->SoundOperation(GAME_BGM, SOUND_LOOP);

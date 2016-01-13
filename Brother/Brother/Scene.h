@@ -1,7 +1,7 @@
 #ifndef SCENE_H
 #define SCENE_H
 
-#define FILE_INFO 7
+#define FILE_INFO 8
 #include "Library.h"
 
 enum SCENE_NUM
@@ -26,6 +26,8 @@ enum TEXTURE_NUM
 	TEX_CONNECT,
 	TEX_STAFF,
 	TEX_GAME,
+	TEX_GAMECLEAR,
+	TEX_GAMEOVER,
 	CONNECTING_WAIT,
 	CONNECTSELECT_WAIT,
 	STENCIL

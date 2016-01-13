@@ -4,7 +4,8 @@
 
 
 
-LogoScene::LogoScene(Library* pLibrary) :Scene(pLibrary)
+LogoScene::LogoScene(Library* pLibrary) :
+Scene(pLibrary)
 {
 	//timeの初期化
 	m_time = 0;
@@ -13,8 +14,8 @@ LogoScene::LogoScene(Library* pLibrary) :Scene(pLibrary)
 	m_pLibrary->FileInfoSet("file.csv", FILE_INFO);
 	m_pLibrary->VertexInfoSet("LogoTex.csv", LOGO_VERTEXINFO_MAX);
 	m_pLibrary->LoadTextureEx("LogoScene.png", TEX_LOGO, 255, 0, 255, 0);
-	//アニメーションはないから必要ない
-	
+
+
 	m_pLogoBackGround = new LogoBackGround(m_pLibrary);
 }
 

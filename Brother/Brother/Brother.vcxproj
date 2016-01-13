@@ -29,6 +29,7 @@
     <ClCompile Include="ClientModeManager.cpp" />
     <ClCompile Include="ResultBackGround.cpp" />
     <ClCompile Include="ResultClock.cpp" />
+    <ClCompile Include="ResultText.cpp" />
     <ClCompile Include="ServerBrother.cpp" />
     <ClCompile Include="Client.cpp" />
     <ClCompile Include="ClientGameScene.cpp" />
@@ -99,6 +100,7 @@
     <ClInclude Include="ClientModeManager.h" />
     <ClInclude Include="ResultBackGround.h" />
     <ClInclude Include="ResultClock.h" />
+    <ClInclude Include="ResultText.h" />
     <ClInclude Include="ServerBrother.h" />
     <ClInclude Include="Client.h" />
     <ClInclude Include="ClientGameScene.h" />
