@@ -198,9 +198,11 @@ isConnect(false)
 	m_pText->ModeManagerSet(m_pModeManager);
 	m_pGameTimeManager->ModeManagerSet(m_pModeManager);
 
+#ifdef _DEBUG
 	//Dxfont
 	D3DXCreateFont(m_pLibrary->GetDevice(), 0, 8, FW_REGULAR, NULL, FALSE, SHIFTJIS_CHARSET, OUT_DEFAULT_PRECIS, PROOF_QUALITY, FIXED_PITCH | FF_MODERN, "tahoma", &pFont);
 	
+#endif
 
 	DWORD dwID;
 	Gamemain.pGameScene = this;
@@ -224,7 +226,12 @@ ClientGameScene::~ClientGameScene()
 
 	//スレッド終了を待つ処理を追加する
 
+	Sleep(3000);
+
+
+#ifdef _DEBUG
 	pFont->Release();
+#endif
 
 	//オブジェクト
 	
@@ -292,11 +299,13 @@ void ClientGameScene::Draw()
 	m_pText->Draw();
 
 
+#ifdef _DEBUG
+
 	RECT rect = { 10, 10, 0, 0 };
 
 	pFont->DrawText(NULL, "入力チェック", -1, &rect, DT_CALCRECT, NULL);
 	pFont->DrawText(NULL, "入力チェック", -1, &rect, DT_LEFT | DT_BOTTOM, 0xff00ffff);
-
+#endif
 
 }
 

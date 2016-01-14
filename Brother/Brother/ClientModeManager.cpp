@@ -47,10 +47,10 @@ GAMEMODE_NUM ClientModeManager::CheckMode()
 		return GAMEOVER;
 	}
 
-	if (TEXT_TIME <= m_pTimeManager->GetGameTime() && m_pText->GetMessageEnd())
+	/*if (TEXT_TIME <= m_pTimeManager->GetGameTime() && m_pText->GetMessageEnd())
 	{
 		return TEXT;
-	}
+	}*/
 
 
 	return NORMAL;//‰¼

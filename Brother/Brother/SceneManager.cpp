@@ -16,7 +16,7 @@ SceneManager::SceneManager(Library* pLibrary,HWND hWnd) :
 	m_hWnd(hWnd)
 {
 	//ゲームの開始時のシーンはロゴに行く
-	m_pScene = new ResultScene(m_pLibrary, false);
+	m_pScene = new LogoScene(m_pLibrary);
 
 	//SetRenderState等の処理
 	m_pLibrary->RenderInit();

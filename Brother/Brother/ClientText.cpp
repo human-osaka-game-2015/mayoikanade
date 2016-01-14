@@ -150,7 +150,7 @@ void ClientText::TextControl()
 		if (m_message_right < LAST_LIGHT)
 		{
 			m_send_count += 1;
-			m_message_right = m_send_count*TEXT_SEND;
+			m_message_right = static_cast<float>(m_send_count*TEXT_SEND);
 		}
 		else
 		{

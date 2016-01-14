@@ -206,9 +206,11 @@ m_pisConnect(&m_isConnect)
 	m_pText->ModeManagerSet(m_pModeManager);
 	m_pGameTimeManager->ModeManagerSet(m_pModeManager);
 
+#ifdef _DEBUG
 	//Dxfont
 	D3DXCreateFont(m_pLibrary->GetDevice(), 0, 8, FW_REGULAR, NULL, FALSE, SHIFTJIS_CHARSET, OUT_DEFAULT_PRECIS, PROOF_QUALITY, FIXED_PITCH | FF_MODERN, "tahoma", &pFont);
-	
+#endif
+
 	//これは自分の勘違いだったのでつかえない
 	//IN_ADDR inaddr; 				// IPアドレスを格納する構造体
 	//char szBuf[256]; // ホスト名/IPアドレスを格納する配列
@@ -242,7 +244,11 @@ ServerGameScene::~ServerGameScene()
 	//スレッド終了を待つ処理を追加する
 
 	m_pisConnect = NULL;
+	Sleep(3000);
+
+#ifdef _DEBUG
 	pFont->Release();
+#endif
 
 	//オブジェクト
 	
@@ -324,11 +330,12 @@ void ServerGameScene::Draw()
 
 		m_pText->Draw();
 
-
+#ifdef _DEBUG
 		RECT rect = { 10, 10, 0, 0 };
 
 		pFont->DrawText(NULL, "入力チェック", -1, &rect, DT_CALCRECT, NULL);
 		pFont->DrawText(NULL, "入力チェック", -1, &rect, DT_LEFT | DT_BOTTOM, 0xff00ffff);
+#endif
 	}
 }
 
