@@ -198,6 +198,8 @@ isConnect(false)
 	m_pText->ModeManagerSet(m_pModeManager);
 	m_pGameTimeManager->ModeManagerSet(m_pModeManager);
 
+	m_pYoungerBrother->PlayerSet(m_pBrother);
+
 #ifdef _DEBUG
 	//Dxfont
 	D3DXCreateFont(m_pLibrary->GetDevice(), 0, 8, FW_REGULAR, NULL, FALSE, SHIFTJIS_CHARSET, OUT_DEFAULT_PRECIS, PROOF_QUALITY, FIXED_PITCH | FF_MODERN, "tahoma", &pFont);

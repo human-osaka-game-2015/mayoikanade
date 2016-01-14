@@ -6,6 +6,9 @@
 #define BROTHER_UI_POSX 140			//兄のUIのX座標
 #define BROTHER_UI_POSY 100			//兄のUIのY座標
 
+#define BROTHERFACEPOSX 40//兄の表情のx座標
+#define BROTHERFACEPOSY 40//兄の表情のy座標
+
 #include "ClientPlayer.h"
 
 class Library;
@@ -41,7 +44,11 @@ public:
 	void ModeManagerSet(ClientModeManager* pModeManager);
 	void PosChange(CustomVertex* pvertex);
 	void SwitchOn();
+	bool Near();
+	bool Far();
 
+	bool m_isnear;
+	bool m_isfar;
 	ClientPlayer* m_pPlayer;
 };
 

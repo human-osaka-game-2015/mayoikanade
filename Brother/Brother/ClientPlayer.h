@@ -1,6 +1,9 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
+#define NEAR_DISTANCE 200
+#define FAR_DISTANCE 700
+
 #include "Vertex.h"
 
 class Library;
@@ -50,6 +53,10 @@ public:
 	virtual void Action()  = 0;
 	virtual void Update()  = 0;
 	virtual void Init()    = 0;
+	inline float GetPositionX(){return m_Ppos.x;};
+	inline float GetPositionY(){return m_Ppos.y;};
+	inline float GetMapPositionX(){ return m_Ppos.x + m_PlayerX; };
+	inline float GetMapPositionY(){ return m_Ppos.y + m_PlayerY; };
 	inline int GetHp(){ return m_Hp; };
 	PLAYER_DIRECTION m_Direction;
 	Position m_Ppos;

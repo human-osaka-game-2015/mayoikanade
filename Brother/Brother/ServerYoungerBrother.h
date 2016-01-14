@@ -10,6 +10,9 @@
 #define YOUNGERBROTHER_UI_POSX 420
 #define YOUNGERBROTHER_UI_POSY 100
 
+#define YOUNGERBROTHERFACEX 320
+#define YOUNGERBROTHERFACEY 40
+
 
 class Library;
 class ServerModeManager;
@@ -47,6 +50,12 @@ public:
 	void PosChange(CustomVertex* pvertex);
 	void SwitchOn();
 	ServerPlayer* m_pPlayer;
+
+	bool m_isnear;
+	bool m_isfar;
+
+	bool Near();
+	bool Far();
 
 };
 

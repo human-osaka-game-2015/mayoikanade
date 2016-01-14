@@ -33,7 +33,7 @@ ClientYoungerBrother::ClientYoungerBrother(Library* pLibrary, bool* pPadState, b
 	m_pDrawPositionSetter->DrawPositionXSet(m_PlayerX);
 	m_pDrawPositionSetter->DrawPositionYSet(m_PlayerY);
 
-	m_pPlayerUI = new ClientPlayerUI(m_pLibrary, m_Hp, YOUNGERBROTHER_LIFEFRAME, YOUNGERBROTHER_LIFEBAR, YOUNGERBROTHER_UI_POSX, YOUNGERBROTHER_UI_POSY);
+	m_pPlayerUI = new ClientPlayerUI(m_pLibrary, m_Hp, YOUNGERBROTHER_LIFEFRAME, YOUNGERBROTHER_LIFEBAR, SWITCH_RED_01, SWITCH_YELLOW_01, SWITCH_BLUE_01, YOUNGERBROTHER_UI_POSX, YOUNGERBROTHER_UI_POSY, YOUNGERBROTHERFACEX, YOUNGERBROTHERFACEY);
 
 }
 
@@ -199,6 +199,7 @@ void ClientYoungerBrother::Move()
 
 			if (m_pCollisionChecker->GrassPortRaitCheck(m_Ppos.x + m_PlayerX, PlayerBottom))
 			{
+				m_Hp -= 10;
 				m_YoungerBrotherState = YOUNGERBROTHER_STATE_DOWN;
 				m_CurrentAnima = YOUNGERBROTHER_DOWN_SIDE;
 			}
@@ -239,6 +240,7 @@ void ClientYoungerBrother::Move()
 
 			if (m_pCollisionChecker->GrassPortRaitCheck(m_Ppos.x + m_PlayerX, PlayerBottom))
 			{
+				m_Hp -= 10;
 				m_YoungerBrotherState = YOUNGERBROTHER_STATE_DOWN;
 				m_CurrentAnima = YOUNGERBROTHER_DOWN_SIDE;
 			}
@@ -276,6 +278,7 @@ void ClientYoungerBrother::Move()
 
 			if (m_pCollisionChecker->GrassCheck(m_Ppos.x + m_PlayerX, PlayerBottom))
 			{
+				m_Hp -= 10;
 				m_YoungerBrotherState = YOUNGERBROTHER_STATE_DOWN;
 				m_CurrentAnima = YOUNGERBROTHER_DOWN_FRONT;
 			}
@@ -314,6 +317,7 @@ void ClientYoungerBrother::Move()
 
 			if (m_pCollisionChecker->GrassCheck(m_Ppos.x + m_PlayerX, PlayerBottom))
 			{
+				m_Hp -= 10;
 				m_YoungerBrotherState = YOUNGERBROTHER_STATE_DOWN;
 				m_CurrentAnima = YOUNGERBROTHER_DOWN_BACK;
 			}
@@ -438,7 +442,18 @@ void ClientYoungerBrother::Update()
 {
 	if ((m_pGameTimeManager->GetGameTime() % (60)) == 0)
 	{
-		m_Hp -= 3;
+		if (Far())
+		{
+			m_Hp -= 3;
+		}
+		if (Near())
+		{
+			m_Hp += 3;
+		}
+		if (m_Hp > 100)
+		{
+			m_Hp = 100;
+		}
 	}
 }
 
@@ -451,3 +466,50 @@ void ClientYoungerBrother::Init()
 {
 
 }
+
+
+bool ClientYoungerBrother::Near()
+{
+	m_isnear = false;
+	float Distance_x;
+	float Distance_y;
+
+	Distance_x = m_Ppos.x + m_PlayerX - m_pPlayer->GetPositionX();
+	Distance_y = m_Ppos.y + m_PlayerY - m_pPlayer->GetPositionY();
+
+	if ((pow(Distance_x, 2.0) + pow(Distance_y, 2.0))<pow(NEAR_DISTANCE, 2.0))
+	{
+		m_isnear = true;
+	}
+
+	return m_isnear;
+}
+
+
+bool ClientYoungerBrother::Far()
+{
+	m_isfar = false;
+	float Distance_x;
+	float Distance_y;
+
+	Distance_x = m_Ppos.x + m_PlayerX - m_pPlayer->GetPositionX();
+	Distance_y = m_Ppos.y + m_PlayerY - m_pPlayer->GetPositionY();
+
+	Distance_x = static_cast<float>(pow(Distance_x, 2.0));
+	Distance_y = static_cast<float>(pow(Distance_y, 2.0));
+
+	if ((Distance_x + Distance_y) >pow(FAR_DISTANCE, 2.0))
+	{
+		m_isfar = true;
+	}
+
+	return m_isfar;
+}
+
+
+void ClientYoungerBrother::PlayerSet(ClientPlayer* pPlayer)
+{
+	m_pPlayer = pPlayer;
+}
+
+

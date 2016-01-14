@@ -10,6 +10,8 @@
 #define YOUNGERBROTHER_UI_POSX 420
 #define YOUNGERBROTHER_UI_POSY 100
 
+#define YOUNGERBROTHERFACEX 320
+#define YOUNGERBROTHERFACEY 40
 
 class Library;
 class ClientModeManager;
@@ -46,6 +48,14 @@ public:
 	void ModeManagerSet(ClientModeManager* pModeManager);
 	void UiDraw();
 	void SwitchOn();
+
+	bool Near();
+	bool Far();
+	void PlayerSet(ClientPlayer* pPlayer);
+
+	bool m_isnear;
+	bool m_isfar;
+	ClientPlayer* m_pPlayer;
 
 
 };

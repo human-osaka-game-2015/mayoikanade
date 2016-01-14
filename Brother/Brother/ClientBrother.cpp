@@ -34,8 +34,11 @@ ClientBrother::ClientBrother(Library* pLibrary, bool* pPadState, bool* pPadOldSt
 	m_Ppos.y = 950;
 	m_Hp = BROTHER_HP;
 
+	m_isnear = false;
+	m_isfar = false;
+
 	//PlayerUI‚Ì¶¬
-	m_pPlayerUI = new ClientPlayerUI(m_pLibrary, m_Hp, BROTHER_LIFEFRAME, BROTHER_LIFEBAR, BROTHER_UI_POSX, BROTHER_UI_POSY);
+	m_pPlayerUI = new ClientPlayerUI(m_pLibrary, m_Hp, BROTHER_LIFEFRAME, BROTHER_LIFEBAR, SWITCH_RED_02, SWITCH_YELLOW_02, SWITCH_BLUE_02, BROTHER_UI_POSX, BROTHER_UI_POSY, BROTHERFACEPOSX, BROTHERFACEPOSY);
 }
 
 ClientBrother::~ClientBrother()
@@ -549,12 +552,65 @@ void ClientBrother::Action()
 	}
 }
 
+
 void ClientBrother::Update()
 {
 	if ((m_pGameTimeManager->GetGameTime() % (60)) == 0)
 	{
-		m_Hp -= 4;
+		if (Far())
+		{
+			m_Hp -= 4;
+		}
+		if (Near())
+		{
+			m_Hp += 4;
+		}
+		if (m_Hp > 100)
+		{
+			m_Hp = 100;
+		}
 	}
+}
+
+
+bool ClientBrother::Near()
+{
+	m_isnear = false;
+	float Distance_x;
+	float Distance_y;
+
+	Distance_x = m_Ppos.x - m_pPlayer->GetMapPositionX();
+	Distance_y = m_Ppos.y - m_pPlayer->GetMapPositionY();
+
+	Distance_x = static_cast<float>(pow(Distance_x, 2.0));
+	Distance_y = static_cast<float>(pow(Distance_y, 2.0));
+
+	if ((Distance_x + Distance_y)<pow(NEAR_DISTANCE, 2.0))
+	{
+		m_isnear = true;
+	}
+	return m_isnear;
+}
+
+
+bool ClientBrother::Far()
+{
+	m_isfar = false;
+	float Distance_x;
+	float Distance_y;
+
+	Distance_x = m_Ppos.x - m_pPlayer->GetMapPositionX();
+	Distance_y = m_Ppos.y - m_pPlayer->GetMapPositionY();
+
+	Distance_x = static_cast<float>(pow(Distance_x, 2.0));
+	Distance_y = static_cast<float>(pow(Distance_y, 2.0));
+
+	if ((Distance_x + Distance_y)>pow(FAR_DISTANCE, 2.0))
+	{
+		m_isfar = true;
+	}
+
+	return m_isfar;
 }
 
 

@@ -3,8 +3,11 @@
 
 #define BROTHERSPEAD 6				//兄の移動速度
 #define BROTHERHP 100				//兄の最大HP
-#define BROTHERUIPOSX 140			//兄のUIのX座標
-#define BROTHERUIPOSY 100			//兄のUIのY座標
+#define BROTHER_UI_POSX 140			//兄のUIのX座標
+#define BROTHER_UI_POSY 100			//兄のUIのY座標
+
+#define BROTHERFACEPOSX 40//兄の表情のx座標
+#define BROTHERFACEPOSY 40//兄の表情のy座標
 
 #include "ServerPlayer.h"
 
@@ -40,6 +43,15 @@ public:
 	void UiDraw();
 	void ModeManagerSet(ServerModeManager* pModeManager);
 	void SwitchOn();
+
+	bool Near();
+	bool Far();
+
+	bool m_isnear;
+	bool m_isfar;
+
+	void PlayerSet(ServerPlayer* pPlayer);
+	ServerPlayer* m_pPlayer;
 };
 
 #endif

@@ -8,9 +8,9 @@
 #include "ServerGameScene.h"
 
 
-ServerBrother::ServerBrother(Library* pLibrary, bool* pPadState, bool* pPadOldState, PADSTATE* pButtonState, ServerCollisionChecker* pCollisionChecker, ServerDrawPositionSetter* pDrawPositionSetter, ServerGameTimeManager* pGameTimeManager)
-	:ServerPlayer(pLibrary, pPadState, pPadOldState, pButtonState, pCollisionChecker, pDrawPositionSetter, pGameTimeManager),
-	m_BrotherState(BROTHER_STATE_NORMAL)
+ServerBrother::ServerBrother(Library* pLibrary, bool* pPadState, bool* pPadOldState, PADSTATE* pButtonState, ServerCollisionChecker* pCollisionChecker, ServerDrawPositionSetter* pDrawPositionSetter, ServerGameTimeManager* pGameTimeManager):
+ServerPlayer(pLibrary, pPadState, pPadOldState, pButtonState, pCollisionChecker, pDrawPositionSetter, pGameTimeManager),
+m_BrotherState(BROTHER_STATE_NORMAL)
 {
 	m_pLibrary->InitAnima(BROTHER_WAIT_FRONT);
 	m_pLibrary->InitAnima(BROTHER_WAIT_SIDE);
@@ -38,7 +38,7 @@ ServerBrother::ServerBrother(Library* pLibrary, bool* pPadState, bool* pPadOldSt
 	m_pDrawPositionSetter->DrawPositionYSet(m_PlayerY);
 
 	//PlayerUI‚Ì¶¬
-	m_pPlayerUI = new ServerPlayerUI(m_pLibrary, m_Hp, BROTHER_LIFEFRAME, BROTHER_LIFEBAR, BROTHERUIPOSX, BROTHERUIPOSY);
+	m_pPlayerUI = new ServerPlayerUI(m_pLibrary, m_Hp, BROTHER_LIFEFRAME, BROTHER_LIFEBAR, SWITCH_RED_02, SWITCH_YELLOW_02, SWITCH_BLUE_02, BROTHER_UI_POSX, BROTHER_UI_POSY, BROTHERFACEPOSX, BROTHERFACEPOSY);
 }
 
 ServerBrother::~ServerBrother()
@@ -547,7 +547,18 @@ void ServerBrother::Update()
 {
 	if ((m_pGameTimeManager->GetGameTime() % (60)) == 0)
 	{
-		m_Hp -= 4;
+		if (Far())
+		{
+			m_Hp -= 4;
+		}
+		if (Near())
+		{
+			m_Hp += 4;
+		}
+		if (m_Hp > 100)
+		{
+			m_Hp = 100;
+		}
 	}
 }
 
@@ -588,4 +599,50 @@ void ServerBrother::SwitchOn()
 void ServerBrother::Init()
 {
 	
+}
+
+
+
+
+bool ServerBrother::Near()
+{
+	m_isnear = false;
+	float Distance_x;
+	float Distance_y;
+
+	Distance_x = m_Ppos.x + m_PlayerX - m_pPlayer->GetPositionX();
+	Distance_y = m_Ppos.y + m_PlayerY - m_pPlayer->GetPositionY();
+
+	if ((pow(Distance_x, 2.0) + pow(Distance_y, 2.0))<pow(NEAR_DISTANCE, 2.0))
+	{
+		m_isnear = true;
+	}
+
+	return m_isnear;
+}
+
+
+bool ServerBrother::Far()
+{
+	m_isfar = false;
+	float Distance_x;
+	float Distance_y;
+
+	Distance_x = m_Ppos.x + m_PlayerX - m_pPlayer->GetPositionX();
+	Distance_y = m_Ppos.y + m_PlayerY - m_pPlayer->GetPositionY();
+
+	Distance_x = static_cast<float>(pow(Distance_x, 2.0));
+	Distance_y = static_cast<float>(pow(Distance_y, 2.0));
+
+	if ((Distance_x + Distance_y) >pow(FAR_DISTANCE, 2.0))
+	{
+		m_isfar = true;
+	}
+
+	return m_isfar;
+}
+
+void ServerBrother::PlayerSet(ServerPlayer* pPlayer)
+{
+	m_pPlayer = pPlayer;
 }
