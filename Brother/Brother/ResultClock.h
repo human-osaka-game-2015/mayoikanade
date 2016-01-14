@@ -35,6 +35,9 @@ public:
 	~ResultClock();
 	void Control();
 	void Draw();
+#ifdef _DEBUG
+	void ClockControl(int Time);
+#endif
 
 };
 

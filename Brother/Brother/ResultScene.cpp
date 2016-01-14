@@ -57,6 +57,17 @@ SCENE_NUM ResultScene::Control()
 	m_pResultClock->Control();
 	m_pResultText->Control();
 
+#ifdef _DEBUG
+	static int Time = 0;
+
+	if (m_ButtonState[1] == PAD_PUSH)
+	{
+		Time++;
+	}
+	m_pResultClock->ClockControl(Time);
+
+#endif
+
 	if (m_ButtonState[0] == PAD_PUSH)
 	{
 		m_NextScene = LOGO_SCENE;
@@ -76,4 +87,8 @@ void ResultScene::PadCheck()
 {
 	m_pLibrary->Check(GAMEPAD1);
 	m_ButtonState[0] = m_pLibrary->GetButtonState(GAMEPAD_A, GAMEPAD1);
+
+#ifdef _DEBUG
+	m_ButtonState[1] = m_pLibrary->GetButtonState(GAMEPAD_B, GAMEPAD1);
+#endif
 }

@@ -22,22 +22,20 @@ m_FadeTime(RESULTCLOCK_INIT_FADE_TIME)
 	m_Clock03Pos.x = RESULTCLOCK03_POS_X;
 	m_Clock03Pos.y = RESULTCLOCK03_POS_Y;
 
-
 	if (m_isGameClear == true)
 	{
 		m_pLibrary->MakePosition(GAMECLEAR_CLOCK_SHORT_HAND, &m_ClockShortHandPos);
 		m_pLibrary->MakePosition(GAMECLEAR_CLOCK_LONG_HAND, &m_ClockLongHandPos);
 
-		m_ClockShortHandPos.x = 1080;
-		m_ClockShortHandPos.y = 524;
-		m_ClockLongHandPos.x = 1080;
-		m_ClockLongHandPos.y = 524;
-	
+		m_ClockShortHandPos.x = 1079;
+		m_ClockShortHandPos.y = 523;
+		m_ClockLongHandPos.x = 1079;
+		m_ClockLongHandPos.y = 523;
 	}
 	else
 	{
-		m_pLibrary->MakePosition(GAMECLEAR_CLOCK_SHORT_HAND, &m_ClockShortHandPos);
-		m_pLibrary->MakePosition(GAMECLEAR_CLOCK_LONG_HAND, &m_ClockLongHandPos);
+		m_pLibrary->MakePosition(GAMEOVER_CLOCK_SHORT_HAND, &m_ClockShortHandPos);
+		m_pLibrary->MakePosition(GAMEOVER_CLOCK_LONG_HAND, &m_ClockLongHandPos);
 
 		m_ClockShortHandPos.x = 640;
 		m_ClockShortHandPos.y = 270;
@@ -83,7 +81,6 @@ void ResultClock::Draw()
 		CustomVertex ClockShortHand[SQUARE_VERTEX];
 		CustomVertex ClockLongHand [SQUARE_VERTEX];
 
-
 		m_pLibrary->MakeVertex(GAMECLEAR_CLOCK01, ClockVertex01);
 		m_pLibrary->MakeVertex(GAMECLEAR_CLOCK02, ClockVertex02);
 		m_pLibrary->MakeVertex(GAMECLEAR_CLOCK03, ClockVertex03);
@@ -96,7 +93,6 @@ void ResultClock::Draw()
 		m_pLibrary->xySet(m_ClockShortHandPos, ClockShortHand);
 		m_pLibrary->xySet(m_ClockLongHandPos, ClockLongHand);
 
-
 		for (int i = 0; i < SQUARE_VERTEX; i++)
 		{
 			ClockVertex01[i].color = D3DCOLOR_ARGB(m_alpha, COLORMAX, COLORMAX, COLORMAX);
@@ -104,7 +100,6 @@ void ResultClock::Draw()
 			ClockVertex03[i].color = D3DCOLOR_ARGB(m_alpha, COLORMAX, COLORMAX, COLORMAX);
 			ClockShortHand[i].color = D3DCOLOR_ARGB(m_alpha, COLORMAX, COLORMAX, COLORMAX);
 			ClockLongHand[i].color = D3DCOLOR_ARGB(m_alpha, COLORMAX, COLORMAX, COLORMAX);
-
 		}
 		
 		int ClockLongHandAngle = m_GameTime / 600 * 3;
@@ -113,13 +108,11 @@ void ResultClock::Draw()
 		m_pLibrary->Turn(ClockLongHand, &m_ClockLongHandPos, ClockLongHandAngle);
 		m_pLibrary->Turn(ClockShortHand, &m_ClockShortHandPos, ClockShortHandAngle);
 
-
 		m_pLibrary->DrawTexture(TEX_GAMECLEAR, ClockVertex01);
 		m_pLibrary->DrawTexture(TEX_GAMECLEAR, ClockVertex02);
 		m_pLibrary->DrawTexture(TEX_GAMECLEAR, ClockVertex03);
 		m_pLibrary->DrawTexture(TEX_GAMECLEAR, ClockShortHand);
 		m_pLibrary->DrawTexture(TEX_GAMECLEAR, ClockLongHand);
-
 	}
 	else
 	{
@@ -138,9 +131,23 @@ void ResultClock::Draw()
 			ClockLongHand[i].color = D3DCOLOR_ARGB(m_alpha, COLORMAX, COLORMAX, COLORMAX);
 		}
 
+		int ClockLongHandAngle = m_GameTime / 600 * 3;
+		int ClockShortHandAngle = m_GameTime / 36000 * 15;
+
+		m_pLibrary->Turn(ClockLongHand, &m_ClockLongHandPos, ClockLongHandAngle);
+		m_pLibrary->Turn(ClockShortHand, &m_ClockShortHandPos, ClockShortHandAngle);
+
+
 		m_pLibrary->DrawTexture(TEX_GAMEOVER, ClockShortHand);
 		m_pLibrary->DrawTexture(TEX_GAMEOVER, ClockLongHand);
 	}
 }
 
+#ifdef _DEBUG
 
+void ResultClock::ClockControl(int Time)
+{
+	m_GameTime += Time;
+}
+
+#endif
