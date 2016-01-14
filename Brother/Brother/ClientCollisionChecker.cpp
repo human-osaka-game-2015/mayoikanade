@@ -70,6 +70,18 @@ bool ClientCollisionChecker::HitCheck(float x, float y)
 	case WOOD_04:
 		return true;
 		break;
+	case WOOD_YELLOW_01:
+		return true;
+		break;
+	case WOOD_YELLOW_02:
+		return true;
+		break;
+	case WOOD_YELLOW_03:
+		return true;
+		break;
+	case WOOD_YELLOW_04:
+		return true;
+		break;
 	case WOODBOX:
 		return true;
 		break;

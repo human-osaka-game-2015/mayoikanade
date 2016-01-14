@@ -5,9 +5,10 @@
 #include "Library.h"
 
 
+
 ClientMapGimmick::ClientMapGimmick(Library* pLibrary) :m_pLibrary(pLibrary)
 {
-	CsvRead("gimmick.csv");
+	CsvRead("Stage1_Gimmick.csv");
 }
 
 ClientMapGimmick::~ClientMapGimmick()
@@ -681,9 +682,6 @@ bool ClientMapGimmick::WoodBoxHoleCheck(float x, float y)
 	return false;
 
 }
-
-
-
 
 
 

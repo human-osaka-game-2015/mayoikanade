@@ -28,7 +28,7 @@ ClientYoungerBrother::ClientYoungerBrother(Library* pLibrary, bool* pPadState, b
 	m_Ppos.y = 350;
 	m_Hp = YOUNGERBROTHER_HP;
 	m_PlayerX += 120;
-	m_PlayerY += 600;
+	m_PlayerY += 700;
 
 	m_pDrawPositionSetter->DrawPositionXSet(m_PlayerX);
 	m_pDrawPositionSetter->DrawPositionYSet(m_PlayerY);

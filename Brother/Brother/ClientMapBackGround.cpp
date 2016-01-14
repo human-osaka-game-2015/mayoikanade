@@ -3,9 +3,10 @@
 #include "Library.h"
 
 
+
 ClientMapBackGround::ClientMapBackGround(Library* pLibrary) :m_pLibrary(pLibrary)
 {
-	CsvRead("alpha_back .csv");
+	CsvRead("Stage1_Background.csv");
 }
 
 ClientMapBackGround::~ClientMapBackGround()
@@ -141,7 +142,6 @@ void ClientMapBackGround::MapTex_XY_Set(float Posx, float Posy)
 		}
 	}
 }
-
 
 void ClientMapBackGround::Control()
 {

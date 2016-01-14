@@ -3,9 +3,10 @@
 #include "Library.h"
 
 
+
 ClientMapObject::ClientMapObject(Library* pLibrary) :m_pLibrary(pLibrary)
 {
-	CsvRead("alpha_obj.csv");
+	CsvRead("Stage1_Object.csv");
 }
 
 ClientMapObject::~ClientMapObject()
@@ -51,7 +52,6 @@ void ClientMapObject::MapTex_UV_Set(float Posx, float Posy)
 		count_y = 0;
 	}
 
-
 	//ï`âÊóÃàÊÇãÅÇﬂÇƒë„ì¸ ó]ï™Ç…àÍÇ¬êÊÇ‡ì«ÇÒÇ≈ÇÈÇÃÇ≈64ë´ÇµÇƒÇ¢ÇÈ
 	int ScreenRight = int((Posx + SCREEN_SIZEX + 64) / MAPTIP_SIZE);
 	int ScreenBottom = int((Posy + SCREEN_SIZEY + 64) / MAPTIP_SIZE);
@@ -65,7 +65,6 @@ void ClientMapObject::MapTex_UV_Set(float Posx, float Posy)
 		ScreenBottom = MAP_HEIGHT;
 	}
 
-
 	for (int i = count_y; i <= ScreenBottom; i++)
 	{
 		for (int j = count_x; j <= ScreenRight; j++)
@@ -75,21 +74,29 @@ void ClientMapObject::MapTex_UV_Set(float Posx, float Posy)
 			case WOOD_01:
 				m_pLibrary->MakeVertex(WOOD_01, m_MapObject_Tex[i][j]);
 				break;
-
 			case WOOD_02:
 				m_pLibrary->MakeVertex(WOOD_02, m_MapObject_Tex[i][j]);
 				break;
-
 			case WOOD_03:
 				m_pLibrary->MakeVertex(WOOD_03, m_MapObject_Tex[i][j]);
 				break;
-
 			case WOOD_04:
 				m_pLibrary->MakeVertex(WOOD_04, m_MapObject_Tex[i][j]);
 				break;
 			case WOODBOX:
 				m_pLibrary->MakeVertex(WOODBOX, m_MapObject_Tex[i][j]);
-
+				break;
+			case WOOD_YELLOW_01:
+				m_pLibrary->MakeVertex(WOOD_YELLOW_01, m_MapObject_Tex[i][j]);
+				break;
+			case WOOD_YELLOW_02:
+				m_pLibrary->MakeVertex(WOOD_YELLOW_02, m_MapObject_Tex[i][j]);
+				break;
+			case WOOD_YELLOW_03:
+				m_pLibrary->MakeVertex(WOOD_YELLOW_03, m_MapObject_Tex[i][j]);
+				break;
+			case WOOD_YELLOW_04:
+				m_pLibrary->MakeVertex(WOOD_YELLOW_04, m_MapObject_Tex[i][j]);
 				break;
 			default:
 				for (int x = 0; x < VERTEXNUM; x++)
@@ -114,15 +121,14 @@ int ClientMapObject::ObjectCheck(float x, float y)
 	arrayx = int(x / 64);
 	arrayy = int(y / 64);
 
-
 	return m_ObjectData[arrayy][arrayx];
 }
 
+
 void ClientMapObject::MapTex_XY_Set(float Posx, float Posy)
 {
-	int count_x = int((Posx - 64) / MAPTIP_SIZE);
-	int count_y = int((Posy - 64) / MAPTIP_SIZE);
-
+	int count_x = static_cast<int>((Posx - 64) / MAPTIP_SIZE);
+	int count_y = static_cast<int>((Posy - 64) / MAPTIP_SIZE);
 
 	if (count_x < 1)
 	{
@@ -133,10 +139,9 @@ void ClientMapObject::MapTex_XY_Set(float Posx, float Posy)
 		count_y = 1;
 	}
 
-
 	//ï`âÊóÃàÊÇãÅÇﬂÇƒë„ì¸ ó]ï™Ç…àÍÇ¬êÊÇ‡ì«ÇÒÇ≈ÇÈÇÃÇ≈64ë´ÇµÇƒÇ¢ÇÈ
-	int ScreenRight = int((Posx + SCREEN_SIZEX + 64) / MAPTIP_SIZE);
-	int ScreenBottom = int((Posy + SCREEN_SIZEY + 64) / MAPTIP_SIZE);
+	int ScreenRight  = static_cast<int>((Posx + SCREEN_SIZEX + 64) / MAPTIP_SIZE);
+	int ScreenBottom = static_cast<int>((Posy + SCREEN_SIZEY + 64) / MAPTIP_SIZE);
 
 	if (ScreenRight > MAP_WIDTH)
 	{
@@ -153,10 +158,10 @@ void ClientMapObject::MapTex_XY_Set(float Posx, float Posy)
 		for (int j = count_x; j <= ScreenRight; j++)
 		{
 			//ìñÇΩÇËîªíËópÇÃXYÇì¸ÇÍÇÈ
-			m_MapObject_Pos[i - 1][j - 1].x = (float)(MAPTIP_SIZE * j) - MAPTIP_DEFAULT_POSX;
-			m_MapObject_Pos[i - 1][j - 1].y = (float)(MAPTIP_SIZE * i) - MAPTIP_DEFAULT_POSY;
-			m_MapObject_Pos[i - 1][j - 1].w = (float)MAPTIP_SIZE;
-			m_MapObject_Pos[i - 1][j - 1].h = (float)MAPTIP_SIZE;
+			m_MapObject_Pos[i - 1][j - 1].x  = static_cast<float>((MAPTIP_SIZE * j) - MAPTIP_DEFAULT_POSX);
+			m_MapObject_Pos[i - 1][j - 1].y  = static_cast<float>((MAPTIP_SIZE * i) - MAPTIP_DEFAULT_POSY);
+			m_MapObject_Pos[i - 1][j - 1].w  = static_cast<float>(MAPTIP_SIZE);
+			m_MapObject_Pos[i - 1][j - 1].h  = static_cast<float>(MAPTIP_SIZE);
 			m_MapObject_Pos[i - 1][j - 1].x -= Posx;
 			m_MapObject_Pos[i - 1][j - 1].y -= Posy;
 
@@ -165,10 +170,12 @@ void ClientMapObject::MapTex_XY_Set(float Posx, float Posy)
 	}
 }
 
+
 void ClientMapObject::Control()
 {
 
 }
+
 
 void ClientMapObject::Draw(float DrawPosX, float DrawPosY)
 {
@@ -184,10 +191,9 @@ void ClientMapObject::Draw(float DrawPosX, float DrawPosY)
 		count_y = 0;
 	}
 
-
 	//ï`âÊóÃàÊÇãÅÇﬂÇƒë„ì¸ ó]ï™Ç…àÍÇ¬êÊÇ‡ì«ÇÒÇ≈ÇÈÇÃÇ≈64ë´ÇµÇƒÇ¢ÇÈ
-	int ScreenRight = int((DrawPosX + SCREEN_SIZEX + 64) / MAPTIP_SIZE);
-	int ScreenBottom = int((DrawPosY + SCREEN_SIZEY + 64) / MAPTIP_SIZE);
+	int ScreenRight  = static_cast<int>((DrawPosX + SCREEN_SIZEX + 64) / MAPTIP_SIZE);
+	int ScreenBottom = static_cast<int>((DrawPosY + SCREEN_SIZEY + 64) / MAPTIP_SIZE);
 
 	if (ScreenRight > MAP_WIDTH)
 	{
@@ -215,13 +221,11 @@ bool ClientMapObject::WoodBoxCheck(float x, float y)
 	arrayx = int(x / 64);
 	arrayy = int(y / 64);
 
-
 	if (m_ObjectData[arrayy][arrayx] == WOODBOX)
 	{
 		m_ObjectData[arrayy][arrayx] = 0;
 		return true;
 	}
-
 
 	return false;
 }
@@ -233,7 +237,6 @@ bool ClientMapObject::WoodBoxSet(float x, float y)
 
 	arrayx = int(x / 64);
 	arrayy = int(y / 64);
-
 
 	if (m_ObjectData[arrayy][arrayx] == 0)
 	{
