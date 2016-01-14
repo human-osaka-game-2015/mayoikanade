@@ -164,7 +164,41 @@ void ClientBrother::Draw()
 
 		break;
 	case GAMEOVEREFFECT:
+		switch (m_BrotherState)
+		{
+		case BROTHER_STATE_NORMAL:
 
+			Tex_Id = m_pLibrary->AnimaControl(m_CurrentAnima);
+			m_pLibrary->MakePosition(Tex_Id, &m_Ppos);
+			m_pLibrary->MakeVertex(Tex_Id, player);
+			m_pLibrary->xySet(m_Ppos, player);
+			PosChange(player);
+
+			if (m_Direction == PLAYER_RIGHT)
+			{
+				m_pLibrary->UVReversal(player, LEFT_AND_RIGHT);
+			}
+
+			m_pLibrary->DrawTexture(TEX_GAME, player);
+
+			break;
+		case BROTHER_STATE_WOODBOX:
+
+			Tex_Id = m_pLibrary->AnimaControl(m_CurrentAnima);
+			m_pLibrary->MakePosition(Tex_Id, &m_Ppos);
+			m_pLibrary->MakeVertex(Tex_Id, player);
+			m_pLibrary->xySet(m_Ppos, player);
+			PosChange(player);
+
+			if (m_Direction == PLAYER_RIGHT)
+			{
+				m_pLibrary->UVReversal(player, LEFT_AND_RIGHT);
+			}
+
+			m_pLibrary->DrawTexture(TEX_GAME, player);
+
+			break;
+		}
 		break;
 	case GAMEOVER:
 

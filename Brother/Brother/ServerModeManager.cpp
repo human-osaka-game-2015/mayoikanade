@@ -39,7 +39,7 @@ GAMEMODE_NUM ServerModeManager::CheckMode()
 	//Brother‚ÌHp‚ª‚O‚¾‚Á‚½‚ç
 	if (m_pBrother->GetHp() <= 0)
 	{
-		return GAMEOVER;		//‚»‚Ì‚¤‚¿GAMEOVEREFFECT‚É‚·‚é
+		return GAMEOVEREFFECT;		//‚»‚Ì‚¤‚¿GAMEOVEREFFECT‚É‚·‚é
 	}
 
 	if (m_pShadow->ShadowCheck() == true)

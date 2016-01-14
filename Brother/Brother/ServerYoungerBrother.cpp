@@ -117,7 +117,18 @@ void ServerYoungerBrother::Draw()
 
 		break;
 	case GAMEOVEREFFECT:
+		Tex_Id = m_pLibrary->AnimaControl(m_CurrentAnima);
+		m_pLibrary->MakePosition(Tex_Id, &m_Ppos);
+		m_pLibrary->MakeVertex(Tex_Id, player);
+		m_pLibrary->xySet(m_Ppos, player);
+		PosChange(player);
 
+		if (m_Direction == PLAYER_RIGHT)
+		{
+			m_pLibrary->UVReversal(player, LEFT_AND_RIGHT);
+		}
+
+		m_pLibrary->DrawTexture(TEX_GAME, player);
 		break;
 	case GAMEOVER:
 

@@ -37,15 +37,16 @@ GAMEMODE_NUM ClientModeManager::CheckMode()
 {
 	
 	//Brother‚ÌHp‚ª‚O‚¾‚Á‚½‚ç
-	if (m_pBrother->GetHp() <= 0)
+	if (m_pBrother->GetHp() <= 0 && m_pShadow->ShadowCheck() == false)
 	{
-		return GAMEOVER;		//‚»‚Ì‚¤‚¿GAMEOVEREFFECT‚É‚·‚é
+		return GAMEOVEREFFECT;		//‚»‚Ì‚¤‚¿GAMEOVEREFFECT‚É‚·‚é
 	}
 
 	if (m_pShadow->ShadowCheck() == true)
 	{
 		return GAMEOVER;
 	}
+
 	if (TEXT_TIME <= m_pTimeManager->GetGameTime() && m_pText->GetMessageEnd())
 	{
 		return TEXT;

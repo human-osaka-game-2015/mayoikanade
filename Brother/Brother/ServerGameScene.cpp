@@ -188,7 +188,7 @@ m_pisConnect(&m_isConnect)
 	//‰¹ºƒ‹[ƒv
 	m_pLibrary->SoundOperation(GAME_BGM, SOUND_LOOP);
 
-	m_pSceneChangeListener	= new SceneChangeListener(&m_NextScene);
+	m_pSceneChangeListener = new SceneChangeListener(&m_NextScene,m_pisGameClear);
 	m_pMap					= new ServerMap(m_pLibrary);
 	m_pCollisionChecker		= new ServerCollisionChecker(m_pMap);
 	m_pDrawPositionSetter = new ServerDrawPositionSetter(m_pMap);

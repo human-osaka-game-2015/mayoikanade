@@ -42,6 +42,15 @@ void ClientShadow::Control()
 		break;
 	case GAMEOVEREFFECT:
 
+		m_Pos.h -= 9;
+		m_Pos.w -= 9;
+
+		if (m_Pos.h <= 0 || m_Pos.w <= 0)
+		{
+			m_Pos.h = 0;
+			m_Pos.w = 0;
+		}
+
 		break;
 	case GAMEOVER:
 
