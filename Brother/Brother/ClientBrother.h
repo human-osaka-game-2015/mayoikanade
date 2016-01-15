@@ -9,7 +9,7 @@
 #define BROTHERFACEPOSX 40//兄の表情のx座標
 #define BROTHERFACEPOSY 40//兄の表情のy座標
 
-#define BROTHERHIT_Y 40
+#define BROTHERHIT_Y 64
 #define BROTHERHIT_X 5
 
 #include "ClientPlayer.h"

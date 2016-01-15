@@ -4,12 +4,13 @@
 #include "ServerGameTimeManager.h"
 #include "ServerModeManager.h"
 
+
 ServerShadow::ServerShadow(Library* pLibrary, ServerGameTimeManager* pGameTimeManager) :m_pLibrary(pLibrary), m_GameTimeManager(pGameTimeManager)
 {
 	m_Pos.x = 600;
 	m_Pos.y = 350;
-	m_Pos.h = 2000;
-	m_Pos.w = 2000;
+	m_Pos.h = 6000;
+	m_Pos.w = 6000;
 
 }
 

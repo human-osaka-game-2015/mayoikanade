@@ -270,11 +270,11 @@ void ServerBrother::Move()
 		{
 			m_PlayerX += BROTHERSPEAD;
 		}
-		else if (m_pCollisionChecker->HitCheck(PlayerLeft, (m_Ppos.y + (m_Ppos.h / 2) + m_PlayerY + BROTHERHIT_Y)))
+		else if (m_pCollisionChecker->HitCheck(PlayerLeft, (m_Ppos.y + (m_Ppos.h / 2) + m_PlayerY)))
 		{
 			m_PlayerX += BROTHERSPEAD;
 		}
-		else if (m_pCollisionChecker->HitCheck(PlayerLeft, (m_Ppos.y + (m_Ppos.h / 2 / 2)) + m_PlayerY + BROTHERHIT_Y))
+		else if (m_pCollisionChecker->HitCheck(PlayerLeft, (m_Ppos.y + (m_Ppos.h / 2 / 2)) + m_PlayerY))
 		{
 			m_PlayerX += BROTHERSPEAD;
 		}
@@ -316,11 +316,11 @@ void ServerBrother::Move()
 		{
 			m_PlayerX -= BROTHERSPEAD;
 		}
-		else if (m_pCollisionChecker->HitCheck(PlayerRight, (m_Ppos.y + (m_Ppos.h / 2)) + m_PlayerY + BROTHERHIT_Y))
+		else if (m_pCollisionChecker->HitCheck(PlayerRight, (m_Ppos.y + (m_Ppos.h / 2)) + m_PlayerY))
 		{
 			m_PlayerX -= BROTHERSPEAD;
 		}
-		else if (m_pCollisionChecker->HitCheck(PlayerRight, (m_Ppos.y + (m_Ppos.h / 2 / 2)) + m_PlayerY + BROTHERHIT_Y))
+		else if (m_pCollisionChecker->HitCheck(PlayerRight, (m_Ppos.y + (m_Ppos.h / 2 / 2)) + m_PlayerY))
 		{
 			m_PlayerX -= BROTHERSPEAD;
 		}
@@ -390,15 +390,15 @@ void ServerBrother::Move()
 		float PlayerTop = m_Ppos.y - (m_Ppos.h / 2) + m_PlayerY;
 
 
-		if (m_pCollisionChecker->HitCheck(m_Ppos.x + m_PlayerX, PlayerTop + 64))
+		if (m_pCollisionChecker->HitCheck(m_Ppos.x + m_PlayerX, PlayerTop + BROTHERHIT_Y))
 		{
 			m_PlayerY += BROTHERSPEAD;
 		}
-		else if (m_pCollisionChecker->HitCheck((m_Ppos.x + (m_Ppos.w / 2)) + m_PlayerX, PlayerTop + 64))
+		else if (m_pCollisionChecker->HitCheck((m_Ppos.x + (m_Ppos.w / 2)) + m_PlayerX, PlayerTop + BROTHERHIT_Y))
 		{
 			m_PlayerY += BROTHERSPEAD;
 		}
-		else if (m_pCollisionChecker->HitCheck((m_Ppos.x - (m_Ppos.w / 2)) + m_PlayerX, PlayerTop + 64))
+		else if (m_pCollisionChecker->HitCheck((m_Ppos.x - (m_Ppos.w / 2)) + m_PlayerX, PlayerTop + BROTHERHIT_Y))
 		{
 			m_PlayerY += BROTHERSPEAD;
 		}

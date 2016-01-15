@@ -91,6 +91,18 @@ void ServerMapObject::MapTex_UV_Set(float Posx, float Posy)
 				m_pLibrary->MakeVertex(WOODBOX, m_MapObject_Tex[i][j]);
 
 				break;
+			case WOOD_YELLOW_01:
+				m_pLibrary->MakeVertex(WOOD_YELLOW_01, m_MapObject_Tex[i][j]);
+				break;
+			case WOOD_YELLOW_02:
+				m_pLibrary->MakeVertex(WOOD_YELLOW_02, m_MapObject_Tex[i][j]);
+				break;
+			case WOOD_YELLOW_03:
+				m_pLibrary->MakeVertex(WOOD_YELLOW_03, m_MapObject_Tex[i][j]);
+				break;
+			case WOOD_YELLOW_04:
+				m_pLibrary->MakeVertex(WOOD_YELLOW_04, m_MapObject_Tex[i][j]);
+				break;
 			default :
 				for (int x = 0; x < VERTEXNUM; x++)
 				{
