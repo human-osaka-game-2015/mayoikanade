@@ -59,8 +59,8 @@ void ServerPlayerUI::Draw()
 
 
 	//ライフバーとフレームの描画
-	m_pLibrary->DrawTexture(TEX_GAME, frameUi);
-	m_pLibrary->DrawTexture(TEX_GAME, barUi);
+	m_pLibrary->DrawTexture(TEX_UI, frameUi);
+	m_pLibrary->DrawTexture(TEX_UI, barUi);
 
 	//体力が多い時
 	if (m_PlayerHp >= 75)
@@ -68,7 +68,7 @@ void ServerPlayerUI::Draw()
 		m_pLibrary->MakePosition(m_face1Id, &m_FacialExpression);
 		m_pLibrary->MakeVertex(m_face1Id, faceUi);
 		m_pLibrary->xySet(m_FacialExpression, faceUi);
-		m_pLibrary->DrawTexture(TEX_GAME, faceUi);
+		m_pLibrary->DrawTexture(TEX_UI, faceUi);
 	}
 	//体力が中量の時
 	else if (m_PlayerHp >= 25)
@@ -76,7 +76,7 @@ void ServerPlayerUI::Draw()
 		m_pLibrary->MakePosition(m_face2Id, &m_FacialExpression);
 		m_pLibrary->MakeVertex(m_face2Id, faceUi);
 		m_pLibrary->xySet(m_FacialExpression, faceUi);
-		m_pLibrary->DrawTexture(TEX_GAME, faceUi);
+		m_pLibrary->DrawTexture(TEX_UI, faceUi);
 	}
 	//体力が少ない時
 	else
@@ -84,6 +84,6 @@ void ServerPlayerUI::Draw()
 		m_pLibrary->MakePosition(m_face3Id, &m_FacialExpression);
 		m_pLibrary->MakeVertex(m_face3Id, faceUi);
 		m_pLibrary->xySet(m_FacialExpression, faceUi);
-		m_pLibrary->DrawTexture(TEX_GAME, faceUi);
+		m_pLibrary->DrawTexture(TEX_UI, faceUi);
 	}
 }

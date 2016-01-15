@@ -3,9 +3,20 @@
 #include "Library.h"
 #include "GameScene.h"
 
-ClientText::ClientText(Library* pLibrary, bool* pPadState, bool* pPadOldState, PADSTATE* pButtonState) 
-:m_pLibrary(pLibrary), m_darkness_alpha(0), m_brother_alpha(0), m_textbox_alpha(0), m_message_count(0), m_message_old(0), m_send_count(0),
-m_message_UV(0), m_message_right(0.0f), m_text_is_unsolved(true), m_all_alpha_is_max(false), m_text_is_end(false), m_message_wait(false),
+ClientText::ClientText(Library* pLibrary, bool* pPadState, bool* pPadOldState, PADSTATE* pButtonState) :
+m_pLibrary(pLibrary), 
+m_darkness_alpha(0), 
+m_brother_alpha(0), 
+m_textbox_alpha(0), 
+m_message_count(0), 
+m_message_old(0), 
+m_send_count(0),
+m_message_UV(0), 
+m_message_right(0.0f),
+m_text_is_unsolved(true),
+m_all_alpha_is_max(false), 
+m_text_is_end(false), 
+m_message_wait(false),
 m_pPadState(pPadState),
 m_pPadOldState(pPadOldState),
 m_pButtonState(pButtonState)
@@ -220,25 +231,25 @@ void ClientText::TextDraw()
 		message_o[i].color = D3DCOLOR_ARGB(COLORMAX, COLORMAX, COLORMAX, COLORMAX);
 	}
 
-	m_pLibrary->DrawTexture(TEX_GAME, darkness);
-	m_pLibrary->DrawTexture(TEX_GAME, brother_a);
-	m_pLibrary->DrawTexture(TEX_GAME, brother_o);
-	m_pLibrary->DrawTexture(TEX_GAME, namebox_a);
-	m_pLibrary->DrawTexture(TEX_GAME, namebox_o);
-	m_pLibrary->DrawTexture(TEX_GAME, textbox);
+	m_pLibrary->DrawTexture(TEX_UI, darkness);
+	m_pLibrary->DrawTexture(TEX_UI, brother_a);
+	m_pLibrary->DrawTexture(TEX_UI, brother_o);
+	m_pLibrary->DrawTexture(TEX_UI, namebox_a);
+	m_pLibrary->DrawTexture(TEX_UI, namebox_o);
+	m_pLibrary->DrawTexture(TEX_UI, textbox);
 
 	switch (m_message_count)
 	{
 	case 1:
 		message_o[1].tu = message_o[2].tu = message_o[0].tu + ((message_o[1].tu - message_o[0].tu)*m_send_count / 60 / TEXT_SPEED);
 		message_o[1].x = message_o[2].x = message_o[0].x + m_message_right;
-		m_pLibrary->DrawTexture(TEX_GAME, message_o);
+		m_pLibrary->DrawTexture(TEX_UI, message_o);
 		break;
 
 	case 2:
 		message_a[1].tu = message_a[2].tu = message_a[0].tu + ((message_a[1].tu - message_a[0].tu)*m_send_count / 60 / TEXT_SPEED);
 		message_a[1].x = message_a[2].x = message_a[0].x + m_message_right;
-		m_pLibrary->DrawTexture(TEX_GAME, message_a);
+		m_pLibrary->DrawTexture(TEX_UI, message_a);
 		break;
 
 	case 3:
@@ -246,7 +257,7 @@ void ClientText::TextDraw()
 		{
 			message_a[i].color = D3DCOLOR_ARGB(m_textbox_alpha, COLORMAX, COLORMAX, COLORMAX);
 		}
-		m_pLibrary->DrawTexture(TEX_GAME, message_a);
+		m_pLibrary->DrawTexture(TEX_UI, message_a);
 	default:
 
 		break;

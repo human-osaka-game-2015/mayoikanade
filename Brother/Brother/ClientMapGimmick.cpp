@@ -510,41 +510,31 @@ void ClientMapGimmick::MapTex_UV_Set(float Posx, float Posy)
 			{
 			case SWITCH_RED_01:
 				m_pLibrary->MakeVertex(SWITCH_RED_01, m_MapGimmick_Tex[i][j]);
-
 				break;
 			case SWITCH_RED_02:
 				m_pLibrary->MakeVertex(SWITCH_RED_02, m_MapGimmick_Tex[i][j]);
-
 				break;
 			case SWITCH_BLUE_01:
 				m_pLibrary->MakeVertex(SWITCH_BLUE_01, m_MapGimmick_Tex[i][j]);
-
 				break;
 			case SWITCH_BLUE_02:
 				m_pLibrary->MakeVertex(SWITCH_BLUE_02, m_MapGimmick_Tex[i][j]);
-
 				break;
 			case SWITCH_YELLOW_01:
 				m_pLibrary->MakeVertex(SWITCH_YELLOW_01, m_MapGimmick_Tex[i][j]);
-
 				break;
 			case SWITCH_YELLOW_02:
 				m_pLibrary->MakeVertex(SWITCH_YELLOW_02, m_MapGimmick_Tex[i][j]);
-
 				break;
 			case GATEPOST_01:
 				m_pLibrary->MakeVertex(GATEPOST_01, m_MapGimmick_Tex[i][j]);
-
 				break;
 			case GATEPOST_02:
 				m_pLibrary->MakeVertex(GATEPOST_02, m_MapGimmick_Tex[i][j]);
 				m_pLibrary->UVReversal(m_MapGimmick_Tex[i][j], LEFT_AND_RIGHT);
-
-
 				break;
 			case GATE_01:
 				m_pLibrary->MakeVertex(GATE_01, m_MapGimmick_Tex[i][j]);
-
 				break;
 			case GATE_02:
 				m_pLibrary->MakeVertex(GATE_02, m_MapGimmick_Tex[i][j]);
@@ -552,35 +542,30 @@ void ClientMapGimmick::MapTex_UV_Set(float Posx, float Posy)
 				break;
 			case GATEPOST_PORTRAIT_01:
 				m_pLibrary->MakeVertex(GATEPOST_PORTRAIT_01, m_MapGimmick_Tex[i][j]);
-
 				break;
 			case GATEPOST_PORTRAIT_02:
 				m_pLibrary->MakeVertex(GATEPOST_PORTRAIT_02, m_MapGimmick_Tex[i][j]);
-
 				break;
 			case GATE_PORTRAIT_01:
 				m_pLibrary->MakeVertex(GATE_PORTRAIT_01, m_MapGimmick_Tex[i][j]);
-
 				break;
 			case GATE_PORTRAIT_02:
 				m_pLibrary->MakeVertex(GATE_PORTRAIT_02, m_MapGimmick_Tex[i][j]);
-
 				break;
 			case HOLE_01:
 				m_pLibrary->MakeVertex(HOLE_01, m_MapGimmick_Tex[i][j]);
-
 				break;
 			case HOLE_02:
 				m_pLibrary->MakeVertex(HOLE_02, m_MapGimmick_Tex[i][j]);
-
 				break;
 			case GRASS_KNOT:
 				m_pLibrary->MakeVertex(GRASS_KNOT, m_MapGimmick_Tex[i][j]);
-
 				break;
 			case GRASS_KNOT_PORTRAIT:
 				m_pLibrary->MakeVertex(GRASS_KNOT_PORTRAIT, m_MapGimmick_Tex[i][j]);
-
+				break;
+			case APPLE:
+				m_pLibrary->MakeVertex(APPLE, m_MapGimmick_Tex[i][j]);
 				break;
 			default:
 				for (int x = 0; x < VERTEXNUM; x++)
@@ -718,4 +703,20 @@ bool ClientMapGimmick::GrassPortRaitCheck(float x, float y)
 }
 
 
+
+bool ClientMapGimmick::AppleCheck(float x, float y)
+{
+	int arrayx = 0, arrayy = 0;
+	arrayx = int(x / 64);
+	arrayy = int(y / 64);
+
+	if (m_GimmickData[arrayy][arrayx] / 10000 == APPLE)
+	{
+		m_GimmickData[arrayy][arrayx] = 0;
+		return true;
+	}
+
+	return false;
+
+}
 

@@ -170,6 +170,7 @@ isConnect(false)
 	m_pLibrary->VertexInfoSet("GameTex.csv", GAME_VERTEXINFO_MAX);
 	m_pLibrary->AnimaInfoSet("Gameanimation.csv", GAMEANIMA_MAX);
 	m_pLibrary->LoadTextureEx("GameScene.png", TEX_GAME, 255, 0, 255, 0);
+	m_pLibrary->LoadTextureEx("Ui.png", TEX_UI, 255, 0, 255, 0);
 	m_pLibrary->LoadTextureEx("en.png", STENCIL, 255, 0, 255, 255);
 
 

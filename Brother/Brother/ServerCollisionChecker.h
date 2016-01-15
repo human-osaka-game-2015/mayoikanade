@@ -19,7 +19,7 @@ public:
 
 	bool GrassPortRaitCheck(float x, float y);
 	bool GrassCheck(float x, float y);
-
+	bool AppleCheck(float x, float y);
 };
 
 

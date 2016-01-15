@@ -21,9 +21,6 @@ bool ServerCollisionChecker::HitCheck(float x,float y)
 {
 	int Chip;
 
-	
-
-
 	Chip = m_pMap->GimmickCheck(x, y);
 	switch (Chip)
 	{
@@ -125,3 +122,7 @@ bool ServerCollisionChecker::GrassPortRaitCheck(float x, float y)
 	return m_pMap->GrassPortRaitCheck(x, y);
 }
 
+bool ServerCollisionChecker::AppleCheck(float x, float y)
+{
+	return m_pMap->AppleCheck(x, y);
+}

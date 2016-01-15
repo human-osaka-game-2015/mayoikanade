@@ -38,7 +38,7 @@ enum MAP_ID
 class ServerMap
 {
 private:
-	Library*		m_pLibrary;
+	Library*				m_pLibrary;
 	ServerMapObject*		m_pMapObject;
 	ServerMapGimmick*		m_pMapGimmick;
 	ServerMapBackGround*	m_pMapBackGround;
@@ -63,6 +63,8 @@ public:
 
 	bool GrassPortRaitCheck(float x, float y);
 	bool GrassCheck(float x, float y);
+
+	bool AppleCheck(float x, float y);
 
 	float	m_DrawPositionX;
 	float	m_DrawPositionY;

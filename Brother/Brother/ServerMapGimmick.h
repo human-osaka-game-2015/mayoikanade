@@ -12,10 +12,10 @@ class ServerGate;
 class ServerMapGimmick
 {
 private:
-	Library*				m_pLibrary;
-	CustomVertex			m_MapGimmick_Tex[MAP_HEIGHT][MAP_WIDTH][4];
-	Position				m_MapGimmick_Pos[MAP_HEIGHT][MAP_WIDTH];
-	std::vector<ServerSwitch>		m_Switch;
+	Library*					m_pLibrary;
+	CustomVertex				m_MapGimmick_Tex[MAP_HEIGHT][MAP_WIDTH][4];
+	Position					m_MapGimmick_Pos[MAP_HEIGHT][MAP_WIDTH];
+	std::vector<ServerSwitch>	m_Switch;
 	std::vector<ServerGate>		m_Gate;
 
 public:
@@ -35,6 +35,7 @@ public:
 	bool WoodBoxHoleCheck(float x, float y);
 	bool GrassPortRaitCheck(float x,float y);
 	bool GrassCheck(float x, float y);
+	bool AppleCheck(float x, float y);
 
 	int	m_GimmickData[MAP_HEIGHT][MAP_WIDTH];
 

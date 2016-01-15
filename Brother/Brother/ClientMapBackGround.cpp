@@ -76,10 +76,44 @@ void ClientMapBackGround::MapTex_UV_Set(float Posx, float Posy)
 			case GRASS_01:
 				m_pLibrary->MakeVertex(GRASS_01, m_MapBackGround_Tex[i][j]);
 				break;
-
+			case GRASS_02:
+				m_pLibrary->MakeVertex(GRASS_02, m_MapBackGround_Tex[i][j]);
+				break;
+			case GRASS_03:
+				m_pLibrary->MakeVertex(GRASS_03, m_MapBackGround_Tex[i][j]);
+				break;
+			case GRASS_04:
+				m_pLibrary->MakeVertex(GRASS_04, m_MapBackGround_Tex[i][j]);
+				break;
+			case GRASS_05:
+				m_pLibrary->MakeVertex(GRASS_05, m_MapBackGround_Tex[i][j]);
+				break;
+			case GRASS_06:
+				m_pLibrary->MakeVertex(GRASS_06, m_MapBackGround_Tex[i][j]);
+				break;
+			case GRASS_07:
+				m_pLibrary->MakeVertex(GRASS_07, m_MapBackGround_Tex[i][j]);
+				break;
+			case GRASS_08:
+				m_pLibrary->MakeVertex(GRASS_08, m_MapBackGround_Tex[i][j]);
+				break;
+			case GRASS_09:
+				m_pLibrary->MakeVertex(GRASS_09, m_MapBackGround_Tex[i][j]);
+				break;
+			case GRASS_10:
+				m_pLibrary->MakeVertex(GRASS_10, m_MapBackGround_Tex[i][j]);
+				break;
+			case GRASS_11:
+				m_pLibrary->MakeVertex(GRASS_11, m_MapBackGround_Tex[i][j]);
+				break;
+			case GRASS_12:
+				m_pLibrary->MakeVertex(GRASS_12, m_MapBackGround_Tex[i][j]);
+				break;
+			case GRASS_13:
+				m_pLibrary->MakeVertex(GRASS_13, m_MapBackGround_Tex[i][j]);
+				break;
 			case GROUND_01:
 				m_pLibrary->MakeVertex(GROUND_01, m_MapBackGround_Tex[i][j]);
-
 				break;
 			default:
 				for (int x = 0; x < VERTEXNUM; x++)

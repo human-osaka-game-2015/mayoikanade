@@ -177,4 +177,8 @@ bool ServerMap::GrassCheck(float x, float y)
 	return m_pMapGimmick->GrassCheck(x, y);
 }
 
+bool ServerMap::AppleCheck(float x, float y)
+{
+	return m_pMapGimmick->AppleCheck(x, y);
+}
 

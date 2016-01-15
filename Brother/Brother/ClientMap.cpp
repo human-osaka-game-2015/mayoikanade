@@ -178,3 +178,7 @@ bool ClientMap::GrassPortRaitCheck(float x, float y)
 }
 
 
+bool ClientMap::AppleCheck(float x, float y)
+{
+	return m_pMapGimmick->AppleCheck(x, y);
+}

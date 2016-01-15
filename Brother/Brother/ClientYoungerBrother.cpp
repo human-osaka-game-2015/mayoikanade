@@ -328,6 +328,10 @@ void ClientYoungerBrother::Move()
 			
 		}
 
+		if (m_pCollisionChecker->AppleCheck(m_Ppos.x + m_PlayerX, m_Ppos.y + m_PlayerY))
+		{
+			m_Hp += 20;
+		}
 
 		break;
 	case YOUNGERBROTHER_STATE_DOWN:

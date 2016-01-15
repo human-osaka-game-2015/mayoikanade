@@ -127,3 +127,7 @@ bool ClientCollisionChecker::GrassPortRaitCheck(float x, float y)
 }
 
 
+bool ClientCollisionChecker::AppleCheck(float x, float y)
+{
+	return m_pMap->AppleCheck(x, y);
+}

@@ -344,6 +344,11 @@ void ServerYoungerBrother::Move()
 		}
 
 
+		if (m_pCollisionChecker->AppleCheck(m_Ppos.x, m_Ppos.y))
+		{
+			m_Hp += 20;
+		}
+
 
 
 		break;
