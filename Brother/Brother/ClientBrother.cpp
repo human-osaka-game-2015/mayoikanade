@@ -285,7 +285,7 @@ void ClientBrother::Move()
 		float PlayerLeft = m_Ppos.x - (m_Ppos.w / 2);
 
 		//ƒvƒŒƒCƒ„[‚Ì¶‘¤‚Ì‚ ‚½‚è”»’è
-		if (m_pCollisionChecker->HitCheck(PlayerLeft, m_Ppos.y+BROTHERHIT_Y))
+		if (m_pCollisionChecker->HitCheck(PlayerLeft, m_Ppos.y - (m_Ppos.h / 2) + BROTHERHIT_Y))
 		{
 			m_Ppos.x += BROTHER_SPEAD;
 		}
@@ -327,7 +327,7 @@ void ClientBrother::Move()
 
 		float PlayerRight = m_Ppos.x + (m_Ppos.w / 2);
 
-		if (m_pCollisionChecker->HitCheck(PlayerRight, m_Ppos.y + BROTHERHIT_Y))
+		if (m_pCollisionChecker->HitCheck(PlayerRight, m_Ppos.y - (m_Ppos.h / 2) + BROTHERHIT_Y))
 		{
 			m_Ppos.x -= BROTHER_SPEAD;
 		}

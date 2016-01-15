@@ -53,6 +53,7 @@ public:
 	bool m_isnear;
 	bool m_isfar;
 
+
 	void PlayerSet(ServerPlayer* pPlayer);
 	ServerPlayer* m_pPlayer;
 };
