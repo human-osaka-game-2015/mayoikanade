@@ -5,7 +5,7 @@
 
 ServerMapObject::ServerMapObject(Library* pLibrary) :m_pLibrary(pLibrary)
 {
-	CsvRead("alpha_obj.csv");
+	CsvRead("Stage1_Object.csv");
 }
 
 ServerMapObject::~ServerMapObject()

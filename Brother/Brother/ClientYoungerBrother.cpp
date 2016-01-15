@@ -177,7 +177,7 @@ void ClientYoungerBrother::Move()
 			float PlayerBottom = m_Ppos.y + (m_Ppos.h / 2) + m_PlayerY;
 
 			//ƒvƒŒƒCƒ„[‚Ì¶‘¤‚Ì‚ ‚½‚è”»’è
-			if (m_pCollisionChecker->HitCheck(PlayerLeft, m_Ppos.y + m_PlayerY))
+			if (m_pCollisionChecker->HitCheck(PlayerLeft, m_Ppos.y + m_PlayerY ))
 			{
 				m_PlayerX += YOUNGERBROTHER_SPEAD;
 			}

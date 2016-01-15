@@ -7,7 +7,7 @@
 
 ServerMapGimmick::ServerMapGimmick(Library* pLibrary) :m_pLibrary(pLibrary)
 {
-	CsvRead("gimmick.csv");
+	CsvRead("Stage1_Gimmick.csv");
 }
 
 ServerMapGimmick::~ServerMapGimmick()

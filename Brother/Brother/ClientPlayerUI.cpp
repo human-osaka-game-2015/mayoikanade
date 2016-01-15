@@ -59,8 +59,8 @@ void ClientPlayerUI::Draw()
 
 
 	//ライフバーとフレームの描画
-	m_pLibrary->DrawTexture(TEX_UI, frameUi);
 	m_pLibrary->DrawTexture(TEX_UI, barUi);
+	m_pLibrary->DrawTexture(TEX_UI, frameUi);
 
 	//体力が多い時
 	if (m_PlayerHp >= 75)

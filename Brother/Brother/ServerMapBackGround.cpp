@@ -5,7 +5,7 @@
 
 ServerMapBackGround::ServerMapBackGround(Library* pLibrary) :m_pLibrary(pLibrary)
 {
-	CsvRead("alpha_back .csv");
+	CsvRead("Stage1_Background.csv");
 }
 
 ServerMapBackGround::~ServerMapBackGround()
