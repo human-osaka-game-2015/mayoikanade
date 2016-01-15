@@ -185,7 +185,7 @@ void ServerYoungerBrother::Move()
 
 
 			//ƒvƒŒƒCƒ„[‚Ì¶‘¤‚Ì‚ ‚½‚è”»’è
-			if (m_pCollisionChecker->HitCheck(PlayerLeft, m_Ppos.y))
+			if (m_pCollisionChecker->HitCheck(PlayerLeft, m_Ppos.y + YOUNGERBROTHERHITY))
 			{
 				m_Ppos.x += YOUNGERBROTHER_SPEAD;
 			}
@@ -230,11 +230,11 @@ void ServerYoungerBrother::Move()
 			float PlayerBottom = m_Ppos.y + (m_Ppos.h / 2);
 
 
-			if (m_pCollisionChecker->HitCheck(PlayerRight, m_Ppos.y))
+			if (m_pCollisionChecker->HitCheck(PlayerRight, m_Ppos.y + YOUNGERBROTHERHITY))
 			{
 				m_Ppos.x -= YOUNGERBROTHER_SPEAD;
 			}
-			else if (m_pCollisionChecker->HitCheck(PlayerRight, (m_Ppos.y + (m_Ppos.h / 2))))
+			else if (m_pCollisionChecker->HitCheck(PlayerRight, (m_Ppos.y + (m_Ppos.h / 2)) ))
 			{
 				m_Ppos.x -= YOUNGERBROTHER_SPEAD;
 			}
@@ -277,11 +277,11 @@ void ServerYoungerBrother::Move()
 			{
 				m_Ppos.y -= YOUNGERBROTHER_SPEAD;
 			}
-			else if (m_pCollisionChecker->HitCheck((m_Ppos.x + (m_Ppos.w / 2)), PlayerBottom))
+			else if (m_pCollisionChecker->HitCheck((m_Ppos.x + (m_Ppos.w / 2)) - YOUNGERBROTHERHITX, PlayerBottom))
 			{
 				m_Ppos.y -= YOUNGERBROTHER_SPEAD;
 			}
-			else if (m_pCollisionChecker->HitCheck((m_Ppos.x - (m_Ppos.w / 2)), PlayerBottom))
+			else if (m_pCollisionChecker->HitCheck((m_Ppos.x - (m_Ppos.w / 2)) + YOUNGERBROTHERHITX, PlayerBottom))
 			{
 				m_Ppos.y -= YOUNGERBROTHER_SPEAD;
 			}
@@ -317,11 +317,11 @@ void ServerYoungerBrother::Move()
 			{
 				m_Ppos.y += YOUNGERBROTHER_SPEAD;
 			}
-			else if (m_pCollisionChecker->HitCheck((m_Ppos.x + (m_Ppos.w / 2)), PlayerTop + 64))
+			else if (m_pCollisionChecker->HitCheck((m_Ppos.x + (m_Ppos.w / 2)) - YOUNGERBROTHERHITX, PlayerTop + 64))
 			{
 				m_Ppos.y += YOUNGERBROTHER_SPEAD;
 			}
-			else if (m_pCollisionChecker->HitCheck((m_Ppos.x - (m_Ppos.w / 2)), PlayerTop + 64))
+			else if (m_pCollisionChecker->HitCheck((m_Ppos.x - (m_Ppos.w / 2)) + YOUNGERBROTHERHITX, PlayerTop + 64))
 			{
 				m_Ppos.y += YOUNGERBROTHER_SPEAD;
 			}

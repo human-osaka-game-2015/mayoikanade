@@ -13,6 +13,10 @@
 #define YOUNGERBROTHERFACEX 320
 #define YOUNGERBROTHERFACEY 40
 
+#define YOUNGERBROTHERHITX 10 
+#define YOUNGERBROTHERHITY 10
+
+
 class Library;
 class ClientModeManager;
 class ClientCollisionChecker;

@@ -91,11 +91,13 @@ void ClientBrother::Control()
 			Move();
 
 
+#ifdef _DEBUG
 			//Debug用
 			if (m_pButtonState[1] == PAD_PUSH)
 			{
 				m_Hp = 100;
 			}
+#endif
 
 			break;
 		}
@@ -283,15 +285,15 @@ void ClientBrother::Move()
 		float PlayerLeft = m_Ppos.x - (m_Ppos.w / 2);
 
 		//プレイヤーの左側のあたり判定
-		if (m_pCollisionChecker->HitCheck(PlayerLeft, m_Ppos.y))
+		if (m_pCollisionChecker->HitCheck(PlayerLeft, m_Ppos.y+BROTHERHIT_Y))
 		{
 			m_Ppos.x += BROTHER_SPEAD;
 		}
-		else if (m_pCollisionChecker->HitCheck(PlayerLeft, (m_Ppos.y + (m_Ppos.h / 2))))
+		else if (m_pCollisionChecker->HitCheck(PlayerLeft, (m_Ppos.y + (m_Ppos.h / 2)) + BROTHERHIT_Y))
 		{
 			m_Ppos.x += BROTHER_SPEAD;
 		}
-		else if (m_pCollisionChecker->HitCheck(PlayerLeft, (m_Ppos.y + (m_Ppos.h / 2 / 2))))
+		else if (m_pCollisionChecker->HitCheck(PlayerLeft, (m_Ppos.y + (m_Ppos.h / 2 / 2)) + BROTHERHIT_Y))
 		{
 			m_Ppos.x += BROTHER_SPEAD;
 		}
@@ -325,15 +327,15 @@ void ClientBrother::Move()
 
 		float PlayerRight = m_Ppos.x + (m_Ppos.w / 2);
 
-		if (m_pCollisionChecker->HitCheck(PlayerRight, m_Ppos.y))
+		if (m_pCollisionChecker->HitCheck(PlayerRight, m_Ppos.y + BROTHERHIT_Y))
 		{
 			m_Ppos.x -= BROTHER_SPEAD;
 		}
-		else if (m_pCollisionChecker->HitCheck(PlayerRight, (m_Ppos.y + (m_Ppos.h / 2))))
+		else if (m_pCollisionChecker->HitCheck(PlayerRight, (m_Ppos.y + (m_Ppos.h / 2)) + BROTHERHIT_Y))
 		{
 			m_Ppos.x -= BROTHER_SPEAD;
 		}
-		else if (m_pCollisionChecker->HitCheck(PlayerRight, (m_Ppos.y + (m_Ppos.h / 2 / 2))))
+		else if (m_pCollisionChecker->HitCheck(PlayerRight, (m_Ppos.y + (m_Ppos.h / 2 / 2)) + BROTHERHIT_Y))
 		{
 			m_Ppos.x -= BROTHER_SPEAD;
 		}

@@ -9,6 +9,9 @@
 #define BROTHERFACEPOSX 40//兄の表情のx座標
 #define BROTHERFACEPOSY 40//兄の表情のy座標
 
+#define BROTHERHIT_Y 20
+#define BROTHERHIT_X 5
+
 #include "ServerPlayer.h"
 
 class Library;

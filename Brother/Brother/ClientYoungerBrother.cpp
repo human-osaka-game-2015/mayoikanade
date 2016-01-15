@@ -86,7 +86,7 @@ void ClientYoungerBrother::Draw()
 
 	switch (m_CurrentMode)
 	{
-	case NORMAL:				//NormalControlŠÖ”‚Å‚àì‚Á‚½‚Ù‚¤‚ªŒ©‚â‚·‚­‚È‚é‚Ì‚©‚à
+	case NORMAL://NormalControlŠÖ”‚Å‚àì‚Á‚½‚Ù‚¤‚ªŒ©‚â‚·‚­‚È‚é‚Ì‚©‚à
 
 		Tex_Id = m_pLibrary->AnimaControl(m_CurrentAnima);
 		m_pLibrary->MakePosition(Tex_Id, &m_Ppos);
@@ -177,7 +177,7 @@ void ClientYoungerBrother::Move()
 			float PlayerBottom = m_Ppos.y + (m_Ppos.h / 2) + m_PlayerY;
 
 			//ƒvƒŒƒCƒ„[‚Ì¶‘¤‚Ì‚ ‚½‚è”»’è
-			if (m_pCollisionChecker->HitCheck(PlayerLeft, m_Ppos.y + m_PlayerY ))
+			if (m_pCollisionChecker->HitCheck(PlayerLeft, m_Ppos.y + m_PlayerY +YOUNGERBROTHERHITY))
 			{
 				m_PlayerX += YOUNGERBROTHER_SPEAD;
 			}
@@ -185,7 +185,7 @@ void ClientYoungerBrother::Move()
 			{
 				m_PlayerX += YOUNGERBROTHER_SPEAD;
 			}
-			else if (m_pCollisionChecker->HitCheck(PlayerLeft, (m_Ppos.y + (m_Ppos.h / 2 / 2)) + m_PlayerY))
+			else if (m_pCollisionChecker->HitCheck(PlayerLeft, (m_Ppos.y + (m_Ppos.h / 2 / 2) + m_PlayerY)))
 			{
 				m_PlayerX += YOUNGERBROTHER_SPEAD;
 			}
@@ -220,11 +220,11 @@ void ClientYoungerBrother::Move()
 			float PlayerRight = m_Ppos.x + (m_Ppos.w / 2) + m_PlayerX;
 			float PlayerBottom = m_Ppos.y + (m_Ppos.h / 2) + m_PlayerY;
 
-			if (m_pCollisionChecker->HitCheck(PlayerRight, m_Ppos.y + m_PlayerY))
+			if (m_pCollisionChecker->HitCheck(PlayerRight, m_Ppos.y + m_PlayerY + YOUNGERBROTHERHITY))
 			{
 				m_PlayerX -= YOUNGERBROTHER_SPEAD;
 			}
-			else if (m_pCollisionChecker->HitCheck(PlayerRight, (m_Ppos.y + (m_Ppos.h / 2)) + m_PlayerY))
+			else if (m_pCollisionChecker->HitCheck(PlayerRight, (m_Ppos.y + (m_Ppos.h / 2)) + m_PlayerY ))
 			{
 				m_PlayerX -= YOUNGERBROTHER_SPEAD;
 			}
@@ -263,11 +263,11 @@ void ClientYoungerBrother::Move()
 			{
 				m_PlayerY -= YOUNGERBROTHER_SPEAD;
 			}
-			else if (m_pCollisionChecker->HitCheck((m_Ppos.x + (m_Ppos.w / 2)) + m_PlayerX, PlayerBottom))
+			else if (m_pCollisionChecker->HitCheck((m_Ppos.x + (m_Ppos.w / 2)) + m_PlayerX - YOUNGERBROTHERHITX, PlayerBottom))
 			{
 				m_PlayerY -= YOUNGERBROTHER_SPEAD;
 			}
-			else if (m_pCollisionChecker->HitCheck((m_Ppos.x - (m_Ppos.w / 2)) + m_PlayerX, PlayerBottom))
+			else if (m_pCollisionChecker->HitCheck((m_Ppos.x - (m_Ppos.w / 2)) + m_PlayerX + YOUNGERBROTHERHITX, PlayerBottom))
 			{
 				m_PlayerY -= YOUNGERBROTHER_SPEAD;
 			}
@@ -302,11 +302,11 @@ void ClientYoungerBrother::Move()
 			{
 				m_PlayerY += YOUNGERBROTHER_SPEAD;
 			}
-			else if (m_pCollisionChecker->HitCheck((m_Ppos.x + (m_Ppos.w / 2)) + m_PlayerX, PlayerTop + 64))
+			else if (m_pCollisionChecker->HitCheck((m_Ppos.x + (m_Ppos.w / 2)) + m_PlayerX - YOUNGERBROTHERHITX, PlayerTop + 64))
 			{
 				m_PlayerY += YOUNGERBROTHER_SPEAD;
 			}
-			else if (m_pCollisionChecker->HitCheck((m_Ppos.x - (m_Ppos.w / 2)) + m_PlayerX, PlayerTop + 64))
+			else if (m_pCollisionChecker->HitCheck((m_Ppos.x - (m_Ppos.w / 2)) + m_PlayerX + YOUNGERBROTHERHITX, PlayerTop + 64))
 			{
 				m_PlayerY += YOUNGERBROTHER_SPEAD;
 			}
