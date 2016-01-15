@@ -298,15 +298,15 @@ void ClientYoungerBrother::Move()
 			float PlayerBottom = m_Ppos.y + (m_Ppos.h / 2) + m_PlayerY;
 
 
-			if (m_pCollisionChecker->HitCheck(m_Ppos.x + m_PlayerX, PlayerTop + 64))
+			if (m_pCollisionChecker->HitCheck(m_Ppos.x + m_PlayerX, PlayerTop + +YOUNGERBROTHERHITY))
 			{
 				m_PlayerY += YOUNGERBROTHER_SPEAD;
 			}
-			else if (m_pCollisionChecker->HitCheck((m_Ppos.x + (m_Ppos.w / 2)) + m_PlayerX - YOUNGERBROTHERHITX, PlayerTop + 64))
+			else if (m_pCollisionChecker->HitCheck((m_Ppos.x + (m_Ppos.w / 2)) + m_PlayerX - YOUNGERBROTHERHITX, PlayerTop + YOUNGERBROTHERHITY))
 			{
 				m_PlayerY += YOUNGERBROTHER_SPEAD;
 			}
-			else if (m_pCollisionChecker->HitCheck((m_Ppos.x - (m_Ppos.w / 2)) + m_PlayerX + YOUNGERBROTHERHITX, PlayerTop + 64))
+			else if (m_pCollisionChecker->HitCheck((m_Ppos.x - (m_Ppos.w / 2)) + m_PlayerX + YOUNGERBROTHERHITX, PlayerTop + YOUNGERBROTHERHITY))
 			{
 				m_PlayerY += YOUNGERBROTHER_SPEAD;
 			}

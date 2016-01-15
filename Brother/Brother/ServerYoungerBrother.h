@@ -14,7 +14,7 @@
 #define YOUNGERBROTHERFACEY 40
 
 #define YOUNGERBROTHERHITX 10 
-#define YOUNGERBROTHERHITY 20
+#define YOUNGERBROTHERHITY 80
 
 class Library;
 class ServerModeManager;
