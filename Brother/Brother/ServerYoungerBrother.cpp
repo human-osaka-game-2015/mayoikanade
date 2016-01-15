@@ -28,8 +28,8 @@ ServerYoungerBrother::ServerYoungerBrother(Library* pLibrary, bool* pPadState, b
 	m_Direction = PLAYER_FRONT;
 	m_CurrentAnima = BROTHER_WAIT_FRONT;
 
-	m_Ppos.x = 720;
-	m_Ppos.y = 950;
+	m_Ppos.x = 450;
+	m_Ppos.y = 550;
 	m_Hp = YOUNGERBROTHER_HP;
 
 	

@@ -32,8 +32,8 @@ m_BrotherState(BROTHER_STATE_NORMAL)
 	m_Ppos.x = 600;
 	m_Ppos.y = 350;
 	m_Hp = BROTHERHP;
-	m_PlayerX += 200;
-	m_PlayerY += 600;
+	m_PlayerX += -300;
+	m_PlayerY += 200;
 	m_pDrawPositionSetter->DrawPositionXSet(m_PlayerX);
 	m_pDrawPositionSetter->DrawPositionYSet(m_PlayerY);
 
