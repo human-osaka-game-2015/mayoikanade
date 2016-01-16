@@ -74,8 +74,10 @@ public:
 	bool m_isGameScene;
 	bool isConnect;
 
-	ClientSendData m_SendData;
-	ClientRecvData m_RecvData;
+	//ClientSendData m_SendData;
+	//ClientRecvData m_RecvData;
+	char CData[6];
+	char SData[6];
 
 	//ƒeƒXƒg
 	LPD3DXFONT pFont;

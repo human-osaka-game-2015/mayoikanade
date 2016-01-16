@@ -47,21 +47,21 @@ DWORD WINAPI ClientGameScene::Connect(LPVOID Gamemain)
 
 	while (pGameScene->m_isGameScene)
 	{
-		SyncNow = timeGetTime();
+		//SyncNow = timeGetTime();
 
-		Sleep(1);
-		if (pGameScene->isConnect == true && SyncNow - SyncOld >= 1000 / 60)
+		//Sleep(1);
+		if (pGameScene->isConnect == true/* && SyncNow - SyncOld >= 1000 / 60*/)
 		{
 			
 			for (int i = 0; i < 4; i++)
 			{
 				if (pGameScene->m_PadState[i] == true)
 				{
-					pGameScene->m_SendData.CData[i] = 1;
+					pGameScene->CData[i] = 1;
 				}
 				else
 				{
-					pGameScene->m_SendData.CData[i] = 0;
+					pGameScene->CData[i] = 0;
 				}
 			}
 
@@ -70,23 +70,23 @@ DWORD WINAPI ClientGameScene::Connect(LPVOID Gamemain)
 			{
 				if (pGameScene->m_ButtonState[i - 4] == PAD_PUSH || pGameScene->m_ButtonState[i - 4] == PAD_ON)
 				{
-					pGameScene->m_SendData.CData[i] = 1;
+					pGameScene->CData[i] = 1;
 				}
 				else if (pGameScene->m_ButtonState[i - 4] == PAD_RELEASE || pGameScene->m_ButtonState[i - 4] == PAD_OFF)
 				{
-					pGameScene->m_SendData.CData[i] = 0;
+					pGameScene->CData[i] = 0;
 				}
 			}
 			//位置を同期させるためだけど今は、うまく行ってないので
 			//pGameScene->GetYoungBrotherPos(&pGameScene->m_SendData.Yposx,&pGameScene->m_SendData.Yposy);
 
-			char* sendptr = reinterpret_cast<char*>(&pGameScene->m_SendData);
-			BrotherClient.sendData(sendptr, sizeof(pGameScene->m_SendData));
+			//char* sendptr = reinterpret_cast<char*>(&pGameScene->CData);
+			BrotherClient.sendData(pGameScene->CData, sizeof(pGameScene->CData));
 
 
 
-			char* recvptr = reinterpret_cast<char*>(&pGameScene->m_RecvData);
-			BrotherClient.recvData(recvptr, sizeof(pGameScene->m_RecvData));
+			//char* recvptr = reinterpret_cast<char*>(&pGameScene->SData);
+			BrotherClient.recvData(pGameScene->SData, sizeof(pGameScene->SData));
 			//位置を同期させるためだけど今は、うまく行ってないので
 			//if (SyncCount % 120 == 0)
 			//{
@@ -101,7 +101,7 @@ DWORD WINAPI ClientGameScene::Connect(LPVOID Gamemain)
 
 			for (int i = 0; i < 4; i++)
 			{
-				if (pGameScene->m_RecvData.SData[i] == 1)
+				if (pGameScene->SData[i] == 1)
 				{
 					pGameScene->m_ServerPadState[i] = true;
 				}
@@ -115,7 +115,7 @@ DWORD WINAPI ClientGameScene::Connect(LPVOID Gamemain)
 			//ライブラリの修正にもなるのでいまはこれで
 			for (int i = 4; i < 6; i++)
 			{
-				if (pGameScene->m_RecvData.SData[i] == 1)
+				if (pGameScene->SData[i] == 1)
 				{
 					if (pGameScene->m_ServerButtonState[i - 4] == PAD_PUSH || pGameScene->m_ServerButtonState[i - 4] == PAD_ON)
 					{
@@ -126,7 +126,7 @@ DWORD WINAPI ClientGameScene::Connect(LPVOID Gamemain)
 						pGameScene->m_ServerButtonState[i - 4] = PAD_PUSH;
 					}
 				}
-				else if (pGameScene->m_RecvData.SData[i] == 0)
+				else if (pGameScene->SData[i] == 0)
 				{
 					if (pGameScene->m_ServerButtonState[i - 4] == PAD_RELEASE || pGameScene->m_ServerButtonState[i - 4] == PAD_OFF)
 					{
@@ -140,8 +140,8 @@ DWORD WINAPI ClientGameScene::Connect(LPVOID Gamemain)
 			}
 
 
-			ZeroMemory(&pGameScene->m_SendData, sizeof(pGameScene->m_SendData));
-			ZeroMemory(&pGameScene->m_RecvData, sizeof(pGameScene->m_RecvData));
+			ZeroMemory(&pGameScene->CData, sizeof(pGameScene->CData));
+			ZeroMemory(&pGameScene->SData, sizeof(pGameScene->SData));
 			pGameScene->isConnect = false;
 			SyncCount++;
 		}

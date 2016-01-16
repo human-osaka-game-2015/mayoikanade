@@ -66,10 +66,10 @@ public:
 	bool* m_pisConnect;
 	bool m_isConnect;
 	bool m_ServerConnected;
-	//char SData[6];
-	//char CData[6];
-	ServerSendData m_SendData;
-	ServerRecvData m_RecvData;
+	char SData[6];
+	char CData[6];
+	//ServerSendData m_SendData;
+	//ServerRecvData m_RecvData;
 
 	//ƒeƒXƒg
 	LPD3DXFONT pFont;
