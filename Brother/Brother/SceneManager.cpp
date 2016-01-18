@@ -11,9 +11,9 @@
 #include "Library.h"
 
 SceneManager::SceneManager(Library* pLibrary,HWND hWnd) :
-	m_pLibrary(pLibrary), 
-	m_NextScene(SCENE_NONE),
-	m_hWnd(hWnd)
+m_pLibrary(pLibrary), 
+m_NextScene(SCENE_NONE),
+m_hWnd(hWnd)
 {
 	//ゲームの開始時のシーンはロゴに行く
 	m_pScene = new LogoScene(m_pLibrary);
@@ -38,22 +38,18 @@ bool SceneManager::Control()
 	case LOGO_SCENE:
 		delete m_pScene;
 		m_pScene = new LogoScene(m_pLibrary);
-
 		break;
 	case OPENING_SCENE:
 		delete m_pScene;
 		m_pScene = new OpeningScene(m_pLibrary, m_hWnd);
-
 		break;
 	case TITLE_SCENE:
 		delete m_pScene;
 		m_pScene = new TitleScene(m_pLibrary);
-
 		break;
 	case CONNECTING_SCENE:
 		delete m_pScene;
 		m_pScene = new ConnectingScene(m_pLibrary, m_pIPadd);
-
 		break;
 	case SERVER_GAME_SCENE:
 		delete m_pScene;
@@ -62,19 +58,16 @@ bool SceneManager::Control()
 	case CLIENT_GAME_SCENE:
 		delete m_pScene;
 		m_pScene = new ClientGameScene(m_pLibrary, m_hWnd, m_pIPadd, &m_isGameClear);
-
 		break;
 	case RESULT_SCENE:
 		delete m_pScene;
 		m_pScene = new ResultScene(m_pLibrary, m_isGameClear);
-
 		break;
 	case STAFF_SCENE:
 		delete m_pScene;
 		m_pScene = new StaffScene(m_pLibrary);
-
 		break;
-	case END_SCENE:		//trueを返してゲームを終了する
+	case END_SCENE:
 		return true;
 		break;
 	default:

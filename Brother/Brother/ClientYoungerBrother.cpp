@@ -1,15 +1,15 @@
 #include "ClientYoungerBrother.h"
 #include "Scene.h"
-#include "ClientCollisionChecker.h"
+#include "CollisionChecker.h"
 #include "Library.h"
-#include "ClientModeManager.h"
-#include "ClientGameTimeManager.h"
-#include "ClientDrawPositionSetter.h"
+#include "ModeManager.h"
+#include "GameTimeManager.h"
+#include "DrawPositionSetter.h"
 #include "ClientGameScene.h"
-#include "ClientPlayerUI.h"
+#include "PlayerUI.h"
 
-ClientYoungerBrother::ClientYoungerBrother(Library* pLibrary, bool* pPadState, bool* pPadOldState, PADSTATE* pButtonState, ClientCollisionChecker* pCollisionChecker, ClientDrawPositionSetter* pDrawPositionSetter, ClientGameTimeManager* pGameTimeManager)
-	:ClientPlayer(pLibrary, pPadState, pPadOldState, pButtonState, pCollisionChecker, pDrawPositionSetter, pGameTimeManager)
+ClientYoungerBrother::ClientYoungerBrother(Library* pLibrary, bool* pPadState, bool* pPadOldState, PADSTATE* pButtonState, CollisionChecker* pCollisionChecker, DrawPositionSetter* pDrawPositionSetter, GameTimeManager* pGameTimeManager):
+Player(pLibrary, pPadState, pPadOldState, pButtonState, pCollisionChecker, pDrawPositionSetter, pGameTimeManager)
 {
 	m_pLibrary->InitAnima(YOUNGERBROTHER_WAIT_FRONT);
 	m_pLibrary->InitAnima(YOUNGERBROTHER_WAIT_SIDE);
@@ -33,7 +33,7 @@ ClientYoungerBrother::ClientYoungerBrother(Library* pLibrary, bool* pPadState, b
 	m_pDrawPositionSetter->DrawPositionXSet(m_PlayerX);
 	m_pDrawPositionSetter->DrawPositionYSet(m_PlayerY);
 
-	m_pPlayerUI = new ClientPlayerUI(m_pLibrary, m_Hp, YOUNGERBROTHER_LIFEFRAME, YOUNGERBROTHER_LIFEBAR, SWITCH_RED_01, SWITCH_YELLOW_01, SWITCH_BLUE_01, YOUNGERBROTHER_UI_POSX, YOUNGERBROTHER_UI_POSY, YOUNGERBROTHERFACEX, YOUNGERBROTHERFACEY);
+	m_pPlayerUI = new PlayerUI(m_pLibrary, m_Hp, YOUNGERBROTHER_LIFEFRAME, YOUNGERBROTHER_LIFEBAR, SWITCH_RED_01, SWITCH_YELLOW_01, SWITCH_BLUE_01, YOUNGERBROTHER_UI_POSX, YOUNGERBROTHER_UI_POSY, YOUNGERBROTHERFACEX, YOUNGERBROTHERFACEY);
 
 }
 
@@ -135,13 +135,13 @@ void ClientYoungerBrother::Move()
 
 	switch (m_YoungerBrotherState)
 	{
-	case YOUNGERBROTHER_STATE_NORMAL:
+	case CLIENTYOUNGERBROTHER_STATE_NORMAL:
 
 		//移動がなかったら待機のアニメーション
 		if (m_pPadState[ANALOG_LEFT] == false && m_pPadState[ANALOG_RIGHT] == false &&
 			m_pPadState[ANALOG_UP] == false && m_pPadState[ANALOG_DOWN] == false)
 		{
-			if (m_YoungerBrotherState == YOUNGERBROTHER_STATE_NORMAL)
+			if (m_YoungerBrotherState == CLIENTYOUNGERBROTHER_STATE_NORMAL)
 			{
 				switch (m_Direction)
 				{
@@ -200,7 +200,7 @@ void ClientYoungerBrother::Move()
 			if (m_pCollisionChecker->GrassPortRaitCheck(m_Ppos.x + m_PlayerX, PlayerBottom))
 			{
 				m_Hp -= 10;
-				m_YoungerBrotherState = YOUNGERBROTHER_STATE_DOWN;
+				m_YoungerBrotherState = CLIENTYOUNGERBROTHER_STATE_DOWN;
 				m_CurrentAnima = YOUNGERBROTHER_DOWN_SIDE;
 			}
 			else
@@ -241,7 +241,7 @@ void ClientYoungerBrother::Move()
 			if (m_pCollisionChecker->GrassPortRaitCheck(m_Ppos.x + m_PlayerX, PlayerBottom))
 			{
 				m_Hp -= 10;
-				m_YoungerBrotherState = YOUNGERBROTHER_STATE_DOWN;
+				m_YoungerBrotherState = CLIENTYOUNGERBROTHER_STATE_DOWN;
 				m_CurrentAnima = YOUNGERBROTHER_DOWN_SIDE;
 			}
 			else
@@ -279,7 +279,7 @@ void ClientYoungerBrother::Move()
 			if (m_pCollisionChecker->GrassCheck(m_Ppos.x + m_PlayerX, PlayerBottom))
 			{
 				m_Hp -= 10;
-				m_YoungerBrotherState = YOUNGERBROTHER_STATE_DOWN;
+				m_YoungerBrotherState = CLIENTYOUNGERBROTHER_STATE_DOWN;
 				m_CurrentAnima = YOUNGERBROTHER_DOWN_FRONT;
 			}
 			else
@@ -318,7 +318,7 @@ void ClientYoungerBrother::Move()
 			if (m_pCollisionChecker->GrassCheck(m_Ppos.x + m_PlayerX, PlayerBottom))
 			{
 				m_Hp -= 10;
-				m_YoungerBrotherState = YOUNGERBROTHER_STATE_DOWN;
+				m_YoungerBrotherState = CLIENTYOUNGERBROTHER_STATE_DOWN;
 				m_CurrentAnima = YOUNGERBROTHER_DOWN_BACK;
 			}
 			else
@@ -334,7 +334,7 @@ void ClientYoungerBrother::Move()
 		}
 
 		break;
-	case YOUNGERBROTHER_STATE_DOWN:
+	case CLIENTYOUNGERBROTHER_STATE_DOWN:
 
 		
 
@@ -345,7 +345,7 @@ void ClientYoungerBrother::Move()
 			m_StandUpTime += 2;
 			if (m_StandUpTime >= YOUNGERBROTHER_STANDUP_TIME)
 			{
-				m_YoungerBrotherState = YOUNGERBROTHER_STATE_NORMAL;
+				m_YoungerBrotherState = CLIENTYOUNGERBROTHER_STATE_NORMAL;
 				m_CurrentAnima = YOUNGERBROTHER_WAIT_SIDE;
 				m_PlayerX -= 64;
 				m_pDrawPositionSetter->DrawPositionXSet(m_PlayerX);
@@ -359,7 +359,7 @@ void ClientYoungerBrother::Move()
 			m_StandUpTime += 2;
 			if (m_StandUpTime >= YOUNGERBROTHER_STANDUP_TIME)
 			{
-				m_YoungerBrotherState = YOUNGERBROTHER_STATE_NORMAL;
+				m_YoungerBrotherState = CLIENTYOUNGERBROTHER_STATE_NORMAL;
 				m_CurrentAnima = YOUNGERBROTHER_WAIT_SIDE;
 				m_PlayerX += 64;
 				m_pDrawPositionSetter->DrawPositionXSet(m_PlayerX);
@@ -373,7 +373,7 @@ void ClientYoungerBrother::Move()
 			m_StandUpTime += 2;
 			if (m_StandUpTime >= YOUNGERBROTHER_STANDUP_TIME)
 			{
-				m_YoungerBrotherState = YOUNGERBROTHER_STATE_NORMAL;
+				m_YoungerBrotherState = CLIENTYOUNGERBROTHER_STATE_NORMAL;
 				m_CurrentAnima = YOUNGERBROTHER_WAIT_BACK;
 				m_PlayerY -= 64;
 				m_pDrawPositionSetter->DrawPositionYSet(m_PlayerY);
@@ -387,7 +387,7 @@ void ClientYoungerBrother::Move()
 			m_StandUpTime += 2;
 			if (m_StandUpTime >= YOUNGERBROTHER_STANDUP_TIME)
 			{
-				m_YoungerBrotherState = YOUNGERBROTHER_STATE_NORMAL;
+				m_YoungerBrotherState = CLIENTYOUNGERBROTHER_STATE_NORMAL;
 				m_CurrentAnima = YOUNGERBROTHER_WAIT_FRONT;
 				m_PlayerY += 64;
 				m_pDrawPositionSetter->DrawPositionYSet(m_PlayerY);
@@ -461,7 +461,7 @@ void ClientYoungerBrother::Update()
 	}
 }
 
-void ClientYoungerBrother::ModeManagerSet(ClientModeManager* pModeManager)
+void ClientYoungerBrother::ModeManagerSet(ModeManager* pModeManager)
 {
 	m_pModeManager = pModeManager;
 }
@@ -511,7 +511,7 @@ bool ClientYoungerBrother::Far()
 }
 
 
-void ClientYoungerBrother::PlayerSet(ClientPlayer* pPlayer)
+void ClientYoungerBrother::PlayerSet(Player* pPlayer)
 {
 	m_pPlayer = pPlayer;
 }

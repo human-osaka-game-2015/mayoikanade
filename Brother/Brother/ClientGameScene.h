@@ -9,16 +9,15 @@
 
 class Library;
 class SceneChangeListener;
-class ClientModeManager;
-class ClientMap;
-class ClientCollisionChecker;
+class ModeManager;
+class Map;
+class CollisionChecker;
 class ClientBrother;
 class ClientYoungerBrother;
-class ClientDrawPositionSetter;
-class ClientGameTimeManager;
-class ClientText;
-class ClientShadow;
-class ClientGameScene;
+class DrawPositionSetter;
+class GameTimeManager;
+class Text;
+class Shadow;
 
 
 typedef struct
@@ -45,19 +44,19 @@ typedef struct
 class ClientGameScene : public Scene
 {
 private:
-	SceneChangeListener*		m_pSceneChangeListener;
-	ClientModeManager*			m_pModeManager;
-	ClientMap*					m_pMap;
-	ClientCollisionChecker*		m_pCollisionChecker;
-	ClientBrother*				m_pBrother;
-	ClientYoungerBrother*		m_pYoungerBrother;
-	ClientDrawPositionSetter*	m_pDrawPositionSetter;
-	ClientGameTimeManager*		m_pGameTimeManager;
-	ClientText*					m_pText;
-	ClientShadow*				m_pShadow;
-	HWND						m_hWnd;
-	GameThread					Gamemain;
-	bool*						m_pisGameClear;
+	SceneChangeListener*	m_pSceneChangeListener;
+	ModeManager*			m_pModeManager;
+	Map*					m_pMap;
+	CollisionChecker*		m_pCollisionChecker;
+	ClientBrother*			m_pBrother;
+	ClientYoungerBrother*	m_pYoungerBrother;
+	DrawPositionSetter*		m_pDrawPositionSetter;
+	GameTimeManager*		m_pGameTimeManager;
+	Text*					m_pText;
+	Shadow*					m_pShadow;
+	HWND					m_hWnd;
+	GameThread				Gamemain;
+	bool*					m_pisGameClear;
 
 
 public:

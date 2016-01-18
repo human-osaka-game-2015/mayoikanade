@@ -2,30 +2,30 @@
 
 #include "ServerGameScene.h"
 #include "Library.h"
-#include "ServerModeManager.h"
+#include "ModeManager.h"
 #include "SceneChangeListener.h"
 #include "ServerYoungerBrother.h"
 #include "ServerBrother.h"
-#include "ServerMap.h"
-#include "ServerCollisionChecker.h"
-#include "ServerText.h"
-#include "ServerShadow.h"
-#include "ServerGameTimeManager.h"
-#include "ServerDrawPositionSetter.h"
+#include "Map.h"
+#include "CollisionChecker.h"
+#include "Text.h"
+#include "Shadow.h"
+#include "GameTimeManager.h"
+#include "DrawPositionSetter.h"
 
 
 //サーバー
 DWORD WINAPI ServerGameScene::Connect(LPVOID vpGameScene)
 {
 	ServerGameScene* pGameScene = static_cast<ServerGameScene*>(vpGameScene);
-	Server BrotherServer("8000");
+	Server BrotherServer("51234");
 
 	ZeroMemory(pGameScene->CData, sizeof(pGameScene->CData));
 	ZeroMemory(pGameScene->SData, sizeof(pGameScene->SData));
 
 	BrotherServer.Clientlisten();
 
-	
+	 
 	//位置の同期するタイミングをとる。でも多分、使わなくなると思う。
 	static int SyncCount = 0;
 
@@ -188,16 +188,16 @@ m_pisConnect(&m_isConnect)
 	//音声ループ
 	m_pLibrary->SoundOperation(GAME_BGM, SOUND_LOOP);
 
-	m_pSceneChangeListener = new SceneChangeListener(&m_NextScene,m_pisGameClear);
-	m_pMap					= new ServerMap(m_pLibrary);
-	m_pCollisionChecker		= new ServerCollisionChecker(m_pMap);
-	m_pDrawPositionSetter = new ServerDrawPositionSetter(m_pMap);
-	m_pGameTimeManager		= new ServerGameTimeManager(&m_time);
+	m_pSceneChangeListener	= new SceneChangeListener(&m_NextScene,m_pisGameClear);
+	m_pMap					= new Map(m_pLibrary);
+	m_pCollisionChecker		= new CollisionChecker(m_pMap);
+	m_pDrawPositionSetter	= new DrawPositionSetter(m_pMap);
+	m_pGameTimeManager		= new GameTimeManager(&m_time);
 	m_pBrother				= new ServerBrother(m_pLibrary, m_PadState, m_PadOldState, m_ButtonState, m_pCollisionChecker, m_pDrawPositionSetter, m_pGameTimeManager);
 	m_pYoungerBrother		= new ServerYoungerBrother(m_pLibrary, m_ClientPadState, m_ClientPadOldState, m_ClientButtonState, m_pCollisionChecker, m_pDrawPositionSetter, m_pGameTimeManager, m_pBrother);
-	m_pShadow = new ServerShadow(m_pLibrary, m_pGameTimeManager);
-	m_pText = new ServerText(m_pLibrary, m_PadState, m_PadOldState, m_ButtonState);
-	m_pModeManager			= new ServerModeManager(m_pSceneChangeListener, m_pBrother, m_pYoungerBrother, m_pGameTimeManager, m_pShadow, m_pText);
+	m_pShadow				= new Shadow(m_pLibrary, m_pGameTimeManager);
+	m_pText					= new Text(m_pLibrary, m_PadState, m_PadOldState, m_ButtonState);
+	m_pModeManager			= new ModeManager(m_pSceneChangeListener, m_pBrother, m_pYoungerBrother, m_pGameTimeManager, m_pShadow, m_pText);
 
 	//ModeManagerSetはBrotherなどに対してm_ModeManagerを渡す
 	m_pBrother->ModeManagerSet(m_pModeManager);

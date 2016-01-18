@@ -7,15 +7,15 @@
 #include "Tex.h"
 class Library;
 class SceneChangeListener;
-class ServerModeManager;
-class ServerMap;
-class ServerCollisionChecker;
+class ModeManager;
+class Map;
+class CollisionChecker;
 class ServerBrother;
 class ServerYoungerBrother;
-class ServerDrawPositionSetter;
-class ServerGameTimeManager;
-class ServerText;
-class ServerShadow;
+class DrawPositionSetter;
+class GameTimeManager;
+class Text;
+class Shadow;
 
 typedef struct
 {
@@ -35,15 +35,15 @@ class ServerGameScene : public Scene
 {
 private:
 	SceneChangeListener*		m_pSceneChangeListener;
-	ServerModeManager*			m_pModeManager;
-	ServerMap*					m_pMap;
-	ServerCollisionChecker*		m_pCollisionChecker;
+	ModeManager*				m_pModeManager;
+	Map*						m_pMap;
+	CollisionChecker*			m_pCollisionChecker;
 	ServerBrother*				m_pBrother;
 	ServerYoungerBrother*		m_pYoungerBrother;
-	ServerDrawPositionSetter*	m_pDrawPositionSetter;
-	ServerGameTimeManager*		m_pGameTimeManager;
-	ServerText*					m_pText;
-	ServerShadow*				m_pShadow;
+	DrawPositionSetter*			m_pDrawPositionSetter;
+	GameTimeManager*			m_pGameTimeManager;
+	Text*						m_pText;
+	Shadow*						m_pShadow;
 	HWND						m_hWnd;
 	bool*						m_pisGameClear;
 

@@ -12,12 +12,12 @@
 #define BROTHERHIT_Y 80
 #define BROTHERHIT_X 5
 
-#include "ServerPlayer.h"
+#include "Player.h"
 
 class Library;
-class ServerModeManager;
-class ServerCollisionChecker;
-class ServerPlayerUI;
+class ModeManager;
+class CollisionChecker;
+class PlayerUI;
 enum GAMEANIMA_ID;
 enum GAMEMODE_NUM;
 
@@ -29,13 +29,13 @@ enum BROTHER_STATE
 };
 
 
-class ServerBrother :public ServerPlayer
+class ServerBrother :public Player
 {
 private:
 	BROTHER_STATE m_BrotherState;
 	
 public:
-	ServerBrother(Library* pLibrary, bool* pPadState, bool* pPadOldState, PADSTATE* pButtonState, ServerCollisionChecker* pCollisionChecker, ServerDrawPositionSetter* pDrawPositionSetter, ServerGameTimeManager* pGameTimeManager);
+	ServerBrother(Library* pLibrary, bool* pPadState, bool* pPadOldState, PADSTATE* pButtonState, CollisionChecker* pCollisionChecker, DrawPositionSetter* pDrawPositionSetter, GameTimeManager* pGameTimeManager);
 	virtual ~ServerBrother();
 	virtual void Control();
 	virtual void Draw();
@@ -44,7 +44,7 @@ public:
 	virtual void Update();
 	virtual void Init();
 	void UiDraw();
-	void ModeManagerSet(ServerModeManager* pModeManager);
+	void ModeManagerSet(ModeManager* pModeManager);
 	void SwitchOn();
 
 	bool Near();
@@ -54,8 +54,8 @@ public:
 	bool m_isfar;
 
 
-	void PlayerSet(ServerPlayer* pPlayer);
-	ServerPlayer* m_pPlayer;
+	void PlayerSet(Player* pPlayer);
+	Player* m_pPlayer;
 };
 
 #endif

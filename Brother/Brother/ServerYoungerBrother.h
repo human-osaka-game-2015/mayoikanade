@@ -1,7 +1,7 @@
 #ifndef YOUNGERBROTHER_H
 #define YOUNGERBROTHER_H
 
-#include "ServerPlayer.h"
+#include "Player.h"
 
 #define YOUNGERBROTHER_HP 100
 #define YOUNGERBROTHER_SPEAD 7
@@ -17,9 +17,9 @@
 #define YOUNGERBROTHERHITY 80
 
 class Library;
-class ServerModeManager;
-class ServerCollisionChecker;
-class ServerPlayerUI;
+class ModeManager;
+class CollisionChecker;
+class PlayerUI;
 enum GAMEANIMA_ID;
 enum GAMEMODE_NUM;
 
@@ -32,14 +32,14 @@ enum YOUNGERBROTHER_STATE
 };
 
 
-class ServerYoungerBrother :public ServerPlayer
+class ServerYoungerBrother :public Player
 {
 private:
 	YOUNGERBROTHER_STATE	m_YoungerBrotherState;
 	int						m_StandUpTime;
 
 public:
-	ServerYoungerBrother(Library* pLibrary, bool* pPadState, bool* pPadOldState, PADSTATE* pButtonState, ServerCollisionChecker* pCollisionChecker, ServerDrawPositionSetter* pDrawPositionSetter, ServerGameTimeManager* pGameTimeManager, ServerPlayer* pPlayer);
+	ServerYoungerBrother(Library* pLibrary, bool* pPadState, bool* pPadOldState, PADSTATE* pButtonState, CollisionChecker* pCollisionChecker, DrawPositionSetter* pDrawPositionSetter, GameTimeManager* pGameTimeManager, Player* pPlayer);
 	virtual ~ServerYoungerBrother();
 	virtual void Control();
 	virtual void Draw();
@@ -47,11 +47,11 @@ public:
 	virtual void Action();
 	virtual void Update();
 	virtual void Init();
-	void ModeManagerSet(ServerModeManager* pModeManager);
+	void ModeManagerSet(ModeManager* pModeManager);
 	void UiDraw();
 	void PosChange(CustomVertex* pvertex);
 	void SwitchOn();
-	ServerPlayer* m_pPlayer;
+	Player* m_pPlayer;
 
 	bool m_isnear;
 	bool m_isfar;

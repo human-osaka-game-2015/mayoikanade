@@ -1,15 +1,17 @@
 #include "Shadow.h"
-#include "GameScene.h"
+#include "ServerGameScene.h"
 #include "Library.h"
 #include "GameTimeManager.h"
 #include "ModeManager.h"
 
-Shadow::Shadow(Library* pLibrary, GameTimeManager* pGameTimeManager) :m_pLibrary(pLibrary), m_GameTimeManager(pGameTimeManager)
+
+Shadow::Shadow(Library* pLibrary, GameTimeManager* pGameTimeManager) :
+m_pLibrary(pLibrary), m_GameTimeManager(pGameTimeManager)
 {
 	m_Pos.x = 600;
 	m_Pos.y = 350;
-	m_Pos.h = 2000;
-	m_Pos.w = 2000;
+	m_Pos.h = 6000;
+	m_Pos.w = 6000;
 
 }
 
@@ -41,6 +43,15 @@ void Shadow::Control()
 
 		break;
 	case GAMEOVEREFFECT:
+
+		m_Pos.h -= 9;
+		m_Pos.w -= 9;
+
+		if (m_Pos.h <= 0 || m_Pos.w <= 0)
+		{
+			m_Pos.h = 0;
+			m_Pos.w = 0;
+		}
 
 		break;
 	case GAMEOVER:
@@ -90,3 +101,4 @@ bool Shadow::ShadowCheck()
 
 	return false;
 }
+

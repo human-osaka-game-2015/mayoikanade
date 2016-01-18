@@ -1,7 +1,7 @@
-#ifndef YOUNGERBROTHER_H
-#define YOUNGERBROTHER_H
+#ifndef CLIENTYOUNGERBROTHER_H
+#define CLIENTYOUNGERBROTHER_H
 
-#include "ClientPlayer.h"
+#include "Player.h"
 
 #define YOUNGERBROTHER_HP 100
 #define YOUNGERBROTHER_SPEAD 7
@@ -26,22 +26,22 @@ enum GAMEMODE_NUM;
 
 
 
-enum YOUNGERBROTHER_STATE
+enum CLIENTYOUNGERBROTHER_STATE
 {
-	YOUNGERBROTHER_STATE_NORMAL,
-	YOUNGERBROTHER_STATE_DOWN,
-	YOUNGERBROTHER_STATE_MAX
+	CLIENTYOUNGERBROTHER_STATE_NORMAL,
+	CLIENTYOUNGERBROTHER_STATE_DOWN,
+	CLIENTYOUNGERBROTHER_STATE_MAX
 };
 
 
-class ClientYoungerBrother :public ClientPlayer
+class ClientYoungerBrother :public Player
 {
 private:
-	YOUNGERBROTHER_STATE	m_YoungerBrotherState;
-	int						m_StandUpTime;
+	CLIENTYOUNGERBROTHER_STATE	m_YoungerBrotherState;
+	int							m_StandUpTime;
 
 public:
-	ClientYoungerBrother(Library* pLibrary, bool* pPadState, bool* pPadOldState, PADSTATE* pButtonState, ClientCollisionChecker* pCollisionChecker, ClientDrawPositionSetter* pDrawPositionSetter, ClientGameTimeManager* pGameTimeManager);
+	ClientYoungerBrother(Library* pLibrary, bool* pPadState, bool* pPadOldState, PADSTATE* pButtonState, CollisionChecker* pCollisionChecker, DrawPositionSetter* pDrawPositionSetter, GameTimeManager* pGameTimeManager);
 	virtual ~ClientYoungerBrother();
 	virtual void Control();
 	virtual void Draw();
@@ -49,17 +49,17 @@ public:
 	virtual void Action();
 	virtual void Update();
 	virtual void Init();
-	void ModeManagerSet(ClientModeManager* pModeManager);
+	void ModeManagerSet(ModeManager* pModeManager);
 	void UiDraw();
 	void SwitchOn();
 
 	bool Near();
 	bool Far();
-	void PlayerSet(ClientPlayer* pPlayer);
+	void PlayerSet(Player* pPlayer);
 
 	bool m_isnear;
 	bool m_isfar;
-	ClientPlayer* m_pPlayer;
+	Player* m_pPlayer;
 
 
 };

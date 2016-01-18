@@ -1,15 +1,15 @@
 #include "ServerBrother.h"
-#include "ServerCollisionChecker.h"
+#include "CollisionChecker.h"
 #include "Library.h"
-#include "ServerModeManager.h"
-#include "ServerPlayerUI.h"
-#include "ServerGameTimeManager.h"
-#include "ServerDrawPositionSetter.h"
+#include "ModeManager.h"
+#include "PlayerUI.h"
+#include "GameTimeManager.h"
+#include "DrawPositionSetter.h"
 #include "ServerGameScene.h"
 
 
-ServerBrother::ServerBrother(Library* pLibrary, bool* pPadState, bool* pPadOldState, PADSTATE* pButtonState, ServerCollisionChecker* pCollisionChecker, ServerDrawPositionSetter* pDrawPositionSetter, ServerGameTimeManager* pGameTimeManager):
-ServerPlayer(pLibrary, pPadState, pPadOldState, pButtonState, pCollisionChecker, pDrawPositionSetter, pGameTimeManager),
+ServerBrother::ServerBrother(Library* pLibrary, bool* pPadState, bool* pPadOldState, PADSTATE* pButtonState, CollisionChecker* pCollisionChecker, DrawPositionSetter* pDrawPositionSetter, GameTimeManager* pGameTimeManager):
+Player(pLibrary, pPadState, pPadOldState, pButtonState, pCollisionChecker, pDrawPositionSetter, pGameTimeManager),
 m_BrotherState(BROTHER_STATE_NORMAL)
 {
 	m_pLibrary->InitAnima(BROTHER_WAIT_FRONT);
@@ -38,7 +38,7 @@ m_BrotherState(BROTHER_STATE_NORMAL)
 	m_pDrawPositionSetter->DrawPositionYSet(m_PlayerY);
 
 	//PlayerUIÇÃê∂ê¨
-	m_pPlayerUI = new ServerPlayerUI(m_pLibrary, m_Hp, BROTHER_LIFEFRAME, BROTHER_LIFEBAR, SWITCH_RED_02, SWITCH_YELLOW_02, SWITCH_BLUE_02, BROTHER_UI_POSX, BROTHER_UI_POSY, BROTHERFACEPOSX, BROTHERFACEPOSY);
+	m_pPlayerUI = new PlayerUI(m_pLibrary, m_Hp, BROTHER_LIFEFRAME, BROTHER_LIFEBAR, SWITCH_RED_02, SWITCH_YELLOW_02, SWITCH_BLUE_02, BROTHER_UI_POSX, BROTHER_UI_POSY, BROTHERFACEPOSX, BROTHERFACEPOSY);
 }
 
 ServerBrother::~ServerBrother()
@@ -567,7 +567,7 @@ void ServerBrother::Update()
 }
 
 
-void ServerBrother::ModeManagerSet(ServerModeManager* pModeManager)
+void ServerBrother::ModeManagerSet(ModeManager* pModeManager)
 {
 	m_pModeManager = pModeManager;
 }
@@ -646,7 +646,7 @@ bool ServerBrother::Far()
 	return m_isfar;
 }
 
-void ServerBrother::PlayerSet(ServerPlayer* pPlayer)
+void ServerBrother::PlayerSet(Player* pPlayer)
 {
 	m_pPlayer = pPlayer;
 }

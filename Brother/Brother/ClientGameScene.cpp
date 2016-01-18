@@ -2,16 +2,16 @@
 #include <Windows.h>
 #include "ClientGameScene.h"
 #include "Library.h"
-#include "ClientModeManager.h"
+#include "ModeManager.h"
 #include "SceneChangeListener.h"
 #include "ClientYoungerBrother.h"
 #include "ClientBrother.h"
-#include "ClientMap.h"
-#include "ClientCollisionChecker.h"
-#include "ClientText.h"
-#include "ClientShadow.h"
-#include "ClientGameTimeManager.h"
-#include "ClientDrawPositionSetter.h"
+#include "Map.h"
+#include "CollisionChecker.h"
+#include "Text.h"
+#include "Shadow.h"
+#include "GameTimeManager.h"
+#include "DrawPositionSetter.h"
 
 
 //クライアント
@@ -181,16 +181,16 @@ isConnect(false)
 
 
 	m_pSceneChangeListener	= new SceneChangeListener(&m_NextScene,m_pisGameClear);
-	m_pMap = new ClientMap(m_pLibrary);
-	m_pCollisionChecker = new ClientCollisionChecker(m_pMap);
-	m_pDrawPositionSetter = new ClientDrawPositionSetter(m_pMap);
-	m_pGameTimeManager = new ClientGameTimeManager(&m_time);
-	m_pYoungerBrother = new ClientYoungerBrother(m_pLibrary, m_PadState, m_PadOldState, m_ButtonState, m_pCollisionChecker, m_pDrawPositionSetter, m_pGameTimeManager);
-	m_pBrother = new ClientBrother(m_pLibrary, m_ServerPadState, m_ServerPadOldState, m_ServerButtonState, m_pCollisionChecker, m_pDrawPositionSetter, m_pGameTimeManager, m_pYoungerBrother);
-	m_pShadow = new ClientShadow(m_pLibrary, m_pGameTimeManager);
-	m_pText = new ClientText(m_pLibrary, m_PadState, m_PadOldState, m_ButtonState);
+	m_pMap					= new Map(m_pLibrary);
+	m_pCollisionChecker		= new CollisionChecker(m_pMap);
+	m_pDrawPositionSetter	= new DrawPositionSetter(m_pMap);
+	m_pGameTimeManager		= new GameTimeManager(&m_time);
+	m_pYoungerBrother		= new ClientYoungerBrother(m_pLibrary, m_PadState, m_PadOldState, m_ButtonState, m_pCollisionChecker, m_pDrawPositionSetter, m_pGameTimeManager);
+	m_pBrother				= new ClientBrother(m_pLibrary, m_ServerPadState, m_ServerPadOldState, m_ServerButtonState, m_pCollisionChecker, m_pDrawPositionSetter, m_pGameTimeManager, m_pYoungerBrother);
+	m_pShadow				= new Shadow(m_pLibrary, m_pGameTimeManager);
+	m_pText					= new Text(m_pLibrary, m_PadState, m_PadOldState, m_ButtonState);
 	
-	m_pModeManager = new ClientModeManager(m_pSceneChangeListener, m_pBrother, m_pYoungerBrother, m_pGameTimeManager, m_pShadow, m_pText);
+	m_pModeManager			= new ModeManager(m_pSceneChangeListener, m_pBrother, m_pYoungerBrother, m_pGameTimeManager, m_pShadow, m_pText);
 
 	//ModeManagerSetはBrotherなどに対してm_ModeManagerを渡す
 	m_pBrother->ModeManagerSet(m_pModeManager);

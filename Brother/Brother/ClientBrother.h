@@ -1,5 +1,5 @@
-#ifndef BROTHER_H
-#define BROTHER_H
+#ifndef CLIENTBROTHER_H
+#define CLIENTBROTHER_H
 
 #define BROTHER_SPEAD 6				//åZÇÃà⁄ìÆë¨ìx
 #define BROTHER_HP 100				//åZÇÃç≈ëÂHP
@@ -12,30 +12,30 @@
 #define BROTHERHIT_Y 80
 #define BROTHERHIT_X 5
 
-#include "ClientPlayer.h"
+#include "Player.h"
 
 class Library;
 class ModeManager;
 class CollisionChecker;
-class ClientPlayerUI;
+class PlayerUI;
 enum GAMEANIMA_ID;
 enum GAMEMODE_NUM;
 
-enum BROTHER_STATE
+enum CLIENTBROTHER_STATE
 {
-	BROTHER_STATE_NORMAL,
-	BROTHER_STATE_WOODBOX,
-	BROTHER_STATE_MAX
+	CLIENTBROTHER_STATE_NORMAL,
+	CLIENTBROTHER_STATE_WOODBOX,
+	CLIENTBROTHER_STATE_MAX
 };
 
 
-class ClientBrother :public ClientPlayer
+class ClientBrother :public Player
 {
 private:
-	BROTHER_STATE m_BrotherState;
+	CLIENTBROTHER_STATE m_BrotherState;
 	
 public:
-	ClientBrother(Library* pLibrary, bool* pPadState, bool* pPadOldState, PADSTATE* pButtonState, ClientCollisionChecker* pCollisionChecker, ClientDrawPositionSetter* pDrawPositionSetter, ClientGameTimeManager* pGameTimeManager, ClientPlayer* pPlayer);
+	ClientBrother(Library* pLibrary, bool* pPadState, bool* pPadOldState, PADSTATE* pButtonState, CollisionChecker* pCollisionChecker, DrawPositionSetter* pDrawPositionSetter, GameTimeManager* pGameTimeManager, Player* pPlayer);
 	virtual ~ClientBrother();
 	virtual void Control();
 	virtual void Draw();
@@ -44,7 +44,7 @@ public:
 	virtual void Update();
 	virtual void Init();
 	void UiDraw();
-	void ModeManagerSet(ClientModeManager* pModeManager);
+	void ModeManagerSet(ModeManager* pModeManager);
 	void PosChange(CustomVertex* pvertex);
 	void SwitchOn();
 	bool Near();
@@ -52,7 +52,7 @@ public:
 
 	bool m_isnear;
 	bool m_isfar;
-	ClientPlayer* m_pPlayer;
+	Player* m_pPlayer;
 };
 
 #endif

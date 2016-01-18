@@ -1,17 +1,17 @@
 #include "ClientBrother.h"
-#include "ClientCollisionChecker.h"
+#include "CollisionChecker.h"
 #include "Library.h"
-#include "ClientModeManager.h"
-#include "ClientPlayerUI.h"
-#include "ClientGameTimeManager.h"
-#include "ClientDrawPositionSetter.h"
+#include "ModeManager.h"
+#include "PlayerUI.h"
+#include "GameTimeManager.h"
+#include "DrawPositionSetter.h"
 #include "ClientGameScene.h"
 
 
-ClientBrother::ClientBrother(Library* pLibrary, bool* pPadState, bool* pPadOldState, PADSTATE* pButtonState, ClientCollisionChecker* pCollisionChecker, ClientDrawPositionSetter* pDrawPositionSetter, ClientGameTimeManager* pGameTimeManager, ClientPlayer* pPlayer):
-	ClientPlayer(pLibrary, pPadState, pPadOldState, pButtonState, pCollisionChecker, pDrawPositionSetter, pGameTimeManager),
-	m_BrotherState(BROTHER_STATE_NORMAL),
-	m_pPlayer(pPlayer)
+ClientBrother::ClientBrother(Library* pLibrary, bool* pPadState, bool* pPadOldState, PADSTATE* pButtonState, CollisionChecker* pCollisionChecker, DrawPositionSetter* pDrawPositionSetter, GameTimeManager* pGameTimeManager, Player* pPlayer):
+Player(pLibrary, pPadState, pPadOldState, pButtonState, pCollisionChecker, pDrawPositionSetter, pGameTimeManager),
+m_BrotherState(CLIENTBROTHER_STATE_NORMAL),
+m_pPlayer(pPlayer)
 {
 	m_pLibrary->InitAnima(BROTHER_WAIT_FRONT);
 	m_pLibrary->InitAnima(BROTHER_WAIT_SIDE);
@@ -38,7 +38,7 @@ ClientBrother::ClientBrother(Library* pLibrary, bool* pPadState, bool* pPadOldSt
 	m_isfar = false;
 
 	//PlayerUI‚Ì¶¬
-	m_pPlayerUI = new ClientPlayerUI(m_pLibrary, m_Hp, BROTHER_LIFEFRAME, BROTHER_LIFEBAR, SWITCH_RED_02, SWITCH_YELLOW_02, SWITCH_BLUE_02, BROTHER_UI_POSX, BROTHER_UI_POSY, BROTHERFACEPOSX, BROTHERFACEPOSY);
+	m_pPlayerUI = new PlayerUI(m_pLibrary, m_Hp, BROTHER_LIFEFRAME, BROTHER_LIFEBAR, SWITCH_RED_02, SWITCH_YELLOW_02, SWITCH_BLUE_02, BROTHER_UI_POSX, BROTHER_UI_POSY, BROTHERFACEPOSX, BROTHERFACEPOSY);
 }
 
 ClientBrother::~ClientBrother()
@@ -67,7 +67,7 @@ void ClientBrother::Control()
 	case NORMAL:				//NormalControlŠÖ”‚Å‚àì‚Á‚½‚Ù‚¤‚ªŒ©‚â‚·‚­‚È‚é‚Ì‚©‚à
 		switch (m_BrotherState)
 		{
-		case BROTHER_STATE_NORMAL:
+		case CLIENTBROTHER_STATE_NORMAL:
 			
 			Update();
 			Action();
@@ -82,7 +82,7 @@ void ClientBrother::Control()
 #endif
 
 			break;
-		case BROTHER_STATE_WOODBOX:
+		case CLIENTBROTHER_STATE_WOODBOX:
 
 
 			Update();
@@ -130,7 +130,7 @@ void ClientBrother::Draw()
 		
 		switch (m_BrotherState)
 		{
-		case BROTHER_STATE_NORMAL:
+		case CLIENTBROTHER_STATE_NORMAL:
 
 			Tex_Id = m_pLibrary->AnimaControl(m_CurrentAnima);
 			m_pLibrary->MakePosition(Tex_Id, &m_Ppos);
@@ -146,7 +146,7 @@ void ClientBrother::Draw()
 			m_pLibrary->DrawTexture(TEX_GAME, player);
 
 			break;
-		case BROTHER_STATE_WOODBOX:
+		case CLIENTBROTHER_STATE_WOODBOX:
 
 			Tex_Id = m_pLibrary->AnimaControl(m_CurrentAnima);
 			m_pLibrary->MakePosition(Tex_Id, &m_Ppos);
@@ -171,7 +171,7 @@ void ClientBrother::Draw()
 	case GAMEOVEREFFECT:
 		switch (m_BrotherState)
 		{
-		case BROTHER_STATE_NORMAL:
+		case CLIENTBROTHER_STATE_NORMAL:
 
 			Tex_Id = m_pLibrary->AnimaControl(m_CurrentAnima);
 			m_pLibrary->MakePosition(Tex_Id, &m_Ppos);
@@ -187,7 +187,7 @@ void ClientBrother::Draw()
 			m_pLibrary->DrawTexture(TEX_GAME, player);
 
 			break;
-		case BROTHER_STATE_WOODBOX:
+		case CLIENTBROTHER_STATE_WOODBOX:
 
 			Tex_Id = m_pLibrary->AnimaControl(m_CurrentAnima);
 			m_pLibrary->MakePosition(Tex_Id, &m_Ppos);
@@ -227,7 +227,7 @@ void ClientBrother::Move()
 	if (m_pPadState[ANALOG_LEFT] == false && m_pPadState[ANALOG_RIGHT] == false &&
 		m_pPadState[ANALOG_UP] == false && m_pPadState[ANALOG_DOWN] == false)
 	{
-		if (m_BrotherState == BROTHER_STATE_NORMAL)
+		if (m_BrotherState == CLIENTBROTHER_STATE_NORMAL)
 		{
 			switch (m_Direction)
 			{
@@ -249,7 +249,7 @@ void ClientBrother::Move()
 				break;
 			}
 		}
-		else if (m_BrotherState == BROTHER_STATE_WOODBOX)
+		else if (m_BrotherState == CLIENTBROTHER_STATE_WOODBOX)
 		{
 			switch (m_Direction)
 			{
@@ -306,11 +306,11 @@ void ClientBrother::Move()
 		if (m_pPadOldState[ANALOG_LEFT])
 		{
 
-			if (m_BrotherState == BROTHER_STATE_NORMAL)
+			if (m_BrotherState == CLIENTBROTHER_STATE_NORMAL)
 			{
 				m_CurrentAnima = BROTHER_WALK_SIDE;
 			}
-			else if (m_BrotherState == BROTHER_STATE_WOODBOX)
+			else if (m_BrotherState == CLIENTBROTHER_STATE_WOODBOX)
 			{
 				m_CurrentAnima = BROTHER_WOODBOX_WALK_SIDE;
 			}
@@ -346,11 +346,11 @@ void ClientBrother::Move()
 
 		if (m_pPadOldState[ANALOG_RIGHT])
 		{
-			if (m_BrotherState == BROTHER_STATE_NORMAL)
+			if (m_BrotherState == CLIENTBROTHER_STATE_NORMAL)
 			{
 				m_CurrentAnima = BROTHER_WALK_SIDE;
 			}
-			else if (m_BrotherState == BROTHER_STATE_WOODBOX)
+			else if (m_BrotherState == CLIENTBROTHER_STATE_WOODBOX)
 			{
 				m_CurrentAnima = BROTHER_WOODBOX_WALK_SIDE;
 			}
@@ -383,11 +383,11 @@ void ClientBrother::Move()
 		m_Direction = PLAYER_FRONT;
 		if (m_pPadOldState[ANALOG_DOWN])
 		{
-			if (m_BrotherState == BROTHER_STATE_NORMAL)
+			if (m_BrotherState == CLIENTBROTHER_STATE_NORMAL)
 			{
 				m_CurrentAnima = BROTHER_WALK_FRONT;
 			}
-			else if (m_BrotherState == BROTHER_STATE_WOODBOX)
+			else if (m_BrotherState == CLIENTBROTHER_STATE_WOODBOX)
 			{
 				m_CurrentAnima = BROTHER_WOODBOX_WALK_FRONT;
 			}
@@ -421,11 +421,11 @@ void ClientBrother::Move()
 		m_Direction = PLAYER_BACK;
 		if (m_pPadOldState[ANALOG_UP])
 		{
-			if (m_BrotherState == BROTHER_STATE_NORMAL)
+			if (m_BrotherState == CLIENTBROTHER_STATE_NORMAL)
 			{
 				m_CurrentAnima = BROTHER_WALK_BACK;
 			}
-			else if (m_BrotherState == BROTHER_STATE_WOODBOX)
+			else if (m_BrotherState == CLIENTBROTHER_STATE_WOODBOX)
 			{
 				m_CurrentAnima = BROTHER_WOODBOX_WALK_BACK;
 			}
@@ -450,7 +450,7 @@ void ClientBrother::Action()
 	{
 		switch (m_BrotherState)
 		{
-		case BROTHER_STATE_NORMAL:
+		case CLIENTBROTHER_STATE_NORMAL:
 			switch (m_Direction)
 			{
 			case PLAYER_BACK:
@@ -458,15 +458,15 @@ void ClientBrother::Action()
 
 				if (m_pCollisionChecker->WoodBoxCheck(m_Ppos.x, m_Ppos.y - 60) == true)
 				{
-					m_BrotherState = BROTHER_STATE_WOODBOX;
+					m_BrotherState = CLIENTBROTHER_STATE_WOODBOX;
 				}
 				else if (m_pCollisionChecker->WoodBoxCheck(m_Ppos.x + 30, m_Ppos.y - 60) == true)
 				{
-					m_BrotherState = BROTHER_STATE_WOODBOX;
+					m_BrotherState = CLIENTBROTHER_STATE_WOODBOX;
 				}
 				else if (m_pCollisionChecker->WoodBoxCheck(m_Ppos.x - 30, m_Ppos.y - 60) == true)
 				{
-					m_BrotherState = BROTHER_STATE_WOODBOX;
+					m_BrotherState = CLIENTBROTHER_STATE_WOODBOX;
 				}
 
 				break;
@@ -474,15 +474,15 @@ void ClientBrother::Action()
 
 				if (m_pCollisionChecker->WoodBoxCheck( m_Ppos.x,  m_Ppos.y + 111) == true)
 				{
-					m_BrotherState = BROTHER_STATE_WOODBOX;
+					m_BrotherState = CLIENTBROTHER_STATE_WOODBOX;
 				}
 				else if (m_pCollisionChecker->WoodBoxCheck(m_Ppos.x+30,  m_Ppos.y + 111) == true)
 				{
-					m_BrotherState = BROTHER_STATE_WOODBOX;
+					m_BrotherState = CLIENTBROTHER_STATE_WOODBOX;
 				}
 				else if (m_pCollisionChecker->WoodBoxCheck(m_Ppos.x-30,  m_Ppos.y + 111) == true)
 				{
-					m_BrotherState = BROTHER_STATE_WOODBOX;
+					m_BrotherState = CLIENTBROTHER_STATE_WOODBOX;
 				}
 
 				break;
@@ -490,11 +490,11 @@ void ClientBrother::Action()
 
 				if (m_pCollisionChecker->WoodBoxCheck(m_Ppos.x - 78,  m_Ppos.y+ 10) == true)
 				{
-					m_BrotherState = BROTHER_STATE_WOODBOX;
+					m_BrotherState = CLIENTBROTHER_STATE_WOODBOX;
 				}
 				else if (m_pCollisionChecker->WoodBoxCheck( m_Ppos.x - 78,  m_Ppos.y + 40) == true)
 				{
-					m_BrotherState = BROTHER_STATE_WOODBOX;
+					m_BrotherState = CLIENTBROTHER_STATE_WOODBOX;
 				}
 
 				break;
@@ -502,11 +502,11 @@ void ClientBrother::Action()
 
 				if (m_pCollisionChecker->WoodBoxCheck( m_Ppos.x + 78,  +m_Ppos.y+10) == true)
 				{
-					m_BrotherState = BROTHER_STATE_WOODBOX;
+					m_BrotherState = CLIENTBROTHER_STATE_WOODBOX;
 				}
 				else if (m_pCollisionChecker->WoodBoxCheck( m_Ppos.x + 78,  m_Ppos.y + 40) == true)
 				{
-					m_BrotherState = BROTHER_STATE_WOODBOX;
+					m_BrotherState = CLIENTBROTHER_STATE_WOODBOX;
 				}
 
 				break;
@@ -515,7 +515,7 @@ void ClientBrother::Action()
 
 
 			break;
-		case BROTHER_STATE_WOODBOX:
+		case CLIENTBROTHER_STATE_WOODBOX:
 			//‚±‚±‚ÅMap‚É‘Î‚µ‚Ä‚Ìˆ—
 
 			switch (m_Direction)
@@ -524,7 +524,7 @@ void ClientBrother::Action()
 
 				if (m_pCollisionChecker->WoodBoxSet(m_Ppos.x, m_Ppos.y - 60) == true)
 				{
-					m_BrotherState = BROTHER_STATE_NORMAL;
+					m_BrotherState = CLIENTBROTHER_STATE_NORMAL;
 				}
 
 				break;
@@ -532,7 +532,7 @@ void ClientBrother::Action()
 
 				if (m_pCollisionChecker->WoodBoxSet(m_Ppos.x, m_Ppos.y + 111 + 32) == true)
 				{
-					m_BrotherState = BROTHER_STATE_NORMAL;
+					m_BrotherState = CLIENTBROTHER_STATE_NORMAL;
 				}
 
 				break;
@@ -540,7 +540,7 @@ void ClientBrother::Action()
 
 				if (m_pCollisionChecker->WoodBoxSet(m_Ppos.x - 78, m_Ppos.y + 64) == true)
 				{
-					m_BrotherState = BROTHER_STATE_NORMAL;
+					m_BrotherState = CLIENTBROTHER_STATE_NORMAL;
 				}
 
 				break;
@@ -548,7 +548,7 @@ void ClientBrother::Action()
 
 				if (m_pCollisionChecker->WoodBoxSet(m_Ppos.x + 78, m_Ppos.y + 64) == true)
 				{
-					m_BrotherState = BROTHER_STATE_NORMAL;
+					m_BrotherState = CLIENTBROTHER_STATE_NORMAL;
 				}
 
 				break;
@@ -619,7 +619,7 @@ bool ClientBrother::Far()
 }
 
 
-void ClientBrother::ModeManagerSet(ClientModeManager* pModeManager)
+void ClientBrother::ModeManagerSet(ModeManager* pModeManager)
 {
 	m_pModeManager = pModeManager;
 }

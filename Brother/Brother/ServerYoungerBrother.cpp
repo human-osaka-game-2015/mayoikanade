@@ -1,18 +1,18 @@
 #include "ServerYoungerBrother.h"
 #include "Scene.h"
-#include "ServerCollisionChecker.h"
+#include "CollisionChecker.h"
 #include "Library.h"
-#include "ServerModeManager.h"
-#include "ServerGameTimeManager.h"
-#include "ServerDrawPositionSetter.h"
+#include "ModeManager.h"
+#include "GameTimeManager.h"
+#include "DrawPositionSetter.h"
 #include "ServerGameScene.h"
-#include "ServerPlayerUI.h"
+#include "PlayerUI.h"
 
 
-ServerYoungerBrother::ServerYoungerBrother(Library* pLibrary, bool* pPadState, bool* pPadOldState, PADSTATE* pButtonState, ServerCollisionChecker* pCollisionChecker, ServerDrawPositionSetter* pDrawPositionSetter, ServerGameTimeManager* pGameTimeManager, ServerPlayer* pPlayer):
-	ServerPlayer(pLibrary, pPadState, pPadOldState, pButtonState, pCollisionChecker, pDrawPositionSetter, pGameTimeManager),
-	m_pPlayer(pPlayer),
-	m_StandUpTime(0)
+ServerYoungerBrother::ServerYoungerBrother(Library* pLibrary, bool* pPadState, bool* pPadOldState, PADSTATE* pButtonState, CollisionChecker* pCollisionChecker, DrawPositionSetter* pDrawPositionSetter, GameTimeManager* pGameTimeManager, Player* pPlayer):
+Player(pLibrary, pPadState, pPadOldState, pButtonState, pCollisionChecker, pDrawPositionSetter, pGameTimeManager),
+m_pPlayer(pPlayer),
+m_StandUpTime(0)
 {
 	m_pLibrary->InitAnima(YOUNGERBROTHER_WAIT_FRONT);
 	m_pLibrary->InitAnima(YOUNGERBROTHER_WAIT_SIDE);
@@ -33,7 +33,7 @@ ServerYoungerBrother::ServerYoungerBrother(Library* pLibrary, bool* pPadState, b
 	m_Hp = YOUNGERBROTHER_HP;
 
 	
-	m_pPlayerUI = new ServerPlayerUI(m_pLibrary, m_Hp, YOUNGERBROTHER_LIFEFRAME, YOUNGERBROTHER_LIFEBAR, SWITCH_RED_01, SWITCH_YELLOW_01, SWITCH_BLUE_01, YOUNGERBROTHER_UI_POSX, YOUNGERBROTHER_UI_POSY, YOUNGERBROTHERFACEX, YOUNGERBROTHERFACEY);
+	m_pPlayerUI = new PlayerUI(m_pLibrary, m_Hp, YOUNGERBROTHER_LIFEFRAME, YOUNGERBROTHER_LIFEBAR, SWITCH_RED_01, SWITCH_YELLOW_01, SWITCH_BLUE_01, YOUNGERBROTHER_UI_POSX, YOUNGERBROTHER_UI_POSY, YOUNGERBROTHERFACEX, YOUNGERBROTHERFACEY);
 }
 
 
@@ -461,7 +461,7 @@ void ServerYoungerBrother::Update()
 }
 
 
-void ServerYoungerBrother::ModeManagerSet(ServerModeManager* pModeManager)
+void ServerYoungerBrother::ModeManagerSet(ModeManager* pModeManager)
 {
 	m_pModeManager = pModeManager;
 }
