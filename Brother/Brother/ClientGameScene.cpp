@@ -41,7 +41,7 @@ DWORD WINAPI ClientGameScene::Connect(LPVOID Gamemain)
 	//-------------------------------------------------------------------------------------------------
 
 	DWORD SyncOld = timeGetTime();
-	DWORD SyncNow;
+	//DWORD SyncNow;
 
 	timeBeginPeriod(1);
 
@@ -190,7 +190,7 @@ isConnect(false)
 	m_pShadow				= new Shadow(m_pLibrary, m_pGameTimeManager);
 	m_pText					= new Text(m_pLibrary, m_PadState, m_PadOldState, m_ButtonState);
 	
-	m_pModeManager			= new ModeManager(m_pSceneChangeListener, m_pBrother, m_pYoungerBrother, m_pGameTimeManager, m_pShadow, m_pText);
+	m_pModeManager = new ModeManager(m_pSceneChangeListener, m_pBrother, m_pYoungerBrother, m_pGameTimeManager, m_pShadow, m_pText, m_pisGameClear,m_pMap);
 
 	//ModeManagerSetはBrotherなどに対してm_ModeManagerを渡す
 	m_pBrother->ModeManagerSet(m_pModeManager);
@@ -276,8 +276,11 @@ SCENE_NUM ClientGameScene::Control()
 	m_pYoungerBrother->SwitchOn();
 
 
-	m_pBrother->Control();
-	m_pYoungerBrother->Control();
+	if (m_pModeManager->m_alpha == 0)
+	{
+		m_pBrother->Control();
+		m_pYoungerBrother->Control();
+	}
 
 
 	
@@ -300,6 +303,17 @@ void ClientGameScene::Draw()
 	m_pYoungerBrother->UiDraw();
 
 	m_pText->Draw();
+	//ステージ移動演出
+	CustomVertex blackout[4];
+	Position m_Pos = { 640, 512, 1280, 1024 };
+	m_pLibrary->xySet(m_Pos, blackout);
+	m_pLibrary->MakeVertex(BLACKOUT, blackout);
+
+	for (int i = 0; i < 4; i++)
+	{
+		blackout[i].color = D3DCOLOR_ARGB(m_pModeManager->m_alpha, 0, 0, 0);
+	}
+	m_pLibrary->DrawTexture(TEX_GAME, blackout);
 
 
 #ifdef _DEBUG

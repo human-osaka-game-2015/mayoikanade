@@ -40,7 +40,7 @@ DWORD WINAPI ServerGameScene::Connect(LPVOID vpGameScene)
 
 	*pGameScene->m_pisConnect = true;
 	DWORD SyncOld = timeGetTime();
-	DWORD SyncNow;
+	//DWORD SyncNow;
 
 	timeBeginPeriod(1);
 
@@ -197,7 +197,7 @@ m_pisConnect(&m_isConnect)
 	m_pYoungerBrother		= new ServerYoungerBrother(m_pLibrary, m_ClientPadState, m_ClientPadOldState, m_ClientButtonState, m_pCollisionChecker, m_pDrawPositionSetter, m_pGameTimeManager, m_pBrother);
 	m_pShadow				= new Shadow(m_pLibrary, m_pGameTimeManager);
 	m_pText					= new Text(m_pLibrary, m_PadState, m_PadOldState, m_ButtonState);
-	m_pModeManager			= new ModeManager(m_pSceneChangeListener, m_pBrother, m_pYoungerBrother, m_pGameTimeManager, m_pShadow, m_pText);
+	m_pModeManager			= new ModeManager(m_pSceneChangeListener, m_pBrother, m_pYoungerBrother, m_pGameTimeManager, m_pShadow, m_pText,m_pisGameClear,m_pMap);
 
 	//ModeManagerSetはBrotherなどに対してm_ModeManagerを渡す
 	m_pBrother->ModeManagerSet(m_pModeManager);
@@ -213,19 +213,6 @@ m_pisConnect(&m_isConnect)
 	D3DXCreateFont(m_pLibrary->GetDevice(), 0, 8, FW_REGULAR, NULL, FALSE, SHIFTJIS_CHARSET, OUT_DEFAULT_PRECIS, PROOF_QUALITY, FIXED_PITCH | FF_MODERN, "tahoma", &pFont);
 #endif
 
-	//これは自分の勘違いだったのでつかえない
-	//IN_ADDR inaddr; 				// IPアドレスを格納する構造体
-	//char szBuf[256]; // ホスト名/IPアドレスを格納する配列
-	//// WinSockの初期化
-	//WSADATA wsaData;
-	//WSAStartup(MAKEWORD(2, 2), &wsaData);
-	//// ローカルマシンのホスト名を取得する
-	//gethostname(szBuf, (int)sizeof(szBuf));
-	//lpHost = gethostbyname(szBuf);
-	//for (int i = 0; lpHost->h_addr_list[i]; i++) {
-	//	memcpy(&inaddr, lpHost->h_addr_list[i], 4);
-	//	strcpy_s(szIP, inet_ntoa(inaddr));
-	//}
 
 
 	DWORD dwID;
@@ -296,8 +283,11 @@ SCENE_NUM ServerGameScene::Control()
 		m_pBrother->SwitchOn();
 		m_pYoungerBrother->SwitchOn();
 
-		m_pBrother->Control();
-		m_pYoungerBrother->Control();
+		if (m_pModeManager->m_alpha == 0)
+		{
+			m_pBrother->Control();
+			m_pYoungerBrother->Control();
+		}
 	}
 	return m_NextScene;
 }
@@ -331,6 +321,17 @@ void ServerGameScene::Draw()
 		m_pYoungerBrother->UiDraw();
 
 		m_pText->Draw();
+		//ステージ移動演出
+		CustomVertex blackout[4];
+		Position m_Pos = { 640, 512, 1280, 1024 };
+		m_pLibrary->xySet(m_Pos, blackout);
+		m_pLibrary->MakeVertex(BLACKOUT, blackout);
+
+		for (int i = 0; i < 4; i++)
+		{
+			blackout[i].color = D3DCOLOR_ARGB(m_pModeManager->m_alpha, 0, 0, 0);
+		}
+		m_pLibrary->DrawTexture(TEX_GAME, blackout);
 
 #ifdef _DEBUG
 		RECT rect = { 10, 10, 0, 0 };

@@ -18,6 +18,9 @@ enum GAMEMODE_NUM
 {
 	NORMAL,
 	TEXT,
+	STAGECHANGE,
+	GAME_CLEAR,
+	GAME_CLEAREFFECT,
 	GAMEOVEREFFECT,
 	GAMEOVER,
 	MODEMAX
@@ -39,14 +42,19 @@ private:
 
 	GAMEMODE_NUM			m_Mode;
 	GAMEMODE_NUM CheckMode();
+	bool*						m_pisGameClear;
 
 
 public:
-	ModeManager(SceneChangeListener* Listener, ServerBrother* pBrother, ServerYoungerBrother* pYoungerBrother, GameTimeManager* pGameTimeManager, Shadow* pShadow, Text* pText);
-	ModeManager(SceneChangeListener* Listener, ClientBrother* pBrother, ClientYoungerBrother* pYoungerBrother, GameTimeManager* pGameTimeManager, Shadow* pShadow, Text* pText);
+	ModeManager(SceneChangeListener* Listener, ServerBrother* pBrother, ServerYoungerBrother* pYoungerBrother, GameTimeManager* pGameTimeManager, Shadow* pShadow, Text* pText, bool* pisGameClear, Map* pMap);
+	ModeManager(SceneChangeListener* Listener, ClientBrother* pBrother, ClientYoungerBrother* pYoungerBrother, GameTimeManager* pGameTimeManager, Shadow* pShadow, Text* pText, bool* pisGameClear, Map* pMap);
 	~ModeManager();
 	void Control();
 	GAMEMODE_NUM GetMode();
+	bool m_BrotherGoal;
+	bool m_YoungBrotherGoal;
+	int m_alpha;
+	bool m_StageChange;
 
 };
 

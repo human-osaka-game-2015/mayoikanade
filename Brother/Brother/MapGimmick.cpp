@@ -715,3 +715,17 @@ bool MapGimmick::AppleCheck(float x, float y)
 
 }
 
+bool MapGimmick::ClearCheck(float x, float y)
+{
+	int arrayx = 0, arrayy = 0;
+	arrayx = int(x / 64);
+	arrayy = int(y / 64);
+
+	if (m_GimmickData[arrayy][arrayx] == GOALZONE)
+	{
+		return true;
+	}
+
+
+	return false;
+}

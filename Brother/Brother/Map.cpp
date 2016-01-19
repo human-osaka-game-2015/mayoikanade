@@ -183,3 +183,34 @@ bool Map::AppleCheck(float x, float y)
 	return m_pMapGimmick->AppleCheck(x, y);
 }
 
+void Map::MapChange()
+{
+	switch (m_mapstage)
+	{
+	case STAGE1:
+		m_pMapBackGround->CsvRead("Stage1_Background.csv");
+		m_pMapObject->CsvRead("Stage1_Object.csv");
+		m_pMapGimmick->CsvRead("Stage1_Gimmick.csv");
+		break;
+	case STAGE2:
+		m_pMapBackGround->CsvRead("Stage1_Background.csv");
+		m_pMapObject->CsvRead("Stage1_Object.csv");
+		m_pMapGimmick->CsvRead("Stage1_Gimmick.csv");
+		break;
+	case STAGE3:
+		m_pMapBackGround->CsvRead("Stage1_Background.csv");
+		m_pMapObject->CsvRead("Stage1_Object.csv");
+		m_pMapGimmick->CsvRead("Stage1_Gimmick.csv");
+		break;
+	case STAGE4:
+		m_pMapBackGround->CsvRead("Stage1_Background.csv");
+		m_pMapObject->CsvRead("Stage1_Object.csv");
+		m_pMapGimmick->CsvRead("Stage1_Gimmick.csv");
+		break;
+	}
+}
+
+bool Map::ClearCheck(float x,float y)
+{
+	return m_pMapGimmick->ClearCheck(x,y);
+}

@@ -36,7 +36,7 @@ public:
 	bool GrassPortRaitCheck(float x,float y);
 	bool GrassCheck(float x, float y);
 	bool AppleCheck(float x, float y);
-
+	bool ClearCheck(float x, float y);
 	int	m_GimmickData[MAP_HEIGHT][MAP_WIDTH];
 
 };

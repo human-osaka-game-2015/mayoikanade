@@ -57,6 +57,7 @@ public:
 	int BackGroundCheck(float x, float y);
 	bool WoodBoxCheck(float x, float y);
 	bool WoodBoxSet(float x, float y);
+	bool ClearCheck(float x, float y);
 
 	void Control();
 	void Draw();
@@ -69,6 +70,9 @@ public:
 
 	float	m_DrawPositionX;
 	float	m_DrawPositionY;
+
+	int m_mapstage;
+	void MapChange();
 };
 
 #endif

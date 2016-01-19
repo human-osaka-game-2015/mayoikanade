@@ -1,5 +1,13 @@
 #ifndef TEX_H
 #define TEX_H
+enum MAP_STAGE
+{
+	STAGE1,
+	STAGE2,
+	STAGE3,
+	STAGE4,
+	STAGE_MAX
+};
 
 enum GAME_VERTEXINFO_ID
 {
