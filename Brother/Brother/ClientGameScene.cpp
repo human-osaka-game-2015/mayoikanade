@@ -19,7 +19,7 @@ DWORD WINAPI ClientGameScene::Connect(LPVOID Gamemain)
 {
 	GameThread* p_GameThread = static_cast<GameThread*>(Gamemain);
 	ClientGameScene* pGameScene = static_cast<ClientGameScene*>(p_GameThread->pGameScene);
-	Client BrotherClient("8000");
+	Client BrotherClient("51234");
 	char IP[16];
 
 	for (int i = 0; i < 16; i++)
