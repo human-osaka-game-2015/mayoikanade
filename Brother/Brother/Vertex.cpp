@@ -10,19 +10,30 @@
 
 
 
-
+/**
+ * Vertexクラスのコンストラクタ
+ */
 Vertex::Vertex()
 {
 	
 }
 
+/**
+ * Vertexクラスのデストラクタ
+ */
 Vertex::~Vertex()
 {
 
 }
 
 
-
+/**
+ * CustomVertexをスケーリングする関数
+ * @param[out] pVertex スケーリングするCustomVertex
+ * @param[in] Pos Position構造体
+ * @param[in] x x方向の倍率
+ * @param[in] y y方向の倍率
+ */
 void Vertex::Scaling(CustomVertex* pVertex, Position* Pos, float x, float y)
 {
 	pVertex[0].x = pVertex[0].x - ((Pos->w / 2) * x);
@@ -39,11 +50,11 @@ void Vertex::Scaling(CustomVertex* pVertex, Position* Pos, float x, float y)
 
 
 /**
-* 回転したい画像のCustomVertexのアドレスを渡す
-* 何度回転するかの値を渡す。
-* 回転は右回りで、関数内でラジアンに変換している。
-*
-*/
+ * 頂点座標の回転関数
+ * @param[out] pVertex 回転する頂点
+ * @param[in] pos その頂点の位置
+ * @param[in] angle 回転する角度
+ */
 void Vertex::Turn(CustomVertex* pVertex,Position* Pos, double angle)
 {
 
@@ -78,6 +89,12 @@ void Vertex::Turn(CustomVertex* pVertex,Position* Pos, double angle)
 
 }
 
+
+/**
+ * Position構造体からxy情報を取得してpVertexに出力する
+ * @param[in] pos xy情報を取得するposition構造体
+ * @param[out] pVertex xy情報を出力するCustomVertex
+ */
 void Vertex::xySet(Position pos, CustomVertex* pVertex)
 {
 	pVertex[0].x = pos.x - (pos.w / 2);

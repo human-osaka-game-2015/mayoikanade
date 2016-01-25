@@ -8,6 +8,7 @@
 #include "ClientGameScene.h"
 #include "PlayerUI.h"
 
+
 ClientYoungerBrother::ClientYoungerBrother(Library* pLibrary, bool* pPadState, bool* pPadOldState, PADSTATE* pButtonState, CollisionChecker* pCollisionChecker, DrawPositionSetter* pDrawPositionSetter, GameTimeManager* pGameTimeManager):
 Player(pLibrary, pPadState, pPadOldState, pButtonState, pCollisionChecker, pDrawPositionSetter, pGameTimeManager)
 {
@@ -58,7 +59,7 @@ void ClientYoungerBrother::Control()
 #ifdef _DEBUG
 		if (m_pButtonState[1] == PAD_PUSH)
 		{
-			m_Hp = 100;
+			m_Hp = YOUNGERBROTHER_HP;
 		}
 #endif
 

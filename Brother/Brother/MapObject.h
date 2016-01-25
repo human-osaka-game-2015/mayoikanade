@@ -1,6 +1,8 @@
 #ifndef MAPOBJECT_H
 #define MAPOBJECT_H
 
+#define OBJECT_NONE 0
+
 #include "Map.h"
 class Library;
 
@@ -17,7 +19,6 @@ private:
 public:
 	MapObject(Library* pLibrary);
 	~MapObject();
-	void Control();
 	void Draw(float DrawPosX, float DrawPosY);
 	bool CsvRead(const char* filename);
 	void MapTex_UV_Set(float Posx, float Posy);

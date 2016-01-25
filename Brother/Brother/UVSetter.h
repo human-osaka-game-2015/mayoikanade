@@ -1,9 +1,11 @@
 #ifndef UVSETTER_H
 #define UVSETTER_H
 
-#define DEFAULTCOLOR 0xffffffff
-#define DEFAULTRHW 1
-#define DEFAULTZ 0
+#define DEFAULT_COLOR 0xffffffff
+#define DEFAULT_RHW 1
+#define DEFAULT_Z 0
+#define DEFAULT_TU 0
+#define DEFAULT_TV 0
 #define INITFRAMECOUNT 0
 #define INITAnimaNum 0
 #define INITADDNUM 1

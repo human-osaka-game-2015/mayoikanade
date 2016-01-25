@@ -15,7 +15,6 @@ private:
 public:
 	TitleBackGround(Library* pLibrary);
 	~TitleBackGround();
-	void Control();
 	void Draw();
 };
 

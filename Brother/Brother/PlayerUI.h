@@ -1,6 +1,9 @@
 #ifndef PLAYERUI_H
 #define PLAYERUI_H
 
+#define MAX_GAGE 240		//ゲージの大きさ
+#define GAGE_HP 2.4			//体力からゲージを割り出す補正値
+
 #include "Vertex.h"
 
 

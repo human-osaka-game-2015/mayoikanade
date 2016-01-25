@@ -2,6 +2,11 @@
 #include <Vmr9.h>
 
 
+/**
+ * OpeningSceneクラスのコンストラクタ
+ * @param[in] pLibrary ライブラリクラス
+ * @param[in] hWnd ウィンドウハンドル
+ */
 OpeningScene::OpeningScene(Library* pLibrary, HWND hWnd) :
 Scene(pLibrary),
 m_pGB(NULL),
@@ -11,21 +16,21 @@ m_pMediaCont(NULL),
 m_hWnd(hWnd)
 {
 	//timeの初期化
-	m_time = 0;
+	m_time = INIT_TIME;
 
 	WCHAR wFileName[] = L"A.avi";
 
 	//COMコンポーネントを使う上で必要
 	if (FAILED(CoInitializeEx(NULL, COINIT_APARTMENTTHREADED)))
 	{
-		MessageBox(0, "COMの初期化に失敗しました", "", MB_OK);
+		MessageBox(NULL, "COMの初期化に失敗しました", "OpeningScene.cpp", MB_OK);
 	}
 
 	//フィルタグラフオブジェクトを作成してIgraphInterfaceのポインタ取得
 	//IGraphBuilderはフィルタグラフの管理とインターフェースの提供
 	if (FAILED(CoCreateInstance(CLSID_FilterGraph, NULL, CLSCTX_INPROC_SERVER, IID_IGraphBuilder, reinterpret_cast<void**>(&m_pGB))))
 	{
-		MessageBox(0, "グラフインターフェースの取得に失敗しました", "", MB_OK);
+		MessageBox(NULL, "グラフインターフェースの取得に失敗しました", "OpeningScene.cpp", MB_OK);
 		CoUninitialize();
 	}
 
@@ -33,24 +38,26 @@ m_hWnd(hWnd)
 	//VRM9はレンダリングを担当してくれる
 	if (FAILED(CoCreateInstance(CLSID_VideoMixingRenderer9, NULL, CLSCTX_INPROC_SERVER, IID_IBaseFilter, reinterpret_cast<void**>(&m_pVMR9))))
 	{
-		MessageBox(0, "VMR9フィルタの作成に失敗しました", "", MB_OK);
+		MessageBox(NULL, "VMR9フィルタの作成に失敗しました", "OpeningScene.cpp", MB_OK);
 		CoUninitialize();
 	}
-	m_pGB->AddFilter(m_pVMR9, L"VMR9");       // フィルタグラフに登録
 
+	//フィルタグラフ登録
+	m_pGB->AddFilter(m_pVMR9, L"VMR9");
 
 	// VRM9をウィンドウレスモードにする
 	IVMRFilterConfig* pVMRCfg = NULL;
 	if (FAILED(m_pVMR9->QueryInterface(IID_IVMRFilterConfig9, reinterpret_cast<void**>(&pVMRCfg))))
 	{
-		MessageBox(0, "IVMRFilterConfigの作成に失敗しました", "", MB_OK);
+		MessageBox(NULL, "IVMRFilterConfigの作成に失敗しました", "OpeningScene.cpp", MB_OK);
 		m_pGB->Release();
 		CoUninitialize();
 	}
+	
 	//ウィンドウレスモードに変更する
-	//フルスクリーンじゃなかったら必要ないと思う
 	pVMRCfg->SetRenderingMode(VMRMode_Windowless);
-	// IVMRFilterConfigはウィンドウレスモードにするだけなのでもう必要ない
+
+	// IVMRFilterConfigはウィンドウレスモードにするためだけのものなので解放する
 	pVMRCfg->Release();
 
 
@@ -58,7 +65,7 @@ m_hWnd(hWnd)
 	IVMRWindowlessControl9* pVMRWndCont = NULL;
 	if (FAILED(m_pVMR9->QueryInterface(IID_IVMRWindowlessControl9, reinterpret_cast<void**>(&pVMRWndCont))))
 	{
-		MessageBox(0, "IVMRWindowlessControl9の作成に失敗しました", "", MB_OK);
+		MessageBox(NULL, "IVMRWindowlessControl9の作成に失敗しました", "OpeningScene.cpp", MB_OK);
 		m_pGB->Release();
 		CoUninitialize();
 	}
@@ -70,17 +77,17 @@ m_hWnd(hWnd)
 	m_pGB->AddSourceFilter(wFileName, wFileName, &pSource);
 
 
-	// CaptureGraphBuilder2インターフェイスの取得
+	//CaptureGraphBuilder2インターフェイスの取得
 	//CaptureGraphBuilder2はフィルタ接続をある程度自動化してくれるいいやつ
 	if (FAILED(CoCreateInstance(CLSID_CaptureGraphBuilder2, NULL, CLSCTX_INPROC_SERVER, IID_ICaptureGraphBuilder2, reinterpret_cast<void**>(&m_pCGB2))))
 	{
-		MessageBox(0, "CaptureGraphBuilder2の取得に失敗しました", "", MB_OK);
+		MessageBox(NULL, "CaptureGraphBuilder2の取得に失敗しました", "OpeningScene.cpp", MB_OK);
 		m_pGB->Release();
 		CoUninitialize();
 	}
 
 	//ICaptureGraphBuilder2の初期化
-	//IGraphBuilderを渡すだけでよい
+	//IGraphBuilderを渡すだけでうまくやってくれる
 	m_pCGB2->SetFiltergraph(m_pGB);
 
 
@@ -88,7 +95,7 @@ m_hWnd(hWnd)
 	// フィルタの接続
 	if (FAILED(m_pCGB2->RenderStream(0, 0, pSource, 0, m_pVMR9)))
 	{
-		MessageBox(0, "フィルタ接続に失敗しました", "", MB_OK);
+		MessageBox(NULL, "フィルタ接続に失敗しました", "OpeningScene.cpp", MB_OK);
 		m_pCGB2->Release();
 		m_pGB->Release();
 		CoUninitialize();
@@ -96,7 +103,7 @@ m_hWnd(hWnd)
 
 	if (FAILED(m_pCGB2->RenderStream(0, &MEDIATYPE_Audio, pSource, 0, 0)))
 	{
-		MessageBox(0, "フィルタ接続に失敗しました", "", MB_OK);
+		MessageBox(NULL, "フィルタ接続に失敗しました", "OpeningScene.cpp", MB_OK);
 		m_pCGB2->Release();
 		m_pGB->Release();
 		CoUninitialize();
@@ -112,7 +119,7 @@ m_hWnd(hWnd)
 	pVMRWndCont->GetNativeVideoSize(&W, &H, NULL, NULL);
 
 	//SrcRectに移す
-	SetRect(&SrcRect, 0, 0, W, H);
+	SetRect(&SrcRect, MOVIE_LEFT, MOVIE_TOP, W, H);
 
 	//クライアント領域取得
 	GetClientRect(hWnd, &ClientRect);
@@ -121,12 +128,12 @@ m_hWnd(hWnd)
 	pVMRWndCont->SetVideoPosition(&SrcRect, &ClientRect);
 
 
-	// ウィンドウレスコントロールは不必要
+	// ウィンドウレスコントロールは不要
 	pVMRWndCont->Release();
 
 
 
-	// メディアコントロールインターフェイスの取得
+	//メディアコントロールインターフェイスの取得
 	//こいつ使って動画再生とかする
 	if (FAILED(m_pGB->QueryInterface(IID_IMediaControl, reinterpret_cast<void**>(&m_pMediaCont))))
 	{
@@ -136,43 +143,51 @@ m_hWnd(hWnd)
 	}
 
 
-
+	//再生
 	m_pMediaCont->Run();
-
 }
 
+/**
+ * OpeningSceneのデストラクタ
+ */
 OpeningScene::~OpeningScene()
 {
 	// 動画停止
 	m_pMediaCont->Stop();
-	//NULLチェックとか入れること
+
+	//解放処理
 	m_pMediaCont->Release();
 	m_pVMR9->Release();
 	m_pCGB2->Release();
 	m_pGB->Release();
+
+	//Comはもう使わない
 	CoUninitialize();
 }
 
+/**
+ * OpeningSceneのコントロール
+ * @return 遷移先のシーン
+ */
 SCENE_NUM OpeningScene::Control()
 {
-	m_time = 0;
+	m_time = INIT_TIME;
 	DWORD SyncOld = timeGetTime();
 	DWORD SyncNow;
 
-	timeBeginPeriod(1);
+	timeBeginPeriod(ONE_MILLISECOND);
 
-	//60*43とか、やっつけコードになってる
-	//時間があれば終了通知でも取ってやるつもり
-	//m_timeも消したい
-	while (m_time <= 60 * 43)
+	
+	while (m_time <= OPENING_TIME)
 	{
-		Sleep(1);
+		Sleep(ONE_MILLISECOND);
 		SyncNow = timeGetTime();
-		if (SyncNow - SyncOld >= 1000 / 60)
+		if (SyncNow - SyncOld >= ONE_FRAME)
 		{
 			PadCheck();
 
-			if (m_ButtonState[0] == PAD_PUSH)
+			//Bボタンが押されたら抜ける
+			if (m_ButtonState[XINPUT_BUTTON_A] == PAD_PUSH)
 			{
 				break;
 			}
@@ -183,18 +198,24 @@ SCENE_NUM OpeningScene::Control()
 		}
 	}
 
-	timeEndPeriod(1);
+	timeEndPeriod(ONE_MILLISECOND);
 
 	return TITLE_SCENE;
 }
 
+/**
+ * OpeningSceneの描画関数
+ */
 void OpeningScene::Draw()
 {
 
 }
 
+/**
+ * OpeningSceneでのGamePadのチェック関数
+ */
 void OpeningScene::PadCheck()
 {
 	m_pLibrary->Check(GAMEPAD1);
-	m_ButtonState[0] = m_pLibrary->GetButtonState(GAMEPAD_A, GAMEPAD1);
+	m_ButtonState[XINPUT_BUTTON_A] = m_pLibrary->GetButtonState(GAMEPAD_A, GAMEPAD1);
 }

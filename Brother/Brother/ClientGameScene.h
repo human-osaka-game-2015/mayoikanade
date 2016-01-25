@@ -1,6 +1,28 @@
 #ifndef GAMESCENE_H
 #define GAMASCENE_H
 
+#define PORT_MAX 16				//Port番号を格納する配列の大きさ
+#define IP_MAX 16				//IPアドレスを格納する配列の大きさ
+#define FONT_HEIGHT 0			//D3DXFontのサイズ
+#define FONT_WIDTH 8			//D3DXFontのサイズ
+#define STACK_SIZE 0			//スレッドのスタックサイズ(0だと呼び出しがわのサイズに合わせてくれる)
+#define THREAD_CREAT_OPTION	0	//スレッドを作成する際のオプション指定(0だと作成と同時にスレッドが走る)
+#define SLEEP_TIME 3000			//スレッド終了を待つ時間
+#define BLACKOUT_POS_X 640
+#define BLACKOUT_POS_Y 512
+#define BLACKOUT_POS_W 1280
+#define BLACKOUT_POS_H 1024
+
+#ifdef _DEBUG
+
+#define DEBUG_FONT_RECT_LEFT 10			//フォントの位置
+#define DEBUG_FONT_RECT_TOP 10			//フォントの位置
+#define DEBUG_FONT_RECT_RIGHT 0			//フォントの位置
+#define DEBUG_FONT_RECT_BOTTOM 0		//フォントの位置
+#define DEBUG_FONT_COLOR 0xff00ffff		//フォントカラー
+#define DEBUG_FONT_NUM -1				//フォントの長さ(-1だとNULLまでを長さとする)
+
+#endif
 
 #include "Scene.h"
 #include <d3dx9.h>

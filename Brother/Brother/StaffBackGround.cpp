@@ -1,26 +1,33 @@
 #include "StaffBackGround.h"
 #include "StaffScene.h"
 
-StaffBackGround::StaffBackGround(Library* pLibrary) :m_pLibrary(pLibrary)
+
+/**
+ * StaffBackGroundクラスのコンストラクタ
+ * @param[in] pLibrary	ライブラリクラス
+ */
+StaffBackGround::StaffBackGround(Library* pLibrary) :
+m_pLibrary(pLibrary)
 {
 	//中央に来るように初期値設定
 	m_Pos.x = STAFFBACKGROUNDPOS_X;
 	m_Pos.y = STAFFBACKGROUNDPOS_Y;
 }
 
+/**
+ * StaffBackGroundクラスのデストラクタ
+ */
 StaffBackGround::~StaffBackGround()
 {
 
 }
 
-void StaffBackGround::Control()
-{
-
-}
-
+/**
+ * StaffBackGroundの描画関数
+ */
 void StaffBackGround::Draw()
 {
-	CustomVertex background[4];
+	CustomVertex background[SQUARE_VERTEX];
 
 	m_pLibrary->MakePosition(STAFF, &m_Pos);
 

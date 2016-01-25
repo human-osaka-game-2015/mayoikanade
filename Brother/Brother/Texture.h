@@ -14,10 +14,11 @@ typedef struct _CustomVertex_ CustomVertex, *PCutomVertex;;
 class Texture
 {
 private:
-	std::map<int, LPDIRECT3DTEXTURE9> m_textureMap;
+	LPDIRECT3DDEVICE9					m_pDevice;
+	std::map<int, LPDIRECT3DTEXTURE9>	m_textureMap;
 
 public:
-	Texture();
+	Texture(LPDIRECT3DDEVICE9 pDevice);
 	~Texture();
 	int LoadTexture(const char* name, int key);
 	int LoadTextureEx(const char* name, int key, int alpha, int red, int green, int blue);

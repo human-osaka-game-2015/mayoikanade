@@ -1,9 +1,18 @@
 #include "TitleTimeManager.h"
 #include "TitleScene.h"
 
-TitleTimeManager::TitleTimeManager(Library* pLibrary, unsigned int& GameTime) :m_pLibrary(pLibrary), m_GameTime(GameTime)
+
+/**
+ * TitleTimeManagerクラスのコンストラクタ
+ * @param[in]  pLibrary	ライブラリクラス
+ * @param[out] GameTime	Sceneのtimeを渡す
+ */
+TitleTimeManager::TitleTimeManager(Library* pLibrary, unsigned int& GameTime) :
+m_pLibrary(pLibrary), 
+m_GameTime(GameTime),
+m_alpha(COLORMAX)
 {
-	m_GameTime = 0;
+	m_GameTime = TIME_INIT;
 
 	//初期位置に設定
 	m_Pos.x = TITLEBLACKOUT_X;
@@ -14,19 +23,27 @@ TitleTimeManager::TitleTimeManager(Library* pLibrary, unsigned int& GameTime) :m
 	m_Pos.h = TITLEBLACKOUT_H;
 }
 
+/**
+ * TitleSceneクラスのデストラクタ
+ */
 TitleTimeManager::~TitleTimeManager()
 {
 
 }
 
+/**
+ * TitleTimeManagerクラスのコンストラクタ
+ * @param[in] pLibrary	ライブラリクラス
+ * @param[in] hWnd		ウィンドウハンドル
+ * @return フェードアウトしたらtrueを返す
+ */
 bool TitleTimeManager::Control()
 {
+	//タイムのカウント
 	m_GameTime++;
 	
-	//フェードアウトじゃなくてポケモンフラッシュのほうが面白い
-	//alphaは初期値が255
-	//20秒以下でalphaが0じゃないときはalphaを引いてだんだん明るくする。
-	if (m_GameTime > 1200)
+
+	if (m_GameTime > FADEOUT_TIME)
 	{
 		m_alpha++;
 		if (m_alpha == COLORMAX)
@@ -34,7 +51,7 @@ bool TitleTimeManager::Control()
 			return true;
 		}
 	}
-	else if (m_alpha != 0)
+	else if (m_alpha != COLORMIN)
 	{
 		m_alpha--;
 	}
@@ -42,18 +59,21 @@ bool TitleTimeManager::Control()
 	return false;
 }
 
+/**
+ * TitleTimeManagerの描画関数
+ */
 void TitleTimeManager::Draw()
 {
-	CustomVertex blackout[4];
-
+	CustomVertex blackout[SQUARE_VERTEX];
 
 	m_pLibrary->MakeVertex(TITLE_BLACK, blackout);
 	m_pLibrary->xySet(m_Pos, blackout);
 
-	for (int i = 0; i < 4; i++)
+	for (int i = FOR_DEFAULT_INIT; i < SQUARE_VERTEX; i++)
 	{
 		blackout[i].color = D3DCOLOR_ARGB(m_alpha, COLORMAX, COLORMAX, COLORMAX);
 	}
 
 	m_pLibrary->DrawTexture(TEX_TITLE, blackout);
 }
+

@@ -10,8 +10,8 @@ class LogoBackGround
 private:
 	Library*			m_pLibrary;
 	Position			m_Pos;
-	int					m_alpha = 0;
-	bool				m_isFadeIn = true;
+	int					m_alpha;
+	bool				m_isFadeIn;
 
 public:
 	LogoBackGround(Library* pLibrary);

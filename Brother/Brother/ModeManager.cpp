@@ -9,6 +9,19 @@
 #include "GameTimeManager.h"
 #include "Map.h"
 #include "Tex.h"
+
+
+/**
+ * ModeManagerクラスのコンストラクタ
+ * @param[in]
+ * @param[in]
+ * @param[in]
+ * @param[in]
+ * @param[in]
+ * @param[in]
+ * @param[in]
+ * @param[in]
+ */
 ModeManager::ModeManager(SceneChangeListener* Listener, ServerBrother* pBrother, ServerYoungerBrother* pYoungerBrother, GameTimeManager* pGameTimeManager, Shadow* pShadow, Text* pText, bool* pisGameClear, Map* pMap) :
 m_Mode(NORMAL), 
 m_pSceneChangeListener(Listener),
@@ -203,16 +216,13 @@ GAMEMODE_NUM ModeManager::CheckMode()
 			return GAMEOVER;
 		}
 
-		//if (TEXT_TIME <= m_pTimeManager->GetGameTime() && m_pText->GetMessageEnd())
-		//{
-		//	return TEXT;
-		//}
+		
 	}
 	
 	if (m_YoungBrotherGoal == true && m_BrotherGoal == true)
 	{
 		m_StageChange = true;
-		if (m_alpha == 254)
+		if (m_alpha == COLORMAX)
 		{
 			return STAGECHANGE;
 		}

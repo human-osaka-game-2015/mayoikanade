@@ -30,7 +30,6 @@ enum TITLEANIMA_ID
 	TITLEANIMA_ID_MAX
 };
 
-
 enum TITLESOUND_ID
 {
 	TITLE_BGM,
@@ -46,7 +45,7 @@ private:
 	TitleSelectManager*	m_pTitleSelectManager;
 	TitleTimeManager*	m_pTitleTimeManager;
 	TitleName*			m_pTitleName;
-	bool isTimeOver = false;
+	bool				m_isTimeOver;
 	
 
 public:

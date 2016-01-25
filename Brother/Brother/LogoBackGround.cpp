@@ -1,19 +1,34 @@
 #include "LogoBackGround.h"
 #include "LogoScene.h"
 
-LogoBackGround::LogoBackGround(Library* pLibrary) :m_pLibrary(pLibrary)
+
+
+/**
+ * LogoBackGroundクラスのコンストラクタ
+ * @param[in] pLibrary ライブラリクラス
+ */
+LogoBackGround::LogoBackGround(Library* pLibrary) :
+m_pLibrary(pLibrary),
+m_alpha(COLORMIN),
+m_isFadeIn(true)
 {
 	//中央に来るように初期値設定
 	m_Pos.x = LOGOBACKGROUNDPOS_X;
 	m_Pos.y = LOGOBACKGROUNDPOS_Y;
 }
 
+/**
+ * LogoBackGroundクラスのデストラクタ
+ */
 LogoBackGround::~LogoBackGround()
 {
 
 }
 
-//フェードイン　アウトが終わったらtrueを返す
+/**
+ * LogoBackGroundのコントロール
+ * @return フェードアウトが終わったかのフラグ
+ */
 bool LogoBackGround::Control()
 {
 	if (m_isFadeIn == true)
@@ -27,7 +42,7 @@ bool LogoBackGround::Control()
 	else
 	{
 		m_alpha--;
-		if (m_alpha == 0)
+		if (m_alpha == COLORMIN)
 		{
 			return true;
 		}
@@ -36,16 +51,19 @@ bool LogoBackGround::Control()
 	return false;
 }
 
+/**
+ * LogoBackGroundの描画関数
+ */
 void LogoBackGround::Draw()
 {
-	CustomVertex background[4];
+	CustomVertex background[SQUARE_VERTEX];
 
 	m_pLibrary->MakePosition(TEAMLOGO,&m_Pos);
 	
 	m_pLibrary->MakeVertex(TEAMLOGO, background);
 	m_pLibrary->xySet(m_Pos, background);
 
-	for (int i = 0; i < 4; i++)
+	for (int i = FOR_DEFAULT_INIT; i < SQUARE_VERTEX; i++)
 	{
 		background[i].color = D3DCOLOR_ARGB(m_alpha, COLORMAX, COLORMAX, COLORMAX);
 	}

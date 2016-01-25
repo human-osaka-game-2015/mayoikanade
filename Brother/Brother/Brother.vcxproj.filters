@@ -8,9 +8,6 @@
     <Filter Include="Library">
       <UniqueIdentifier>{721b6519-87c6-4495-9299-5d205c7f6b3e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Library\D3DXManager">
-      <UniqueIdentifier>{48d93f91-02a4-4f0b-8fe6-9cee405e7d9f}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Library\DSoundManager">
       <UniqueIdentifier>{ad55b6c2-8621-40ed-a0be-2c622678763f}</UniqueIdentifier>
     </Filter>
@@ -143,20 +140,11 @@
     <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\Map\MapObject">
       <UniqueIdentifier>{8f263b3f-634f-483e-abf7-0a3ec5475e7d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\Map\MapObject\WoodBox">
-      <UniqueIdentifier>{a87cc17c-c4e0-4120-802c-fa3db9e581d4}</UniqueIdentifier>
-    </Filter>
     <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\Map\MapGimmick">
       <UniqueIdentifier>{eb344f23-7538-42e9-9d6c-309e254b32c4}</UniqueIdentifier>
     </Filter>
     <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\Map\MapBackGround">
       <UniqueIdentifier>{4b57d8da-f0dc-45ca-a3f2-bc3678467883}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\Map\MapGimmick\Gate">
-      <UniqueIdentifier>{5c4819f8-92dd-4dd9-a380-197c4b9c0265}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\Map\MapGimmick\Switch">
-      <UniqueIdentifier>{b421111e-5f52-4709-9470-862e40b10073}</UniqueIdentifier>
     </Filter>
     <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\ServerGameScene">
       <UniqueIdentifier>{79625aeb-cce5-4777-9d5c-24ce4705a9ff}</UniqueIdentifier>
@@ -175,6 +163,9 @@
     </Filter>
     <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\ClientGameScene\ClientYoungerBrother">
       <UniqueIdentifier>{5355f8da-70bf-4827-99a7-0807d9908bba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library\D3DXManager">
+      <UniqueIdentifier>{48d93f91-02a4-4f0b-8fe6-9cee405e7d9f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -253,9 +244,6 @@
     <ClCompile Include="StencilManager.cpp">
       <Filter>Library\StencilManager</Filter>
     </ClCompile>
-    <ClCompile Include="WoodBox.cpp">
-      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\Map\MapObject\WoodBox</Filter>
-    </ClCompile>
     <ClCompile Include="Server.cpp">
       <Filter>Library\Server</Filter>
     </ClCompile>
@@ -315,12 +303,6 @@
     </ClCompile>
     <ClCompile Include="MapObject.cpp">
       <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\Map\MapObject</Filter>
-    </ClCompile>
-    <ClCompile Include="Gate.cpp">
-      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\Map\MapGimmick\Gate</Filter>
-    </ClCompile>
-    <ClCompile Include="Switch.cpp">
-      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\Map\MapGimmick\Switch</Filter>
     </ClCompile>
     <ClCompile Include="MapGimmick.cpp">
       <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\Map\MapGimmick</Filter>
@@ -417,9 +399,6 @@
     <ClInclude Include="StencilManager.h">
       <Filter>Library\StencilManager</Filter>
     </ClInclude>
-    <ClInclude Include="WoodBox.h">
-      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\Map\MapObject\WoodBox</Filter>
-    </ClInclude>
     <ClInclude Include="Server.h">
       <Filter>Library\Server</Filter>
     </ClInclude>
@@ -482,12 +461,6 @@
     </ClInclude>
     <ClInclude Include="MapObject.h">
       <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\Map\MapObject</Filter>
-    </ClInclude>
-    <ClInclude Include="Gate.h">
-      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\Map\MapGimmick\Gate</Filter>
-    </ClInclude>
-    <ClInclude Include="Switch.h">
-      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\Map\MapGimmick\Switch</Filter>
     </ClInclude>
     <ClInclude Include="MapGimmick.h">
       <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\Map\MapGimmick</Filter>

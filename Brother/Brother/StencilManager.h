@@ -7,10 +7,11 @@
 class StencilManager
 {
 private:
-	BYTE m_StencilRef;
+	LPDIRECT3DDEVICE9	m_pDevice;
+	BYTE				m_StencilRef;
 
 public:
-	StencilManager();
+	StencilManager(LPDIRECT3DDEVICE9 pDevice);
 	~StencilManager();
 	void StencilDrawReady();
 	void StencilDrawEnd();

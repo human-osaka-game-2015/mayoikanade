@@ -3,12 +3,20 @@
 #include "Library.h"
 #include "ServerGameScene.h"
 
+
+/**
+ * Textクラスのコンストラクタ
+ * @param[in] pLibrary ライブラリクラス
+ * @param[in] pPadState スティックの情報が格納される配列
+ * @param[in] pPadOldSta 一つ前のスティックの情報が格納される配列te
+ * @param[in] pButtonState ボタンの情報が格納される配列
+ */
 Text::Text(Library* pLibrary, bool* pPadState, bool* pPadOldState, PADSTATE* pButtonState) :
 m_pLibrary(pLibrary), 
-m_darkness_alpha(0), 
-m_brother_alpha(0), 
-m_textbox_alpha(0), 
-m_message_count(0), 
+m_darkness_alpha(COLORMIN), 
+m_brother_alpha(COLORMIN), 
+m_textbox_alpha(COLORMIN), 
+m_message_count(), 
 m_message_old(0), 
 m_send_count(0), 
 m_message_UV(0), 
@@ -23,11 +31,17 @@ m_pButtonState(pButtonState)
 {
 }
 
+/**
+ * Textクラスのデストラクタ
+ */
 Text::~Text()
 {
 
 }
 
+/**
+ * Textクラスのコントロール関数
+ */
 void Text::Control()
 {
 	this->m_CurrentMode = this->m_pModeManager->GetMode();
@@ -49,6 +63,9 @@ void Text::Control()
 	}
 }
 
+/**
+ * Textの描画関数
+ */
 void Text::Draw()
 {
 	m_CurrentMode = m_pModeManager->GetMode();
@@ -71,11 +88,18 @@ void Text::Draw()
 	}
 }
 
+/**
+ * ModeManagerをセットする関数
+ * @param[in] pModeManager セットするModeManagerのポインタ
+ */
 void Text::ModeManagerSet(ModeManager* pModeManager)
 {
 	this->m_pModeManager = pModeManager;
 }
 
+/**
+ * Textのコントロール関数
+ */
 void Text::TextControl()
 {
 	m_Pos[DARKNESS].x = 640.0f;		//--------------------------------------------
@@ -117,27 +141,27 @@ void Text::TextControl()
 	m_Pos[MESSAGE_O].y = 634.0f;	//
 	m_Pos[MESSAGE_O].w = 1100.0f;	//
 	m_Pos[MESSAGE_O].h = 300.0f;	//---------------------------------------
-	if (m_textbox_alpha == 255)
+	if (m_textbox_alpha == COLORMAX)
 	{
 		m_all_alpha_is_max = true;
 	}
-	if (m_darkness_alpha <= 255 - LIGHT_INTENSITY&&!m_all_alpha_is_max)
+	if (m_darkness_alpha <= COLORMAX - LIGHT_INTENSITY&&!m_all_alpha_is_max)
 	{
 		m_darkness_alpha++;
 	}
-	if (m_brother_alpha < 255 && !m_all_alpha_is_max&&m_darkness_alpha >= 255 - LIGHT_INTENSITY)
+	if (m_brother_alpha < COLORMAX && !m_all_alpha_is_max&&m_darkness_alpha >= COLORMAX - LIGHT_INTENSITY)
 	{
 		m_brother_alpha++;
 	}
-	if (m_brother_alpha == 255 && !m_all_alpha_is_max)
+	if (m_brother_alpha == COLORMAX && !m_all_alpha_is_max)
 	{
-		m_textbox_alpha = 255;
+		m_textbox_alpha = COLORMAX;
 	}
 
 	if (m_all_alpha_is_max)
 	{
 		m_pLibrary->Check(GAMEPAD1);
-		if (m_pButtonState[0] == PAD_PUSH && m_message_wait == false && m_text_is_end == false)
+		if (m_pButtonState[XINPUT_BUTTON_A] == PAD_PUSH && m_message_wait == false && m_text_is_end == false)
 		{
 			m_message_count += 1;
 			m_message_wait = true;
@@ -171,16 +195,16 @@ void Text::TextControl()
 	if (m_text_is_end&&m_message_count == 3)
 	{
 
-		if (m_brother_alpha > 0)
+		if (m_brother_alpha > COLORMIN)
 		{
 			m_brother_alpha--;
 			m_textbox_alpha--;
 		}
-		if (m_brother_alpha <= 0 && m_darkness_alpha>0)
+		if (m_brother_alpha <= COLORMIN && m_darkness_alpha>0)
 		{
 			m_darkness_alpha--;
 		}
-		if (m_darkness_alpha <= 0)
+		if (m_darkness_alpha <= COLORMIN)
 		{
 			m_text_is_unsolved = false;
 		}
@@ -189,16 +213,19 @@ void Text::TextControl()
 
 }
 
+/**
+ * Textの描画関数
+ */
 void Text::TextDraw()
 {
-	CustomVertex darkness[4];
-	CustomVertex brother_a[4];
-	CustomVertex brother_o[4];
-	CustomVertex namebox_a[4];
-	CustomVertex namebox_o[4];
-	CustomVertex textbox[4];
-	CustomVertex message_a[4];
-	CustomVertex message_o[4];
+	CustomVertex darkness[SQUARE_VERTEX];
+	CustomVertex brother_a[SQUARE_VERTEX];
+	CustomVertex brother_o[SQUARE_VERTEX];
+	CustomVertex namebox_a[SQUARE_VERTEX];
+	CustomVertex namebox_o[SQUARE_VERTEX];
+	CustomVertex textbox[SQUARE_VERTEX];
+	CustomVertex message_a[SQUARE_VERTEX];
+	CustomVertex message_o[SQUARE_VERTEX];
 
 	m_pLibrary->MakeVertex(YOUNGERBROTHER_LIFEBAR, darkness);
 	m_pLibrary->MakeVertex(STAND_BROTHER, brother_a);
@@ -219,7 +246,7 @@ void Text::TextDraw()
 	m_pLibrary->xySet(m_Pos[MESSAGE_O], message_o);
 
 
-	for (int i = 0; i < 4; i++)
+	for (int i = FOR_DEFAULT_INIT; i < SQUARE_VERTEX; i++)
 	{
 		darkness[i].color = D3DCOLOR_ARGB(m_darkness_alpha, COLORMAX, COLORMAX, COLORMAX);
 		brother_a[i].color = D3DCOLOR_ARGB(m_brother_alpha, COLORMAX, COLORMAX, COLORMAX);
@@ -253,7 +280,7 @@ void Text::TextDraw()
 		break;
 
 	case 3:
-		for (int i = 0; i < 4; i++)
+		for (int i = FOR_DEFAULT_INIT; i < SQUARE_VERTEX; i++)
 		{
 			message_a[i].color = D3DCOLOR_ARGB(m_textbox_alpha, COLORMAX, COLORMAX, COLORMAX);
 		}
@@ -265,6 +292,10 @@ void Text::TextDraw()
 
 }
 
+/**
+ * Messageが終わったかチェックする関数
+ * @return textが終わったか
+ */
 bool Text::GetMessageEnd()
 {
 	return m_text_is_unsolved;

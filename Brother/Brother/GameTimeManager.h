@@ -1,6 +1,7 @@
 #ifndef GAMETIMEMANAGER_H
 #define GAMETIMEMANAGER_H
 
+#define TIME_INIT 0		//GameTime‚Ì‰Šú’l
 
 class ModeManager;
 enum GAMEMODE_NUM;

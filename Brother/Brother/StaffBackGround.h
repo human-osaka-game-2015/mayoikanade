@@ -15,7 +15,6 @@ private:
 public:
 	StaffBackGround(Library* pLibrary);
 	~StaffBackGround();
-	void Control();
 	void Draw();
 
 };

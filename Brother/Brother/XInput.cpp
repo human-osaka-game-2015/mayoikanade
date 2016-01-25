@@ -1,14 +1,17 @@
 #include "XInput.h"
-#define CONDEADZONE   65535/4 //コントローラーのデッドゾーン
+#define CONDEADZONE 65535/4 //コントローラーのデッドゾーン
 #define NO_SIGNAL 0x0000
 
 #pragma comment(lib, "winmm.lib")
 #pragma comment(lib, "d3d9.lib")
 #pragma comment(lib, "d3dx9.lib")
 #pragma comment(lib, "dinput8.lib")
-#pragma comment(lib,"xinput.lib ")
+#pragma comment(lib, "xinput.lib ")
 
 
+/**
+ * XInputクラスのコンストラクタ
+ */
 XInput::XInput()
 {
 	for (int count = 0; count < GAMEANALOG_MAX; count++)
@@ -22,12 +25,30 @@ XInput::XInput()
 }
 
 
+/**
+ * XInputクラスのデストラクタ
+ */
+XInput::~XInput()
+{
+
+}
+
+
+/**
+ * GamePadの状態チェック関数
+ * @param[in] pad チェックするGamePad
+ */
 void XInput::Check(XINPUTPAD pad)
 {
 	XInputGetState(pad, &m_PadControlState[pad].State);
 }
 
 
+/**
+ * GamePadのボタンの状態を取得する
+ * @param[in] id チェックするボタン
+ * @param[in] pad チェックするGamePad
+ */
 PADSTATE XInput::GetButtonState(XINPUT_ID id, XINPUTPAD pad)
 {
 	PADSTATE State;
@@ -98,6 +119,12 @@ PADSTATE XInput::GetButtonState(XINPUT_ID id, XINPUTPAD pad)
 }
 
 
+/**
+ * スティックの状態を取得する関数
+ * @param[in] id チェックするスティック
+ * @param[in] pad チェックするGamePad
+ * @return スティックの状態
+ */
 bool XInput::GetAnalogState(ANALOGPAD id, XINPUTPAD pad)
 {
 	switch (id)

@@ -5,37 +5,48 @@
 #include "ModeManager.h"
 
 
+/**
+ * Shadowクラスのコンストラクタ
+ * @param[in] pLibrary ライブラリクラスのポインタ
+ * @param[in] pGameTimeManager GameTimeManagerクラスのポインタ
+ */
 Shadow::Shadow(Library* pLibrary, GameTimeManager* pGameTimeManager) :
 m_pLibrary(pLibrary), m_GameTimeManager(pGameTimeManager)
 {
-	m_Pos.x = 600;
-	m_Pos.y = 350;
-	m_Pos.h = 6000;
-	m_Pos.w = 6000;
+	m_Pos.x = SHADOW_POS_X;
+	m_Pos.y = SHADOW_POS_Y;
+	m_Pos.h = SHADOW_POS_H;
+	m_Pos.w = SHADOW_POS_W;
 
 }
 
+/**
+ * Shadowクラスのデストラクタ
+ */
 Shadow::~Shadow()
 {
 
 }
 
+/**
+ * Shadowのコントロール関数
+ */
 void Shadow::Control()
 {
 	switch (m_pModeManager->GetMode())
 	{
-	case NORMAL:											//NormalDraw関数でも作るべきかも
-		
-		if (m_GameTimeManager->GetGameTime() % 60 == 0)
+	case NORMAL:
+
+		if (m_GameTimeManager->GetGameTime() % ONE_SECCOND == ONE_FRAME)
 		{
-			m_Pos.h -= 10;
-			m_Pos.w -= 10;
+			m_Pos.h -= SHADOW_REDUCTION;
+			m_Pos.w -= SHADOW_REDUCTION;
 		}
 
-		if (m_Pos.h <= 0 || m_Pos.w <= 0)
+		if (m_Pos.h <= SHADOW_MIN || m_Pos.w <= SHADOW_MIN)
 		{
-			m_Pos.h = 0;
-			m_Pos.w = 0;
+			m_Pos.h = SHADOW_MIN;
+			m_Pos.w = SHADOW_MIN;
 		}
 
 		break;
@@ -44,13 +55,13 @@ void Shadow::Control()
 		break;
 	case GAMEOVEREFFECT:
 
-		m_Pos.h -= 9;
-		m_Pos.w -= 9;
+		m_Pos.h -= SHADOW_REDUCTION;
+		m_Pos.w -= SHADOW_REDUCTION;
 
-		if (m_Pos.h <= 0 || m_Pos.w <= 0)
+		if (m_Pos.h <= SHADOW_MIN || m_Pos.w <= SHADOW_MIN)
 		{
-			m_Pos.h = 0;
-			m_Pos.w = 0;
+			m_Pos.h = SHADOW_MIN;
+			m_Pos.w = SHADOW_MIN;
 		}
 
 		break;
@@ -60,41 +71,52 @@ void Shadow::Control()
 	}
 }
 
+/**
+ * 影の描画関数
+ */
 void Shadow::Draw()
 {
-	CustomVertex stencilVertex[4] =
+	CustomVertex StencilVertex[SQUARE_VERTEX] =
 	{
-		{ 0.0, 0.0, 0.5, 1.0, 0xFFFFFFFF, 0.0, 0.0 },
-		{ 0.0, 0.0, 0.5, 1.0, 0xFFFFFFFF, 1.0, 0.0 },
-		{ 0.0, 0.0, 0.5, 1.0, 0xFFFFFFFF, 1.0, 1.0 },
-		{ 0.0, 0.0, 0.5, 1.0, 0xFFFFFFFF, 0.0, 1.0 }
+		{ STENCIL_X, STENCIL_Y, STENCIL_Z, STENCIL_RHW, STENCIL_COLOR, STENCIL_TU_MIN, STENCIL_TV_MIN },
+		{ STENCIL_X, STENCIL_Y, STENCIL_Z, STENCIL_RHW, STENCIL_COLOR, STENCIL_TU_MAX, STENCIL_TV_MIN },
+		{ STENCIL_X, STENCIL_Y, STENCIL_Z, STENCIL_RHW, STENCIL_COLOR, STENCIL_TU_MAX, STENCIL_TV_MAX },
+		{ STENCIL_X, STENCIL_Y, STENCIL_Z, STENCIL_RHW, STENCIL_COLOR, STENCIL_TU_MIN, STENCIL_TV_MAX }
 	};
 
-	m_pLibrary->xySet(m_Pos,stencilVertex);
+	m_pLibrary->xySet(m_Pos, StencilVertex);
 
-	m_pLibrary->AlphaTestReady(0x00);
+	m_pLibrary->AlphaTestReady(DEFAULT_REF);
 
-	m_pLibrary->StencilRefSet(0x02);
+	m_pLibrary->StencilRefSet(SHADOW_REF);
 	m_pLibrary->StencilDrawReady();
 
 	
 
-	m_pLibrary->DrawTexture(STENCIL, stencilVertex);
+	m_pLibrary->DrawTexture(STENCIL, StencilVertex);
 
-	m_pLibrary->StencilRefSet(0x02);
+	m_pLibrary->StencilRefSet(SHADOW_REF);
 	m_pLibrary->StencilDrawEnd();
 
 	m_pLibrary->AlphaTestEnd();
 }
 
+/**
+ * ModeManagerクラスのセット関数
+ * @param[in] ModeManagerクラスへのポインタ
+ */
 void Shadow::ModeManagerSet(ModeManager* pModeManager)
 {
 	m_pModeManager = pModeManager;
 }
 
+/**
+ * 影が迫り切って画面が真っ暗になったかをチェックする
+ * @return 真っ暗になったらtrueが返る
+ */
 bool Shadow::ShadowCheck()
 {
-	if (m_Pos.w <= 0)
+	if (m_Pos.w <= SHADOW_MIN)
 	{
 		return true;
 	}

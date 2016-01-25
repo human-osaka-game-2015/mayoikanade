@@ -10,30 +10,42 @@
 #include "StaffScene.h"
 #include "Library.h"
 
+
+/**
+ * SceneManagerクラスのコンストラクタ
+ * @param[in] pLibrary	ライブラリクラス
+ * @param[in] hWnd		ウィンドウハンドル
+ */
 SceneManager::SceneManager(Library* pLibrary,HWND hWnd) :
 m_pLibrary(pLibrary), 
 m_NextScene(SCENE_NONE),
 m_hWnd(hWnd)
 {
-	//ゲームの開始時のシーンはロゴに行く
 	m_pScene = new LogoScene(m_pLibrary);
 
-	//SetRenderState等の処理
 	m_pLibrary->RenderInit();
 }
 
+/**
+ * SceneManagerクラスのデストラクタ
+ */
 SceneManager::~SceneManager()
 {
 	delete m_pScene;
 }
 
+
+/**
+ * SceneManagerのコントロール関数
+ */
 bool SceneManager::Control()
 {
-	//サーバーかクライアントの切り替えはこのシーンで分ける
+
+	//m_NextSceneがSCENE_NONEじゃなかったら、現在のシーンをdeleteして
+	//対応するSceneを生成する
 	switch (m_NextScene)
 	{
-	case SCENE_NONE:	//そのまま抜ける
-
+	case SCENE_NONE:
 		break;
 	case LOGO_SCENE:
 		delete m_pScene;
@@ -71,15 +83,20 @@ bool SceneManager::Control()
 		return true;
 		break;
 	default:
-		MessageBox(0, "m_NextSceneに予期していない数値が入っています。", "", MB_OK);
+		MessageBox(NULL, "m_NextSceneに予期していない数値が入っています。", "SceneManager.cpp", MB_OK);
 		break;
 	}
 
+	//m_NextSceneに遷移先のSceneが格納される
 	m_NextScene = m_pScene->Control();
 	
 	return false;
 }
 
+
+/**
+ * SceneManagerクラスのDraw関数
+ */
 void SceneManager::Draw()
 {
 	m_pLibrary->DrawReady();
@@ -87,5 +104,5 @@ void SceneManager::Draw()
 	m_pScene->Draw();
 
 	m_pLibrary->DrawEnd();
-
 }
+

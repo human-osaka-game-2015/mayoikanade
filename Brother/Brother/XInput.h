@@ -9,8 +9,8 @@
 
 typedef struct
 {
-	XINPUT_STATE State;
-	XINPUT_VIBRATION Vib_State;
+	XINPUT_STATE		State;
+	XINPUT_VIBRATION	Vib_State;
 }CONTROLER_STATE;
 
 
@@ -73,7 +73,7 @@ private:
 
 public:
 	XInput();
-	~XInput(){};
+	~XInput();
 
 	void Check(XINPUTPAD pad);
 	PADSTATE GetButtonState(XINPUT_ID id, XINPUTPAD pad);

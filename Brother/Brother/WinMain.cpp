@@ -3,11 +3,24 @@
 #include <mmsystem.h>
 #include <d3dx9.h>
 #include <d3dx9tex.h>
-
 #include "GameMain.h"
-#include"SceneManager.h"
+#include "SceneManager.h"
 
 #define WINDOWTITLE "迷い兄弟"
+#define CDCLSEXTRA 0
+#define CDWNDEXTRA 0
+#define ONE_MILLISECOND 1
+#define DEFAULT_WMSGFILTERMIN 0
+#define DEFAULT_WMSGFILTERMAX 0
+#define DEFAULT_POSTMESSAGE_WPARAM 0
+#define DEFAULT_POSTMESSAGE_LPARAM 0
+#define WINDOWWIDTH 1280
+#define WINDOWHEIGHT 1024
+#define DEFAULTFRAME 1000 / 60
+
+#define EXITCODE 0
+#define NORMAL_RETURN 0
+
 //#define FULLWINDOW
 LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wp, LPARAM lp);
 
@@ -17,8 +30,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wp, LPARAM lp);
 //	メインルーチン
 //
 //-------------------------------------------------------------
-int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
-	PSTR lpCmdLine, int nCmdShow)
+int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine, int nCmdShow)
 {
 	MSG msg;
 	HWND hWnd;
@@ -28,18 +40,17 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 
 	winc.style = CS_HREDRAW | CS_VREDRAW;
 	winc.lpfnWndProc = WndProc;
-	winc.cbClsExtra = winc.cbWndExtra = 0;
+	winc.cbClsExtra = CDCLSEXTRA;
+	winc.cbWndExtra = CDWNDEXTRA;
 	winc.hInstance = hInstance;
 	winc.hIcon = LoadIcon(NULL, IDI_APPLICATION);
 	winc.hCursor = LoadCursor(NULL, IDC_ARROW);
 	winc.hbrBackground = (HBRUSH)GetStockObject(WHITE_BRUSH);
 	winc.lpszMenuName = NULL;
 	winc.lpszClassName = WINDOWTITLE;
+	
+	RegisterClass(&winc);
 
-	if (!RegisterClass(&winc)) return 0;
-
-	int dH = GetSystemMetrics(SM_CYCAPTION) + GetSystemMetrics(SM_CYFRAME);
-	int dW = GetSystemMetrics(SM_CXFRAME) * 2;
 #ifdef FULLWINDOW
 	hWnd = CreateWindow(
 		WINDOWTITLE,
@@ -47,8 +58,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 		WS_VISIBLE | WS_POPUP,
 		CW_USEDEFAULT,
 		CW_USEDEFAULT,
-		1280,
-		1024,
+		WINDOWWIDTH,
+		WINDOWHEIGHT,
 		NULL,
 		NULL,
 		hInstance,
@@ -58,8 +69,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 
 	devMode.dmSize       = sizeof(DEVMODE);
 	devMode.dmFields     = DM_PELSWIDTH | DM_PELSHEIGHT;
-	devMode.dmPelsWidth  = 1280;
-	devMode.dmPelsHeight = 1024;
+	devMode.dmPelsWidth  = WINDOWWIDTH;
+	devMode.dmPelsHeight = WINDOWHEIGHT;
 	ShowWindow(hWnd, SW_SHOWNORMAL);
 	ChangeDisplaySettings(&devMode, CDS_FULLSCREEN);
 
@@ -70,45 +81,30 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 		WS_OVERLAPPEDWINDOW | WS_VISIBLE,
 		CW_USEDEFAULT,
 		CW_USEDEFAULT,
-		//1280 + dW,
-		//1024 + dH,
-		1280,
-		1024,
+		WINDOWWIDTH,
+		WINDOWHEIGHT,
 		NULL,
 		NULL,
 		hInstance,
 		NULL
 		);
 #endif
-	
-	//ウィンドウサイズ取得
-	//ウィンドウサイズはオブジェクトに渡すようにすること
-	RECT lprc;
-	GetWindowRect(hWnd, &lprc);
-	lprc.right += dW;
-	lprc.bottom += dH;
-	//画面サイズ
-	//1374
-	//798
-	//中央
-	//687
-	//399
 
-	if (!hWnd) return 0;
+
 
 	GameMain Main(hWnd);
 	
 	DWORD SyncOld = timeGetTime();
 	DWORD SyncNow;
 
-	timeBeginPeriod(1);
+	timeBeginPeriod(ONE_MILLISECOND);
 
 	ZeroMemory(&msg, sizeof(msg));
 
 	while (msg.message != WM_QUIT)
 	{
-		Sleep(1);
-		if (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
+		Sleep(ONE_MILLISECOND);
+		if (PeekMessage(&msg, NULL, DEFAULT_WMSGFILTERMIN, DEFAULT_WMSGFILTERMAX, PM_REMOVE))
 		{
 			TranslateMessage(&msg);
 			DispatchMessage(&msg);
@@ -116,7 +112,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 		else
 		{
 			SyncNow = timeGetTime();
-			if (SyncNow - SyncOld >= 1000 / 60)
+			if (SyncNow - SyncOld >= DEFAULTFRAME)
 			{
 				if (Main.m_pSceneManager->Control())
 				{
@@ -128,10 +124,10 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 			}
 		}
 	}
-	timeEndPeriod(1);
+	timeEndPeriod(ONE_MILLISECOND);
 
 
-	return (int)msg.wParam;
+	return static_cast<int>(msg.wParam);
 }
 
 
@@ -147,19 +143,19 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wp, LPARAM lp)
 	switch (msg)
 	{
 	case WM_DESTROY:
-		PostQuitMessage(0);
-		return 0;
+		PostQuitMessage(EXITCODE);
+		return NORMAL_RETURN;
 	case WM_KEYDOWN:
 		if (wp == VK_ESCAPE) 
 		{
-			PostMessage(hWnd, WM_CLOSE, 0, 0);
-			return 0L;
+			PostMessage(hWnd, WM_CLOSE, DEFAULT_POSTMESSAGE_WPARAM, DEFAULT_POSTMESSAGE_LPARAM);
+			return NORMAL_RETURN;
 		}
 		break;
 #ifdef FULLWINDOW
 	case WM_SETCURSOR:
 		SetCursor(NULL);
-		return 0L;
+		return NORMAL_RETURN;
 #endif
 
 	}

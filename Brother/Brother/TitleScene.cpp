@@ -6,13 +6,19 @@
 #include "TitleSelectManager.h"
 
 
-TitleScene::TitleScene(Library* pLibrary) :Scene(pLibrary)
+/**
+ * TitleSceneクラスのコンストラクタ
+ * @param[in] pLibrary	ライブラリクラス
+ */
+TitleScene::TitleScene(Library* pLibrary) :
+Scene(pLibrary),
+m_isTimeOver(false)
 {
 	//ファイルの読み込み
 	m_pLibrary->FileInfoSet("file.csv", FILE_INFO);
 	m_pLibrary->VertexInfoSet("TitleTex.csv", TITLE_VERTEXINFO_MAX);
 	m_pLibrary->AnimaInfoSet("TitleAnimation.csv", TITLEANIMA_ID_MAX);
-	m_pLibrary->LoadTextureEx("TitleScene.png", TEX_TITLE, 255, 0, 255, 0);
+	m_pLibrary->LoadTextureEx("TitleScene.png", TEX_TITLE, COLORMAX, COLORMIN, COLORMAX, COLORMIN);
 	m_pLibrary->SoundLoad("S_T_BGM.wav", TITLE_BGM);
 
 	//音声ループ
@@ -25,6 +31,9 @@ TitleScene::TitleScene(Library* pLibrary) :Scene(pLibrary)
 	m_pTitleTimeManager		= new TitleTimeManager(m_pLibrary, m_time);
 }
 
+/**
+ * TitleSceneクラスのコンストラクタ
+ */
 TitleScene::~TitleScene()
 {
 	//オブジェクトのdelete
@@ -42,24 +51,30 @@ TitleScene::~TitleScene()
 
 }
 
+/**
+ * GamePadの状態をチェックする関数
+ */
 void TitleScene::PadCheck()
 {
 	m_pLibrary->Check(GAMEPAD1);
-	m_PadOldState[ANALOG_LEFT] = m_PadState[ANALOG_LEFT];
+	m_PadOldState[ANALOG_LEFT]	= m_PadState[ANALOG_LEFT];
 	m_PadOldState[ANALOG_RIGHT] = m_PadState[ANALOG_RIGHT];
-	m_PadOldState[ANALOG_DOWN] = m_PadState[ANALOG_DOWN];
-	m_PadOldState[ANALOG_UP] = m_PadState[ANALOG_UP];
+	m_PadOldState[ANALOG_DOWN]	= m_PadState[ANALOG_DOWN];
+	m_PadOldState[ANALOG_UP]	= m_PadState[ANALOG_UP];
 
-	m_PadState[ANALOG_LEFT] = m_pLibrary->GetAnalogState(ANALOG_LEFT,GAMEPAD1);
-	m_PadState[ANALOG_RIGHT] = m_pLibrary->GetAnalogState(ANALOG_RIGHT, GAMEPAD1);
-	m_PadState[ANALOG_DOWN] = m_pLibrary->GetAnalogState(ANALOG_DOWN, GAMEPAD1);
-	m_PadState[ANALOG_UP] = m_pLibrary->GetAnalogState(ANALOG_UP, GAMEPAD1);
+	m_PadState[ANALOG_LEFT]		= m_pLibrary->GetAnalogState(ANALOG_LEFT,GAMEPAD1);
+	m_PadState[ANALOG_RIGHT]	= m_pLibrary->GetAnalogState(ANALOG_RIGHT, GAMEPAD1);
+	m_PadState[ANALOG_DOWN]		= m_pLibrary->GetAnalogState(ANALOG_DOWN, GAMEPAD1);
+	m_PadState[ANALOG_UP]		= m_pLibrary->GetAnalogState(ANALOG_UP, GAMEPAD1);
 
-	m_ButtonState[0] = m_pLibrary->GetButtonState(GAMEPAD_A, GAMEPAD1);
+	m_ButtonState[XINPUT_BUTTON_A] = m_pLibrary->GetButtonState(GAMEPAD_A, GAMEPAD1);
 
 }
 
-
+/**
+ * TitleSceneのコントロール
+ * @return 遷移先のシーン
+ */
 SCENE_NUM TitleScene::Control()
 {
 	PadCheck();
@@ -77,19 +92,15 @@ SCENE_NUM TitleScene::Control()
 		{
 		case GAME_START:
 			m_NextScene = CONNECTING_SCENE;
-
 			break;
 		case GAME_END:
 			m_NextScene = END_SCENE;
-
 			break;
 		case GAME_STAFF:
 			m_NextScene = STAFF_SCENE;
-
 			break;
 		case TITLESELECT_NONE:
 			m_NextScene = SCENE_NONE;
-
 			break;
 		}
 	}
@@ -97,6 +108,9 @@ SCENE_NUM TitleScene::Control()
 	return m_NextScene;
 }
 
+/**
+ * TitleSceneの描画
+ */
 void TitleScene::Draw()
 {
 	m_pTitleBackGround->Draw();

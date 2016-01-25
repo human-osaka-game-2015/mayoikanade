@@ -14,7 +14,12 @@
 #include "DrawPositionSetter.h"
 
 
-//クライアント
+
+/**
+ * ClientGameSceneの通信関数
+ * @param[in,out] Gamemain ゲームシーンに対してのポインタ(受け取った情報を書き込んだり、読み込んだりする)
+ * @return 関数が成功したかが返ってくるが、使用はしていない
+ */
 DWORD WINAPI ClientGameScene::Connect(LPVOID Gamemain)
 {
 	GameThread* p_GameThread = static_cast<GameThread*>(Gamemain);
@@ -151,7 +156,13 @@ DWORD WINAPI ClientGameScene::Connect(LPVOID Gamemain)
 	ExitThread(TRUE);
 }
 
-
+/**
+ * ClientGameSceneクラスのコンストラクタ
+ * @param[in] pLibrary ライブラリクラス
+ * @param[in] hWnd ウィンドウハンドル
+ * @param[in] IPadd IPアドレスを格納する変数
+ * @param[out] pisGameClear ゲームがクリアしたかを格納する
+ */
 ClientGameScene::ClientGameScene(Library* pLibrary, HWND hWnd, char* IPadd, bool* pisGameClear) :
 Scene(pLibrary), 
 m_hWnd(hWnd),
@@ -159,7 +170,8 @@ m_pisGameClear(pisGameClear),
 m_isGameScene(true),
 isConnect(false)
 {
-	for (int i = 0; i < ANALOG_MAX; i++)
+	//GamePad情報の初期化
+	for (int i = FOR_DEFAULT_INIT; i < ANALOG_MAX; i++)
 	{
 		m_PadState[i] = false;
 		m_PadOldState[i] = false;
@@ -169,17 +181,18 @@ isConnect(false)
 	m_pLibrary->FileInfoSet("file.csv", FILE_INFO);
 	m_pLibrary->VertexInfoSet("GameTex.csv", GAME_VERTEXINFO_MAX);
 	m_pLibrary->AnimaInfoSet("Gameanimation.csv", GAMEANIMA_MAX);
-	m_pLibrary->LoadTextureEx("GameScene.png", TEX_GAME, 255, 0, 255, 0);
-	m_pLibrary->LoadTextureEx("Ui.png", TEX_UI, 255, 0, 255, 0);
-	m_pLibrary->LoadTextureEx("en.png", STENCIL, 255, 0, 255, 255);
+	m_pLibrary->LoadTextureEx("GameScene.png", TEX_GAME, COLORMAX, COLORMIN, COLORMAX, COLORMIN);
+	m_pLibrary->LoadTextureEx("Ui.png", TEX_UI, COLORMAX, COLORMIN, COLORMAX, COLORMIN);
+	m_pLibrary->LoadTextureEx("en.png", STENCIL, COLORMAX, COLORMIN, COLORMAX, COLORMAX);
 
-
+	//音声の読み込み
 	m_pLibrary->SoundLoad("S_G_BGM.wav", GAME_BGM);
 
 	//音声ループ
 	m_pLibrary->SoundOperation(GAME_BGM, SOUND_LOOP);
 
 
+	//オブジェクトの生成
 	m_pSceneChangeListener	= new SceneChangeListener(&m_NextScene,m_pisGameClear);
 	m_pMap					= new Map(m_pLibrary);
 	m_pCollisionChecker		= new CollisionChecker(m_pMap);
@@ -189,8 +202,8 @@ isConnect(false)
 	m_pBrother				= new ClientBrother(m_pLibrary, m_ServerPadState, m_ServerPadOldState, m_ServerButtonState, m_pCollisionChecker, m_pDrawPositionSetter, m_pGameTimeManager, m_pYoungerBrother);
 	m_pShadow				= new Shadow(m_pLibrary, m_pGameTimeManager);
 	m_pText					= new Text(m_pLibrary, m_PadState, m_PadOldState, m_ButtonState);
-	
-	m_pModeManager = new ModeManager(m_pSceneChangeListener, m_pBrother, m_pYoungerBrother, m_pGameTimeManager, m_pShadow, m_pText, m_pisGameClear,m_pMap);
+	m_pModeManager			= new ModeManager(m_pSceneChangeListener, m_pBrother, m_pYoungerBrother, m_pGameTimeManager, m_pShadow, m_pText, m_pisGameClear,m_pMap);
+
 
 	//ModeManagerSetはBrotherなどに対してm_ModeManagerを渡す
 	m_pBrother->ModeManagerSet(m_pModeManager);
@@ -203,20 +216,25 @@ isConnect(false)
 
 #ifdef _DEBUG
 	//Dxfont
-	D3DXCreateFont(m_pLibrary->GetDevice(), 0, 8, FW_REGULAR, NULL, FALSE, SHIFTJIS_CHARSET, OUT_DEFAULT_PRECIS, PROOF_QUALITY, FIXED_PITCH | FF_MODERN, "tahoma", &pFont);
+	D3DXCreateFont(m_pLibrary->GetDevice(), FONT_HEIGHT, FONT_WIDTH, FW_REGULAR, NULL, FALSE, SHIFTJIS_CHARSET, OUT_DEFAULT_PRECIS, PROOF_QUALITY, FIXED_PITCH | FF_MODERN, "tahoma", &pFont);
 	
 #endif
 
-	DWORD dwID;
-	Gamemain.pGameScene = this;
-	for (int a = 0; a < 16; a++)
+	
+	for (int i = FOR_DEFAULT_INIT; i < IP_MAX; i++)
 	{
-		Gamemain.portnum[a] = IPadd[a];
+		Gamemain.portnum[i] = IPadd[i];
 	}
 
-	CreateThread(NULL, 0, Connect, (LPVOID)&Gamemain, 0, &dwID);
+	//スレッドを立てる
+	DWORD dwID;
+	Gamemain.pGameScene = this;
+	CreateThread(NULL, STACK_SIZE, Connect, (LPVOID)&Gamemain, THREAD_CREAT_OPTION, &dwID);
 }
 
+/**
+ * ClientGameSceneクラスのデストラクタ
+ */
 ClientGameScene::~ClientGameScene()
 {
 	//画像のuv情報のリリース
@@ -224,22 +242,19 @@ ClientGameScene::~ClientGameScene()
 	m_pLibrary->VertexInfoRelease();
 	m_pLibrary->AnimaInfoRelease();
 
-
+	//フラグを落としてThreadに読んでもらう
 	m_isGameScene = false;
 
-	//スレッド終了を待つ処理を追加する
-
-	Sleep(3000);
+	//少しだけ待機
+	Sleep(SLEEP_TIME);
 
 
 #ifdef _DEBUG
 	pFont->Release();
 #endif
 
-	//オブジェクト
-	
+	//オブジェクト破棄
 	delete m_pModeManager;
-
 	delete m_pText;
 	delete m_pShadow;
 	delete m_pYoungerBrother;
@@ -250,33 +265,28 @@ ClientGameScene::~ClientGameScene()
 	delete m_pMap;
 	delete m_pSceneChangeListener;
 
+	//サウンドと画像の開放
 	m_pLibrary->ReleaseSound(GAME_BGM);
 	m_pLibrary->ReleaseTexture(TEX_GAME);
 }
 
+/**
+ * ClientGameSceneのコントロール関数
+ * @return 遷移先のシーン
+ */
 SCENE_NUM ClientGameScene::Control()
 {
 	PadCheck();		//入力のチェック
 
+	//オブジェクトのコントロール
 	m_pModeManager->Control();
-
 	m_pGameTimeManager->Control();
-
 	m_pMap->Control();
-
 	m_pShadow->Control();
-
 	m_pText->Control();
-
-	//こいつが犯人
-	//Debugの実行して箱を置くときに起きるバグは多分こいつが悪い
-	//処理を効率的にすることで何とかなりそう
-	//とりあえず今のこいつの処理はひどい
 	m_pBrother->SwitchOn();
 	m_pYoungerBrother->SwitchOn();
-
-
-	if (m_pModeManager->m_alpha == 0)
+	if (m_pModeManager->m_alpha == COLORMIN)
 	{
 		m_pBrother->Control();
 		m_pYoungerBrother->Control();
@@ -287,46 +297,49 @@ SCENE_NUM ClientGameScene::Control()
 	return m_NextScene;
 }
 
+/**
+ * ClientGameSceneの描画関数
+ */
 void ClientGameScene::Draw()
 {
-
+	//オブジェクトの描画
 	m_pShadow->Draw();
-
 	m_pMap->Draw();
 	m_pBrother->Draw();
 	m_pYoungerBrother->Draw();
-
-
-
 	m_pLibrary->StencilTestEnd();
 	m_pBrother->UiDraw();
 	m_pYoungerBrother->UiDraw();
-
 	m_pText->Draw();
+
+
 	//ステージ移動演出
-	CustomVertex blackout[4];
-	Position m_Pos = { 640, 512, 1280, 1024 };
+	CustomVertex blackout[SQUARE_VERTEX];
+	Position m_Pos = { BLACKOUT_POS_X, BLACKOUT_POS_Y, BLACKOUT_POS_W, BLACKOUT_POS_H };
 	m_pLibrary->xySet(m_Pos, blackout);
 	m_pLibrary->MakeVertex(BLACKOUT, blackout);
 
-	for (int i = 0; i < 4; i++)
+	for (int i = FOR_DEFAULT_INIT; i < SQUARE_VERTEX; i++)
 	{
-		blackout[i].color = D3DCOLOR_ARGB(m_pModeManager->m_alpha, 0, 0, 0);
+		blackout[i].color = D3DCOLOR_ARGB(m_pModeManager->m_alpha, COLORMIN, COLORMIN, COLORMIN);
 	}
 	m_pLibrary->DrawTexture(TEX_GAME, blackout);
 
 
 #ifdef _DEBUG
 
-	RECT rect = { 10, 10, 0, 0 };
+	RECT rect = { DEBUG_FONT_RECT_LEFT, DEBUG_FONT_RECT_TOP, DEBUG_FONT_RECT_RIGHT, DEBUG_FONT_RECT_BOTTOM };
 
-	pFont->DrawText(NULL, "入力チェック", -1, &rect, DT_CALCRECT, NULL);
-	pFont->DrawText(NULL, "入力チェック", -1, &rect, DT_LEFT | DT_BOTTOM, 0xff00ffff);
+	pFont->DrawText(NULL, "入力チェック", DEBUG_FONT_NUM, &rect, DT_CALCRECT, NULL);
+	pFont->DrawText(NULL, "入力チェック", DEBUG_FONT_NUM, &rect, DT_LEFT | DT_BOTTOM, DEBUG_FONT_COLOR);
 #endif
 
 }
 
 
+/**
+ * ClientGameSceneのGamePadチェック関数
+ */
 void ClientGameScene::PadCheck()
 {
 	m_pLibrary->Check(GAMEPAD1);
@@ -345,17 +358,24 @@ void ClientGameScene::PadCheck()
 
 	m_ButtonState[0] = m_pLibrary->GetButtonState(GAMEPAD_A, GAMEPAD1);
 	m_ButtonState[1] = m_pLibrary->GetButtonState(GAMEPAD_B, GAMEPAD1);
-
-
-	
 }
 
+/**
+ * 弟の位置をとる関数
+ * @param [out] posx 弟のx座標の位置が格納される
+ * @param [out] posy 弟のy座標の位置が格納される
+ */
 void ClientGameScene::GetYoungBrotherPos(short* posx, short* posy)
 {
 	*posx = static_cast<short>(m_pYoungerBrother->m_PlayerX);
 	*posy = static_cast<short>(m_pYoungerBrother->m_PlayerY);
 }
 
+/**
+ * Brotherの座標をセットする
+ * @param [in] posx セットするx座標
+ * @param [in] posy セットするy座標
+ */
 void ClientGameScene::SetBrotherPos(short* posx, short* posy)
 {
 	m_pBrother->m_PlayerX = *posx;

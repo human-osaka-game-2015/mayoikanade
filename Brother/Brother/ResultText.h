@@ -11,7 +11,9 @@
 #define RESULTTITLE_POS_Y 725
 #define RESULTCLEAR_POS_X 440
 #define RESULTCLEAR_POS_Y 350
-
+#define RESULTOVER_POS_X 640
+#define RESULTOVER_POS_Y 270
+#define RESULT_TEXT_FADESPEAD 5
 
 class Library;
 
@@ -36,6 +38,10 @@ public:
 	~ResultText();
 	void Control();
 	void Draw();
+	void ClearControl();
+	void OverControl();
+	void ClearDraw();
+	void OverDraw();
 
 };
 

@@ -32,7 +32,7 @@ public:
 	Library(HWND hWnd, bool isFullWindow = false, bool isStencil = false);
 	~Library();
 
-	//DXFont‚ğì‚é‚Ü‚Å‚ÌŠÖ”
+	//DXFont‚ğì‚é‚½‚ß‚ÌŠÖ”
 	LPDIRECT3DDEVICE9 GetDevice();
 
 

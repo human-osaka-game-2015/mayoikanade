@@ -42,7 +42,7 @@ private:
 
 	GAMEMODE_NUM			m_Mode;
 	GAMEMODE_NUM CheckMode();
-	bool*						m_pisGameClear;
+	bool*					m_pisGameClear;
 
 
 public:

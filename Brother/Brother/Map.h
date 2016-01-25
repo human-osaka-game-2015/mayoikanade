@@ -1,21 +1,19 @@
 #ifndef MAP_H
 #define MAP_H
 
-#define MAP_HEIGHT 48
-#define MAP_WIDTH 60
-#define MAP_DEFAULT_HEIGHT 0
-#define MAP_DEFAULT_WIDTH 0
-#define MAPTIP_DEFAULT_POSX 32
-#define MAPTIP_DEFAULT_POSY 32
-#define TOTAL_TEX_NUM 24
-#define MAPTIP_SIZE 64
+#define MAP_TOP	0						//マップの頭
+#define MAP_LEFT 0						//マップの左端
+#define MAP_HEIGHT 48					//マップの高さ
+#define MAP_WIDTH 60					//マップの横幅
+#define MAPCHIP_DEFAULT_POSX 32			//
+#define MAPCHIP_DEFAULT_POSY 32			//
+#define MAPCHIP_SIZE 64					//
+#define SCREEN_SIZEX 1280				//スクリーンの大きさX
+#define SCREEN_SIZEY 1024				//スクリーンの大きさY
 
-#define SCREEN_SIZEX 1280
-#define SCREEN_SIZEY 1024
+#define ARRAY_DEFAULT_INIT 0			//配列の要素数の初期値
 
-#define OBJECT_MAX 4
-#define BACKGROUND_MAX 2
-#define GIMMICK_MAX 2
+#define GIMMICK_DATA 10000				//ギミックの情報を抜き出すための値
 
 #include"Vertex.h"
 

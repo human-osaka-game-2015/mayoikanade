@@ -1,6 +1,9 @@
 #ifndef MAPGIMMICK_H
 #define MAPGIMMICK_H
 
+#define SWITCH_COUNT_INIT 0
+#define MAP_GIMMICK_NONE 0
+
 #include <vector>
 #include "Map.h"
 
@@ -13,17 +16,13 @@ class MapGimmick
 {
 private:
 	Library*					m_pLibrary;
-	CustomVertex				m_MapGimmick_Tex[MAP_HEIGHT][MAP_WIDTH][4];
+	CustomVertex				m_MapGimmick_Tex[MAP_HEIGHT][MAP_WIDTH][SQUARE_VERTEX];
 	Position					m_MapGimmick_Pos[MAP_HEIGHT][MAP_WIDTH];
-	std::vector<Switch>			m_Switch;
-	std::vector<Gate>			m_Gate;
 
 public:
 	MapGimmick(Library* pLibrary);
 	~MapGimmick();
-	void Control();
 	void Draw(float DrawPosX, float DrawPosY );
-	void Init();
 	bool CsvRead(const char* filename);
 	void MapTex_UV_Set(float Posx, float Posy);
 	void MapTex_XY_Set(float Posx, float Posy);

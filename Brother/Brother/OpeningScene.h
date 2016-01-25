@@ -3,9 +3,14 @@
 
 
 #include <dshow.h>
-//COM使う上で必要な定義
-#define _WIN32_DCOM
 
+#define _WIN32_DCOM				//COM使うために必要
+#define OPENING_TIME 60 * 43	//オープニングの時間(フレーム×時間)
+#define ONE_FRAME 1000 / 60		//1フレーム(1秒×60)
+#define ONE_MILLISECOND 1		//1000分の1秒
+#define INIT_TIME 0				//タイムの初期値
+#define MOVIE_TOP 0				//ムービーの頭
+#define MOVIE_LEFT 0			//ムービーの左側
 
 #include "Scene.h"
 class Library;

@@ -1,6 +1,8 @@
 #ifndef GAMESCENE_H
 #define GAMASCENE_H
 
+#define PORT_MAX 16		//Port番号を格納する配列の大きさ
+#define IP_MAX 16		//IPアドレスを格納する配列の大きさ
 
 #include "Scene.h"
 #include <d3dx9.h>

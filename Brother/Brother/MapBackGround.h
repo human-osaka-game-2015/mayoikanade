@@ -17,7 +17,6 @@ private:
 public:
 	MapBackGround(Library* pLibrary);
 	~MapBackGround();
-	void Control();
 	void Draw(float DrawPosX, float DrawPosY);
 	bool CsvRead(const char* filename);
 	void MapTex_UV_Set(float Posx, float Posy);

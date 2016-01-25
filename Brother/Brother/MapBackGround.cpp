@@ -3,16 +3,29 @@
 #include "Library.h"
 
 
-MapBackGround::MapBackGround(Library* pLibrary) :m_pLibrary(pLibrary)
+/**
+ * MapBackGroundクラスのコンストラクタ
+ * @param[in] pLibrary セットするライブラリクラスへのポインタ
+ */
+MapBackGround::MapBackGround(Library* pLibrary) :
+m_pLibrary(pLibrary)
 {
 	CsvRead("Stage1_Background.csv");
 }
 
+/**
+ * MapBackGroundクラスのデストラクタ
+ */
 MapBackGround::~MapBackGround()
 {
 
 }
 
+/**
+ * CSVのマップ情報を読み込む関数
+ * @param[in] filename 読み込むファイルの名前
+ * @return 成功しかが返る
+ */
 bool MapBackGround::CsvRead(const char* filename)
 {
 	FILE*  fp = NULL;
@@ -23,9 +36,9 @@ bool MapBackGround::CsvRead(const char* filename)
 		return false;
 	}
 
-	for (int i = 0; i < MAP_HEIGHT; i++)
+	for (int i = FOR_DEFAULT_INIT; i < MAP_HEIGHT; i++)
 	{
-		for (int j = 0; j < MAP_WIDTH; j++)
+		for (int j = FOR_DEFAULT_INIT; j < MAP_WIDTH; j++)
 		{
 			fscanf_s(fp, "%d,", &m_BackGroundData[i][j], _countof(m_BackGroundData));
 		}
@@ -36,25 +49,30 @@ bool MapBackGround::CsvRead(const char* filename)
 }
 
 
+/**
+ * マップオブジェクトのUV値をセットする関数
+ * @param[in] Posx 描画するX座標の中心位置
+ * @param[in] Posy 描画するY座標の中心位置
+ */
 void MapBackGround::MapTex_UV_Set(float Posx, float Posy)
 {
-	int count_x = int((Posx - 64) / MAPTIP_SIZE);
-	int count_y = int((Posy - 64) / MAPTIP_SIZE);
+	int count_x = int((Posx - MAPCHIP_SIZE) / MAPCHIP_SIZE);
+	int count_y = int((Posy - MAPCHIP_SIZE) / MAPCHIP_SIZE);
 
 
-	if (count_x < 0)
+	if (count_x < MAP_LEFT)
 	{
-		count_x = 0;
+		count_x = MAP_LEFT;
 	}
-	if (count_y < 0)
+	if (count_y < MAP_TOP)
 	{
-		count_y = 0;
+		count_y = MAP_TOP;
 	}
 
 
 	//描画領域を求めて代入 余分に一つ先も読んでるので64足している
-	int ScreenRight = int((Posx + SCREEN_SIZEX + 64) / MAPTIP_SIZE);
-	int ScreenBottom = int((Posy + SCREEN_SIZEY + 64) / MAPTIP_SIZE);
+	int ScreenRight = int((Posx + SCREEN_SIZEX + MAPCHIP_SIZE) / MAPCHIP_SIZE);
+	int ScreenBottom = int((Posy + SCREEN_SIZEY + MAPCHIP_SIZE) / MAPCHIP_SIZE);
 
 	if (ScreenRight > MAP_WIDTH)
 	{
@@ -115,13 +133,13 @@ void MapBackGround::MapTex_UV_Set(float Posx, float Posy)
 				m_pLibrary->MakeVertex(GROUND_01, m_MapBackGround_Tex[i][j]);
 				break;
 			default:
-				for (int x = 0; x < VERTEXNUM; x++)
+				for (int z = FOR_DEFAULT_INIT; z < VERTEXNUM; z++)
 				{
-					m_MapBackGround_Tex[i][j][x].color = DEFAULTCOLOR;
-					m_MapBackGround_Tex[i][j][x].rhw = DEFAULTRHW;
-					m_MapBackGround_Tex[i][j][x].z = DEFAULTZ;
-					m_MapBackGround_Tex[i][j][x].tu = 0;
-					m_MapBackGround_Tex[i][j][x].tv = 0;
+					m_MapBackGround_Tex[i][j][z].color = DEFAULT_COLOR;
+					m_MapBackGround_Tex[i][j][z].rhw = DEFAULT_RHW;
+					m_MapBackGround_Tex[i][j][z].z = DEFAULT_Z;
+					m_MapBackGround_Tex[i][j][z].tu = DEFAULT_TU;
+					m_MapBackGround_Tex[i][j][z].tv = DEFAULT_TV;
 				}
 				break;
 			}
@@ -129,16 +147,22 @@ void MapBackGround::MapTex_UV_Set(float Posx, float Posy)
 	}
 }
 
+
+/**
+ * マップオブジェクトのXY座標をセットする関数
+ * @param[in] Posx 描画するX座標の中心位置
+ * @param[in] Posy 描画するY座標の中心位置
+ */
 void MapBackGround::MapTex_XY_Set(float Posx, float Posy)
 {
-	int count_x = int((Posx - 64) / MAPTIP_SIZE);
-	int count_y = int((Posy - 64) / MAPTIP_SIZE);
-
+	int count_x = int((Posx - MAPCHIP_SIZE) / MAPCHIP_SIZE);
+	int count_y = int((Posy - MAPCHIP_SIZE) / MAPCHIP_SIZE);
 
 	if (count_x < 1)
 	{
 		count_x = 1;
 	}
+
 	if (count_y < 1)
 	{
 		count_y = 1;
@@ -146,8 +170,8 @@ void MapBackGround::MapTex_XY_Set(float Posx, float Posy)
 
 
 	//描画領域を求めて代入 余分に一つ先も読んでるので64足している
-	int ScreenRight =  int((Posx + SCREEN_SIZEX + 64) / MAPTIP_SIZE);
-	int ScreenBottom = int((Posy + SCREEN_SIZEY + 64) / MAPTIP_SIZE);
+	int ScreenRight  = int((Posx + SCREEN_SIZEX + MAPCHIP_SIZE) / MAPCHIP_SIZE);
+	int ScreenBottom = int((Posy + SCREEN_SIZEY + MAPCHIP_SIZE) / MAPCHIP_SIZE);
 
 	if (ScreenRight > MAP_WIDTH)
 	{
@@ -164,10 +188,10 @@ void MapBackGround::MapTex_XY_Set(float Posx, float Posy)
 		for (int j = count_x; j <= ScreenRight; j++)
 		{
 			//背景のXYを入れる
-			m_MapBackGround_Pos[i - 1][j - 1].x = (float)(MAPTIP_SIZE * j) - MAPTIP_DEFAULT_POSX;
-			m_MapBackGround_Pos[i - 1][j - 1].y = (float)(MAPTIP_SIZE * i) - MAPTIP_DEFAULT_POSY;
-			m_MapBackGround_Pos[i - 1][j - 1].w = (float)MAPTIP_SIZE;
-			m_MapBackGround_Pos[i - 1][j - 1].h = (float)MAPTIP_SIZE;
+			m_MapBackGround_Pos[i - 1][j - 1].x = (float)(MAPCHIP_SIZE * j) - MAPCHIP_DEFAULT_POSX;
+			m_MapBackGround_Pos[i - 1][j - 1].y = (float)(MAPCHIP_SIZE * i) - MAPCHIP_DEFAULT_POSY;
+			m_MapBackGround_Pos[i - 1][j - 1].w = (float)MAPCHIP_SIZE;
+			m_MapBackGround_Pos[i - 1][j - 1].h = (float)MAPCHIP_SIZE;
 			m_MapBackGround_Pos[i - 1][j - 1].x -= Posx;
 			m_MapBackGround_Pos[i - 1][j - 1].y -= Posy;
 
@@ -177,30 +201,28 @@ void MapBackGround::MapTex_XY_Set(float Posx, float Posy)
 }
 
 
-void MapBackGround::Control()
-{
 
-}
-
+/**
+ * MapBackGroundの描画関数
+ */
 void MapBackGround::Draw(float DrawPosX, float DrawPosY)
 {
-	int count_x = int((DrawPosX - 64) / MAPTIP_SIZE);
-	int count_y = int((DrawPosY - 64) / MAPTIP_SIZE);
+	int count_x = int((DrawPosX - MAPCHIP_SIZE) / MAPCHIP_SIZE);
+	int count_y = int((DrawPosY - MAPCHIP_SIZE) / MAPCHIP_SIZE);
 
-
-	if (count_x < 0)
+	if (count_x < MAP_LEFT)
 	{
-		count_x = 0;
+		count_x = MAP_LEFT;
 	}
-	if (count_y < 0)
+	if (count_y < MAP_TOP)
 	{
-		count_y = 0;
+		count_y = MAP_TOP;
 	}
 
 
 	//描画領域を求めて代入 余分に一つ先も読んでるので64足している
-	int ScreenRight =  int((DrawPosX + SCREEN_SIZEX + 64) / MAPTIP_SIZE);
-	int ScreenBottom = int((DrawPosY + SCREEN_SIZEY + 64) / MAPTIP_SIZE);
+	int ScreenRight = int((DrawPosX + SCREEN_SIZEX + MAPCHIP_SIZE) / MAPCHIP_SIZE);
+	int ScreenBottom = int((DrawPosY + SCREEN_SIZEY + MAPCHIP_SIZE) / MAPCHIP_SIZE);
 
 	if (ScreenRight > MAP_WIDTH)
 	{
@@ -222,9 +244,9 @@ void MapBackGround::Draw(float DrawPosX, float DrawPosY)
 
 int MapBackGround::BackGroundCheck(float x, float y)
 {
-	int arrayx = 0, arrayy = 0;
-	arrayx = int(x / 64);
-	arrayy = int(y / 64);
+	int arrayx = ARRAY_DEFAULT_INIT, arrayy = ARRAY_DEFAULT_INIT;
+	arrayx = int(x / MAPCHIP_SIZE);
+	arrayy = int(y / MAPCHIP_SIZE);
 
 	return m_BackGroundData[arrayy][arrayx];
 }

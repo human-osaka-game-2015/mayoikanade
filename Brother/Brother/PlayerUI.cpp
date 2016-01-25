@@ -3,6 +3,20 @@
 #include "ServerGameScene.h"
 
 
+/**
+ * PlayerUIクラスのコンストラクタ
+ * @param[in] pLibrary ライブラリクラスのポインタ
+ * @param[in] Hp キャラクターのHpの参照
+ * @param[in] frameTexId 体力の枠のTextureID
+ * @param[in] barTexId 体力ゲージのTextureID
+ * @param[in] face1id キャラクターの表情(体力高)
+ * @param[in] face2id キャラクターの表情(体力中)
+ * @param[in] face3id キャラクターの表情(体力低)
+ * @param[in] x UIのx座標
+ * @param[in] y UIのy座標
+ * @param[in] face_x 表情のx座標
+ * @param[in] face_y 表情のy座標
+ */
 PlayerUI::PlayerUI(Library* pLibrary, const int& Hp, int frameTexId, int barTexId, int face1id, int face2id, int face3id, float x, float y, float face_x, float face_y) :
 m_pLibrary(pLibrary), 
 m_PlayerHp(Hp), 
@@ -22,22 +36,31 @@ m_face3Id(face3id)
 	m_FacialExpression.y = face_y;
 }
 
+/**
+ * PlayerUIクラスのデストラクタ
+ */
 PlayerUI::~PlayerUI()
 {
 	
 }
 
+/**
+ * PlayerUIのコントロール関数
+ */
 void PlayerUI::Control()
 {
 
 }
 
+/**
+ * PlayerUIの描画関数
+ */
 void PlayerUI::Draw()
 {
-	int Damage = int(240 - (m_PlayerHp * 2.4));
-	CustomVertex frameUi[4];
-	CustomVertex barUi[4];
-	CustomVertex faceUi[4];
+	int Damage = int(MAX_GAGE - (m_PlayerHp * GAGE_HP));
+	CustomVertex frameUi[SQUARE_VERTEX];
+	CustomVertex barUi[SQUARE_VERTEX];
+	CustomVertex faceUi[SQUARE_VERTEX];
 
 	//体力バーの座標設定
 	m_pLibrary->MakePosition(m_BarTexId, &m_BarUiPos);
@@ -70,16 +93,16 @@ void PlayerUI::Draw()
 		m_pLibrary->xySet(m_FacialExpression, faceUi);
 		m_pLibrary->DrawTexture(TEX_UI, faceUi);
 	}
-	//体力が中量の時
-	else if (m_PlayerHp >= 25)
+	//体力が中程度の時
+	else if (m_PlayerHp >= 25)			
 	{
 		m_pLibrary->MakePosition(m_face2Id, &m_FacialExpression);
 		m_pLibrary->MakeVertex(m_face2Id, faceUi);
 		m_pLibrary->xySet(m_FacialExpression, faceUi);
 		m_pLibrary->DrawTexture(TEX_UI, faceUi);
 	}
-	//体力が少ない時
-	else
+	//体力が中程度の時
+	else	
 	{
 		m_pLibrary->MakePosition(m_face3Id, &m_FacialExpression);
 		m_pLibrary->MakeVertex(m_face3Id, faceUi);

@@ -9,16 +9,25 @@
 
 
 
-
-InputDevice::InputDevice(HWND hwnd) :m_pDinput(NULL), m_pKeyDevice(NULL), m_pMouseDevice(NULL)
+/**
+ * InputDeviceクラスのコンストラクタ
+ * @param[in] hWnd ウィンドウハンドル
+ */
+InputDevice::InputDevice(HWND hwnd) :
+m_pDinput(NULL), 
+m_pKeyDevice(NULL), 
+m_pMouseDevice(NULL)
 {
 	m_hWnd = hwnd;
 	if (FAILED(DirectInput8Create(GetModuleHandle(NULL),DIRECTINPUT_VERSION, IID_IDirectInput8, (VOID**)&m_pDinput, NULL)))
 	{
-		MessageBox(0,"Directinputオブジェクト生成に失敗しました","",MB_OK);
+		MessageBox(0,"Directinputオブジェクト生成に失敗しました","InputDevice.cpp",MB_OK);
 	}
 }
 
+/**
+ * InputDeviceクラスのデストラクタ
+ */
 InputDevice::~InputDevice()
 {
 	
@@ -37,8 +46,9 @@ InputDevice::~InputDevice()
 
 
 /**
-* ダイレクトインプットのキーボード初期化
-*/
+ * DirectInputのキーの初期化
+ * @return 成功したかしてないか(成功したらS_OK)
+ */
 HRESULT InputDevice::InitDinputKey()
 {
 	HRESULT hr;
@@ -69,8 +79,9 @@ HRESULT InputDevice::InitDinputKey()
 
 
 /**
-* ダイレクトインプットのマウス初期化
-*/
+ * DirectInputのマウスの初期化
+ * @return 成功したかしてないか(成功したらS_OK)
+ */
 HRESULT InputDevice::InitDinputMouse()
 {
 	HRESULT hr;
@@ -123,16 +134,11 @@ HRESULT InputDevice::InitDinputMouse()
 	return S_OK;
 }
 
-
-
-
-
-
 /**
-* KEYSTATE* Keyはキーの状態を保存する場所(KEYSTATE型はtest_lib.hで宣言してある)
-* int DIKはDirectinputの文字識別コード、状態をチェックしたいキーの状態を保存する
-* LPDIRECTINPUTDEVICE8　はデバイスのオブジェクト
-*/
+ * キーの状態チェック関数
+ * @param[out] Key キーの状態を格納する配列
+ * @param[in] DIK チェックするキー
+ */
 void InputDevice::KeyCheck(KEYSTATE* Key, int DIK)
 {
 	BYTE diks[256];
@@ -171,12 +177,10 @@ void InputDevice::KeyCheck(KEYSTATE* Key, int DIK)
 }
 
 
-
 /**
-*マウスの状態をチェックする関数
-*MOUSEKINDはマウスの状態を格納する構造体
-*一度呼ぶだけですべての状態をとってくれる。
-*/
+ * マウスの状態チェック関数
+ * @param[out] Mouse マウスの状態を出力するMOUSEKIND構造体
+ */
 void InputDevice::MouseCheck(MOUSEKIND* Mouse)
 {
 	DIMOUSESTATE dims;

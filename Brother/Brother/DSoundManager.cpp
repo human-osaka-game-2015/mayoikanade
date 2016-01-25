@@ -9,33 +9,45 @@
 
 
 
-//サウンドデバイスの生成
+/**
+ * DSoundManagerクラスのコンストラクタ
+ * @param[in] hWnd ウィンドウハンドル
+ */
 DSoundManager::DSoundManager(HWND hWnd)
 {
 	// サウンドデバイス作成
 	if (FAILED(DirectSoundCreate8(NULL, &m_pDS8, NULL)))
 	{
-		MessageBox(0, "サウンドデバイスの生成に失敗しました", "", MB_OK);
+		MessageBox(0, "サウンドデバイスの生成に失敗しました", "DSoundManager.cpp", MB_OK);
 	}
 	
 	if (FAILED(m_pDS8->SetCooperativeLevel(hWnd, DSSCL_PRIORITY)))
 	{
-		MessageBox(0, "協調レベルの設定に失敗しました", "", MB_OK);
+		MessageBox(0, "協調レベルの設定に失敗しました", "DSoundManager.cpp", MB_OK);
 	}
 }
 
+/**
+ * DSoundManagerクラスのデストラクタ
+ */
 DSoundManager::~DSoundManager()
 {
 	m_pDS8->Release();
 }
 
 
-
-// Waveファイルオープン関数
+/**
+ * Wavファイルのを開いて情報を取得する関数
+ * @param[in] filename 読み込むファイル名
+ * @param[in] wFmt フォーマット
+ * @param[in] pWaveData 音声データ
+ * @param[in] waveSize 音声のサイズ
+ * @return wavファイルのオープンに成功したか(成功したらtrue)
+ */
 bool DSoundManager::OpenWave(TCHAR *filename, WAVEFORMATEX &wFmt, char** pWaveData, DWORD &waveSize)
 {
 	//filepathの位置になにもなければ失敗なのでfalseを返す
-	if (filename == 0)
+	if (filename == NULL)
 	{
 		return false;
 	}
@@ -44,7 +56,7 @@ bool DSoundManager::OpenWave(TCHAR *filename, WAVEFORMATEX &wFmt, char** pWaveDa
 	MMIOINFO mmioInfo;
 
 	// Waveファイルオープン
-	memset(&mmioInfo, 0, sizeof(MMIOINFO));				//使わないので0をセット
+	ZeroMemory(&mmioInfo, sizeof(MMIOINFO));
 	hMmio = mmioOpen(filename, &mmioInfo, MMIO_READ);
 	if (!hMmio)
 	{
@@ -96,7 +108,6 @@ bool DSoundManager::OpenWave(TCHAR *filename, WAVEFORMATEX &wFmt, char** pWaveDa
 		return false;
 	}
 
-
 	*pWaveData = new char[dataChunk.cksize];
 	size = mmioRead(hMmio, (HPSTR)*pWaveData, dataChunk.cksize);
 	if (size != dataChunk.cksize)
@@ -115,7 +126,11 @@ bool DSoundManager::OpenWave(TCHAR *filename, WAVEFORMATEX &wFmt, char** pWaveDa
 
 
 
-//waveファイルをバッファにロードする
+/**
+ * 音声の読み込み
+ * @param[in] filename 読み込むファイルの名前
+ * @param[in] Key 格納先のキー
+ */
 int DSoundManager::SoundLoad(char* filename, int Key)
 {
 	LPDIRECTSOUNDBUFFER8 pDSBuffer = NULL;
@@ -168,15 +183,20 @@ int DSoundManager::SoundLoad(char* filename, int Key)
 	return 0;
 }
 
-
+/**
+ * 音声の解放関数
+ */
 void DSoundManager::ReleaseSound(int Key)
 {
 	m_SoundMap[Key]->Release();
 }
 
 
-
-//サウンドバッファの操作
+/**
+ * サウンドの操作関数 
+ * @param[in] Key 操作するサウンドの格納先のキー
+ * @param[in] operation どのような操作をするか
+ */
 void DSoundManager::SoundOperation(int Key, SOUND_OPERATION operation)
 {
 

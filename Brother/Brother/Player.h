@@ -41,7 +41,6 @@ protected:
 	bool*						m_pPadState;			//現在のスティック状態
 	bool*						m_pPadOldState;			//ひとつ前のスティック状態
 	PADSTATE*					m_pButtonState;			//現在のボタン状態
-
 	int							m_Hp;					//PlayerのHp
 
 public:

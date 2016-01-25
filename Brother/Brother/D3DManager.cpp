@@ -10,8 +10,14 @@
 LPDIRECT3DDEVICE9 D3DManager::pD3Device;
 
 
-
-D3DManager::D3DManager(HWND hwnd, bool isFullWindow, bool isStencilBuffer) :m_pDirect3D(NULL)
+/**
+ * D3DManagerクラスのコンストラクタ
+ * @param[in] hWnd ウィンドウハンドル
+ * @param[in] isFullWindow フルスクリーンにするかの指定
+ * @param[in] isStencilBuffer ステンシルバッファを使うかの指定
+ */
+D3DManager::D3DManager(HWND hwnd, bool isFullWindow, bool isStencilBuffer) :
+m_pDirect3D(NULL)
 {
 
 	//DirectX オブジェクトの生成
@@ -22,18 +28,16 @@ D3DManager::D3DManager(HWND hwnd, bool isFullWindow, bool isStencilBuffer) :m_pD
 	
 	ZeroMemory(&m_d3dpp,sizeof(D3DPRESENT_PARAMETERS));
 
-	m_d3dpp.BackBufferCount = 1;
+	m_d3dpp.BackBufferCount = DEFAULT_BACKBUFFERCOUNT;
 	m_d3dpp.SwapEffect = D3DSWAPEFFECT_DISCARD;
 
 	int ScreenX = GetSystemMetrics(SM_CXSCREEN);
 	int ScreenY = GetSystemMetrics(SM_CYSCREEN);
-	//int ScreenX = 1280;
-	//int ScreenY = 1024;
 
 	if (isFullWindow)
 	{
-		m_d3dpp.BackBufferWidth = 1280;
-		m_d3dpp.BackBufferHeight = 1024;
+		m_d3dpp.BackBufferWidth  = DEFAULT_WINDOW_WIDTH;
+		m_d3dpp.BackBufferHeight = DEFAULT_WINDOW_HEIGHT;
 		m_d3dpp.BackBufferFormat = D3DFMT_X8R8G8B8;
 		m_d3dpp.Windowed = FALSE;
 	}
@@ -59,6 +63,9 @@ D3DManager::D3DManager(HWND hwnd, bool isFullWindow, bool isStencilBuffer) :m_pD
 		&m_d3dpp, &pD3Device);
 }
 
+/**
+ * D3DManagerクラスのデストラクタ
+ */
 D3DManager::~D3DManager()
 {
 	pD3Device->Release();
@@ -68,34 +75,38 @@ D3DManager::~D3DManager()
 }
 
 
-//描画方法の設定
+/**
+ * 描画前のSetRenderState関数
+ */
 void D3DManager::RenderInit()
 {
 	pD3Device->SetRenderState(D3DRS_ALPHABLENDENABLE, true);
 	pD3Device->SetRenderState(D3DRS_SRCBLEND, D3DBLEND_SRCALPHA);  //SRCの設定
 	pD3Device->SetRenderState(D3DRS_DESTBLEND, D3DBLEND_INVSRCALPHA);
 	pD3Device->SetRenderState(D3DRS_DIFFUSEMATERIALSOURCE, D3DMCS_COLOR1);
-	pD3Device->SetTextureStageState(0, D3DTSS_COLORARG1, D3DTA_TEXTURE);
-	pD3Device->SetTextureStageState(0, D3DTSS_COLORARG2, D3DTA_DIFFUSE);
-	pD3Device->SetTextureStageState(0, D3DTSS_COLOROP, D3DTOP_MODULATE);
-	pD3Device->SetTextureStageState(0, D3DTSS_ALPHAARG1, D3DTA_TEXTURE);
-	pD3Device->SetTextureStageState(0, D3DTSS_ALPHAARG2, D3DTA_DIFFUSE);
-	pD3Device->SetTextureStageState(0, D3DTSS_ALPHAOP, D3DTOP_MODULATE);
+	pD3Device->SetTextureStageState(DEFAULT_TEXTURE_STAGE, D3DTSS_COLORARG1, D3DTA_TEXTURE);
+	pD3Device->SetTextureStageState(DEFAULT_TEXTURE_STAGE, D3DTSS_COLORARG2, D3DTA_DIFFUSE);
+	pD3Device->SetTextureStageState(DEFAULT_TEXTURE_STAGE, D3DTSS_COLOROP, D3DTOP_MODULATE);
+	pD3Device->SetTextureStageState(DEFAULT_TEXTURE_STAGE, D3DTSS_ALPHAARG1, D3DTA_TEXTURE);
+	pD3Device->SetTextureStageState(DEFAULT_TEXTURE_STAGE, D3DTSS_ALPHAARG2, D3DTA_DIFFUSE);
+	pD3Device->SetTextureStageState(DEFAULT_TEXTURE_STAGE, D3DTSS_ALPHAOP, D3DTOP_MODULATE);
 }
 
-//描画の開始
+/**
+ * 描画前処理
+ */
 void D3DManager::DrawReady()
 {
 	//画面の消去
-	pD3Device->Clear(0, NULL, D3DCLEAR_ZBUFFER|D3DCLEAR_TARGET, D3DCOLOR_XRGB(0x00, 0x00, 0x00), 1.0, 0);
+	pD3Device->Clear(DEFAULT_CLEAR_COUNT, NULL, D3DCLEAR_ZBUFFER | D3DCLEAR_TARGET, D3DCOLOR_XRGB(DEFAULT_CLEARCOLOR, DEFAULT_CLEARCOLOR, DEFAULT_CLEARCOLOR), DEFAULT_CLEAR_Z, DEFAULT_CLEAR_STENCIL);
 
 	//描画の開始
 	pD3Device->BeginScene();
-
-
 }
 
-//描画の終了
+/**
+ * 描画後処理
+ */
 void D3DManager::DrawEnd()
 {
 	//描画の終了
@@ -105,7 +116,10 @@ void D3DManager::DrawEnd()
 	pD3Device->Present(NULL, NULL, NULL, NULL);
 }
 
-//Deviceが失われているのかをチェックする
+
+/**
+ * デバイスが失われているかをチェックする関数
+ */
 bool D3DManager::isDeviceLost()
 {
 	if (D3DManager::pD3Device == NULL)

@@ -1,6 +1,8 @@
 #ifndef LOGOSCENE_H
 #define LOGOSCENE_H
 
+
+
 #include"Scene.h"
 
 class Library;
@@ -15,7 +17,7 @@ enum LOGO_VERTEXINFO_ID
 class LogoScene:public Scene
 {
 private:
-	LogoBackGround*			m_pLogoBackGround;
+	LogoBackGround*	m_pLogoBackGround;
 
 public:
 	LogoScene(Library* pLibrary);

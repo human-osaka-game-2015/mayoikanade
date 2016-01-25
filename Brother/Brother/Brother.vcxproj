@@ -27,7 +27,6 @@
     <ClCompile Include="DSoundManager.cpp" />
     <ClCompile Include="GameMain.cpp" />
     <ClCompile Include="ServerGameScene.cpp" />
-    <ClCompile Include="Gate.cpp" />
     <ClCompile Include="InputDevice.cpp" />
     <ClCompile Include="IPAddSelectScene.cpp" />
     <ClCompile Include="Library.cpp" />
@@ -51,7 +50,6 @@
     <ClCompile Include="StaffBackGround.cpp" />
     <ClCompile Include="StaffScene.cpp" />
     <ClCompile Include="StencilManager.cpp" />
-    <ClCompile Include="Switch.cpp" />
     <ClCompile Include="Text.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="GameTimeManager.cpp" />
@@ -63,7 +61,6 @@
     <ClCompile Include="UVSetter.cpp" />
     <ClCompile Include="Vertex.cpp" />
     <ClCompile Include="WinMain.cpp" />
-    <ClCompile Include="WoodBox.cpp" />
     <ClCompile Include="XInput.cpp" />
     <ClCompile Include="ServerYoungerBrother.cpp" />
   </ItemGroup>
@@ -84,7 +81,6 @@
     <ClInclude Include="DSoundManager.h" />
     <ClInclude Include="GameMain.h" />
     <ClInclude Include="ServerGameScene.h" />
-    <ClInclude Include="Gate.h" />
     <ClInclude Include="InputDevice.h" />
     <ClInclude Include="IPAddSelectScene.h" />
     <ClInclude Include="Library.h" />
@@ -108,7 +104,6 @@
     <ClInclude Include="StaffBackGround.h" />
     <ClInclude Include="StaffScene.h" />
     <ClInclude Include="StencilManager.h" />
-    <ClInclude Include="Switch.h" />
     <ClInclude Include="Tex.h" />
     <ClInclude Include="Text.h" />
     <ClInclude Include="Texture.h" />
@@ -120,7 +115,6 @@
     <ClInclude Include="TitleTimeManager.h" />
     <ClInclude Include="UVSetter.h" />
     <ClInclude Include="Vertex.h" />
-    <ClInclude Include="WoodBox.h" />
     <ClInclude Include="XInput.h" />
     <ClInclude Include="ServerYoungerBrother.h" />
   </ItemGroup>
