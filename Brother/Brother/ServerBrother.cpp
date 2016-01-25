@@ -63,7 +63,7 @@ void ServerBrother::Control()
 
 
 #ifdef _DEBUG
-			if (m_pButtonState[1] == PAD_PUSH)
+			if (m_pButtonState[XINPUT_BUTTON_B] == PAD_PUSH)
 			{
 				m_Hp = 100;
 			}
@@ -80,7 +80,7 @@ void ServerBrother::Control()
 
 
 			//Debug—p
-			if (m_pButtonState[1] == PAD_PUSH)
+			if (m_pButtonState[XINPUT_BUTTON_B] == PAD_PUSH)
 			{
 				m_Hp = 100;
 			}
@@ -423,20 +423,14 @@ void ServerBrother::Move()
 	{
 		m_Hp += 20;
 	}
-
-
-
-
 }
-
-
 
 
 
 
 void ServerBrother::Action()
 {
-	if (m_pButtonState[0] == PAD_PUSH)
+	if (m_pButtonState[XINPUT_BUTTON_A] == PAD_PUSH)
 	{
 		switch (m_BrotherState)
 		{

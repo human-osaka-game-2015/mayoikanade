@@ -29,6 +29,24 @@
     <Filter Include="WinMain">
       <UniqueIdentifier>{87b2d20b-9330-4c6a-a694-904675b5f72f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Library\InputDevice">
+      <UniqueIdentifier>{3033e11b-993d-452a-b40d-3054f1da0f60}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library\StencilManager">
+      <UniqueIdentifier>{61dbcdf8-3cc4-43dc-888b-8efeb0c27825}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Connect">
+      <UniqueIdentifier>{46afa750-5c83-47a9-bfb4-f9d1218d253f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Connect\Server">
+      <UniqueIdentifier>{bf22c3c4-0865-4c5f-a32c-a9ca043cf638}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library\D3DManager">
+      <UniqueIdentifier>{48d93f91-02a4-4f0b-8fe6-9cee405e7d9f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Connect\Client">
+      <UniqueIdentifier>{a0f32ed3-1258-4e7b-bb2e-87cb4194e868}</UniqueIdentifier>
+    </Filter>
     <Filter Include="WinMain\GameMain">
       <UniqueIdentifier>{9c90a14f-f1a3-4fef-b93d-93d27d055e98}</UniqueIdentifier>
     </Filter>
@@ -44,8 +62,26 @@
     <Filter Include="WinMain\GameMain\SceneManager\Scene\ConnectingScene">
       <UniqueIdentifier>{610ef43e-fbe3-40dd-9d10-fa04281b4a3f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="WinMain\GameMain\SceneManager\Scene\ConnectingScene\ConnectSelectManager">
+      <UniqueIdentifier>{d3e4dc4e-35d2-46c2-ab6f-be6c2efff257}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="WinMain\GameMain\SceneManager\Scene\ConnectingScene\IPAddSelectScene">
+      <UniqueIdentifier>{5b14919c-d96b-4b6b-8608-eef7d590eef8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="WinMain\GameMain\SceneManager\Scene\ConnectingScene\ListenServer">
+      <UniqueIdentifier>{2ff97282-bd8e-438f-b993-ff2d022a4c1d}</UniqueIdentifier>
+    </Filter>
     <Filter Include="WinMain\GameMain\SceneManager\Scene\ResultScene">
       <UniqueIdentifier>{365fe3d1-25d2-42db-9276-f1bd517a71f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="WinMain\GameMain\SceneManager\Scene\ResultScene\ResultBackGround">
+      <UniqueIdentifier>{e513b7ac-d5ca-4c83-8cf5-b81e81b57839}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="WinMain\GameMain\SceneManager\Scene\ResultScene\ResultClock">
+      <UniqueIdentifier>{9b1b703e-a67e-40c7-bda3-f6f1c6509871}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="WinMain\GameMain\SceneManager\Scene\ResultScene\ResultText">
+      <UniqueIdentifier>{4a60d7af-dd0a-426a-b2f9-df31f3dceff0}</UniqueIdentifier>
     </Filter>
     <Filter Include="WinMain\GameMain\SceneManager\Scene\TitleScene">
       <UniqueIdentifier>{a2fd433d-6263-4d91-9d98-62e5326ce6e4}</UniqueIdentifier>
@@ -74,21 +110,6 @@
     <Filter Include="WinMain\GameMain\SceneManager\Scene\LogoScene\LogoBackGround">
       <UniqueIdentifier>{a49ce375-20e4-4fe4-9476-8b58a3eb98e2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Library\InputDevice">
-      <UniqueIdentifier>{3033e11b-993d-452a-b40d-3054f1da0f60}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Library\StencilManager">
-      <UniqueIdentifier>{61dbcdf8-3cc4-43dc-888b-8efeb0c27825}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="WinMain\GameMain\SceneManager\Scene\ConnectingScene\ConnectSelectManager">
-      <UniqueIdentifier>{d3e4dc4e-35d2-46c2-ab6f-be6c2efff257}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="WinMain\GameMain\SceneManager\Scene\ConnectingScene\IPAddSelectScene">
-      <UniqueIdentifier>{5b14919c-d96b-4b6b-8608-eef7d590eef8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="WinMain\GameMain\SceneManager\Scene\ConnectingScene\ListenServer">
-      <UniqueIdentifier>{2ff97282-bd8e-438f-b993-ff2d022a4c1d}</UniqueIdentifier>
-    </Filter>
     <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene">
       <UniqueIdentifier>{f35ae513-493e-4c67-b800-6b36a8a7935b}</UniqueIdentifier>
     </Filter>
@@ -98,20 +119,11 @@
     <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\ClientGameScene">
       <UniqueIdentifier>{9736e5e9-19af-49db-b848-1a3a2afae095}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Library\Server">
-      <UniqueIdentifier>{bf22c3c4-0865-4c5f-a32c-a9ca043cf638}</UniqueIdentifier>
+    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\ClientGameScene\ClientBrother">
+      <UniqueIdentifier>{e18c1aa7-fc11-43a7-ba85-cffb57db5249}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Library\Client">
-      <UniqueIdentifier>{a0f32ed3-1258-4e7b-bb2e-87cb4194e868}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="WinMain\GameMain\SceneManager\Scene\ResultScene\ResultBackGround">
-      <UniqueIdentifier>{e513b7ac-d5ca-4c83-8cf5-b81e81b57839}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="WinMain\GameMain\SceneManager\Scene\ResultScene\ResultClock">
-      <UniqueIdentifier>{9b1b703e-a67e-40c7-bda3-f6f1c6509871}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="WinMain\GameMain\SceneManager\Scene\ResultScene\ResultText">
-      <UniqueIdentifier>{4a60d7af-dd0a-426a-b2f9-df31f3dceff0}</UniqueIdentifier>
+    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\ClientGameScene\ClientYoungerBrother">
+      <UniqueIdentifier>{5355f8da-70bf-4827-99a7-0807d9908bba}</UniqueIdentifier>
     </Filter>
     <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\Player">
       <UniqueIdentifier>{06f91837-ca26-44bf-94a7-79215958191a}</UniqueIdentifier>
@@ -128,15 +140,6 @@
     <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\Map">
       <UniqueIdentifier>{15df8ae9-8213-4d18-8e75-33812e8ca25f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\ModeManager">
-      <UniqueIdentifier>{67322d58-e7ec-4b52-a529-a31f9fecaff9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\PlayerUI">
-      <UniqueIdentifier>{02917e0b-7ce9-4882-8c49-f2994ac4230c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\Shadow">
-      <UniqueIdentifier>{6df0e253-ca3a-4863-ad53-98b5590dcea2}</UniqueIdentifier>
-    </Filter>
     <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\Map\MapObject">
       <UniqueIdentifier>{8f263b3f-634f-483e-abf7-0a3ec5475e7d}</UniqueIdentifier>
     </Filter>
@@ -145,6 +148,15 @@
     </Filter>
     <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\Map\MapBackGround">
       <UniqueIdentifier>{4b57d8da-f0dc-45ca-a3f2-bc3678467883}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\ModeManager">
+      <UniqueIdentifier>{67322d58-e7ec-4b52-a529-a31f9fecaff9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\PlayerUI">
+      <UniqueIdentifier>{02917e0b-7ce9-4882-8c49-f2994ac4230c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\Shadow">
+      <UniqueIdentifier>{6df0e253-ca3a-4863-ad53-98b5590dcea2}</UniqueIdentifier>
     </Filter>
     <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\ServerGameScene">
       <UniqueIdentifier>{79625aeb-cce5-4777-9d5c-24ce4705a9ff}</UniqueIdentifier>
@@ -158,19 +170,10 @@
     <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\Text">
       <UniqueIdentifier>{6e246c1f-7c4d-4a4a-9370-03d481f09f91}</UniqueIdentifier>
     </Filter>
-    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\ClientGameScene\ClientBrother">
-      <UniqueIdentifier>{e18c1aa7-fc11-43a7-ba85-cffb57db5249}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\ClientGameScene\ClientYoungerBrother">
-      <UniqueIdentifier>{5355f8da-70bf-4827-99a7-0807d9908bba}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Library\D3DXManager">
-      <UniqueIdentifier>{48d93f91-02a4-4f0b-8fe6-9cee405e7d9f}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="D3DManager.cpp">
-      <Filter>Library\D3DXManager</Filter>
+      <Filter>Library\D3DManager</Filter>
     </ClCompile>
     <ClCompile Include="DSoundManager.cpp">
       <Filter>Library\DSoundManager</Filter>
@@ -245,7 +248,7 @@
       <Filter>Library\StencilManager</Filter>
     </ClCompile>
     <ClCompile Include="Server.cpp">
-      <Filter>Library\Server</Filter>
+      <Filter>Connect\Server</Filter>
     </ClCompile>
     <ClCompile Include="ConnectSelectManager.cpp">
       <Filter>WinMain\GameMain\SceneManager\Scene\ConnectingScene\ConnectSelectManager</Filter>
@@ -260,7 +263,7 @@
       <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\ClientGameScene</Filter>
     </ClCompile>
     <ClCompile Include="Client.cpp">
-      <Filter>Library\Client</Filter>
+      <Filter>Connect\Client</Filter>
     </ClCompile>
     <ClCompile Include="ServerGameScene.cpp">
       <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\ServerGameScene</Filter>
@@ -328,7 +331,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="D3DManager.h">
-      <Filter>Library\D3DXManager</Filter>
+      <Filter>Library\D3DManager</Filter>
     </ClInclude>
     <ClInclude Include="DSoundManager.h">
       <Filter>Library\DSoundManager</Filter>
@@ -400,7 +403,7 @@
       <Filter>Library\StencilManager</Filter>
     </ClInclude>
     <ClInclude Include="Server.h">
-      <Filter>Library\Server</Filter>
+      <Filter>Connect\Server</Filter>
     </ClInclude>
     <ClInclude Include="ConnectSelectManager..h">
       <Filter>WinMain\GameMain\SceneManager\Scene\ConnectingScene\ConnectSelectManager</Filter>
@@ -415,7 +418,7 @@
       <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\ClientGameScene</Filter>
     </ClInclude>
     <ClInclude Include="Client.h">
-      <Filter>Library\Client</Filter>
+      <Filter>Connect\Client</Filter>
     </ClInclude>
     <ClInclude Include="ServerGameScene.h">
       <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\ServerGameScene</Filter>

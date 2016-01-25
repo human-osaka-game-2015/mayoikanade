@@ -57,7 +57,7 @@ void ClientYoungerBrother::Control()
 		Move();
 
 #ifdef _DEBUG
-		if (m_pButtonState[1] == PAD_PUSH)
+		if (m_pButtonState[XINPUT_BUTTON_A] == PAD_PUSH)
 		{
 			m_Hp = YOUNGERBROTHER_HP;
 		}
@@ -80,7 +80,7 @@ void ClientYoungerBrother::Control()
 
 void ClientYoungerBrother::Draw()
 {
-	CustomVertex player[4];
+	CustomVertex player[SQUARE_VERTEX];
 	int Tex_Id;
 
 	m_CurrentMode = m_pModeManager->GetMode();

@@ -245,8 +245,8 @@ void MapBackGround::Draw(float DrawPosX, float DrawPosY)
 int MapBackGround::BackGroundCheck(float x, float y)
 {
 	int arrayx = ARRAY_DEFAULT_INIT, arrayy = ARRAY_DEFAULT_INIT;
-	arrayx = int(x / MAPCHIP_SIZE);
-	arrayy = int(y / MAPCHIP_SIZE);
+	arrayx = static_cast<int>(x / MAPCHIP_SIZE);
+	arrayy = static_cast<int>(y / MAPCHIP_SIZE);
 
 	return m_BackGroundData[arrayy][arrayx];
 }

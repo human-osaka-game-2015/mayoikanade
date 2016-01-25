@@ -49,7 +49,7 @@ ClientBrother::~ClientBrother()
 
 void ClientBrother::PosChange(CustomVertex* pvertex)
 {
-	for (int i = 0; i < 4; i++)
+	for (int i = FOR_DEFAULT_INIT; i < SQUARE_VERTEX; i++)
 	{
 		pvertex[i].x -= m_pPlayer->m_PlayerX;
 		pvertex[i].y -= m_pPlayer->m_PlayerY;
@@ -75,7 +75,7 @@ void ClientBrother::Control()
 
 
 #ifdef _DEBUG
-			if (m_pButtonState[1] == PAD_PUSH)
+			if (m_pButtonState[XINPUT_BUTTON_B] == PAD_PUSH)
 			{
 				m_Hp = 100;
 			}
@@ -93,7 +93,7 @@ void ClientBrother::Control()
 
 #ifdef _DEBUG
 			//Debug用
-			if (m_pButtonState[1] == PAD_PUSH)
+			if (m_pButtonState[XINPUT_BUTTON_B] == PAD_PUSH)
 			{
 				m_Hp = 100;
 			}
@@ -119,7 +119,7 @@ void ClientBrother::Control()
 
 void ClientBrother::Draw()
 {
-	CustomVertex player[4];
+	CustomVertex player[SQUARE_VERTEX];
 	int Tex_Id;
 
 	m_CurrentMode = m_pModeManager->GetMode();
@@ -221,8 +221,6 @@ void ClientBrother::UiDraw()
 //絶対修正すべきだけど時間がないので今はこのまま
 void ClientBrother::Move()
 {
-
-
 	//移動がなかったら待機のアニメーション
 	if (m_pPadState[ANALOG_LEFT] == false && m_pPadState[ANALOG_RIGHT] == false &&
 		m_pPadState[ANALOG_UP] == false && m_pPadState[ANALOG_DOWN] == false)
@@ -271,7 +269,6 @@ void ClientBrother::Move()
 				break;
 			}
 		}
-		
 	}
 
 
@@ -446,7 +443,7 @@ void ClientBrother::Move()
 
 void ClientBrother::Action()
 {
-	if (m_pButtonState[0] == PAD_PUSH)
+	if (m_pButtonState[XINPUT_BUTTON_A] == PAD_PUSH)
 	{
 		switch (m_BrotherState)
 		{
@@ -454,8 +451,6 @@ void ClientBrother::Action()
 			switch (m_Direction)
 			{
 			case PLAYER_BACK:
-
-
 				if (m_pCollisionChecker->WoodBoxCheck(m_Ppos.x, m_Ppos.y - 60) == true)
 				{
 					m_BrotherState = CLIENTBROTHER_STATE_WOODBOX;
@@ -511,8 +506,6 @@ void ClientBrother::Action()
 
 				break;
 			}
-
-
 
 			break;
 		case CLIENTBROTHER_STATE_WOODBOX:
@@ -626,28 +619,22 @@ void ClientBrother::ModeManagerSet(ModeManager* pModeManager)
 
 void ClientBrother::SwitchOn()
 {
-
-
 	float PlayerLeft = m_Ppos.x - (m_Ppos.w / 2);
 	float PlayerRight = m_Ppos.x + (m_Ppos.w / 2);
 	float PlayerBottom = m_Ppos.y + (m_Ppos.h / 2);
 	float PlayerTop = m_Ppos.y - (m_Ppos.h / 2);
 
-
 	m_pCollisionChecker->SwitchOn(PlayerLeft, m_Ppos.y);
 	m_pCollisionChecker->SwitchOn(PlayerLeft, (m_Ppos.y + (m_Ppos.h / 2)));
 	m_pCollisionChecker->SwitchOn(PlayerLeft, (m_Ppos.y + (m_Ppos.h / 2 / 2)));
-
 
 	m_pCollisionChecker->SwitchOn(PlayerRight, m_Ppos.y);
 	m_pCollisionChecker->SwitchOn(PlayerRight, (m_Ppos.y + (m_Ppos.h / 2)));
 	m_pCollisionChecker->SwitchOn(PlayerRight, (m_Ppos.y + (m_Ppos.h / 2 / 2)));
 
-
 	m_pCollisionChecker->SwitchOn(m_Ppos.x, PlayerBottom);
 	m_pCollisionChecker->SwitchOn((m_Ppos.x + (m_Ppos.w / 2)), PlayerBottom);
 	m_pCollisionChecker->SwitchOn((m_Ppos.x - (m_Ppos.w / 2)), PlayerBottom);
-
 
 	m_pCollisionChecker->SwitchOn(m_Ppos.x + m_PlayerX, PlayerTop + 64);
 	m_pCollisionChecker->SwitchOn((m_Ppos.x + (m_Ppos.w / 2)), PlayerTop + 64);
