@@ -259,7 +259,7 @@ bool Map::AppleCheck(float x, float y)
 /**
  * ステージを切り替える関数
  */
-void Map::MapChange()
+void Map::MapChange(float* x, float* y)
 {
 	switch (m_mapstage)
 	{
@@ -267,21 +267,25 @@ void Map::MapChange()
 		m_pMapBackGround->CsvRead("Stage1_Background.csv");
 		m_pMapObject->CsvRead("Stage1_Object.csv");
 		m_pMapGimmick->CsvRead("Stage1_Gimmick.csv");
+		MapStartPos(x, y);
 		break;
 	case STAGE2:
 		m_pMapBackGround->CsvRead("Stage1_Background.csv");
 		m_pMapObject->CsvRead("Stage1_Object.csv");
 		m_pMapGimmick->CsvRead("Stage1_Gimmick.csv");
+		MapStartPos(x, y);
 		break;
 	case STAGE3:
 		m_pMapBackGround->CsvRead("Stage1_Background.csv");
 		m_pMapObject->CsvRead("Stage1_Object.csv");
 		m_pMapGimmick->CsvRead("Stage1_Gimmick.csv");
+		MapStartPos(x, y);
 		break;
 	case STAGE4:
 		m_pMapBackGround->CsvRead("Stage1_Background.csv");
 		m_pMapObject->CsvRead("Stage1_Object.csv");
 		m_pMapGimmick->CsvRead("Stage1_Gimmick.csv");
+		MapStartPos(x, y);
 		break;
 	}
 }
@@ -295,4 +299,9 @@ void Map::MapChange()
 bool Map::ClearCheck(float x,float y)
 {
 	return m_pMapGimmick->ClearCheck(x,y);
+}
+
+void Map::MapStartPos(float* x, float* y)
+{
+	m_pMapGimmick->MapStartPos(x, y);
 }

@@ -40,6 +40,7 @@ class DrawPositionSetter;
 class GameTimeManager;
 class Text;
 class Shadow;
+class Mutex;
 
 
 typedef struct
@@ -76,9 +77,13 @@ private:
 	GameTimeManager*		m_pGameTimeManager;
 	Text*					m_pText;
 	Shadow*					m_pShadow;
+	Mutex*					m_pMutex;
+
 	HWND					m_hWnd;
 	GameThread				Gamemain;
 	bool*					m_pisGameClear;
+	bool					m_KeyCheckOK;
+	bool					m_SendRecv;
 
 
 public:

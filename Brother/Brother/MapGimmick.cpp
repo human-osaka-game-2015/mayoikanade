@@ -766,11 +766,25 @@ bool MapGimmick::ClearCheck(float x, float y)
 	arrayx = static_cast<int>(x / MAPCHIP_SIZE);
 	arrayy = static_cast<int>(y / MAPCHIP_SIZE);
 
-	if (m_GimmickData[arrayy][arrayx] == GOALZONE)
+	if (m_GimmickData[arrayy][arrayx] / 10000 == GOALZONE)
 	{
 		return true;
 	}
-
-
 	return false;
+}
+
+void MapGimmick::MapStartPos(float* posx, float* posy)
+{
+	for (int y = 0; y < MAP_HEIGHT; y++)
+	{
+		for (int x = 0; x < MAP_WIDTH; x++)
+		{
+			if (m_GimmickData[y][x] / 10000 == STARTZONE)
+			{
+				*posx = m_MapGimmick_Pos[y][x].x;
+				*posy = m_MapGimmick_Pos[y][x].y;
+				return;
+			}
+		}
+	}
 }

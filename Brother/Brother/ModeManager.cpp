@@ -105,7 +105,7 @@ void ModeManager::Control()
 				m_pMap->m_DrawPositionX = -200.0f;
 				m_pMap->m_DrawPositionY = 100.0f;
 				m_pMap->m_mapstage++;
-				m_pMap->MapChange();
+				m_pMap->MapChange(&m_pSBrother->m_PlayerX, &m_pSBrother->m_PlayerY);
 				m_YoungBrotherGoal = false;
 				m_BrotherGoal = false;
 
@@ -140,7 +140,7 @@ void ModeManager::Control()
 				m_pMap->m_DrawPositionX = -250.0f;
 				m_pMap->m_DrawPositionY = 200.0f;
 				m_pMap->m_mapstage++;
-				m_pMap->MapChange();
+				m_pMap->MapChange(&m_pCYoungerBrother->m_PlayerX, &m_pCYoungerBrother->m_PlayerY);
 				m_YoungBrotherGoal = false;
 				m_BrotherGoal = false;
 			}

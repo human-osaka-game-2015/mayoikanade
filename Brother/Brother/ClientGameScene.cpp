@@ -13,7 +13,7 @@
 #include "GameTimeManager.h"
 #include "DrawPositionSetter.h"
 
-
+#include "Mutex.h"
 
 /**
  * ClientGameScene‚Ì’ÊMŠÖ”
@@ -55,9 +55,10 @@ DWORD WINAPI ClientGameScene::Connect(LPVOID Gamemain)
 		//SyncNow = timeGetTime();
 
 		//Sleep(1);
-		if (pGameScene->isConnect == true/* && SyncNow - SyncOld >= 1000 / 60*/)
+		if (pGameScene->isConnect == true && pGameScene->m_KeyCheckOK == true)
 		{
-			
+			pGameScene->m_pMutex->GetMutexHwnd();
+			pGameScene->m_pMutex->WaitMutex();
 			for (int i = 0; i < 4; i++)
 			{
 				if (pGameScene->m_PadState[i] == true)
@@ -147,7 +148,9 @@ DWORD WINAPI ClientGameScene::Connect(LPVOID Gamemain)
 
 			ZeroMemory(&pGameScene->CData, sizeof(pGameScene->CData));
 			ZeroMemory(&pGameScene->SData, sizeof(pGameScene->SData));
-			pGameScene->isConnect = false;
+			pGameScene->m_SendRecv = true;
+			pGameScene->m_pMutex->MutexRelease();
+			//pGameScene->isConnect = false;
 			SyncCount++;
 		}
 	}
@@ -168,7 +171,9 @@ Scene(pLibrary),
 m_hWnd(hWnd),
 m_pisGameClear(pisGameClear),
 m_isGameScene(true),
-isConnect(false)
+isConnect(false),
+m_KeyCheckOK(false),
+m_SendRecv(false)
 {
 	//GamePadî•ñ‚Ì‰Šú‰»
 	for (int i = FOR_DEFAULT_INIT; i < ANALOG_MAX; i++)
@@ -286,12 +291,19 @@ SCENE_NUM ClientGameScene::Control()
 	m_pText->Control();
 	m_pBrother->SwitchOn();
 	m_pYoungerBrother->SwitchOn();
-	if (m_pModeManager->m_alpha == COLORMIN)
-	{
-		m_pBrother->Control();
-		m_pYoungerBrother->Control();
-	}
 
+	m_pMutex->GetMutexHwnd();
+	m_pMutex->WaitMutex();
+	if (m_SendRecv)
+	{
+		if (m_pModeManager->m_alpha == COLORMIN)
+		{
+			m_pBrother->Control();
+			m_pYoungerBrother->Control();
+		}
+		m_SendRecv = false;
+	}
+	m_pMutex->MutexRelease();
 
 	
 	return m_NextScene;
@@ -358,6 +370,7 @@ void ClientGameScene::PadCheck()
 
 	m_ButtonState[0] = m_pLibrary->GetButtonState(GAMEPAD_A, GAMEPAD1);
 	m_ButtonState[1] = m_pLibrary->GetButtonState(GAMEPAD_B, GAMEPAD1);
+	m_KeyCheckOK = true;
 }
 
 /**

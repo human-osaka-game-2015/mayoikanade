@@ -70,7 +70,9 @@ public:
 	float	m_DrawPositionY;
 
 	int m_mapstage;
-	void MapChange();
+	void MapChange(float* x, float* y);
+	void MapStartPos(float* x, float* y);
+
 };
 
 #endif

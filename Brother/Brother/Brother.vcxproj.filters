@@ -170,6 +170,9 @@
     <Filter Include="WinMain\GameMain\SceneManager\Scene\GameScene\Text">
       <UniqueIdentifier>{6e246c1f-7c4d-4a4a-9370-03d481f09f91}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Library\MultiThread">
+      <UniqueIdentifier>{7be4b63e-d7e4-4fa6-bec8-3bcb6343b7c3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="D3DManager.cpp">
@@ -328,6 +331,9 @@
     <ClCompile Include="ServerYoungerBrother.cpp">
       <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\ServerGameScene\ServerYoungerBrother</Filter>
     </ClCompile>
+    <ClCompile Include="Mutex.cpp">
+      <Filter>Library\MultiThread</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="D3DManager.h">
@@ -485,6 +491,9 @@
     </ClInclude>
     <ClInclude Include="ServerYoungerBrother.h">
       <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\ServerGameScene\ServerYoungerBrother</Filter>
+    </ClInclude>
+    <ClInclude Include="Mutex.h">
+      <Filter>Library\MultiThread</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

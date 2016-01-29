@@ -13,6 +13,7 @@
   <ItemGroup>
     <ClCompile Include="ClientBrother.cpp" />
     <ClCompile Include="ClientYoungerBrother.cpp" />
+    <ClCompile Include="Mutex.cpp" />
     <ClCompile Include="ResultBackGround.cpp" />
     <ClCompile Include="ResultClock.cpp" />
     <ClCompile Include="ResultText.cpp" />
@@ -67,6 +68,7 @@
   <ItemGroup>
     <ClInclude Include="ClientBrother.h" />
     <ClInclude Include="ClientYoungerBrother.h" />
+    <ClInclude Include="Mutex.h" />
     <ClInclude Include="ResultBackGround.h" />
     <ClInclude Include="ResultClock.h" />
     <ClInclude Include="ResultText.h" />

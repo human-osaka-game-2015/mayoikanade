@@ -18,6 +18,7 @@ class DrawPositionSetter;
 class GameTimeManager;
 class Text;
 class Shadow;
+class Mutex;
 
 typedef struct
 {
@@ -47,7 +48,10 @@ private:
 	Text*						m_pText;
 	Shadow*						m_pShadow;
 	HWND						m_hWnd;
+	Mutex*						m_pMutex;
 	bool*						m_pisGameClear;
+	bool						m_KeyCheckOK;
+	bool						m_RecvSend;
 
 	char szIP[16];
 	HOSTENT* lpHost; 			//  ホスト情報を格納する構造体

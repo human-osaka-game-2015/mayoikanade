@@ -12,7 +12,7 @@
 #include "Shadow.h"
 #include "GameTimeManager.h"
 #include "DrawPositionSetter.h"
-
+#include "Mutex.h"
 
 //サーバー
 DWORD WINAPI ServerGameScene::Connect(LPVOID vpGameScene)
@@ -49,8 +49,10 @@ DWORD WINAPI ServerGameScene::Connect(LPVOID vpGameScene)
 		//SyncNow = timeGetTime();
 		//
 		//Sleep(1);
-		if (pGameScene->m_pisConnect != NULL /*&& SyncNow - SyncOld >= 1000 / 60*/)
+		if (pGameScene->m_pisConnect != NULL  && pGameScene->m_KeyCheckOK == true)
 		{
+			pGameScene->m_pMutex->GetMutexHwnd();
+			pGameScene->m_pMutex->WaitMutex();
 			bool isConnect = *pGameScene->m_pisConnect;
 			if (isConnect == true)
 			{
@@ -142,7 +144,9 @@ DWORD WINAPI ServerGameScene::Connect(LPVOID vpGameScene)
 
 				//*pGameScene->m_pisConnect = false;
 			}
-
+			pGameScene->m_KeyCheckOK = false;
+			pGameScene->m_RecvSend = true;
+			pGameScene->m_pMutex->MutexRelease();
 		}
 	}
 	timeEndPeriod(1);
@@ -165,7 +169,9 @@ Scene(pLibrary),
 m_hWnd(hWnd),
 m_pisGameClear(pisGameClear),
 m_isGameScene(true),
-m_pisConnect(&m_isConnect)
+m_pisConnect(&m_isConnect),
+m_KeyCheckOK(false),
+m_RecvSend(false)
 {
 
 	for (int i = 0; i < ANALOG_MAX; i++)
@@ -282,12 +288,19 @@ SCENE_NUM ServerGameScene::Control()
 		//Releaseは最適化されるから大丈夫のはず
 		m_pBrother->SwitchOn();
 		m_pYoungerBrother->SwitchOn();
-
-		if (m_pModeManager->m_alpha == 0)
+		
+		m_pMutex->GetMutexHwnd();
+		m_pMutex->WaitMutex();
+		if (m_RecvSend)
 		{
-			m_pBrother->Control();
-			m_pYoungerBrother->Control();
+			if (m_pModeManager->m_alpha == 0)
+			{
+				m_pBrother->Control();
+				m_pYoungerBrother->Control();
+			}
+			m_RecvSend = false;
 		}
+		m_pMutex->MutexRelease();
 	}
 	return m_NextScene;
 }
@@ -365,8 +378,7 @@ void ServerGameScene::PadCheck()
 
 	m_ButtonState[0] = m_pLibrary->GetButtonState(GAMEPAD_A,GAMEPAD1);
 	m_ButtonState[1] = m_pLibrary->GetButtonState(GAMEPAD_B, GAMEPAD1);
-
-	
+	m_KeyCheckOK = true;	
 }
 
 void ServerGameScene::GetBrotherPos(short* posx, short* posy)
