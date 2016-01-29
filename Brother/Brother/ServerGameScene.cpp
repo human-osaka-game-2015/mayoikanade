@@ -204,6 +204,7 @@ m_RecvSend(false)
 	m_pShadow				= new Shadow(m_pLibrary, m_pGameTimeManager);
 	m_pText					= new Text(m_pLibrary, m_PadState, m_PadOldState, m_ButtonState);
 	m_pModeManager			= new ModeManager(m_pSceneChangeListener, m_pBrother, m_pYoungerBrother, m_pGameTimeManager, m_pShadow, m_pText,m_pisGameClear,m_pMap);
+	m_pMutex = new Mutex("ServerMutex");
 
 	//ModeManagerSetはBrotherなどに対してm_ModeManagerを渡す
 	m_pBrother->ModeManagerSet(m_pModeManager);
@@ -246,7 +247,7 @@ ServerGameScene::~ServerGameScene()
 #endif
 
 	//オブジェクト
-	
+	delete m_pMutex;
 	delete m_pModeManager;
 
 	delete m_pText;

@@ -149,6 +149,7 @@ DWORD WINAPI ClientGameScene::Connect(LPVOID Gamemain)
 			ZeroMemory(&pGameScene->CData, sizeof(pGameScene->CData));
 			ZeroMemory(&pGameScene->SData, sizeof(pGameScene->SData));
 			pGameScene->m_SendRecv = true;
+			pGameScene->m_KeyCheckOK = false;
 			pGameScene->m_pMutex->MutexRelease();
 			//pGameScene->isConnect = false;
 			SyncCount++;
@@ -208,6 +209,7 @@ m_SendRecv(false)
 	m_pShadow				= new Shadow(m_pLibrary, m_pGameTimeManager);
 	m_pText					= new Text(m_pLibrary, m_PadState, m_PadOldState, m_ButtonState);
 	m_pModeManager			= new ModeManager(m_pSceneChangeListener, m_pBrother, m_pYoungerBrother, m_pGameTimeManager, m_pShadow, m_pText, m_pisGameClear,m_pMap);
+	m_pMutex = new Mutex("ClientMutex");
 
 
 	//ModeManagerSetはBrotherなどに対してm_ModeManagerを渡す
@@ -259,6 +261,7 @@ ClientGameScene::~ClientGameScene()
 #endif
 
 	//オブジェクト破棄
+	delete m_pMutex;
 	delete m_pModeManager;
 	delete m_pText;
 	delete m_pShadow;
