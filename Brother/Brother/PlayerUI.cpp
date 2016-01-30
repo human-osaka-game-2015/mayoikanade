@@ -90,6 +90,8 @@ void PlayerUI::Draw()
 	{
 		m_pLibrary->MakePosition(m_face1Id, &m_FacialExpression);
 		m_pLibrary->MakeVertex(m_face1Id, faceUi);
+		m_FacialExpression.h -= 200;
+		m_FacialExpression.w -= 250;
 		m_pLibrary->xySet(m_FacialExpression, faceUi);
 		m_pLibrary->DrawTexture(TEX_UI, faceUi);
 	}
@@ -98,6 +100,8 @@ void PlayerUI::Draw()
 	{
 		m_pLibrary->MakePosition(m_face2Id, &m_FacialExpression);
 		m_pLibrary->MakeVertex(m_face2Id, faceUi);
+		m_FacialExpression.h -= 200;
+		m_FacialExpression.w -= 250;
 		m_pLibrary->xySet(m_FacialExpression, faceUi);
 		m_pLibrary->DrawTexture(TEX_UI, faceUi);
 	}
@@ -106,6 +110,8 @@ void PlayerUI::Draw()
 	{
 		m_pLibrary->MakePosition(m_face3Id, &m_FacialExpression);
 		m_pLibrary->MakeVertex(m_face3Id, faceUi);
+		m_FacialExpression.h -= 200;
+		m_FacialExpression.w -= 250;
 		m_pLibrary->xySet(m_FacialExpression, faceUi);
 		m_pLibrary->DrawTexture(TEX_UI, faceUi);
 	}
