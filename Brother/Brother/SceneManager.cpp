@@ -21,8 +21,7 @@ m_pLibrary(pLibrary),
 m_NextScene(SCENE_NONE),
 m_hWnd(hWnd)
 {
-	m_pScene = new ClientGameScene(m_pLibrary, m_hWnd, m_pIPadd, &m_isGameClear);
-
+	m_pScene = new LogoScene(m_pLibrary);
 
 	m_pLibrary->RenderInit();
 }

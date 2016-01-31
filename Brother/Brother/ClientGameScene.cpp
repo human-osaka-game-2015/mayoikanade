@@ -357,23 +357,26 @@ void ClientGameScene::Draw()
  */
 void ClientGameScene::PadCheck()
 {
-	m_pLibrary->Check(GAMEPAD1);
-	isConnect = true;
+	if (m_KeyCheckOK == false)
+	{
+		m_pLibrary->Check(GAMEPAD1);
+		isConnect = true;
 
-	m_PadOldState[ANALOG_LEFT] =	m_PadState[ANALOG_LEFT];
-	m_PadOldState[ANALOG_RIGHT] =	m_PadState[ANALOG_RIGHT];
-	m_PadOldState[ANALOG_DOWN] =	m_PadState[ANALOG_DOWN];
-	m_PadOldState[ANALOG_UP] =		m_PadState[ANALOG_UP];
+		m_PadOldState[ANALOG_LEFT] = m_PadState[ANALOG_LEFT];
+		m_PadOldState[ANALOG_RIGHT] = m_PadState[ANALOG_RIGHT];
+		m_PadOldState[ANALOG_DOWN] = m_PadState[ANALOG_DOWN];
+		m_PadOldState[ANALOG_UP] = m_PadState[ANALOG_UP];
 
-	m_PadState[ANALOG_LEFT] = m_pLibrary->GetAnalogState(ANALOG_LEFT, GAMEPAD1);
-	m_PadState[ANALOG_RIGHT] = m_pLibrary->GetAnalogState(ANALOG_RIGHT, GAMEPAD1);
-	m_PadState[ANALOG_DOWN] = m_pLibrary->GetAnalogState(ANALOG_DOWN, GAMEPAD1);
-	m_PadState[ANALOG_UP] = m_pLibrary->GetAnalogState(ANALOG_UP, GAMEPAD1);
+		m_PadState[ANALOG_LEFT] = m_pLibrary->GetAnalogState(ANALOG_LEFT, GAMEPAD1);
+		m_PadState[ANALOG_RIGHT] = m_pLibrary->GetAnalogState(ANALOG_RIGHT, GAMEPAD1);
+		m_PadState[ANALOG_DOWN] = m_pLibrary->GetAnalogState(ANALOG_DOWN, GAMEPAD1);
+		m_PadState[ANALOG_UP] = m_pLibrary->GetAnalogState(ANALOG_UP, GAMEPAD1);
 
 
-	m_ButtonState[0] = m_pLibrary->GetButtonState(GAMEPAD_A, GAMEPAD1);
-	m_ButtonState[1] = m_pLibrary->GetButtonState(GAMEPAD_B, GAMEPAD1);
-	m_KeyCheckOK = true;
+		m_ButtonState[0] = m_pLibrary->GetButtonState(GAMEPAD_A, GAMEPAD1);
+		m_ButtonState[1] = m_pLibrary->GetButtonState(GAMEPAD_B, GAMEPAD1);
+		m_KeyCheckOK = true;
+	}
 }
 
 /**
