@@ -96,8 +96,8 @@ void ModeManager::Control()
 				m_pSYoungerBrother->m_Ppos.x = 350.0f;
 				m_pSYoungerBrother->m_Ppos.y = 550.0f;
 
-				m_pSBrother->m_Ppos.x = 600.0f;
-				m_pSBrother->m_Ppos.y = 350.0f;
+				m_pSBrother->m_Ppos.x = 300.0f;
+				m_pSBrother->m_Ppos.y = 550.0f;
 
 				m_pSBrother->m_PlayerX = -300.0f;
 				m_pSBrother->m_PlayerY = 200.0f;

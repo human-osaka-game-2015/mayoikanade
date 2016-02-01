@@ -204,7 +204,7 @@ m_RecvSend(false)
 	m_pShadow				= new Shadow(m_pLibrary, m_pGameTimeManager);
 	m_pText					= new Text(m_pLibrary, m_PadState, m_PadOldState, m_ButtonState);
 	m_pModeManager			= new ModeManager(m_pSceneChangeListener, m_pBrother, m_pYoungerBrother, m_pGameTimeManager, m_pShadow, m_pText,m_pisGameClear,m_pMap);
-	m_pMutex = new Mutex("ServerMutex");
+	m_pMutex = new Mutex("Server");
 
 	//ModeManagerSetはBrotherなどに対してm_ModeManagerを渡す
 	m_pBrother->ModeManagerSet(m_pModeManager);
@@ -272,7 +272,11 @@ SCENE_NUM ServerGameScene::Control()
 	}
 	else
 	{
-		PadCheck();		//入力のチェック
+		if (m_KeyCheckOK == false)
+		{
+			PadCheck();		//入力のチェック
+			m_KeyCheckOK = true;
+		}
 
 		m_pModeManager->Control();
 
@@ -359,8 +363,6 @@ void ServerGameScene::Draw()
 
 void ServerGameScene::PadCheck()
 {
-	if (m_KeyCheckOK == false)
-	{
 		m_pLibrary->Check(GAMEPAD1);				//PADの状態チェック
 	
 		//PADチェックしたので通信するようにする
@@ -381,8 +383,6 @@ void ServerGameScene::PadCheck()
 
 		m_ButtonState[0] = m_pLibrary->GetButtonState(GAMEPAD_A,GAMEPAD1);
 		m_ButtonState[1] = m_pLibrary->GetButtonState(GAMEPAD_B, GAMEPAD1);
-		m_KeyCheckOK = true;	
-	}
 }
 
 void ServerGameScene::GetBrotherPos(short* posx, short* posy)

@@ -145,14 +145,11 @@ DWORD WINAPI ClientGameScene::Connect(LPVOID Gamemain)
 				}
 			}
 
-
 			ZeroMemory(&pGameScene->CData, sizeof(pGameScene->CData));
 			ZeroMemory(&pGameScene->SData, sizeof(pGameScene->SData));
 			pGameScene->m_SendRecv = true;
 			pGameScene->m_KeyCheckOK = false;
 			pGameScene->m_pMutex->MutexRelease();
-			//pGameScene->isConnect = false;
-			SyncCount++;
 		}
 	}
 	timeEndPeriod(1);
@@ -284,7 +281,11 @@ ClientGameScene::~ClientGameScene()
  */
 SCENE_NUM ClientGameScene::Control()
 {
-	PadCheck();		//入力のチェック
+	if (m_KeyCheckOK == false)
+	{
+		PadCheck();		//入力のチェック
+		m_KeyCheckOK = true;
+	}
 
 	//オブジェクトのコントロール
 	m_pModeManager->Control();
@@ -357,8 +358,6 @@ void ClientGameScene::Draw()
  */
 void ClientGameScene::PadCheck()
 {
-	if (m_KeyCheckOK == false)
-	{
 		m_pLibrary->Check(GAMEPAD1);
 		isConnect = true;
 
@@ -375,8 +374,6 @@ void ClientGameScene::PadCheck()
 
 		m_ButtonState[0] = m_pLibrary->GetButtonState(GAMEPAD_A, GAMEPAD1);
 		m_ButtonState[1] = m_pLibrary->GetButtonState(GAMEPAD_B, GAMEPAD1);
-		m_KeyCheckOK = true;
-	}
 }
 
 /**
