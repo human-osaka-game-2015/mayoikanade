@@ -37,7 +37,7 @@ m_BrotherGoal(false),
 m_YoungBrotherGoal(false),
 m_StageChange(false)
 {
-
+	m_pMap->MapChange(&m_pSBrother->m_PlayerX, &m_pSBrother->m_PlayerY);
 }
 
 ModeManager::ModeManager(SceneChangeListener* Listener, ClientBrother* pBrother, ClientYoungerBrother* pYoungerBrother, GameTimeManager* pGameTimeManager, Shadow* pShadow, Text* pText, bool* pisGameClear,Map* pMap) :
@@ -55,7 +55,7 @@ m_BrotherGoal(false),
 m_YoungBrotherGoal(false),
 m_StageChange(false)
 {
-
+	m_pMap->MapChange(&m_pCYoungerBrother->m_PlayerX, &m_pCYoungerBrother->m_PlayerY);
 }
 
 ModeManager::~ModeManager()
@@ -99,13 +99,13 @@ void ModeManager::Control()
 				m_pSBrother->m_Ppos.x = 300.0f;
 				m_pSBrother->m_Ppos.y = 550.0f;
 
-				m_pSBrother->m_PlayerX = -300.0f;
-				m_pSBrother->m_PlayerY = 200.0f;
+				//m_pSBrother->m_PlayerX = -300.0f;
+				//m_pSBrother->m_PlayerY = 200.0f;
 
-				m_pMap->m_DrawPositionX = -200.0f;
-				m_pMap->m_DrawPositionY = 100.0f;
+				//m_pMap->m_DrawPositionX = -200.0f;
+				//m_pMap->m_DrawPositionY = 100.0f;
 				m_pMap->m_mapstage++;
-				m_pMap->MapChange(&m_pSBrother->m_PlayerX, &m_pSBrother->m_PlayerY);
+				m_pMap->MapChange(&m_pMap->m_DrawPositionX, &m_pMap->m_DrawPositionY);
 				m_YoungBrotherGoal = false;
 				m_BrotherGoal = false;
 
@@ -134,11 +134,11 @@ void ModeManager::Control()
 				m_pCBrother->m_Ppos.x = 800.0f;
 				m_pCBrother->m_Ppos.y = 950.0f;
 
-				m_pCYoungerBrother->m_PlayerX = -250.0f;
-				m_pCYoungerBrother->m_PlayerY = 200.0f;
+				//m_pCYoungerBrother->m_PlayerX = -250.0f;
+				//m_pCYoungerBrother->m_PlayerY = 200.0f;
 
-				m_pMap->m_DrawPositionX = -250.0f;
-				m_pMap->m_DrawPositionY = 200.0f;
+				//m_pMap->m_DrawPositionX = -250.0f;
+				//m_pMap->m_DrawPositionY = 200.0f;
 				m_pMap->m_mapstage++;
 				m_pMap->MapChange(&m_pCYoungerBrother->m_PlayerX, &m_pCYoungerBrother->m_PlayerY);
 				m_YoungBrotherGoal = false;

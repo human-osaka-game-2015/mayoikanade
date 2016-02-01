@@ -204,6 +204,8 @@ void ServerBrother::Move()
 {
 
 
+	m_pDrawPositionSetter->DrawPositionXSet(m_PlayerX);
+	m_pDrawPositionSetter->DrawPositionYSet(m_PlayerY);
 	//移動がなかったら待機のアニメーション
 	if (m_pPadState[ANALOG_LEFT] == false && m_pPadState[ANALOG_RIGHT] == false &&
 		m_pPadState[ANALOG_UP] == false && m_pPadState[ANALOG_DOWN] == false)

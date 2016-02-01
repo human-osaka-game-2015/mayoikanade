@@ -10,7 +10,7 @@
 MapGimmick::MapGimmick(Library* pLibrary) :
 m_pLibrary(pLibrary)
 {
-	CsvRead("Stage1_Gimmick.csv");
+	CsvRead("stage1/Stage1_Gimmick.csv");
 }
 
 /**

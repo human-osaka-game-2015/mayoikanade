@@ -221,6 +221,7 @@ void ClientBrother::UiDraw()
 //絶対修正すべきだけど時間がないので今はこのまま
 void ClientBrother::Move()
 {
+
 	//移動がなかったら待機のアニメーション
 	if (m_pPadState[ANALOG_LEFT] == false && m_pPadState[ANALOG_RIGHT] == false &&
 		m_pPadState[ANALOG_UP] == false && m_pPadState[ANALOG_DOWN] == false)

@@ -10,7 +10,7 @@
 MapBackGround::MapBackGround(Library* pLibrary) :
 m_pLibrary(pLibrary)
 {
-	CsvRead("Stage1_Background.csv");
+	CsvRead("stage1/Stage1_Background.csv");
 }
 
 /**

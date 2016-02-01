@@ -134,6 +134,9 @@ void ClientYoungerBrother::UiDraw()
 void ClientYoungerBrother::Move()
 {
 
+	m_pDrawPositionSetter->DrawPositionXSet(m_PlayerX);
+	m_pDrawPositionSetter->DrawPositionYSet(m_PlayerY);
+
 	switch (m_YoungerBrotherState)
 	{
 	case CLIENTYOUNGERBROTHER_STATE_NORMAL:
