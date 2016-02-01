@@ -240,7 +240,7 @@ ServerGameScene::~ServerGameScene()
 	//スレッド終了を待つ処理を追加する
 
 	m_pisConnect = NULL;
-	Sleep(3000);
+	Sleep(5000);
 
 #ifdef _DEBUG
 	pFont->Release();

@@ -30,8 +30,8 @@ m_pPlayer(pPlayer)
 	m_Direction = PLAYER_FRONT;
 	m_CurrentAnima = BROTHER_WAIT_FRONT;
 
-	m_Ppos.x = 300;
-	m_Ppos.y = 550;
+	//m_Ppos.x = 300;
+	//m_Ppos.y = 550;
 	m_Hp = BROTHER_HP;
 
 	m_isnear = false;

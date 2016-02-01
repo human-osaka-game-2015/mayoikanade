@@ -781,8 +781,8 @@ void MapGimmick::MapStartPos(float* posx, float* posy)
 		{
 			if (m_GimmickData[y][x] / 10000 == STARTZONE)
 			{
-				*posx = m_MapGimmick_Pos[y][x].x;
-				*posy = m_MapGimmick_Pos[y][x].y;
+				*posx = x * 64;
+				*posy = y * 64;
 				return;
 			}
 		}

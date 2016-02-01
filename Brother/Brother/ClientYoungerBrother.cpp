@@ -28,11 +28,11 @@ Player(pLibrary, pPadState, pPadOldState, pButtonState, pCollisionChecker, pDraw
 	m_Ppos.x = 600;
 	m_Ppos.y = 350;
 	m_Hp = YOUNGERBROTHER_HP;
-	m_PlayerX += -250;
-	m_PlayerY += 200;
+	//m_PlayerX += -250;
+	//m_PlayerY += 200;
 
-	m_pDrawPositionSetter->DrawPositionXSet(m_PlayerX);
-	m_pDrawPositionSetter->DrawPositionYSet(m_PlayerY);
+	//m_pDrawPositionSetter->DrawPositionXSet(m_PlayerX);
+	//m_pDrawPositionSetter->DrawPositionYSet(m_PlayerY);
 
 	m_pPlayerUI = new PlayerUI(m_pLibrary, m_Hp, YOUNGERBROTHER_LIFEFRAME, YOUNGERBROTHER_LIFEBAR, YOUNGERBRTOHER_FACE_01, YOUNGERBRTOHER_FACE_02, YOUNGERBRTOHER_FACE_03, YOUNGERBROTHER_UI_POSX, YOUNGERBROTHER_UI_POSY, YOUNGERBROTHERFACEX, YOUNGERBROTHERFACEY);
 
