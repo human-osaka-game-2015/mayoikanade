@@ -129,6 +129,66 @@ void MapObject::MapTex_UV_Set(float Posx, float Posy)
 					m_MapObject_Tex[i][j][x].tv = DEFAULT_TV;
 				}
 				break;
+			case HOME_01:
+				m_pLibrary->MakeVertex(HOME_01, m_MapObject_Tex[i][j]);
+				break;
+			case HOME_02:
+				m_pLibrary->MakeVertex(HOME_02, m_MapObject_Tex[i][j]);
+				break;
+			case HOME_03:
+				m_pLibrary->MakeVertex(HOME_03, m_MapObject_Tex[i][j]);
+				break;
+			case HOME_04:
+				m_pLibrary->MakeVertex(HOME_04, m_MapObject_Tex[i][j]);
+				break;
+			case HOME_05:
+				m_pLibrary->MakeVertex(HOME_05, m_MapObject_Tex[i][j]);
+				break;
+			case HOME_06:
+				m_pLibrary->MakeVertex(HOME_06, m_MapObject_Tex[i][j]);
+				break;
+			case HOME_07:
+				m_pLibrary->MakeVertex(HOME_07, m_MapObject_Tex[i][j]);
+				break;
+			case HOME_08:
+				m_pLibrary->MakeVertex(HOME_08, m_MapObject_Tex[i][j]);
+				break;
+			case HOME_09:
+				m_pLibrary->MakeVertex(HOME_09, m_MapObject_Tex[i][j]);
+				break;
+			case HOME_10:
+				m_pLibrary->MakeVertex(HOME_10, m_MapObject_Tex[i][j]);
+				break;
+			case HOME_11:
+				m_pLibrary->MakeVertex(HOME_11, m_MapObject_Tex[i][j]);
+				break;
+			case HOME_12:
+				m_pLibrary->MakeVertex(HOME_12, m_MapObject_Tex[i][j]);
+				break;
+			case HOME_13:
+				m_pLibrary->MakeVertex(HOME_13, m_MapObject_Tex[i][j]);
+				break;
+			case HOME_14:
+				m_pLibrary->MakeVertex(HOME_14, m_MapObject_Tex[i][j]);
+				break;
+			case HOME_15:
+				m_pLibrary->MakeVertex(HOME_15, m_MapObject_Tex[i][j]);
+				break;
+			case HOME_16:
+				m_pLibrary->MakeVertex(HOME_16, m_MapObject_Tex[i][j]);
+				break;
+			case HOME_17:
+				m_pLibrary->MakeVertex(HOME_17, m_MapObject_Tex[i][j]);
+				break;
+			case HOME_18:
+				m_pLibrary->MakeVertex(HOME_18, m_MapObject_Tex[i][j]);
+				break;
+			case HOME_19:
+				m_pLibrary->MakeVertex(HOME_19, m_MapObject_Tex[i][j]);
+				break;
+			case HOME_20:
+				m_pLibrary->MakeVertex(HOME_20, m_MapObject_Tex[i][j]);
+				break;
 			}
 		}
 	}
