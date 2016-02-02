@@ -102,11 +102,11 @@ void ModeManager::Control()
 			if (m_pMap->m_mapstage < STAGE_MAX)
 			{
 				m_pMap->m_mapstage++;
-				m_pSYoungerBrother->m_Ppos.x = 350.0f;
-				m_pSYoungerBrother->m_Ppos.y = 550.0f;
+				//m_pSYoungerBrother->m_Ppos.x = 350.0f;
+				//m_pSYoungerBrother->m_Ppos.y = 550.0f;
 
-				m_pSBrother->m_Ppos.x = 300.0f;
-				m_pSBrother->m_Ppos.y = 550.0f;
+				//m_pSBrother->m_Ppos.x = 300.0f;
+				//m_pSBrother->m_Ppos.y = 550.0f;
 
 
 				m_pMap->MapChange(&m_pSBrother->m_PlayerX, &m_pSBrother->m_PlayerY);
@@ -140,8 +140,8 @@ void ModeManager::Control()
 		{
 			if (m_pMap->m_mapstage < STAGE_MAX)
 			{
-				m_pCBrother->m_Ppos.x = 800.0f;
-				m_pCBrother->m_Ppos.y = 950.0f;
+				//m_pCBrother->m_Ppos.x = 800.0f;
+				//m_pCBrother->m_Ppos.y = 950.0f;
 
 				//m_pCYoungerBrother->m_PlayerX = -250.0f;
 				//m_pCYoungerBrother->m_PlayerY = 200.0f;

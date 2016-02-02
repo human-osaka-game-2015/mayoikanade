@@ -21,7 +21,7 @@
 #define EXITCODE 0
 #define NORMAL_RETURN 0
 
-//#define FULLWINDOW
+#define FULLWINDOW
 LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wp, LPARAM lp);
 
 
