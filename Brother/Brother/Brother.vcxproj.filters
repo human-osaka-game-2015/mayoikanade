@@ -432,9 +432,6 @@
     <ClInclude Include="ServerBrother.h">
       <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\ServerGameScene\ServerBrother</Filter>
     </ClInclude>
-    <ClInclude Include="ClientBrother.h">
-      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\ClientGameScene\ClientBrother</Filter>
-    </ClInclude>
     <ClInclude Include="ClientYoungerBrother.h">
       <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\ClientGameScene\ClientYoungerBrother</Filter>
     </ClInclude>
@@ -494,6 +491,9 @@
     </ClInclude>
     <ClInclude Include="Mutex.h">
       <Filter>Library\MultiThread</Filter>
+    </ClInclude>
+    <ClInclude Include="ClientBrother.h">
+      <Filter>WinMain\GameMain\SceneManager\Scene\GameScene\ClientGameScene\ClientBrother</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

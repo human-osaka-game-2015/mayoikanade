@@ -143,15 +143,15 @@ void ModeManager::Control()
 				//m_pCBrother->m_Ppos.x = 800.0f;
 				//m_pCBrother->m_Ppos.y = 950.0f;
 
+				m_pMap->m_mapstage++;
+				m_pMap->MapChange(&m_pCYoungerBrother->m_PlayerX, &m_pCYoungerBrother->m_PlayerY);
+				//m_pMap->m_DrawPositionX = m_pCYoungerBrother->m_PlayerX;
 				//m_pCYoungerBrother->m_PlayerX = -250.0f;
 				//m_pCYoungerBrother->m_PlayerY = 200.0f;
 
 				//m_pMap->m_DrawPositionX = -250.0f;
 				//m_pMap->m_DrawPositionY = 200.0f;
-				m_pMap->m_mapstage++;
-				m_pMap->MapChange(&m_pCYoungerBrother->m_PlayerX, &m_pCYoungerBrother->m_PlayerY);
-				m_pMap->m_DrawPositionX = m_pCYoungerBrother->m_PlayerX;
-				m_pMap->m_DrawPositionY = m_pCYoungerBrother->m_PlayerY;
+				//m_pMap->m_DrawPositionY = m_pCYoungerBrother->m_PlayerY;
 				m_pCBrother->m_Ppos.x = m_pCYoungerBrother->m_Ppos.x + m_pCYoungerBrother->m_PlayerX;
 				m_pCBrother->m_Ppos.y = m_pCYoungerBrother->m_Ppos.y + m_pCYoungerBrother->m_PlayerY;
 
@@ -233,7 +233,7 @@ GAMEMODE_NUM ModeManager::CheckMode()
 		
 	}
 	
-	if (m_YoungBrotherGoal == true && m_BrotherGoal == true)
+	if (m_YoungBrotherGoal == true/* && m_BrotherGoal == true*/)
 	{
 		m_StageChange = true;
 		if (m_alpha == COLORMAX)
