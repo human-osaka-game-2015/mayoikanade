@@ -158,12 +158,11 @@ void ModeManager::Control()
 
 				m_YoungBrotherGoal = false;
 				m_BrotherGoal = false;
+
+				m_pSceneChangeListener->Update(GAMEOVER_UPDATE);
 			}
 			else
 			{
-				*m_pisGameClear = true;
-
-				m_pSceneChangeListener->Update(GAMEOVER_UPDATE);
 			}
 		}
 
@@ -239,6 +238,7 @@ GAMEMODE_NUM ModeManager::CheckMode()
 		m_StageChange = true;
 		if (m_alpha == COLORMAX)
 		{
+			*m_pisGameClear = true;
 			return STAGECHANGE;
 		}
 	}
