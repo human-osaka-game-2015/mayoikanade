@@ -41,6 +41,7 @@ private:
 	GameTimeManager*	m_GameTimeManager;
 	GAMEMODE_NUM		m_CurrentMode;
 	Position			m_Pos;
+	bool				m_isGameOverInit;
 
 public:
 	Shadow(Library* pLibrary, GameTimeManager* pGameTimeManager);

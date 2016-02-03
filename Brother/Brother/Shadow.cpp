@@ -11,7 +11,7 @@
  * @param[in] pGameTimeManager GameTimeManagerクラスのポインタ
  */
 Shadow::Shadow(Library* pLibrary, GameTimeManager* pGameTimeManager) :
-m_pLibrary(pLibrary), m_GameTimeManager(pGameTimeManager)
+m_pLibrary(pLibrary), m_GameTimeManager(pGameTimeManager), m_isGameOverInit(true)
 {
 	m_Pos.x = SHADOW_POS_X;
 	m_Pos.y = SHADOW_POS_Y;
@@ -55,8 +55,16 @@ void Shadow::Control()
 		break;
 	case GAMEOVEREFFECT:
 
-		m_Pos.h -= SHADOW_REDUCTION;
-		m_Pos.w -= SHADOW_REDUCTION;
+		if (m_isGameOverInit == true)
+		{
+			m_isGameOverInit = false;
+			m_Pos.h = 1500;
+			m_Pos.w = 1500;
+
+		}
+
+		m_Pos.h -= SHADOW_REDUCTION - 3;
+		m_Pos.w -= SHADOW_REDUCTION - 3;
 
 		if (m_Pos.h <= SHADOW_MIN || m_Pos.w <= SHADOW_MIN)
 		{

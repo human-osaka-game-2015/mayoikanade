@@ -145,7 +145,9 @@ void ModeManager::Control()
 				//m_pCBrother->m_Ppos.y = 950.0f;
 
 				m_pMap->m_mapstage++;
+#ifndef MAPVIEW
 				m_pMap->MapChange(&m_pCYoungerBrother->m_PlayerX, &m_pCYoungerBrother->m_PlayerY);
+#endif
 				//m_pMap->m_DrawPositionX = m_pCYoungerBrother->m_PlayerX;
 				//m_pCYoungerBrother->m_PlayerX = -250.0f;
 				//m_pCYoungerBrother->m_PlayerY = 200.0f;
@@ -233,7 +235,7 @@ GAMEMODE_NUM ModeManager::CheckMode()
 		
 	}
 	
-	if (m_YoungBrotherGoal == true/* && m_BrotherGoal == true*/)
+	if (m_YoungBrotherGoal == true && m_BrotherGoal == true)
 	{
 		m_StageChange = true;
 		if (m_alpha == COLORMAX)

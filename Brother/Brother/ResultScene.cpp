@@ -59,7 +59,6 @@ ResultScene::~ResultScene()
 	{
 		m_pLibrary->ReleaseTexture(TEX_GAMEOVER);
 	}
-
 	//Csv‚Ì‰ð•ú
 	m_pLibrary->VertexInfoRelease();
 	m_pLibrary->FileInfoRelease();

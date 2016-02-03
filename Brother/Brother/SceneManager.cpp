@@ -68,10 +68,12 @@ bool SceneManager::Control()
 		break;
 	case SERVER_GAME_SCENE:
 		delete m_pScene;
+		m_isGameClear = false;
 		m_pScene = new ServerGameScene(m_pLibrary, m_hWnd, &m_isGameClear);
 		break;
 	case CLIENT_GAME_SCENE:
 		delete m_pScene;
+		m_isGameClear = false;
 		m_pScene = new ClientGameScene(m_pLibrary, m_hWnd, m_pIPadd, &m_isGameClear);
 		break;
 	case RESULT_SCENE:

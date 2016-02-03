@@ -2,7 +2,7 @@
 #include "MapGimmick.h"
 #include "Library.h"
 
-
+#include "Tex.h"
 /**
  * MapGimmickクラスのコンストラクタ
  * @param[in] pLibrary ライブラリクラスのポインタ
@@ -781,8 +781,10 @@ void MapGimmick::MapStartPos(float* posx, float* posy)
 		{
 			if (m_GimmickData[y][x] / 10000 == STARTZONE)
 			{
+#ifndef MAPVIEW
 				*posx = static_cast<float>(x * 64) - 640 + 128;
 				*posy = static_cast<float>(y * 64) - 512 + 128;
+#endif
 				return;
 			}
 		}
