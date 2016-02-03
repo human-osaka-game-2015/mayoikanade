@@ -5,7 +5,7 @@
 #include <d3dx9tex.h>
 #include "GameMain.h"
 #include "SceneManager.h"
-
+#include "Tex.h"
 #define WINDOWTITLE "–À‚¢ŒZ’í"
 #define CDCLSEXTRA 0
 #define CDWNDEXTRA 0
@@ -14,9 +14,16 @@
 #define DEFAULT_WMSGFILTERMAX 0
 #define DEFAULT_POSTMESSAGE_WPARAM 0
 #define DEFAULT_POSTMESSAGE_LPARAM 0
+#define DEFAULTFRAME 1000 / 60
+
+#ifdef MAPVIEW
+#define WINDOWWIDTH 1024
+#define WINDOWHEIGHT 800
+
+#else
 #define WINDOWWIDTH 1280
 #define WINDOWHEIGHT 1024
-#define DEFAULTFRAME 1000 / 60
+#endif
 
 #define EXITCODE 0
 #define NORMAL_RETURN 0

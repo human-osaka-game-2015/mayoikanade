@@ -1,11 +1,11 @@
 #ifndef TEX_H
 #define TEX_H
+
+#define MAPVIEW
+
 enum MAP_STAGE
 {
 	STAGE1,
-	STAGE2,
-	STAGE3,
-	STAGE4,
 	STAGE_MAX
 };
 

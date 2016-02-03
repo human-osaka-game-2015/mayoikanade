@@ -264,29 +264,29 @@ void Map::MapChange(float* x, float* y)
 	switch (m_mapstage)
 	{
 	case STAGE1:
-		m_pMapBackGround->CsvRead("stage1/Stage1_Background.csv");
-		m_pMapObject->CsvRead("stage1/Stage1_Object.csv");
-		m_pMapGimmick->CsvRead("stage1/Stage1_Gimmick.csv");
-		MapStartPos(x, y);
-		break;
-	case STAGE2:
-		m_pMapBackGround->CsvRead("stage2/Stage2_Background.csv");
-		m_pMapObject->CsvRead("stage2/Stage2_Object.csv");
-		m_pMapGimmick->CsvRead("stage2/Stage2_Gimmick.csv");
-		MapStartPos(x, y);
-		break;
-	case STAGE3:
-		m_pMapBackGround->CsvRead("stage3/Stage3_Background.csv");
-		m_pMapObject->CsvRead("stage3/Stage3_Object.csv");
-		m_pMapGimmick->CsvRead("stage3/Stage3_Gimmick.csv");
-		MapStartPos(x, y);
-		break;
-	case STAGE4:
 		m_pMapBackGround->CsvRead("stage4/Stage4_Background.csv");
 		m_pMapObject->CsvRead("stage4/Stage4_Object.csv");
 		m_pMapGimmick->CsvRead("stage4/Stage4_Gimmick.csv");
 		MapStartPos(x, y);
 		break;
+	//case STAGE2:
+	//	m_pMapBackGround->CsvRead("stage2/Stage2_Background.csv");
+	//	m_pMapObject->CsvRead("stage2/Stage2_Object.csv");
+	//	m_pMapGimmick->CsvRead("stage2/Stage2_Gimmick.csv");
+	//	MapStartPos(x, y);
+	//	break;
+	//case STAGE3:
+	//	m_pMapBackGround->CsvRead("stage3/Stage3_Background.csv");
+	//	m_pMapObject->CsvRead("stage3/Stage3_Object.csv");
+	//	m_pMapGimmick->CsvRead("stage3/Stage3_Gimmick.csv");
+	//	MapStartPos(x, y);
+	//	break;
+	//case STAGE4:
+	//	m_pMapBackGround->CsvRead("stage4/Stage4_Background.csv");
+	//	m_pMapObject->CsvRead("stage4/Stage4_Object.csv");
+	//	m_pMapGimmick->CsvRead("stage4/Stage4_Gimmick.csv");
+	//	MapStartPos(x, y);
+	//	break;
 	}
 }
 

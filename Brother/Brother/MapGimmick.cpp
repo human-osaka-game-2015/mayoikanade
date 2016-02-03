@@ -10,7 +10,7 @@
 MapGimmick::MapGimmick(Library* pLibrary) :
 m_pLibrary(pLibrary)
 {
-	CsvRead("stage1/Stage1_Gimmick.csv");
+	//CsvRead("stage4/Stage4_Gimmick.csv");
 }
 
 /**
@@ -781,8 +781,8 @@ void MapGimmick::MapStartPos(float* posx, float* posy)
 		{
 			if (m_GimmickData[y][x] / 10000 == STARTZONE)
 			{
-				*posx = x * 64 - 32;
-				*posy = y * 64 - 32;
+				*posx = static_cast<float>(x * 64 - 32);
+				*posy = static_cast<float>(y * 64 - 32);
 				return;
 			}
 		}

@@ -21,8 +21,11 @@ m_pLibrary(pLibrary),
 m_NextScene(SCENE_NONE),
 m_hWnd(hWnd)
 {
+#ifdef MAPVIEW
+	m_pScene = new ClientGameScene(m_pLibrary,hWnd,NULL,NULL);
+#else
 	m_pScene = new LogoScene(m_pLibrary);
-
+#endif
 	m_pLibrary->RenderInit();
 }
 

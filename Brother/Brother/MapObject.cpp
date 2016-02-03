@@ -10,7 +10,7 @@
 MapObject::MapObject(Library* pLibrary) :
 m_pLibrary(pLibrary)
 {
-	CsvRead("stage1/Stage1_Object.csv");
+	//CsvRead("stage1/Stage1_Object.csv");
 }
 
 /**

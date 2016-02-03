@@ -12,9 +12,8 @@
 #include "Shadow.h"
 #include "GameTimeManager.h"
 #include "DrawPositionSetter.h"
-
+#include "Tex.h"
 #include "Mutex.h"
-
 /**
  * ClientGameSceneの通信関数
  * @param[in,out] Gamemain ゲームシーンに対してのポインタ(受け取った情報を書き込んだり、読み込んだりする)
@@ -224,11 +223,15 @@ m_SendRecv(false)
 	
 #endif
 
-	
+#ifdef MAPVIEW
+
+#else
 	for (int i = FOR_DEFAULT_INIT; i < IP_MAX; i++)
 	{
 		Gamemain.portnum[i] = IPadd[i];
 	}
+#endif
+	
 
 	//スレッドを立てる
 	DWORD dwID;
@@ -320,6 +323,10 @@ void ClientGameScene::Draw()
 {
 	//オブジェクトの描画
 	m_pShadow->Draw();
+#ifdef MAPVIEW
+
+	m_pMap->Draw();
+#else
 	m_pMap->Draw();
 	m_pBrother->Draw();
 	m_pYoungerBrother->Draw();
@@ -327,6 +334,7 @@ void ClientGameScene::Draw()
 	m_pBrother->UiDraw();
 	m_pYoungerBrother->UiDraw();
 	m_pText->Draw();
+#endif
 
 
 	//ステージ移動演出

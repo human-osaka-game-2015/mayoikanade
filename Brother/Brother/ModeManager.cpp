@@ -117,13 +117,12 @@ void ModeManager::Control()
 
 				m_YoungBrotherGoal = false;
 				m_BrotherGoal = false;
+				m_pSceneChangeListener->Update(GAMEOVER_UPDATE);
 
 			}
 			else
 			{
-				*m_pisGameClear = true;
 
-				m_pSceneChangeListener->Update(GAMEOVER_UPDATE);
 			}
 		}
 
@@ -138,6 +137,8 @@ void ModeManager::Control()
 
 		if (m_Mode == STAGECHANGE)
 		{
+			*m_pisGameClear = true;
+
 			if (m_pMap->m_mapstage < STAGE_MAX)
 			{
 				//m_pCBrother->m_Ppos.x = 800.0f;
