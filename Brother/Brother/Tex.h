@@ -1,7 +1,7 @@
 #ifndef TEX_H
 #define TEX_H
 
-#define MAPVIEW
+//#define MAPVIEW
 
 enum MAP_STAGE
 {
