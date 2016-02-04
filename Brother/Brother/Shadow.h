@@ -3,8 +3,8 @@
 
 #define SHADOW_POS_X 600		//‰e‚ÌXÀ•W
 #define SHADOW_POS_Y 350		//‰e‚ÌYÀ•W
-#define SHADOW_POS_W 6000		//‰e‚Ì•
-#define SHADOW_POS_H 6000		//‰e‚Ì‚‚³
+#define SHADOW_POS_W 15000		//‰e‚Ì•
+#define SHADOW_POS_H 15000		//‰e‚Ì‚‚³
 
 #define SHADOW_REDUCTION 10		//‰e‚Ìk¬—Ê
 #define SHADOW_MIN 0			//‰e‚Ì‘å‚«‚³‚ÌÅ¬’l
