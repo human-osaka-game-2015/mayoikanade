@@ -121,6 +121,7 @@
     <ClInclude Include="ServerYoungerBrother.h" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="..\Release\ip.txt" />
     <Text Include="Texture順番.txt" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

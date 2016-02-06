@@ -26,10 +26,19 @@ DWORD WINAPI ClientGameScene::Connect(LPVOID Gamemain)
 	Client BrotherClient("51234");
 	char IP[16];
 
-	for (int i = 0; i < 16; i++)
-	{
-		IP[i] = p_GameThread->portnum[i];
-	}
+	//for (int i = 0; i < 16; i++)
+	//{
+	//	IP[i] = p_GameThread->portnum[i];
+	//}
+
+	FILE* fp;
+	fopen_s(&fp, "ip.txt", "r");
+
+	fscanf_s(fp, "%s",IP);
+
+	fclose(fp);
+
+
 	BrotherClient.serverConnect(IP);
 
 	//位置の同期するタイミングをとる。でも多分、使わなくなると思う。
@@ -284,6 +293,8 @@ ClientGameScene::~ClientGameScene()
  */
 SCENE_NUM ClientGameScene::Control()
 {
+	m_pMutex->GetMutexHwnd();
+	m_pMutex->WaitMutex();
 	if (m_KeyCheckOK == false)
 	{
 		PadCheck();		//入力のチェック
@@ -299,8 +310,6 @@ SCENE_NUM ClientGameScene::Control()
 	m_pBrother->SwitchOn();
 	m_pYoungerBrother->SwitchOn();
 
-	m_pMutex->GetMutexHwnd();
-	m_pMutex->WaitMutex();
 	if (m_SendRecv)
 	{
 		if (m_pModeManager->m_alpha == COLORMIN)

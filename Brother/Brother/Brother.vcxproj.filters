@@ -498,5 +498,8 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="Texture順番.txt" />
+    <Text Include="..\Release\ip.txt">
+      <Filter>Connect</Filter>
+    </Text>
   </ItemGroup>
 </Project>

@@ -266,6 +266,8 @@ ServerGameScene::~ServerGameScene()
 
 SCENE_NUM ServerGameScene::Control()
 {
+		m_pMutex->GetMutexHwnd();
+		m_pMutex->WaitMutex();
 	if (*m_pisConnect == false)
 	{
 
@@ -294,8 +296,6 @@ SCENE_NUM ServerGameScene::Control()
 		m_pBrother->SwitchOn();
 		m_pYoungerBrother->SwitchOn();
 		
-		m_pMutex->GetMutexHwnd();
-		m_pMutex->WaitMutex();
 		if (m_RecvSend)
 		{
 			if (m_pModeManager->m_alpha == 0)
@@ -305,8 +305,8 @@ SCENE_NUM ServerGameScene::Control()
 			}
 			m_RecvSend = false;
 		}
-		m_pMutex->MutexRelease();
 	}
+		m_pMutex->MutexRelease();
 	return m_NextScene;
 }
 
