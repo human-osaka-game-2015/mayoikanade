@@ -2,7 +2,7 @@
 #define CONNECTINGSCENE_H
 
 #define CONNECTBACKGROUNDPOS_X 640
-#define CONNECTBACKGROUNDPOS_Y 512
+#define CONNECTBACKGROUNDPOS_Y 360
 //#include <winsock2.h>
 
 #include "Scene.h"

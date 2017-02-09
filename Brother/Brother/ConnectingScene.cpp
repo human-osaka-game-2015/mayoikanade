@@ -102,8 +102,8 @@ void ConnectingScene::Draw()
 		{
 			{ 0.0, 0.0, 0.5, 1.0, 0xFFFFFFFF, 0.0, 0.0 },
 			{ 1280.0, 0.0, 0.5, 1.0, 0xFFFFFFFF, 1.0, 0.0 },
-			{ 1280.0, 1024.0, 0.5, 1.0, 0xFFFFFFFF, 1.0, 1.0 },
-			{ 0.0, 1024.0, 0.5, 1.0, 0xFFFFFFFF, 0.0, 1.0 }
+			{ 1280.0, 720.0, 0.5, 1.0, 0xFFFFFFFF, 1.0, 1.0 },
+			{ 0.0, 720.0, 0.5, 1.0, 0xFFFFFFFF, 0.0, 1.0 }
 		};
 
 		m_pLibrary->DrawTexture(CONNECTSELECT_WAIT, waiting);

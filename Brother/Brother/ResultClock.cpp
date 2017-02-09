@@ -23,20 +23,32 @@ m_FadeTime(RESULTCLOCK_INIT_FADE_TIME)
 		m_pLibrary->MakePosition(GAMECLEAR_CLOCK01, &m_Clock01Pos);
 		m_pLibrary->MakePosition(GAMECLEAR_CLOCK02, &m_Clock02Pos);
 		m_pLibrary->MakePosition(GAMECLEAR_CLOCK03, &m_Clock03Pos);
-		m_Clock01Pos.x = RESULTCLOCK01_POS_X;
-		m_Clock01Pos.y = RESULTCLOCK01_POS_Y;
-		m_Clock02Pos.x = RESULTCLOCK02_POS_X;
-		m_Clock02Pos.y = RESULTCLOCK02_POS_Y;
+		m_Clock01Pos.w *= 0.7f;
+		m_Clock01Pos.h *= 0.7f;
+		m_Clock02Pos.w *= 0.7f;
+		m_Clock02Pos.h *= 0.7f;
+		m_Clock03Pos.w *= 0.7f;
+		m_Clock03Pos.h *= 0.7f;
+
 		m_Clock03Pos.x = RESULTCLOCK03_POS_X;
 		m_Clock03Pos.y = RESULTCLOCK03_POS_Y;
+		m_Clock02Pos.x = RESULTCLOCK02_POS_X;
+		m_Clock02Pos.y = RESULTCLOCK03_POS_Y - (m_Clock03Pos.h / 2 + m_Clock02Pos.h / 2);
+		m_Clock01Pos.x = RESULTCLOCK01_POS_X;
+		m_Clock01Pos.y = m_Clock02Pos.y - m_Clock02Pos.h;
 
 		//ŽžŒv‚Ìj‚ÌÀ•W‚Ì‰Šú‰»
 		m_pLibrary->MakePosition(GAMECLEAR_CLOCK_SHORT_HAND, &m_ClockShortHandPos);
 		m_pLibrary->MakePosition(GAMECLEAR_CLOCK_LONG_HAND, &m_ClockLongHandPos);
+		m_ClockShortHandPos.w *= 0.7f;
+		m_ClockShortHandPos.h *= 0.7f;
+		m_ClockLongHandPos.w *= 0.7f;
+		m_ClockLongHandPos.h *= 0.7f;
+
 		m_ClockShortHandPos.x = RESULT_CLEAR_CLOCK_HANDPOSX;
-		m_ClockShortHandPos.y = RESULT_CLEAR_CLOCK_HANDPOSY;
+		m_ClockShortHandPos.y = m_Clock02Pos.y;
 		m_ClockLongHandPos.x = RESULT_CLEAR_CLOCK_HANDPOSX;
-		m_ClockLongHandPos.y = RESULT_CLEAR_CLOCK_HANDPOSY;
+		m_ClockLongHandPos.y = m_Clock02Pos.y;
 	}
 	else
 	{

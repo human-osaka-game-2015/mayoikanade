@@ -32,9 +32,9 @@ DWORD WINAPI ClientGameScene::Connect(LPVOID Gamemain)
 	//}
 
 	FILE* fp;
-	fopen_s(&fp, "ip.txt", "r");
+	fopen_s(&fp, "ip/ip.txt", "r");
 
-	fscanf_s(fp, "%s",IP);
+	fscanf_s(fp, "%s",IP,16);
 
 	fclose(fp);
 

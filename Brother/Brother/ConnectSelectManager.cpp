@@ -3,9 +3,9 @@
 #include "Scene.h"
 
 #define SERVERPOS_X 1100
-#define SERVERPOS_Y 500
+#define SERVERPOS_Y 450
 #define CLIENTPOS_X 1100
-#define CLIENTPOS_Y 650
+#define CLIENTPOS_Y 600
 
 
 ConnectSelectManager::ConnectSelectManager(Library* pLibrary, bool* pPadState, bool* pPadOldState) 

@@ -4,7 +4,7 @@
 #define STARTPOS_X 1100
 #define STARTPOS_Y 500
 #define STAFFPOS_X 1100
-#define STAFFPOS_Y 650
+#define STAFFPOS_Y 600
 #define ENDPOS_X 190
 #define ENDPOS_Y 600
 #define CURSOL_WIDTH 100
@@ -14,7 +14,7 @@
 #define START_CURSOL_POSX 900		//STARTを選択しているときのカーソルの位置
 #define START_CURSOL_POSY 490		//STARTを選択しているときのカーソルの位置
 #define STAFF_CURSOL_POSX 900		//STAFFを選択しているときのカーソルの位置
-#define STAFF_CURSOL_POSY 640		//STAFFを選択しているときのカーソルの位置
+#define STAFF_CURSOL_POSY 600		//STAFFを選択しているときのカーソルの位置
 #define END_CURSOL_POSX 190			//ENDを選択しているときのカーソルの位置
 #define END_CURSOL_POSY 500			//ENDを選択しているときのカーソルの位置
 

@@ -2,7 +2,7 @@
 #define TITLENAME_H
 
 #define TITLENAMEPOS_X 343
-#define TITLENAMEPOS_Y 198
+#define TITLENAMEPOS_Y 158
 #include "Library.h"
 
 class TitleName

@@ -6,7 +6,7 @@
 #define RESULTBACKGROUND_FADE_TIME 0		//FadeInが始まる時間
 #define RESULTBACKGROUND_INIT_FADE_TIME 0	//FadeTimeの初期値
 #define RESULTBACKGROUND_POS_X 640			//BackGroundの座標
-#define RESULTBACKGROUND_POS_Y 512			//BackGroundの座標
+#define RESULTBACKGROUND_POS_Y 360			//BackGroundの座標
 
 
 class Library;

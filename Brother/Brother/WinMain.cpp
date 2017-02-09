@@ -22,13 +22,13 @@
 
 #else
 #define WINDOWWIDTH 1280
-#define WINDOWHEIGHT 1024
+#define WINDOWHEIGHT 720
 #endif
 
 #define EXITCODE 0
 #define NORMAL_RETURN 0
 
-//#define FULLWINDOW
+#define FULLWINDOW
 LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wp, LPARAM lp);
 
 

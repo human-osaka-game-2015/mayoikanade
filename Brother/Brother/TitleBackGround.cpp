@@ -30,7 +30,8 @@ void TitleBackGround::Draw()
 	CustomVertex background[SQUARE_VERTEX];
 
 	m_pLibrary->MakePosition(TITLE_BACKGROUND, &m_Pos);
-
+	m_Pos.w = 1280.f;
+	m_Pos.h = 720.f;
 	m_pLibrary->MakeVertex(TITLE_BACKGROUND, background);
 	m_pLibrary->xySet(m_Pos, background);
 

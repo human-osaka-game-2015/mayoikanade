@@ -77,14 +77,6 @@ void ServerBrother::Control()
 			Action();
 			
 			Move();
-
-
-			//Debug—p
-			if (m_pButtonState[XINPUT_BUTTON_B] == PAD_PUSH)
-			{
-				m_Hp = 100;
-			}
-
 			break;
 		}
 		break;

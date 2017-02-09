@@ -33,7 +33,12 @@ void StaffBackGround::Draw()
 
 	m_pLibrary->MakeVertex(STAFF, background);
 	
+	m_Pos.h = 720.f;
 	m_pLibrary->xySet(m_Pos, background);
+	background[2].tu = 1.f;
+	background[2].tv = 1.f;
+	background[3].tu = 0.f;
+	background[3].tv = 1.f;
 
 	m_pLibrary->DrawTexture(TEX_STAFF, background);
 }
